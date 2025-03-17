@@ -1,13 +1,15 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../shared/Navbar";
-import Footer from "../shared/Footer";
+// import Footer from "../shared/Footer";
+import { Toaster } from "react-hot-toast";
 
 const MainLayout = () => {
   return (
-    <div className="max-w-[1920px] mx-auto">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-black dark:text-white transition-colors duration-200">
       <Navbar />
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
+      <Toaster position="top-right" />
     </div>
   );
 };
