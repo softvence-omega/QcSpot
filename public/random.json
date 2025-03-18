@@ -1,0 +1,244 @@
+{
+  "code": 200,
+  "msg": "",
+  "data": {
+    "requestID": "91411266-6eec-421a-944e-bac39871d1b9",
+    "productInfo": {
+      "title": "TBXBV旗舰店小金桶益生菌冻干粉益生元维B全家版正品即饮冲泡",
+      "titleTrans": "Tbxbv Flagship Store Small Gold Bucket Probiotic Freeze-Dried Powder Prebiotic Vitamin B Family Version Genuine Ready-To-Drink Brew",
+      "imgList": [
+        "https://img.alicdn.com/bao/uploaded/i1/2217375162824/O1CN010RVw3n1WjRWzXm8P5_!!4611686018427380168-0-item_pic.jpg",
+        "https://img.alicdn.com/bao/uploaded/i1/2217375162824/O1CN013aTNTG1WjRTyQoxsg_!!2217375162824.jpg",
+        "https://img.alicdn.com/bao/uploaded/i2/2217375162824/O1CN01CiafHr1WjRWTZYhwn_!!2217375162824.jpg",
+        "https://img.alicdn.com/bao/uploaded/i1/2217375162824/O1CN01cVDYqj1WjRTvRGzMu_!!2217375162824.jpg",
+        "https://img.alicdn.com/bao/uploaded/i1/2217375162824/O1CN01NpmivM1WjRUdcsECy_!!2217375162824.jpg"
+      ],
+      "props": {
+        "产品剂型": "粉剂",
+        "产地": "中国大陆地区",
+        "保质期": "24个月",
+        "品牌": "TBxbV",
+        "城市": "阜阳",
+        "是否保健食品（国食健字号）": "否",
+        "生产企业": "安徽宜佰家药业有限公司",
+        "省份": "安徽",
+        "系列": "金罐益生菌J26",
+        "规格（粒/袋/ml/g）": "100g（2g*50条）",
+        "计价单位": "袋",
+        "适用人群": "通用",
+        "适用性别": "男女通用",
+        "颜色分类": "巧克力色,深卡其布色,军绿色,天蓝色,桔色,浅灰色,浅绿色"
+      },
+      "propsTrans": {
+        "Applicable gender": "Male and female",
+        "Applicable population": "Generic",
+        "City": "Fuyang",
+        "Color classification": "Light green,Light gray,Chocolate color,Deep Katchi cloth color,Orange,Army Green,Sky Blue",
+        "Is it a health food (national food health brand)": "No",
+        "Origin": "Mainland China",
+        "Product dosage forms": "Powder",
+        "Production Enterprise": "Anhui yibaijia pharmaceutical co., ltd.",
+        "Province": "Anhui",
+        "Series": "Golden jar probiotics j26",
+        "Shelf life": "24 months",
+        "Specific specifications": "100g (2g*50 strips)",
+        "Valuation unit": "Bag",
+        "barnd": "TBxbV"
+      },
+      "sales": -1,
+      "productAttr": [
+        {
+          "attrID": "1627207",
+          "attr": "颜色分类",
+          "attrTrans": "Color classification",
+          "values": [
+            {
+              "valueID": "3232483",
+              "value": "金罐益生菌2罐",
+              "valueTrans": "Army Green",
+              "image": "https://img.alicdn.com/bao/uploaded/i2/2217375162824/O1CN011mdLyQ1WjRTwmBTVm_!!2217375162824.jpg"
+            },
+            {
+              "valueID": "3232484",
+              "value": "粉罐益生菌2罐",
+              "valueTrans": "Sky Blue",
+              "image": "https://img.alicdn.com/bao/uploaded/i2/2217375162824/O1CN01CET5T21WjRTxHYlyz_!!2217375162824.jpg"
+            },
+            {
+              "valueID": "3232481",
+              "value": "金罐益生菌6罐",
+              "valueTrans": "Chocolate color",
+              "image": "https://img.alicdn.com/bao/uploaded/i1/2217375162824/O1CN01ogdYe11WjRUhGcNyu_!!2217375162824.jpg"
+            },
+            {
+              "valueID": "90554",
+              "value": "粉罐益生菌6罐",
+              "valueTrans": "Orange",
+              "image": "https://img.alicdn.com/bao/uploaded/i4/2217375162824/O1CN01sHhqEW1WjRUdWNlis_!!2217375162824.jpg"
+            },
+            {
+              "valueID": "28332",
+              "value": "金罐3罐+粉罐3罐",
+              "valueTrans": "Light gray",
+              "image": "https://img.alicdn.com/bao/uploaded/i3/2217375162824/O1CN01Ya9tB91WjRUgOhL9q_!!2217375162824.jpg"
+            },
+            {
+              "valueID": "30156",
+              "value": "金罐2讙+粉罐4罐",
+              "valueTrans": "Light green",
+              "image": "https://img.alicdn.com/bao/uploaded/i1/2217375162824/O1CN01DyEuhp1WjRUiZ37yU_!!2217375162824.jpg"
+            },
+            {
+              "valueID": "3232482",
+              "value": "金罐4罐+粉罐2罐",
+              "valueTrans": "Deep Katchi cloth color",
+              "image": "https://img.alicdn.com/bao/uploaded/i3/2217375162824/O1CN01WL3KcZ1WjRUjRJi2L_!!2217375162824.jpg"
+            }
+          ]
+        }
+      ],
+      "fee": -1,
+      "guarantee": null,
+      "deliveryTime": "",
+      "minNum": 1,
+      "skus": [
+        {
+          "skuID": "5920354314073",
+          "name": "颜色分类:金罐益生菌2罐",
+          "nameTrans": "Color classification:Army Green",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i2/2217375162824/O1CN011mdLyQ1WjRTwmBTVm_!!2217375162824.jpg",
+          "stock": 200,
+          "propsID": "1627207:3232483",
+          "propsCode": [3232483],
+          "specId": "",
+          "price": "139.90"
+        },
+        {
+          "skuID": "5921750959302",
+          "name": "颜色分类:粉罐益生菌2罐",
+          "nameTrans": "Color classification:Sky Blue",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i2/2217375162824/O1CN01CET5T21WjRTxHYlyz_!!2217375162824.jpg",
+          "stock": 200,
+          "propsID": "1627207:3232484",
+          "propsCode": [3232484],
+          "specId": "",
+          "price": "139.90"
+        },
+        {
+          "skuID": "5921750959300",
+          "name": "颜色分类:金罐益生菌6罐",
+          "nameTrans": "Color classification:Chocolate color",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2217375162824/O1CN01ogdYe11WjRUhGcNyu_!!2217375162824.jpg",
+          "stock": 200,
+          "propsID": "1627207:3232481",
+          "propsCode": [3232481],
+          "specId": "",
+          "price": "209.00"
+        },
+        {
+          "skuID": "5921750959303",
+          "name": "颜色分类:粉罐益生菌6罐",
+          "nameTrans": "Color classification:Orange",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i4/2217375162824/O1CN01sHhqEW1WjRUdWNlis_!!2217375162824.jpg",
+          "stock": 200,
+          "propsID": "1627207:90554",
+          "propsCode": [90554],
+          "specId": "",
+          "price": "209.00"
+        },
+        {
+          "skuID": "5921750959298",
+          "name": "颜色分类:金罐3罐+粉罐3罐",
+          "nameTrans": "Color classification:Light gray",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2217375162824/O1CN01Ya9tB91WjRUgOhL9q_!!2217375162824.jpg",
+          "stock": 200,
+          "propsID": "1627207:28332",
+          "propsCode": [28332],
+          "specId": "",
+          "price": "209.00"
+        },
+        {
+          "skuID": "5921750959299",
+          "name": "颜色分类:金罐2讙+粉罐4罐",
+          "nameTrans": "Color classification:Light green",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2217375162824/O1CN01DyEuhp1WjRUiZ37yU_!!2217375162824.jpg",
+          "stock": 200,
+          "propsID": "1627207:30156",
+          "propsCode": [30156],
+          "specId": "",
+          "price": "209.00"
+        },
+        {
+          "skuID": "5921750959301",
+          "name": "颜色分类:金罐4罐+粉罐2罐",
+          "nameTrans": "Color classification:Deep Katchi cloth color",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2217375162824/O1CN01WL3KcZ1WjRUjRJi2L_!!2217375162824.jpg",
+          "stock": 200,
+          "propsID": "1627207:3232482",
+          "propsCode": [3232482],
+          "specId": "",
+          "price": "209.00"
+        }
+      ],
+      "sellerInfo": {
+        "shopLogo": "https://gw.alicdn.com/imgextra/i1/O1CN01z163bz1lHF5yQ50CC_!!6000000004793-2-tps-172-108.png",
+        "shopTitle": "TBXBV旗舰店",
+        "shopID": "421794754",
+        "shopLink": "https://shop421794754.taobao.com",
+        "sellerId": ""
+      },
+      "price": "139.90",
+      "imageMapList": {
+        "28332": "https://img.alicdn.com/bao/uploaded/i3/2217375162824/O1CN01Ya9tB91WjRUgOhL9q_!!2217375162824.jpg",
+        "30156": "https://img.alicdn.com/bao/uploaded/i1/2217375162824/O1CN01DyEuhp1WjRUiZ37yU_!!2217375162824.jpg",
+        "3232481": "https://img.alicdn.com/bao/uploaded/i1/2217375162824/O1CN01ogdYe11WjRUhGcNyu_!!2217375162824.jpg",
+        "3232482": "https://img.alicdn.com/bao/uploaded/i3/2217375162824/O1CN01WL3KcZ1WjRUjRJi2L_!!2217375162824.jpg",
+        "3232483": "https://img.alicdn.com/bao/uploaded/i2/2217375162824/O1CN011mdLyQ1WjRTwmBTVm_!!2217375162824.jpg",
+        "3232484": "https://img.alicdn.com/bao/uploaded/i2/2217375162824/O1CN01CET5T21WjRTxHYlyz_!!2217375162824.jpg",
+        "90554": "https://img.alicdn.com/bao/uploaded/i4/2217375162824/O1CN01sHhqEW1WjRUdWNlis_!!2217375162824.jpg"
+      },
+      "skuPropNamesMap": {
+        "1627207": "颜色分类"
+      },
+      "skuPropValsMap": {
+        "28332": "金罐3罐+粉罐3罐",
+        "30156": "金罐2讙+粉罐4罐",
+        "3232481": "金罐益生菌6罐",
+        "3232482": "金罐4罐+粉罐2罐",
+        "3232483": "金罐益生菌2罐",
+        "3232484": "粉罐益生菌2罐",
+        "90554": "粉罐益生菌6罐"
+      }
+    },
+    "productDetail": {
+      "productDesc": "\u003Cdiv style=\"width: 750.0px;height: auto;overflow: hidden;\"\u003E\u003Cdiv style=\"width: 750.0px;height: auto;overflow: hidden;\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i4/2217375162824/O1CN01MewBzg1WjRX0tktVF_!!2217375162824.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i3/2217375162824/O1CN01Ejcy2S1WjRWzwmD4N_!!2217375162824.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i4/2217375162824/O1CN01qen8Ur1WjRWzATmXn_!!2217375162824.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i4/2217375162824/O1CN01JfX60T1WjRWyYAr1t_!!2217375162824.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i3/2217375162824/O1CN01i2vuJU1WjRWz7MBYC_!!2217375162824.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i3/2217375162824/O1CN012BSDll1WjRWwb8PMp_!!2217375162824.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i1/2217375162824/O1CN01YaPdH01WjRWyhihl5_!!2217375162824.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i3/2217375162824/O1CN01BLTiDt1WjRWxEHFnP_!!2217375162824.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i1/2217375162824/O1CN01sZCFtT1WjRX0U5sH3_!!2217375162824.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i1/2217375162824/O1CN01MTFazf1WjRX0tiPhM_!!2217375162824.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i3/2217375162824/O1CN01Fj5W2t1WjRWzMF5hm_!!2217375162824.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i4/2217375162824/O1CN01CymtPr1WjRWzMCwdN_!!2217375162824.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i2/2217375162824/O1CN01eJ8j9g1WjRWyYCWyw_!!2217375162824.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i2/2217375162824/O1CN01kLDx7X1WjRWzAV7gC_!!2217375162824.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i2/2217375162824/O1CN01OFCgsm1WjRWzXlGMr_!!2217375162824.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i3/2217375162824/O1CN01fUyfRm1WjRWz7KVaw_!!2217375162824.jpg\"\u003E\u003C/div\u003E\u003C/div\u003E",
+      "productImgList": [
+        "https://img.alicdn.com/imgextra/i4/2217375162824/O1CN01MewBzg1WjRX0tktVF_!!2217375162824.jpg",
+        "https://img.alicdn.com/imgextra/i3/2217375162824/O1CN01Ejcy2S1WjRWzwmD4N_!!2217375162824.jpg",
+        "https://img.alicdn.com/imgextra/i4/2217375162824/O1CN01qen8Ur1WjRWzATmXn_!!2217375162824.jpg",
+        "https://img.alicdn.com/imgextra/i4/2217375162824/O1CN01JfX60T1WjRWyYAr1t_!!2217375162824.jpg",
+        "https://img.alicdn.com/imgextra/i3/2217375162824/O1CN01i2vuJU1WjRWz7MBYC_!!2217375162824.jpg",
+        "https://img.alicdn.com/imgextra/i3/2217375162824/O1CN012BSDll1WjRWwb8PMp_!!2217375162824.jpg",
+        "https://img.alicdn.com/imgextra/i1/2217375162824/O1CN01YaPdH01WjRWyhihl5_!!2217375162824.jpg",
+        "https://img.alicdn.com/imgextra/i3/2217375162824/O1CN01BLTiDt1WjRWxEHFnP_!!2217375162824.jpg",
+        "https://img.alicdn.com/imgextra/i1/2217375162824/O1CN01sZCFtT1WjRX0U5sH3_!!2217375162824.jpg",
+        "https://img.alicdn.com/imgextra/i1/2217375162824/O1CN01MTFazf1WjRX0tiPhM_!!2217375162824.jpg",
+        "https://img.alicdn.com/imgextra/i3/2217375162824/O1CN01Fj5W2t1WjRWzMF5hm_!!2217375162824.jpg",
+        "https://img.alicdn.com/imgextra/i4/2217375162824/O1CN01CymtPr1WjRWzMCwdN_!!2217375162824.jpg",
+        "https://img.alicdn.com/imgextra/i2/2217375162824/O1CN01eJ8j9g1WjRWyYCWyw_!!2217375162824.jpg",
+        "https://img.alicdn.com/imgextra/i2/2217375162824/O1CN01kLDx7X1WjRWzAV7gC_!!2217375162824.jpg",
+        "https://img.alicdn.com/imgextra/i2/2217375162824/O1CN01OFCgsm1WjRWzXlGMr_!!2217375162824.jpg",
+        "https://img.alicdn.com/imgextra/i3/2217375162824/O1CN01fUyfRm1WjRWz7KVaw_!!2217375162824.jpg"
+      ]
+    },
+    "productRemark": {
+      "sensitiveWords": [],
+      "isCanJump2Shop": true,
+      "isCanPurchased": true,
+      "isInBlackList": false
+    },
+    "sign": "Apfv/yfyNgSb4rbPwypBVCZRe7cyaaeix7NITpsAHhyK2CKwEO+zBemIk53SkdcWKeYY39k46V5R8KdfnETGamZ7mGBfwnIy0fjslDNDzz0Ll3hfEMeCsEmKwKU9TyhUklvQgcIBZUQlN07UXsKypq4Yat2Qlyi0zt1ltOVJdfNgG6lh1ErUgD1z8Gyvj/0ZCAaTTkT8Y9qVbV/a1r6Cx30wj+AIjgUptqAlIeE9SxjpzU4Pyz1VLtLy9I5/WBDi2563H52cQP4lROpq/w9b9ehWcBcMuqwg4hL0MV08I2LJdUYlJahU8kJ/JiITlTFkAE2no3o7dwrMU0MTp6y6xg==",
+    "cache": true,
+    "offSale": false
+  }
+}
