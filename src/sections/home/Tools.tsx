@@ -18,15 +18,15 @@ const Tools = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="container pb-20">
-      <h1 className="text-center pt-40 md:pt-28 duration-300 text-4xl mb-6">
+    <div className="px-4 pb-20 pt-5">
+      <h1 className="text-center w-fit mx-auto duration-300 text-2xl font-bold my-6">
         Tools
       </h1>
-      <div className="flex flex-wrap gap-6 max-w-7xl mx-auto">
+      <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-4">
         {/* QC Lookup Card */}
-        <div className="flex-1 min-w-[300px] bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+        <div className="flex-1 min-w-[300px] rounded-xl p-6 shadow-lg border dark:border-shadow">
           <h2 className="text-lg font-semibold">QC Lookup</h2>
-          <p className="text-gray-600 text-sm mt-2">
+          <p className="text-gray-500 text-sm mt-2">
             Enter a product link to verify its quality
           </p>
 
@@ -35,7 +35,7 @@ const Tools = () => {
               <div className="text-green-500 mb-1">
                 <Search size={20} />
               </div>
-              <span className="text-xs text-gray-600 max-w-[80px]">
+              <span className="text-xs text-gray-500 max-w-[80px]">
                 Real customer photos
               </span>
             </div>
@@ -43,7 +43,7 @@ const Tools = () => {
               <div className="text-blue-500 mb-1">
                 <Users size={20} />
               </div>
-              <span className="text-xs text-gray-600 max-w-[80px]">
+              <span className="text-xs text-gray-500 max-w-[80px]">
                 Avoid Bait & Switch sellers
               </span>
             </div>
@@ -51,7 +51,7 @@ const Tools = () => {
               <div className="text-yellow-500 mb-1">
                 <Clock size={20} />
               </div>
-              <span className="text-xs text-gray-600 max-w-[80px]">
+              <span className="text-xs text-gray-500 max-w-[80px]">
                 Updated daily
               </span>
             </div>
@@ -63,11 +63,11 @@ const Tools = () => {
               value={qcSearchInput}
               onChange={(e) => setQcSearchInput(e.target.value)}
               placeholder="Enter product URL for QC search"
-              className="w-full px-3 py-2 dark:text-black border border-gray-300 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-transparent rounded-lg text-sm"
+              className="w-full px-3 py-2 dark:bg-black border border- dark:border-shadow focus:outline-none focus:ring-1 focus:ring-btn focus:border-transparent rounded-lg text-sm"
             />
             <button
               onClick={() => handleQcSearch(qcSearchInput, navigate)}
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-green-500 hover:bg-btn text-white p-1.5 rounded-lg"
+              className="absolute right-2 top-1/2 -translate-y-1/2 hover:bg-green-600 bg-btn text-white p-1.5 rounded-lg transition-colors duration-200 "
             >
               <Search size={16} />
             </button>
@@ -80,9 +80,9 @@ const Tools = () => {
         </div>
 
         {/* Community Card */}
-        <div className="flex-1 min-w-[300px] bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+        <div className="flex-1 min-w-[300px] rounded-xl p-6 shadow-lg border dark:border-shadow">
           <h2 className="text-lg font-semibold">Join our Community</h2>
-          <p className="text-gray-600 text-sm mt-2">
+          <p className="text-gray-500 text-sm mt-2">
             Connect with other shoppers and get help with your orders
           </p>
 
@@ -91,7 +91,7 @@ const Tools = () => {
               <div className="text-blue-500 mb-1">
                 <Users size={20} />
               </div>
-              <span className="text-xs text-gray-600 max-w-[80px]">
+              <span className="text-xs text-gray-500 max-w-[80px]">
                 26,000+ members
               </span>
             </div>
@@ -99,7 +99,7 @@ const Tools = () => {
               <div className="text-pink-500 mb-1">
                 <Users size={20} />
               </div>
-              <span className="text-xs text-gray-600 max-w-[80px]">
+              <span className="text-xs text-gray-500 max-w-[80px]">
                 Helpful community
               </span>
             </div>
@@ -107,13 +107,13 @@ const Tools = () => {
               <div className="text-purple-500 mb-1">
                 <Gift size={20} />
               </div>
-              <span className="text-xs text-gray-600 max-w-[80px]">
+              <span className="text-xs text-gray-500 max-w-[80px]">
                 Frequent Giveaways
               </span>
             </div>
           </div>
 
-          <button className="w-full mt-6 bg-green-500 text-white py-2.5 rounded-lg flex items-center justify-center gap-2 hover:bg-btn transition-colors">
+          <button className="w-full mt-6 hover:bg-green-600 text-white py-2.5 rounded-lg flex items-center justify-center gap-2 bg-btn transition-colors duration-200">
             <MessageSquare size={20} />
             Join Discord Server
             <ExternalLink size={16} />
@@ -121,10 +121,10 @@ const Tools = () => {
         </div>
 
         {/* Shipping Calculator Card */}
-        <div className="flex-1 min-w-[300px] bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+        <div className="flex-1 min-w-[300px] rounded-xl p-6 shadow-lg border dark:border-shadow">
           <h2 className="text-lg font-semibold">Shipping Calculator</h2>
-          <p className="text-gray-600 text-sm mt-2">
-            Find the cheapest shipping based on your country and parcel weight
+          <p className="text-gray-500 text-sm mt-2">
+            Find the cheapest shipping based on your country
           </p>
 
           <div className="flex justify-around mt-6">
@@ -132,7 +132,7 @@ const Tools = () => {
               <div className="text-blue-500 mb-1">
                 <Clock size={20} />
               </div>
-              <span className="text-xs text-gray-600 max-w-[80px]">
+              <span className="text-xs text-gray-500 max-w-[80px]">
                 Delivery estimates
               </span>
             </div>
@@ -140,13 +140,13 @@ const Tools = () => {
               <div className="text-green-500 mb-1">
                 <Scale size={20} />
               </div>
-              <span className="text-xs text-gray-600 max-w-[80px]">
+              <span className="text-xs text-gray-500 max-w-[80px]">
                 Compare Agents
               </span>
             </div>
           </div>
 
-          <button className="w-full mt-6 bg-green-500 text-white py-2.5 rounded-lg flex items-center justify-center gap-2 hover:bg-btn transition-colors">
+          <button className="w-full mt-6 hover:bg-green-600 text-white py-2.5 rounded-lg flex items-center justify-center gap-2 bg-btn transition-colors duration-200 ">
             <MessageSquare size={20} />
             Calculate Shipping
             <ExternalLink size={16} />
@@ -154,9 +154,9 @@ const Tools = () => {
         </div>
 
         {/* Chrome Extension Card */}
-        <div className="flex-1 min-w-[300px] bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+        <div className="flex-1 min-w-[300px] rounded-xl p-6 shadow-lg border dark:border-shadow">
           <h2 className="text-lg font-semibold">Chrome Extension</h2>
-          <p className="text-gray-600 text-sm mt-2">
+          <p className="text-gray-500 text-sm mt-2">
             Shop smarter with our browser extension
           </p>
 
@@ -165,7 +165,7 @@ const Tools = () => {
               <div className="text-green-500 mb-1">
                 <Link2 size={20} />
               </div>
-              <span className="text-xs text-gray-600 max-w-[80px]">
+              <span className="text-xs text-gray-500 max-w-[80px]">
                 Auto Link Conversion
               </span>
             </div>
@@ -173,13 +173,13 @@ const Tools = () => {
               <div className="text-blue-500 mb-1">
                 <Search size={20} />
               </div>
-              <span className="text-xs text-gray-600 max-w-[80px]">
+              <span className="text-xs text-gray-500 max-w-[80px]">
                 QC directly on agent
               </span>
             </div>
           </div>
 
-          <button className="w-full mt-6 bg-green-500 text-white py-2.5 rounded-lg flex items-center justify-center gap-2 hover:bg-btn transition-colors">
+          <button className="w-full mt-6 hover:bg-green-600 text-white py-2.5 rounded-lg flex items-center justify-center gap-2 bg-btn transition-colors duration-200 ">
             <Chrome size={20} />
             Add to Chrome
             <ExternalLink size={16} />

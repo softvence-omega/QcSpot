@@ -14,7 +14,7 @@ const NextArrow = (props: any) => {
       onClick={onClick}
       className="absolute right-2 top-1/2 transform -translate-y-1/2 z-10"
     >
-      <FiArrowRight className="size-8 rounded-full border-2 text-primary border-primary p-1 bg-white shadow-md hover:bg-gray-100 duration-300" />
+      <FiArrowRight className="size-8 rounded-full border-2 text-primary dark:text-black border-primary p-1 bg-white shadow-md hover:bg-gray-100 duration-300" />
     </button>
   );
 };
@@ -26,7 +26,7 @@ const PrevArrow = (props: any) => {
       onClick={onClick}
       className="absolute left-2 top-1/2 transform -translate-y-1/2 z-10"
     >
-      <FiArrowLeft className="size-8 rounded-full border-2 text-primary border-primary p-1 bg-white shadow-md hover:bg-gray-100 duration-300" />
+      <FiArrowLeft className="size-8 rounded-full border-2 text-primary dark:text-black border-primary p-1 bg-white shadow-md hover:bg-gray-100 duration-300" />
     </button>
   );
 };
@@ -45,42 +45,45 @@ const Trending = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 6,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 5000,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     responsive: [
-      { breakpoint: 1440, settings: { slidesToShow: 3 } },
-      { breakpoint: 940, settings: { slidesToShow: 2 } },
-      { breakpoint: 680, settings: { slidesToShow: 1 } },
+      { breakpoint: 1500, settings: { slidesToShow: 4 } },
+      { breakpoint: 1200, settings: { slidesToShow: 3 } },
+      { breakpoint: 900, settings: { slidesToShow: 2 } },
+      { breakpoint: 600, settings: { slidesToShow: 1 } },
     ],
   };
 
   return (
-    <div className="container">
-      <h2 className="relative text-center w-fit mx-auto pt-40 md:pt-28 duration-300 text-4xl mb-6">
-        Trending Products{" "}
-        <span className="block mt-3 md:mt-0 md:absolute bottom-0 -right-16 text-sm underline text-green-700 hover:text-green-500 duration-300 cursor-pointer">
-          View all
-        </span>
-      </h2>
+    <div className="pt-32 md:pt-20">
+      <div className="border dark:border-shadow shadow dark:shadow-shadow rounded m-4">
+        <h2 className="relative text-center w-fit mx-auto duration-300 text-2xl font-bold my-6">
+          Trending Products
+          <span className="block mt-3 md:mt-0 md:absolute bottom-1 -right-24 text-sm hover:underline hover:text-green-600 text-btn dark:text-white/80 duration-300 cursor-pointer">
+            View all →
+          </span>
+        </h2>
 
-      <div className="max-w-7xl mx-auto px-4 relative">
-        <Slider {...settings} className="pb-10">
-          {products.map((product, index) => (
-            <div key={index} className="px-2">
-              <ProductCard
-                image={product.thumbnail}
-                title={product.name}
-                price={product.price}
-                views={product.views}
-                photos={product.totalImages}
-              />
-            </div>
-          ))}
-        </Slider>
+        <div className="mx-auto px-2 relative">
+          <Slider {...settings} className="pb-10 px-12">
+            {products.map((product, index) => (
+              <div key={index} className="px-2">
+                <ProductCard
+                  image={product.thumbnail}
+                  title={product.name}
+                  price={product.price}
+                  views={product.views}
+                  photos={product.totalImages}
+                />
+              </div>
+            ))}
+          </Slider>
+        </div>
       </div>
     </div>
   );

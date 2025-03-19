@@ -1,6 +1,6 @@
-import { ExternalLink, Plus, Share2 } from "lucide-react";
+import { ExternalLink, Loader2, Plus, Share2 } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 interface Product {
   title: string;
@@ -34,13 +34,17 @@ const ProductDetails: React.FC = () => {
   }, [id]);
 
   if (loading)
-    return <div className="text-center py-10 text-lg">Loading...</div>;
+    return (
+      <div className="flex justify-center items-center py-40 text-4xl">
+        <Loader2 className="w-20 h-20 animate-spin" />
+      </div>
+    );
   if (!product)
-    return <div className="text-center py-10 text-lg">Product not found.</div>;
+    return <div className="text-center py-10 text-4xl">Product not found.</div>;
 
   return (
-    <div className="container pt-40 md:pt-24 pb-10">
-      <div className="max-w-5xl mx-auto flex flex-col md:flex-row bg-white rounded-lg shadow-lg overflow-hidden">
+    <div className="pt-40 md:pt-24 pb-10 px-4">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row rounded-lg shadow-lg overflow-hidden border dark:border-shadow dark:shadow-shadow">
         {/* Product Image */}
         {product?.imgList?.[0] && (
           <img
@@ -52,7 +56,7 @@ const ProductDetails: React.FC = () => {
 
         {/* Product Details */}
         <div className="p-5 flex flex-col flex-1">
-          <h2 className="text-xl md:text-2xl font-semibold mb-2 text-black">
+          <h2 className="text-xl md:text-2xl font-semibold mb-2">
             {product?.title}
           </h2>
           <p className="text-gray-600 mb-4">Last updated 1 hour ago</p>
@@ -64,9 +68,13 @@ const ProductDetails: React.FC = () => {
 
           {/* Action Buttons */}
           <div className="mt-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            <button className="bg-green-500 px-4 py-2 rounded-lg text-white flex justify-center items-center gap-2 w-full">
+            <Link
+              to={`https://cnfans.com/product/?shop_type=taobao&id=${id}&ref=72365`}
+              target="_blank"
+              className="bg-btn hover:bg-green-500 duration-200 px-4 py-2 rounded-lg text-white flex justify-center items-center gap-2 w-full"
+            >
               Buy <ExternalLink className="size-5" />
-            </button>
+            </Link>
             <button className="bg-gray-500 px-4 py-2 rounded-lg text-white flex justify-center items-center gap-2 w-full">
               <Plus /> Add to Collection
             </button>

@@ -5,7 +5,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        btn: "#255F38",
+        btn: "#32854e",
+        dark: "#0D0A0A",
+        shadow: "#2A2525",
       },
       container: {
         center: true,

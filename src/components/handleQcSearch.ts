@@ -9,10 +9,8 @@ export const handleQcSearch = async (
       `https://cnfans.com/search-api/detail/search-info?input=${input}&site=cnfans&lang=en&wmc-currency=USD`
     );
     const data = await response.json();
-
     const productID = data?.data?.result?.productID;
 
-    console.log(productID);
     if (productID) {
       navigate(`/product/${productID}`);
     } else {
@@ -20,5 +18,6 @@ export const handleQcSearch = async (
     }
   } catch (error) {
     console.error("Error fetching data:", error);
+    toast.error("Something went wrong");
   }
 };
