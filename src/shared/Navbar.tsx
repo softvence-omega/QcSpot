@@ -17,8 +17,13 @@ const Navbar = () => {
       <nav className="container mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-2">
-          <p className="text-2xl font-extrabold  tracking-widest text-gray-900 dark:text-white transition-colors">
-            <span className="bg-btn text-white px-2 py-1 mr-1 rounded">QC</span>
+          <p
+            className="text-3xl font-extrabold text-gray-900 dark:text-white transition-colors"
+            style={{ letterSpacing: "5px" }}
+          >
+            <span className="bg-btn text-white pl-2 pr-0.5 py-1 mr-2 rounded">
+              QC
+            </span>
             SPOT
           </p>
         </Link>

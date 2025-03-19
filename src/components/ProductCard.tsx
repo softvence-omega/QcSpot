@@ -1,12 +1,12 @@
 import React from "react";
-import { Eye, ShoppingCart } from "lucide-react";
+import { Camera, Eye, ShoppingCart } from "lucide-react";
 
 interface ProductCardProps {
   image: string;
   title: string;
   price: number;
   views: number;
-  likes: number;
+  photos: number;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
@@ -14,12 +14,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
   title,
   price,
   views,
-  likes,
+  photos,
 }) => {
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
       <div className="relative">
-        <img src={image} alt={title} className="w-full h96 object-cover" />
+        <img src={image} alt={title} className="w-full h-96 object-cover" />
       </div>
       <div className="p-4">
         <h3 className="text-sm font-medium text-gray-900 line-clamp-2 h-10">
@@ -32,8 +32,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
           <div className="flex items-center space-x-2 text-gray-500 text-sm">
             <Eye size={16} />
             <span>{views}</span>
-            <span>•</span>
-            <span>{likes}</span>
+            <Camera size={16} />
+            <span>{photos}</span>
           </div>
         </div>
         <div className="mt-4 flex space-x-2">

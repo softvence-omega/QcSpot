@@ -1,5 +1,44 @@
 [
   {
+    "id": 1,
+    "name": "Cross-border 2024 spring and summer new Casablanca CasablancaLOGO printed men and women loose short-sleeved T-shirt",
+    "price": 37,
+    "thumbnail": "https://cbu01.alicdn.com/img/ibank/O1CN01GQVjCE1taUsQfeu1a_!!2215335765918-0-cib.jpg",
+    "weight": 300,
+    "shipmentTime": 2.2,
+    "totalImages": 9,
+    "views": 3320,
+    "qc": [
+      {
+        "name": "Material",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0556/3481/2714/products/womens-bamboo-no-show-dress-socks-multicolor-3-pairs-2.jpg?v=1633023492",
+          "https://cdn.shopify.com/s/files/1/0556/3481/2714/products/womens-bamboo-no-show-dress-socks-multicolor-3-pairs-3.jpg?v=1633023492"
+        ],
+        "createdAt": "2024-11-25",
+        "updatedAt": "2024-11-25"
+      },
+      {
+        "name": "Size",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0556/3481/2714/products/womens-bamboo-no-show-dress-socks-multicolor-3-pairs-size-chart.jpg?v=1633023492"
+        ],
+        "createdAt": "2024-11-25",
+        "updatedAt": "2024-11-25"
+      },
+      {
+        "name": "Color",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0556/3481/2714/products/womens-bamboo-no-show-dress-socks-multicolor-3-pairs-color-swatch.jpg?v=1633023492"
+        ],
+        "createdAt": "2024-11-25",
+        "updatedAt": "2024-11-25"
+      }
+    ],
+    "createdAt": "2024-11-25",
+    "updatedAt": "2024-11-25"
+  },
+  {
     "id": 2,
     "name": "外贸保罗T恤LF小马标刺绣女圆领短袖纯棉半袖男卫衣百搭打底衫潮",
     "price": 2490,
@@ -125,6 +164,45 @@
     "shipmentTime": 2.2,
     "totalImages": 3,
     "views": 5120,
+    "qc": [
+      {
+        "name": "Material",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0556/3481/2714/products/womens-bamboo-no-show-dress-socks-multicolor-3-pairs-2.jpg?v=1633023492",
+          "https://cdn.shopify.com/s/files/1/0556/3481/2714/products/womens-bamboo-no-show-dress-socks-multicolor-3-pairs-3.jpg?v=1633023492"
+        ],
+        "createdAt": "2024-11-25",
+        "updatedAt": "2024-11-25"
+      },
+      {
+        "name": "Size",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0556/3481/2714/products/womens-bamboo-no-show-dress-socks-multicolor-3-pairs-size-chart.jpg?v=1633023492"
+        ],
+        "createdAt": "2024-11-25",
+        "updatedAt": "2024-11-25"
+      },
+      {
+        "name": "Color",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0556/3481/2714/products/womens-bamboo-no-show-dress-socks-multicolor-3-pairs-color-swatch.jpg?v=1633023492"
+        ],
+        "createdAt": "2024-11-25",
+        "updatedAt": "2024-11-25"
+      }
+    ],
+    "createdAt": "2024-11-25",
+    "updatedAt": "2024-11-25"
+  },
+  {
+    "id": 6,
+    "name": "Fumot Tornado 9K",
+    "price": 37,
+    "thumbnail": "https://cbu01.alicdn.com/img/ibank/O1CN01Aa5vsy29wyEqkzgG1_!!2218301598133-0-cib.jpg",
+    "weight": 50,
+    "shipmentTime": 2.2,
+    "totalImages": 3,
+    "views": 3320,
     "qc": [
       {
         "name": "Material",
