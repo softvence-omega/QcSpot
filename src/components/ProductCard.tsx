@@ -40,7 +40,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           <button className="flex-1 px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">
             View QC
           </button>
-          <button className="flex-1 px-4 py-2 bg-orange-500 text-white rounded-md text-sm font-medium hover:bg-orange-600 flex items-center justify-center">
+          <button className="flex-1 px-4 py-2 bg-green-500 text-white rounded-md text-sm font-medium hover:bg-btn flex items-center justify-center">
             <ShoppingCart size={16} className="mr-1" />
             Buy
           </button>

@@ -40,7 +40,7 @@ function Register() {
             Already have an account?{" "}
             <Link
               to="/login"
-              className="font-medium text-orange-500 hover:text-orange-600"
+              className="font-medium text-green-500 hover:text-btn"
             >
               Sign in here
             </Link>
@@ -70,7 +70,7 @@ function Register() {
                            text-gray-900 dark:text-white 
                            rounded-md 
                            bg-white dark:bg-gray-700
-                           focus:outline-none focus:ring-orange-500 focus:border-orange-500 
+                           focus:outline-none focus:ring-green-500 focus:border-green-500 
                            sm:text-sm
                            transition-colors"
                   placeholder="Full Name"
@@ -99,7 +99,7 @@ function Register() {
                            text-gray-900 dark:text-white 
                            rounded-md 
                            bg-white dark:bg-gray-700
-                           focus:outline-none focus:ring-orange-500 focus:border-orange-500 
+                           focus:outline-none focus:ring-green-500 focus:border-green-500 
                            sm:text-sm
                            transition-colors"
                   placeholder="Email address"
@@ -128,7 +128,7 @@ function Register() {
                            text-gray-900 dark:text-white 
                            rounded-md 
                            bg-white dark:bg-gray-700
-                           focus:outline-none focus:ring-orange-500 focus:border-orange-500 
+                           focus:outline-none focus:ring-green-500 focus:border-green-500 
                            sm:text-sm
                            transition-colors"
                   placeholder="Password"
@@ -157,7 +157,7 @@ function Register() {
                            text-gray-900 dark:text-white 
                            rounded-md 
                            bg-white dark:bg-gray-700
-                           focus:outline-none focus:ring-orange-500 focus:border-orange-500 
+                           focus:outline-none focus:ring-green-500 focus:border-green-500 
                            sm:text-sm
                            transition-colors"
                   placeholder="Confirm Password"
@@ -172,8 +172,8 @@ function Register() {
               disabled={loading}
               className="group relative w-full flex justify-center py-2 px-4 
                        border border-transparent text-sm font-medium rounded-md 
-                       text-white bg-orange-500 hover:bg-orange-600 
-                       focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 
+                       text-white bg-green-500 hover:bg-btn
+                       focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 
                        disabled:opacity-50 disabled:cursor-not-allowed
                        transition-colors"
             >
@@ -204,7 +204,7 @@ function Register() {
                        border border-gray-300 dark:border-gray-600 rounded-md shadow-sm 
                        text-sm font-medium text-gray-700 dark:text-gray-200 
                        bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 
-                       focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500
+                       focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500
                        transition-colors"
             >
               <img

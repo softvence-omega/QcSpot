@@ -10,35 +10,18 @@ import {
   Chrome,
   MessageSquare,
 } from "lucide-react";
+import { handleQcSearch } from "../../components/handleQcSearch";
 import { useNavigate } from "react-router-dom";
 
 const Tools = () => {
   const [qcSearchInput, setQcSearchInput] = useState("");
   const navigate = useNavigate();
 
-  const handleQcSearch = async () => {
-    try {
-      const response = await fetch(
-        `https://cnfans.com/search-api/detail/search-info?input=${qcSearchInput}&site=cnfans&lang=en&wmc-currency=USD`
-      );
-      const data = await response.json();
-
-      const productID = data?.data?.result?.productID;
-
-      console.log(productID);
-      if (productID) {
-        navigate(`/product/${productID}`);
-      } else {
-        console.error("Product ID not found in API response");
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
-      <h1 className="text-2xl font-bold mb-6 text-center">Tools</h1>
+    <div className="container pb-20">
+      <h1 className="text-center pt-40 md:pt-28 duration-300 text-4xl mb-6">
+        Tools
+      </h1>
       <div className="flex flex-wrap gap-6 max-w-7xl mx-auto">
         {/* QC Lookup Card */}
         <div className="flex-1 min-w-[300px] bg-white rounded-xl p-6 shadow-sm border border-gray-100">
@@ -80,11 +63,11 @@ const Tools = () => {
               value={qcSearchInput}
               onChange={(e) => setQcSearchInput(e.target.value)}
               placeholder="Enter product URL for QC search"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
+              className="w-full px-3 py-2 dark:text-black border border-gray-300 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-transparent rounded-lg text-sm"
             />
             <button
-              onClick={handleQcSearch}
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-orange-500 text-white p-1.5 rounded-lg"
+              onClick={() => handleQcSearch(qcSearchInput, navigate)}
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-green-500 hover:bg-btn text-white p-1.5 rounded-lg"
             >
               <Search size={16} />
             </button>
@@ -130,7 +113,7 @@ const Tools = () => {
             </div>
           </div>
 
-          <button className="w-full mt-6 bg-orange-500 text-white py-2.5 rounded-lg flex items-center justify-center gap-2 hover:bg-[#4752C4] transition-colors">
+          <button className="w-full mt-6 bg-green-500 text-white py-2.5 rounded-lg flex items-center justify-center gap-2 hover:bg-btn transition-colors">
             <MessageSquare size={20} />
             Join Discord Server
             <ExternalLink size={16} />
@@ -154,7 +137,7 @@ const Tools = () => {
               </span>
             </div>
             <div className="flex flex-col items-center text-center">
-              <div className="text-orange-500 mb-1">
+              <div className="text-green-500 mb-1">
                 <Scale size={20} />
               </div>
               <span className="text-xs text-gray-600 max-w-[80px]">
@@ -163,7 +146,7 @@ const Tools = () => {
             </div>
           </div>
 
-          <button className="w-full mt-6 bg-orange-500 text-white py-2.5 rounded-lg flex items-center justify-center gap-2 hover:bg-[#4752C4] transition-colors">
+          <button className="w-full mt-6 bg-green-500 text-white py-2.5 rounded-lg flex items-center justify-center gap-2 hover:bg-btn transition-colors">
             <MessageSquare size={20} />
             Calculate Shipping
             <ExternalLink size={16} />
@@ -196,7 +179,7 @@ const Tools = () => {
             </div>
           </div>
 
-          <button className="w-full mt-6 bg-orange-500 text-white py-2.5 rounded-lg flex items-center justify-center gap-2 hover:bg-[#4752C4] transition-colors">
+          <button className="w-full mt-6 bg-green-500 text-white py-2.5 rounded-lg flex items-center justify-center gap-2 hover:bg-btn transition-colors">
             <Chrome size={20} />
             Add to Chrome
             <ExternalLink size={16} />

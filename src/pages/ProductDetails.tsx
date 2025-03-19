@@ -1,10 +1,17 @@
+import { ExternalLink, Plus, Share2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-const ProductDetails = () => {
-  const { id } = useParams();
-  const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
+interface Product {
+  title: string;
+  price: number;
+  imgList: string[];
+}
+
+const ProductDetails: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const [product, setProduct] = useState<Product | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -13,7 +20,7 @@ const ProductDetails = () => {
           `https://cnfans.com/search-api/detail/product-info?platform=TAOBAO&productID=${id}&forceReload=false&site=cnfans&lang=en&wmc-currency=USD`
         );
         const data = await response.json();
-        setProduct(data?.data || null);
+        setProduct(data?.data?.productInfo || null);
       } catch (error) {
         console.error("Error fetching product:", error);
       } finally {
@@ -26,36 +33,45 @@ const ProductDetails = () => {
     }
   }, [id]);
 
-  if (loading) return <div>Loading...</div>;
-  if (!product) return <div>Product not found.</div>;
-
-  console.log(product.skus);
+  if (loading)
+    return <div className="text-center py-10 text-lg">Loading...</div>;
+  if (!product)
+    return <div className="text-center py-10 text-lg">Product not found.</div>;
 
   return (
-    <div className="container mt-28">
-      <div className="max-w-5xl mx-auto flex rounded-lg border border-gray-400">
-        <img
-          className="w-60 rounded-l-lg"
-          src={product?.productInfo?.imgList[0]}
-          alt=""
-        />
+    <div className="container pt-40 md:pt-24 pb-10">
+      <div className="max-w-5xl mx-auto flex flex-col md:flex-row bg-white rounded-lg shadow-lg overflow-hidden">
+        {/* Product Image */}
+        {product?.imgList?.[0] && (
+          <img
+            className="w-96 md:w-64 object-cover md:rounded-t-lg md:rounded-l-lg md:rounded-tr-none mx-auto"
+            src={product?.imgList[0]}
+            alt={product?.title}
+          />
+        )}
 
-        <div className="relative p-5">
-          <h2 className="text-xl mb-5">{product?.productInfo?.title}</h2>
-          <p className="mb-8">Last updated 1 hour ago</p>
-          <button className="rounded-lg text-xl font-semibold">
-            ¥ {product?.productInfo?.price}
+        {/* Product Details */}
+        <div className="p-5 flex flex-col flex-1">
+          <h2 className="text-xl md:text-2xl font-semibold mb-2 text-black">
+            {product?.title}
+          </h2>
+          <p className="text-gray-600 mb-4">Last updated 1 hour ago</p>
+
+          {/* Price */}
+          <button className="rounded-lg text-xl font-semibold bg-gray-100 hover:bg-gray-200 px-4 py-2 mb-5 transition duration-300 w-fit text-black">
+            ¥ {product?.price}
           </button>
 
-          <div className="absolute bottom-5 flex items-center gap-10">
-            <button className="bg-orange-500 px-5 py-2 rounded-lg text-white cursor-pointer">
-              Buy
+          {/* Action Buttons */}
+          <div className="mt-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            <button className="bg-green-500 px-4 py-2 rounded-lg text-white flex justify-center items-center gap-2 w-full">
+              Buy <ExternalLink className="size-5" />
             </button>
-            <button className="bg-gray-500 px-5 py-2 rounded-lg text-white cursor-pointer">
-              Add to Collection
+            <button className="bg-gray-500 px-4 py-2 rounded-lg text-white flex justify-center items-center gap-2 w-full">
+              <Plus /> Add to Collection
             </button>
-            <button className="bg-gray-500 px-5 py-2 rounded-lg text-white cursor-pointer">
-              Affiliate Share
+            <button className="bg-gray-500 px-4 py-2 rounded-lg text-white flex justify-center items-center gap-2 w-full">
+              <Share2 /> Affiliate Share
             </button>
           </div>
         </div>
