@@ -72,11 +72,6 @@ const Tools = () => {
               <Search size={16} />
             </button>
           </div>
-
-          <p className="text-xs text-gray-500 mt-4">
-            Supported sites: Taobao, Weidian, 1688, Tmall, CNFans, AllChinaBuy,
-            SuperBuy, etc.
-          </p>
         </div>
 
         {/* Community Card */}
