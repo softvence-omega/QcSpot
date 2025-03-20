@@ -5,11 +5,37 @@ export const handleQcSearch = async (
   navigate: (path: string) => void
 ) => {
   try {
-    const response = await fetch(
-      `https://cnfans.com/search-api/detail/search-info?input=${input}&site=cnfans&lang=en&wmc-currency=USD`
-    );
+    let response;
+    let shopType = "";
+    let id = "";
+    console.log(input);
+
+    if (input.includes("cnfans.com")) {
+      const url = new URL(input);
+      shopType =
+        url.searchParams.get("platform") ||
+        url.searchParams.get("shoptype") ||
+        "";
+      id = url.searchParams.get("id") || "";
+
+      if (shopType && id) {
+        response = await fetch(
+          `https://cnfans.com/search-api/detail/product-info?platform=${shopType}&productID=${id}&forceReload=false&site=cnfans&lang=en&wmc-currency=USD`
+        );
+      } else {
+        toast.error("Missing platform or product ID in the URL.");
+        return;
+      }
+    } else {
+      response = await fetch(
+        `https://cnfans.com/search-api/detail/search-info?input=${input}&site=cnfans&lang=en&wmc-currency=USD`
+      );
+    }
+
     const data = await response.json();
-    const productID = data?.data?.result?.productID;
+    const productID = data?.data?.result?.productID || id;
+
+    console.log(data, productID);
 
     if (productID) {
       navigate(`/product/${productID}`);
