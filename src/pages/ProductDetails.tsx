@@ -1,7 +1,7 @@
 import { Loader2, Plus, Share2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import PLatformLink from "../components/PLatformLink";
+import PLatformLink from "../components/PlatformLink";
 
 interface Product {
   title: string;
