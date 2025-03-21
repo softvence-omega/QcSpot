@@ -16,6 +16,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   views,
   photos,
 }) => {
+  // const platform = localStorage.getItem("platform");
   return (
     <div className="bg-white dark:border-2 border-shadow rounded-lg shadow-md dark:shadow-shadow overflow-hidden">
       <div className="relative">

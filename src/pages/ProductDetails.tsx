@@ -1,6 +1,7 @@
-import { ExternalLink, Loader2, Plus, Share2 } from "lucide-react";
+import { Loader2, Plus, Share2 } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import PLatformLink from "../components/PLatformLink";
 
 interface Product {
   title: string;
@@ -69,13 +70,7 @@ const ProductDetails = () => {
 
           {/* Action Buttons */}
           <div className="mt-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            <Link
-              to={`https://cnfans.com/product/?id=${id}&platform=${shopType}`}
-              target="_blank"
-              className="bg-btn hover:bg-green-500 duration-200 px-4 py-2 rounded-lg text-white flex justify-center items-center gap-2 w-full"
-            >
-              Buy <ExternalLink className="size-5" />
-            </Link>
+            <PLatformLink id={id} shopType={shopType} />
             <button className="bg-gray-500 px-4 py-2 rounded-lg text-white flex justify-center items-center gap-2 w-full">
               <Plus /> Add to Collection
             </button>

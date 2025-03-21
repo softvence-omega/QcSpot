@@ -6,6 +6,7 @@ import { handleQcSearch } from "../components/handleQcSearch";
 import logo from "../assets/QcSpot-Logo-design-1.png";
 import logo_dark from "../assets/QcSpot-Logo-design-2.png";
 import { useTheme } from "../context/ThemeContext";
+import PlatformSwitcher from "../components/PlatformSwitcher";
 
 const Navbar = () => {
   const [qcSearchInput, setQcSearchInput] = useState("");
@@ -62,6 +63,7 @@ const Navbar = () => {
 
         {/* Right Section */}
         <div className="flex items-center space-x-6">
+          <PlatformSwitcher />
           <ThemeSwitcher />
           <Link
             to="/login"
