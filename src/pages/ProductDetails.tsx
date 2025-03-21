@@ -8,8 +8,8 @@ interface Product {
   imgList: string[];
 }
 
-const ProductDetails: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
+const ProductDetails = () => {
+  const { shopType, id } = useParams<{ shopType: string; id: string }>();
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -17,7 +17,8 @@ const ProductDetails: React.FC = () => {
     const fetchProduct = async () => {
       try {
         const response = await fetch(
-          `https://cnfans.com/search-api/detail/product-info?platform=TAOBAO&productID=${id}&forceReload=false&site=cnfans&lang=en&wmc-currency=USD`
+          `https://cnfans.com/search-api/detail/product-info?platform=${shopType}&productID=${id}&forceReload=false&site=cnfans&lang=en&wmc-currency=USD`
+          // `https://cnfans.com/search-api/detail/product-info?platform=TAOBAO&productID=${id}&forceReload=false&site=cnfans&lang=en&wmc-currency=USD`
         );
         const data = await response.json();
         setProduct(data?.data?.productInfo || null);
@@ -69,7 +70,7 @@ const ProductDetails: React.FC = () => {
           {/* Action Buttons */}
           <div className="mt-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             <Link
-              to={`https://cnfans.com/product/?shop_type=taobao&id=${id}&ref=72365`}
+              to={`https://cnfans.com/product/?id=${id}&platform=${shopType}`}
               target="_blank"
               className="bg-btn hover:bg-green-500 duration-200 px-4 py-2 rounded-lg text-white flex justify-center items-center gap-2 w-full"
             >
