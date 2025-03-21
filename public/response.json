@@ -1,0 +1,91 @@
+{
+  "status": 200,
+  "message": "success",
+  "data": [
+    {
+      "create_time": "2025-03-16 15:29:02",
+      "sku_id": "27849611516_115781",
+      "sku": [
+        {
+          "group": {
+            "name": "Color classification",
+            "name_cn": "颜色"
+          },
+          "value": {
+            "name": "Black【360g Heavy weight pure cotton 】",
+            "name_cn": "黑色【360克重磅纯棉】"
+          }
+        },
+        {
+          "group": {
+            "name": "Size",
+            "name_cn": "尺码"
+          },
+          "value": {
+            "name": "3XL",
+            "name_cn": "3XL"
+          }
+        }
+      ],
+      "imgs": [
+        "https://img.heijiangjun.com/20250316/f64b60eb9c891c9ecd16dd6728338855.jpg",
+        "https://img.heijiangjun.com/20250316/cb9fc465640ed0fbebe2cb51af1bfd3d.jpg",
+        "https://img.heijiangjun.com/20250316/61c7a34354031a0eaf482fdb2195680f.jpg"
+      ]
+    },
+    {
+      "create_time": "2025-01-13 18:22:15",
+      "sku_id": "28315_27020619132",
+      "sku": [
+        {
+          "group": {
+            "name": "size"
+          },
+          "value": {
+            "name": "M"
+          }
+        },
+        {
+          "group": {
+            "name": "color"
+          },
+          "value": {
+            "name": "Black 430g heavy-duty plush"
+          }
+        }
+      ],
+      "imgs": [
+        "https://img.heijiangjun.com/20250113/6268f57119eeb83fac9e0d4ff448062c.jpg",
+        "https://img.heijiangjun.com/20250113/d17ac0e2cbf987104068194fcad01731.jpg",
+        "https://img.heijiangjun.com/20250113/fcd2bb8bc4352e28448ad8ff950306ef.jpg"
+      ]
+    },
+    {
+      "create_time": "2025-01-13 18:41:38",
+      "sku_id": "28315_27020619132",
+      "sku": [
+        {
+          "group": {
+            "name": "size"
+          },
+          "value": {
+            "name": "M"
+          }
+        },
+        {
+          "group": {
+            "name": "color"
+          },
+          "value": {
+            "name": "Black 430g heavy-duty plush"
+          }
+        }
+      ],
+      "imgs": [
+        "https://img.heijiangjun.com/20250113/ee6cec6612a061d72be28c4a36956ee7.jpg",
+        "https://img.heijiangjun.com/20250113/d62fb50722b8ed790d3f3160210038d8.jpg",
+        "https://img.heijiangjun.com/20250113/398fda2fe584089747c1ef8c85ca1e59.jpg"
+      ]
+    }
+  ]
+}
