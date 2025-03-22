@@ -22,7 +22,7 @@ const Tools = () => {
       <h1 className="text-center w-fit mx-auto duration-300 text-2xl font-bold my-6">
         Tools
       </h1>
-      <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-4">
+      <div className="grid md:grid-cols-2 gap-4 max-w-5xl mx-auto">
         {/* QC Lookup Card */}
         <div className="flex-1 min-w-[300px] rounded-xl p-6 shadow-lg border dark:border-shadow">
           <h2 className="text-lg font-semibold">QC Lookup</h2>
@@ -74,47 +74,6 @@ const Tools = () => {
           </div>
         </div>
 
-        {/* Community Card */}
-        <div className="flex-1 min-w-[300px] rounded-xl p-6 shadow-lg border dark:border-shadow">
-          <h2 className="text-lg font-semibold">Join our Community</h2>
-          <p className="text-gray-500 text-sm mt-2">
-            Connect with other shoppers and get help with your orders
-          </p>
-
-          <div className="flex justify-between mt-6">
-            <div className="flex flex-col items-center text-center">
-              <div className="text-blue-500 mb-1">
-                <Users size={20} />
-              </div>
-              <span className="text-xs text-gray-500 max-w-[80px]">
-                26,000+ members
-              </span>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <div className="text-pink-500 mb-1">
-                <Users size={20} />
-              </div>
-              <span className="text-xs text-gray-500 max-w-[80px]">
-                Helpful community
-              </span>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <div className="text-purple-500 mb-1">
-                <Gift size={20} />
-              </div>
-              <span className="text-xs text-gray-500 max-w-[80px]">
-                Frequent Giveaways
-              </span>
-            </div>
-          </div>
-
-          <button className="w-full mt-6 hover:bg-green-600 text-white py-2.5 rounded-lg flex items-center justify-center gap-2 bg-btn transition-colors duration-200">
-            <MessageSquare size={20} />
-            Join Discord Server
-            <ExternalLink size={16} />
-          </button>
-        </div>
-
         {/* Shipping Calculator Card */}
         <div className="flex-1 min-w-[300px] rounded-xl p-6 shadow-lg border dark:border-shadow">
           <h2 className="text-lg font-semibold">Shipping Calculator</h2>
@@ -144,39 +103,6 @@ const Tools = () => {
           <button className="w-full mt-6 hover:bg-green-600 text-white py-2.5 rounded-lg flex items-center justify-center gap-2 bg-btn transition-colors duration-200 ">
             <MessageSquare size={20} />
             Calculate Shipping
-            <ExternalLink size={16} />
-          </button>
-        </div>
-
-        {/* Chrome Extension Card */}
-        <div className="flex-1 min-w-[300px] rounded-xl p-6 shadow-lg border dark:border-shadow">
-          <h2 className="text-lg font-semibold">Chrome Extension</h2>
-          <p className="text-gray-500 text-sm mt-2">
-            Shop smarter with our browser extension
-          </p>
-
-          <div className="flex justify-around mt-6">
-            <div className="flex flex-col items-center text-center">
-              <div className="text-green-500 mb-1">
-                <Link2 size={20} />
-              </div>
-              <span className="text-xs text-gray-500 max-w-[80px]">
-                Auto Link Conversion
-              </span>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <div className="text-blue-500 mb-1">
-                <Search size={20} />
-              </div>
-              <span className="text-xs text-gray-500 max-w-[80px]">
-                QC directly on agent
-              </span>
-            </div>
-          </div>
-
-          <button className="w-full mt-6 hover:bg-green-600 text-white py-2.5 rounded-lg flex items-center justify-center gap-2 bg-btn transition-colors duration-200 ">
-            <Chrome size={20} />
-            Add to Chrome
             <ExternalLink size={16} />
           </button>
         </div>
