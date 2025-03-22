@@ -1,0 +1,939 @@
+{
+  "code": 200,
+  "msg": "",
+  "data": {
+    "requestID": "df99e258-e0ef-4056-a221-2f19accfaa80",
+    "productInfo": {
+      "title": "essentials背面植绒字母连帽卫衣欧美潮牌fog复线高街情侣外套冬",
+      "titleTrans": "Essentials Back Flocking letter Hooded Sweatshirt Fashion Trendy Fog Double Line High Street Couple Outwear Winter",
+      "imgList": [
+        "https://img.alicdn.com/bao/uploaded/i4/2215420820934/O1CN01tyGyDU1IlouCptrTK_!!2215420820934.jpg",
+        "https://img.alicdn.com/bao/uploaded/i4/2215420820934/O1CN01AqZjqg1IlouBjeEep_!!2215420820934.jpg",
+        "https://img.alicdn.com/bao/uploaded/i4/2215420820934/O1CN01PHcpLO1IlouEVUMF3_!!2215420820934.jpg",
+        "https://img.alicdn.com/bao/uploaded/i4/2215420820934/O1CN01ZHyell1IlouBX0V1B_!!2215420820934.jpg",
+        "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN01IgUSVb1IlouEVU5bl_!!2215420820934.jpg"
+      ],
+      "props": {
+        "上市年份季节": "2024年秋季",
+        "上市时间": "2024-08",
+        "产地": "中国",
+        "厚薄": "加绒",
+        "品牌": "PROUD WE11DONE",
+        "图案": "其他/other",
+        "基础风格": "青春流行",
+        "尺码": "3XL,2XL,M,L,XL",
+        "服装款式细节": "植绒",
+        "服饰工艺": "免烫处理",
+        "款式": "套头",
+        "版型": "直筒型",
+        "细分风格": "潮",
+        "衣长": "常规款",
+        "衣门襟": "套头",
+        "袖型": "常规",
+        "货号": "FOG",
+        "适用场景": "休闲",
+        "适用季节": "春秋冬",
+        "适用对象": "青少年",
+        "面料分类": "棉涤",
+        "面料功能": "不易变形",
+        "领型": "连帽",
+        "颜色": "白色【360克重磅纯棉】,黑色【360克重磅纯棉】,浅灰色【360克重磅纯棉】,高级灰【360克重磅纯棉】,白花色【360克重磅纯棉】,杏色【360克重磅纯棉】,白色【430克重磅加绒】,黑色【430克重磅加绒】,浅灰色【430克重磅加绒】,高级灰【430克重磅加绒】,白花色【430克重磅加绒】,杏色【430克重磅加绒】"
+      },
+      "propsTrans": {
+        "Apparel craft": "Non-iron treatment",
+        "Applicable objects": "Adolescents",
+        "Applicable scenarios": "Leisure",
+        "Applicable season": "Spring and autumn winter",
+        "Basic style": "Youth pop",
+        "Clothing style details": "Flocking",
+        "Clothing version": "Straight type",
+        "Collar type": "Hooded",
+        "Color classification": "Black【430g Heavy weight Fleece-lined】,White flower color【430g Heavy weight Fleece-lined】,Classy gray【430g Heavy weight Fleece-lined】,White flower color [360g Heavy weight pure cotton ],Classy gray【360g Heavy weight pure cotton】,Light gray [360g Heavy weight pure cotton ],Apricot【360g Heavy weight pure cotton】,Black【360g Heavy weight pure cotton】,White 【430g Heavy weight Fleece-lined 】,Apricot【430g Heavy weight Fleece-lined】,Light gray [430g Heavy weight Fleece-lined ],White 【360g Heavy weight pure cotton 】",
+        "Fabric": "Cotton polyester",
+        "Fabric function": "Not easy to deform",
+        "Item No.": "Fog",
+        "Origin": "China",
+        "Pattern": "other/other",
+        "Placket": "Pullover",
+        "Size": "3XL,L,XL,2XL,M",
+        "Sleeve type": "common",
+        "Style": "Pullover",
+        "Subdivision style": "Tide",
+        "Thick and thin": "Plus Velvet",
+        "Time to market": "2024-08",
+        "Total length": "Regular model",
+        "Year of listing season": "Autumn 2024",
+        "barnd": "PROUD WE11DONE"
+      },
+      "sales": -1,
+      "productAttr": [
+        {
+          "attrID": "1627207",
+          "attr": "颜色",
+          "attrTrans": "Color classification",
+          "values": [
+            {
+              "valueID": "27020737362",
+              "value": "白色【360克重磅纯棉】",
+              "valueTrans": "White 【360g Heavy weight pure cotton 】",
+              "image": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN01djf09X1Ilou45JrcO_!!2215420820934.jpg"
+            },
+            {
+              "valueID": "27849611516",
+              "value": "黑色【360克重磅纯棉】",
+              "valueTrans": "Black【360g Heavy weight pure cotton】",
+              "image": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN011xdVx11Ilou9gsCFV_!!2215420820934.jpg"
+            },
+            {
+              "valueID": "27849611521",
+              "value": "浅灰色【360克重磅纯棉】",
+              "valueTrans": "Light gray [360g Heavy weight pure cotton ]",
+              "image": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN01wfQQ2R1IlouF3LBQy_!!2215420820934.jpg"
+            },
+            {
+              "valueID": "33610777403",
+              "value": "高级灰【360克重磅纯棉】",
+              "valueTrans": "Classy gray【360g Heavy weight pure cotton】",
+              "image": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01FOkLMf1IlouAxBu3B_!!2215420820934.jpg"
+            },
+            {
+              "valueID": "33610777404",
+              "value": "白花色【360克重磅纯棉】",
+              "valueTrans": "White flower color [360g Heavy weight pure cotton ]",
+              "image": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01cKWK2m1IlouDhOZtI_!!2215420820934.jpg"
+            },
+            {
+              "valueID": "27849611518",
+              "value": "杏色【360克重磅纯棉】",
+              "valueTrans": "Apricot【360g Heavy weight pure cotton】",
+              "image": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01ACUFIo1IlouDtMTyG_!!2215420820934.jpg"
+            },
+            {
+              "valueID": "27004787492",
+              "value": "白色【430克重磅加绒】",
+              "valueTrans": "White 【430g Heavy weight Fleece-lined 】",
+              "image": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN01djf09X1Ilou45JrcO_!!2215420820934.jpg"
+            },
+            {
+              "valueID": "27020619132",
+              "value": "黑色【430克重磅加绒】",
+              "valueTrans": "Black【430g Heavy weight Fleece-lined】",
+              "image": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN011xdVx11Ilou9gsCFV_!!2215420820934.jpg"
+            },
+            {
+              "valueID": "27004787495",
+              "value": "浅灰色【430克重磅加绒】",
+              "valueTrans": "Light gray [430g Heavy weight Fleece-lined ]",
+              "image": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN01wfQQ2R1IlouF3LBQy_!!2215420820934.jpg"
+            },
+            {
+              "valueID": "33610777405",
+              "value": "高级灰【430克重磅加绒】",
+              "valueTrans": "Classy gray【430g Heavy weight Fleece-lined】",
+              "image": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01FOkLMf1IlouAxBu3B_!!2215420820934.jpg"
+            },
+            {
+              "valueID": "33610777406",
+              "value": "白花色【430克重磅加绒】",
+              "valueTrans": "White flower color【430g Heavy weight Fleece-lined】",
+              "image": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01cKWK2m1IlouDhOZtI_!!2215420820934.jpg"
+            },
+            {
+              "valueID": "27004787494",
+              "value": "杏色【430克重磅加绒】",
+              "valueTrans": "Apricot【430g Heavy weight Fleece-lined】",
+              "image": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01ACUFIo1IlouDtMTyG_!!2215420820934.jpg"
+            }
+          ]
+        },
+        {
+          "attrID": "20509",
+          "attr": "尺码",
+          "attrTrans": "Size",
+          "values": [
+            {
+              "valueID": "28315",
+              "value": "M",
+              "valueTrans": "M",
+              "image": ""
+            },
+            {
+              "valueID": "28316",
+              "value": "L",
+              "valueTrans": "L",
+              "image": ""
+            },
+            {
+              "valueID": "28317",
+              "value": "XL",
+              "valueTrans": "XL",
+              "image": ""
+            },
+            {
+              "valueID": "6145171",
+              "value": "2XL",
+              "valueTrans": "2XL",
+              "image": ""
+            },
+            {
+              "valueID": "115781",
+              "value": "3XL",
+              "valueTrans": "3XL",
+              "image": ""
+            }
+          ]
+        }
+      ],
+      "fee": -1,
+      "guarantee": null,
+      "deliveryTime": "",
+      "minNum": 1,
+      "skus": [
+        {
+          "skuID": "5540861637024",
+          "name": "颜色:白色【360克重磅纯棉】;尺码:M",
+          "nameTrans": "Color classification:White 【360g Heavy weight pure cotton 】;Size:M",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN01djf09X1Ilou45JrcO_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27020737362;20509:28315",
+          "propsCode": [27020737362, 28315],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5540861637036",
+          "name": "颜色:白色【360克重磅纯棉】;尺码:L",
+          "nameTrans": "Color classification:White 【360g Heavy weight pure cotton 】;Size:L",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN01djf09X1Ilou45JrcO_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27020737362;20509:28316",
+          "propsCode": [27020737362, 28316],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5540861637048",
+          "name": "颜色:白色【360克重磅纯棉】;尺码:XL",
+          "nameTrans": "Color classification:White 【360g Heavy weight pure cotton 】;Size:XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN01djf09X1Ilou45JrcO_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27020737362;20509:28317",
+          "propsCode": [27020737362, 28317],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5540861637060",
+          "name": "颜色:白色【360克重磅纯棉】;尺码:2XL",
+          "nameTrans": "Color classification:White 【360g Heavy weight pure cotton 】;Size:2XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN01djf09X1Ilou45JrcO_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27020737362;20509:6145171",
+          "propsCode": [27020737362, 6145171],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5540861637012",
+          "name": "颜色:白色【360克重磅纯棉】;尺码:3XL",
+          "nameTrans": "Color classification:White 【360g Heavy weight pure cotton 】;Size:3XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN01djf09X1Ilou45JrcO_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27020737362;20509:115781",
+          "propsCode": [27020737362, 115781],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5540861637025",
+          "name": "颜色:黑色【360克重磅纯棉】;尺码:M",
+          "nameTrans": "Color classification:Black【360g Heavy weight pure cotton】;Size:M",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN011xdVx11Ilou9gsCFV_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27849611516;20509:28315",
+          "propsCode": [27849611516, 28315],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5540861637037",
+          "name": "颜色:黑色【360克重磅纯棉】;尺码:L",
+          "nameTrans": "Color classification:Black【360g Heavy weight pure cotton】;Size:L",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN011xdVx11Ilou9gsCFV_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27849611516;20509:28316",
+          "propsCode": [27849611516, 28316],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5540861637049",
+          "name": "颜色:黑色【360克重磅纯棉】;尺码:XL",
+          "nameTrans": "Color classification:Black【360g Heavy weight pure cotton】;Size:XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN011xdVx11Ilou9gsCFV_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27849611516;20509:28317",
+          "propsCode": [27849611516, 28317],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5540861637061",
+          "name": "颜色:黑色【360克重磅纯棉】;尺码:2XL",
+          "nameTrans": "Color classification:Black【360g Heavy weight pure cotton】;Size:2XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN011xdVx11Ilou9gsCFV_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27849611516;20509:6145171",
+          "propsCode": [27849611516, 6145171],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5540861637013",
+          "name": "颜色:黑色【360克重磅纯棉】;尺码:3XL",
+          "nameTrans": "Color classification:Black【360g Heavy weight pure cotton】;Size:3XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN011xdVx11Ilou9gsCFV_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27849611516;20509:115781",
+          "propsCode": [27849611516, 115781],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5540861637028",
+          "name": "颜色:浅灰色【360克重磅纯棉】;尺码:M",
+          "nameTrans": "Color classification:Light gray [360g Heavy weight pure cotton ];Size:M",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN01wfQQ2R1IlouF3LBQy_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27849611521;20509:28315",
+          "propsCode": [27849611521, 28315],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5540861637040",
+          "name": "颜色:浅灰色【360克重磅纯棉】;尺码:L",
+          "nameTrans": "Color classification:Light gray [360g Heavy weight pure cotton ];Size:L",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN01wfQQ2R1IlouF3LBQy_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27849611521;20509:28316",
+          "propsCode": [27849611521, 28316],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5540861637052",
+          "name": "颜色:浅灰色【360克重磅纯棉】;尺码:XL",
+          "nameTrans": "Color classification:Light gray [360g Heavy weight pure cotton ];Size:XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN01wfQQ2R1IlouF3LBQy_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27849611521;20509:28317",
+          "propsCode": [27849611521, 28317],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5540861637064",
+          "name": "颜色:浅灰色【360克重磅纯棉】;尺码:2XL",
+          "nameTrans": "Color classification:Light gray [360g Heavy weight pure cotton ];Size:2XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN01wfQQ2R1IlouF3LBQy_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27849611521;20509:6145171",
+          "propsCode": [27849611521, 6145171],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5540861637016",
+          "name": "颜色:浅灰色【360克重磅纯棉】;尺码:3XL",
+          "nameTrans": "Color classification:Light gray [360g Heavy weight pure cotton ];Size:3XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN01wfQQ2R1IlouF3LBQy_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27849611521;20509:115781",
+          "propsCode": [27849611521, 115781],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5540861637030",
+          "name": "颜色:高级灰【360克重磅纯棉】;尺码:M",
+          "nameTrans": "Color classification:Classy gray【360g Heavy weight pure cotton】;Size:M",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01FOkLMf1IlouAxBu3B_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:33610777403;20509:28315",
+          "propsCode": [33610777403, 28315],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5540861637042",
+          "name": "颜色:高级灰【360克重磅纯棉】;尺码:L",
+          "nameTrans": "Color classification:Classy gray【360g Heavy weight pure cotton】;Size:L",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01FOkLMf1IlouAxBu3B_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:33610777403;20509:28316",
+          "propsCode": [33610777403, 28316],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5540861637054",
+          "name": "颜色:高级灰【360克重磅纯棉】;尺码:XL",
+          "nameTrans": "Color classification:Classy gray【360g Heavy weight pure cotton】;Size:XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01FOkLMf1IlouAxBu3B_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:33610777403;20509:28317",
+          "propsCode": [33610777403, 28317],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5540861637066",
+          "name": "颜色:高级灰【360克重磅纯棉】;尺码:2XL",
+          "nameTrans": "Color classification:Classy gray【360g Heavy weight pure cotton】;Size:2XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01FOkLMf1IlouAxBu3B_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:33610777403;20509:6145171",
+          "propsCode": [33610777403, 6145171],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5540861637018",
+          "name": "颜色:高级灰【360克重磅纯棉】;尺码:3XL",
+          "nameTrans": "Color classification:Classy gray【360g Heavy weight pure cotton】;Size:3XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01FOkLMf1IlouAxBu3B_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:33610777403;20509:115781",
+          "propsCode": [33610777403, 115781],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5153176856644",
+          "name": "颜色:白花色【360克重磅纯棉】;尺码:M",
+          "nameTrans": "Color classification:White flower color [360g Heavy weight pure cotton ];Size:M",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01cKWK2m1IlouDhOZtI_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:33610777404;20509:28315",
+          "propsCode": [33610777404, 28315],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5153176856645",
+          "name": "颜色:白花色【360克重磅纯棉】;尺码:L",
+          "nameTrans": "Color classification:White flower color [360g Heavy weight pure cotton ];Size:L",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01cKWK2m1IlouDhOZtI_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:33610777404;20509:28316",
+          "propsCode": [33610777404, 28316],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5153176856646",
+          "name": "颜色:白花色【360克重磅纯棉】;尺码:XL",
+          "nameTrans": "Color classification:White flower color [360g Heavy weight pure cotton ];Size:XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01cKWK2m1IlouDhOZtI_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:33610777404;20509:28317",
+          "propsCode": [33610777404, 28317],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5153176856647",
+          "name": "颜色:白花色【360克重磅纯棉】;尺码:2XL",
+          "nameTrans": "Color classification:White flower color [360g Heavy weight pure cotton ];Size:2XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01cKWK2m1IlouDhOZtI_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:33610777404;20509:6145171",
+          "propsCode": [33610777404, 6145171],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5153176856648",
+          "name": "颜色:白花色【360克重磅纯棉】;尺码:3XL",
+          "nameTrans": "Color classification:White flower color [360g Heavy weight pure cotton ];Size:3XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01cKWK2m1IlouDhOZtI_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:33610777404;20509:115781",
+          "propsCode": [33610777404, 115781],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5540861637026",
+          "name": "颜色:杏色【360克重磅纯棉】;尺码:M",
+          "nameTrans": "Color classification:Apricot【360g Heavy weight pure cotton】;Size:M",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01ACUFIo1IlouDtMTyG_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27849611518;20509:28315",
+          "propsCode": [27849611518, 28315],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5540861637038",
+          "name": "颜色:杏色【360克重磅纯棉】;尺码:L",
+          "nameTrans": "Color classification:Apricot【360g Heavy weight pure cotton】;Size:L",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01ACUFIo1IlouDtMTyG_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27849611518;20509:28316",
+          "propsCode": [27849611518, 28316],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5540861637050",
+          "name": "颜色:杏色【360克重磅纯棉】;尺码:XL",
+          "nameTrans": "Color classification:Apricot【360g Heavy weight pure cotton】;Size:XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01ACUFIo1IlouDtMTyG_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27849611518;20509:28317",
+          "propsCode": [27849611518, 28317],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5540861637062",
+          "name": "颜色:杏色【360克重磅纯棉】;尺码:2XL",
+          "nameTrans": "Color classification:Apricot【360g Heavy weight pure cotton】;Size:2XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01ACUFIo1IlouDtMTyG_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27849611518;20509:6145171",
+          "propsCode": [27849611518, 6145171],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5540861637014",
+          "name": "颜色:杏色【360克重磅纯棉】;尺码:3XL",
+          "nameTrans": "Color classification:Apricot【360g Heavy weight pure cotton】;Size:3XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01ACUFIo1IlouDtMTyG_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27849611518;20509:115781",
+          "propsCode": [27849611518, 115781],
+          "specId": "",
+          "price": "69.00"
+        },
+        {
+          "skuID": "5540861637020",
+          "name": "颜色:白色【430克重磅加绒】;尺码:M",
+          "nameTrans": "Color classification:White 【430g Heavy weight Fleece-lined 】;Size:M",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN01djf09X1Ilou45JrcO_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27004787492;20509:28315",
+          "propsCode": [27004787492, 28315],
+          "specId": "",
+          "price": "79.00"
+        },
+        {
+          "skuID": "5540861637032",
+          "name": "颜色:白色【430克重磅加绒】;尺码:L",
+          "nameTrans": "Color classification:White 【430g Heavy weight Fleece-lined 】;Size:L",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN01djf09X1Ilou45JrcO_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27004787492;20509:28316",
+          "propsCode": [27004787492, 28316],
+          "specId": "",
+          "price": "79.00"
+        },
+        {
+          "skuID": "5540861637044",
+          "name": "颜色:白色【430克重磅加绒】;尺码:XL",
+          "nameTrans": "Color classification:White 【430g Heavy weight Fleece-lined 】;Size:XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN01djf09X1Ilou45JrcO_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27004787492;20509:28317",
+          "propsCode": [27004787492, 28317],
+          "specId": "",
+          "price": "79.00"
+        },
+        {
+          "skuID": "5540861637056",
+          "name": "颜色:白色【430克重磅加绒】;尺码:2XL",
+          "nameTrans": "Color classification:White 【430g Heavy weight Fleece-lined 】;Size:2XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN01djf09X1Ilou45JrcO_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27004787492;20509:6145171",
+          "propsCode": [27004787492, 6145171],
+          "specId": "",
+          "price": "79.00"
+        },
+        {
+          "skuID": "5540861637008",
+          "name": "颜色:白色【430克重磅加绒】;尺码:3XL",
+          "nameTrans": "Color classification:White 【430g Heavy weight Fleece-lined 】;Size:3XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN01djf09X1Ilou45JrcO_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27004787492;20509:115781",
+          "propsCode": [27004787492, 115781],
+          "specId": "",
+          "price": "79.00"
+        },
+        {
+          "skuID": "5540861637023",
+          "name": "颜色:黑色【430克重磅加绒】;尺码:M",
+          "nameTrans": "Color classification:Black【430g Heavy weight Fleece-lined】;Size:M",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN011xdVx11Ilou9gsCFV_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27020619132;20509:28315",
+          "propsCode": [27020619132, 28315],
+          "specId": "",
+          "price": "79.00"
+        },
+        {
+          "skuID": "5540861637035",
+          "name": "颜色:黑色【430克重磅加绒】;尺码:L",
+          "nameTrans": "Color classification:Black【430g Heavy weight Fleece-lined】;Size:L",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN011xdVx11Ilou9gsCFV_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27020619132;20509:28316",
+          "propsCode": [27020619132, 28316],
+          "specId": "",
+          "price": "79.00"
+        },
+        {
+          "skuID": "5540861637047",
+          "name": "颜色:黑色【430克重磅加绒】;尺码:XL",
+          "nameTrans": "Color classification:Black【430g Heavy weight Fleece-lined】;Size:XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN011xdVx11Ilou9gsCFV_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27020619132;20509:28317",
+          "propsCode": [27020619132, 28317],
+          "specId": "",
+          "price": "79.00"
+        },
+        {
+          "skuID": "5540861637059",
+          "name": "颜色:黑色【430克重磅加绒】;尺码:2XL",
+          "nameTrans": "Color classification:Black【430g Heavy weight Fleece-lined】;Size:2XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN011xdVx11Ilou9gsCFV_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27020619132;20509:6145171",
+          "propsCode": [27020619132, 6145171],
+          "specId": "",
+          "price": "79.00"
+        },
+        {
+          "skuID": "5540861637011",
+          "name": "颜色:黑色【430克重磅加绒】;尺码:3XL",
+          "nameTrans": "Color classification:Black【430g Heavy weight Fleece-lined】;Size:3XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN011xdVx11Ilou9gsCFV_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27020619132;20509:115781",
+          "propsCode": [27020619132, 115781],
+          "specId": "",
+          "price": "79.00"
+        },
+        {
+          "skuID": "5540861637022",
+          "name": "颜色:浅灰色【430克重磅加绒】;尺码:M",
+          "nameTrans": "Color classification:Light gray [430g Heavy weight Fleece-lined ];Size:M",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN01wfQQ2R1IlouF3LBQy_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27004787495;20509:28315",
+          "propsCode": [27004787495, 28315],
+          "specId": "",
+          "price": "79.00"
+        },
+        {
+          "skuID": "5540861637034",
+          "name": "颜色:浅灰色【430克重磅加绒】;尺码:L",
+          "nameTrans": "Color classification:Light gray [430g Heavy weight Fleece-lined ];Size:L",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN01wfQQ2R1IlouF3LBQy_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27004787495;20509:28316",
+          "propsCode": [27004787495, 28316],
+          "specId": "",
+          "price": "79.00"
+        },
+        {
+          "skuID": "5540861637046",
+          "name": "颜色:浅灰色【430克重磅加绒】;尺码:XL",
+          "nameTrans": "Color classification:Light gray [430g Heavy weight Fleece-lined ];Size:XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN01wfQQ2R1IlouF3LBQy_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27004787495;20509:28317",
+          "propsCode": [27004787495, 28317],
+          "specId": "",
+          "price": "79.00"
+        },
+        {
+          "skuID": "5540861637058",
+          "name": "颜色:浅灰色【430克重磅加绒】;尺码:2XL",
+          "nameTrans": "Color classification:Light gray [430g Heavy weight Fleece-lined ];Size:2XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN01wfQQ2R1IlouF3LBQy_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27004787495;20509:6145171",
+          "propsCode": [27004787495, 6145171],
+          "specId": "",
+          "price": "79.00"
+        },
+        {
+          "skuID": "5540861637010",
+          "name": "颜色:浅灰色【430克重磅加绒】;尺码:3XL",
+          "nameTrans": "Color classification:Light gray [430g Heavy weight Fleece-lined ];Size:3XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN01wfQQ2R1IlouF3LBQy_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27004787495;20509:115781",
+          "propsCode": [27004787495, 115781],
+          "specId": "",
+          "price": "79.00"
+        },
+        {
+          "skuID": "5540861637031",
+          "name": "颜色:高级灰【430克重磅加绒】;尺码:M",
+          "nameTrans": "Color classification:Classy gray【430g Heavy weight Fleece-lined】;Size:M",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01FOkLMf1IlouAxBu3B_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:33610777405;20509:28315",
+          "propsCode": [33610777405, 28315],
+          "specId": "",
+          "price": "79.00"
+        },
+        {
+          "skuID": "5540861637043",
+          "name": "颜色:高级灰【430克重磅加绒】;尺码:L",
+          "nameTrans": "Color classification:Classy gray【430g Heavy weight Fleece-lined】;Size:L",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01FOkLMf1IlouAxBu3B_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:33610777405;20509:28316",
+          "propsCode": [33610777405, 28316],
+          "specId": "",
+          "price": "79.00"
+        },
+        {
+          "skuID": "5540861637055",
+          "name": "颜色:高级灰【430克重磅加绒】;尺码:XL",
+          "nameTrans": "Color classification:Classy gray【430g Heavy weight Fleece-lined】;Size:XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01FOkLMf1IlouAxBu3B_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:33610777405;20509:28317",
+          "propsCode": [33610777405, 28317],
+          "specId": "",
+          "price": "79.00"
+        },
+        {
+          "skuID": "5540861637067",
+          "name": "颜色:高级灰【430克重磅加绒】;尺码:2XL",
+          "nameTrans": "Color classification:Classy gray【430g Heavy weight Fleece-lined】;Size:2XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01FOkLMf1IlouAxBu3B_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:33610777405;20509:6145171",
+          "propsCode": [33610777405, 6145171],
+          "specId": "",
+          "price": "79.00"
+        },
+        {
+          "skuID": "5540861637019",
+          "name": "颜色:高级灰【430克重磅加绒】;尺码:3XL",
+          "nameTrans": "Color classification:Classy gray【430g Heavy weight Fleece-lined】;Size:3XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01FOkLMf1IlouAxBu3B_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:33610777405;20509:115781",
+          "propsCode": [33610777405, 115781],
+          "specId": "",
+          "price": "79.00"
+        },
+        {
+          "skuID": "5153176856674",
+          "name": "颜色:白花色【430克重磅加绒】;尺码:M",
+          "nameTrans": "Color classification:White flower color【430g Heavy weight Fleece-lined】;Size:M",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01cKWK2m1IlouDhOZtI_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:33610777406;20509:28315",
+          "propsCode": [33610777406, 28315],
+          "specId": "",
+          "price": "79.00"
+        },
+        {
+          "skuID": "5153176856675",
+          "name": "颜色:白花色【430克重磅加绒】;尺码:L",
+          "nameTrans": "Color classification:White flower color【430g Heavy weight Fleece-lined】;Size:L",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01cKWK2m1IlouDhOZtI_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:33610777406;20509:28316",
+          "propsCode": [33610777406, 28316],
+          "specId": "",
+          "price": "79.00"
+        },
+        {
+          "skuID": "5153176856676",
+          "name": "颜色:白花色【430克重磅加绒】;尺码:XL",
+          "nameTrans": "Color classification:White flower color【430g Heavy weight Fleece-lined】;Size:XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01cKWK2m1IlouDhOZtI_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:33610777406;20509:28317",
+          "propsCode": [33610777406, 28317],
+          "specId": "",
+          "price": "79.00"
+        },
+        {
+          "skuID": "5153176856677",
+          "name": "颜色:白花色【430克重磅加绒】;尺码:2XL",
+          "nameTrans": "Color classification:White flower color【430g Heavy weight Fleece-lined】;Size:2XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01cKWK2m1IlouDhOZtI_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:33610777406;20509:6145171",
+          "propsCode": [33610777406, 6145171],
+          "specId": "",
+          "price": "79.00"
+        },
+        {
+          "skuID": "5153176856678",
+          "name": "颜色:白花色【430克重磅加绒】;尺码:3XL",
+          "nameTrans": "Color classification:White flower color【430g Heavy weight Fleece-lined】;Size:3XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01cKWK2m1IlouDhOZtI_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:33610777406;20509:115781",
+          "propsCode": [33610777406, 115781],
+          "specId": "",
+          "price": "79.00"
+        },
+        {
+          "skuID": "5540861637021",
+          "name": "颜色:杏色【430克重磅加绒】;尺码:M",
+          "nameTrans": "Color classification:Apricot【430g Heavy weight Fleece-lined】;Size:M",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01ACUFIo1IlouDtMTyG_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27004787494;20509:28315",
+          "propsCode": [27004787494, 28315],
+          "specId": "",
+          "price": "79.00"
+        },
+        {
+          "skuID": "5540861637033",
+          "name": "颜色:杏色【430克重磅加绒】;尺码:L",
+          "nameTrans": "Color classification:Apricot【430g Heavy weight Fleece-lined】;Size:L",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01ACUFIo1IlouDtMTyG_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27004787494;20509:28316",
+          "propsCode": [27004787494, 28316],
+          "specId": "",
+          "price": "79.00"
+        },
+        {
+          "skuID": "5540861637045",
+          "name": "颜色:杏色【430克重磅加绒】;尺码:XL",
+          "nameTrans": "Color classification:Apricot【430g Heavy weight Fleece-lined】;Size:XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01ACUFIo1IlouDtMTyG_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27004787494;20509:28317",
+          "propsCode": [27004787494, 28317],
+          "specId": "",
+          "price": "79.00"
+        },
+        {
+          "skuID": "5540861637057",
+          "name": "颜色:杏色【430克重磅加绒】;尺码:2XL",
+          "nameTrans": "Color classification:Apricot【430g Heavy weight Fleece-lined】;Size:2XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01ACUFIo1IlouDtMTyG_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27004787494;20509:6145171",
+          "propsCode": [27004787494, 6145171],
+          "specId": "",
+          "price": "79.00"
+        },
+        {
+          "skuID": "5540861637009",
+          "name": "颜色:杏色【430克重磅加绒】;尺码:3XL",
+          "nameTrans": "Color classification:Apricot【430g Heavy weight Fleece-lined】;Size:3XL",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01ACUFIo1IlouDtMTyG_!!2215420820934.jpg",
+          "stock": 200,
+          "propsID": "1627207:27004787494;20509:115781",
+          "propsCode": [27004787494, 115781],
+          "specId": "",
+          "price": "79.00"
+        }
+      ],
+      "sellerInfo": {
+        "shopLogo": "https://gw.alicdn.com/imgextra/i1/O1CN01z163bz1lHF5yQ50CC_!!6000000004793-2-tps-172-108.png",
+        "shopTitle": "1997潮牌购",
+        "shopID": "509762153",
+        "shopLink": "https://shop509762153.taobao.com",
+        "sellerId": ""
+      },
+      "price": "69.00",
+      "imageMapList": {
+        "27004787492": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN01djf09X1Ilou45JrcO_!!2215420820934.jpg",
+        "27004787494": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01ACUFIo1IlouDtMTyG_!!2215420820934.jpg",
+        "27004787495": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN01wfQQ2R1IlouF3LBQy_!!2215420820934.jpg",
+        "27020619132": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN011xdVx11Ilou9gsCFV_!!2215420820934.jpg",
+        "27020737362": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN01djf09X1Ilou45JrcO_!!2215420820934.jpg",
+        "27849611516": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN011xdVx11Ilou9gsCFV_!!2215420820934.jpg",
+        "27849611518": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01ACUFIo1IlouDtMTyG_!!2215420820934.jpg",
+        "27849611521": "https://img.alicdn.com/bao/uploaded/i1/2215420820934/O1CN01wfQQ2R1IlouF3LBQy_!!2215420820934.jpg",
+        "33610777403": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01FOkLMf1IlouAxBu3B_!!2215420820934.jpg",
+        "33610777404": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01cKWK2m1IlouDhOZtI_!!2215420820934.jpg",
+        "33610777405": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01FOkLMf1IlouAxBu3B_!!2215420820934.jpg",
+        "33610777406": "https://img.alicdn.com/bao/uploaded/i3/2215420820934/O1CN01cKWK2m1IlouDhOZtI_!!2215420820934.jpg"
+      },
+      "skuPropNamesMap": {
+        "1627207": "颜色",
+        "20509": "尺码"
+      },
+      "skuPropValsMap": {
+        "115781": "3XL",
+        "27004787492": "白色【430克重磅加绒】",
+        "27004787494": "杏色【430克重磅加绒】",
+        "27004787495": "浅灰色【430克重磅加绒】",
+        "27020619132": "黑色【430克重磅加绒】",
+        "27020737362": "白色【360克重磅纯棉】",
+        "27849611516": "黑色【360克重磅纯棉】",
+        "27849611518": "杏色【360克重磅纯棉】",
+        "27849611521": "浅灰色【360克重磅纯棉】",
+        "28315": "M",
+        "28316": "L",
+        "28317": "XL",
+        "33610777403": "高级灰【360克重磅纯棉】",
+        "33610777404": "白花色【360克重磅纯棉】",
+        "33610777405": "高级灰【430克重磅加绒】",
+        "33610777406": "白花色【430克重磅加绒】",
+        "6145171": "2XL"
+      }
+    },
+    "productDetail": {
+      "productDesc": "\u003Cdiv style=\"width: 750.0px;height: 19437.0px;overflow: hidden;\"\u003E\u003Cdiv style=\"width: 750.0px;height: 19437.0px;overflow: hidden;\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"//img.alicdn.com/imgextra/i4/2215420820934/O1CN01QI6ijf1IloovsIruP_!!2215420820934.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"//img.alicdn.com/imgextra/i1/2215420820934/O1CN01jA6arq1IloqmIsZCQ_!!2215420820934.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"//img.alicdn.com/imgextra/i3/2215420820934/O1CN01CFnmvY1Ilou8alu8h_!!2215420820934.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"//img.alicdn.com/imgextra/i4/2215420820934/O1CN01cFgNNE1IloowttoXT_!!2215420820934.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"//img.alicdn.com/imgextra/i3/2215420820934/O1CN016nzOv81Iloovsmw1V_!!2215420820934.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"//img.alicdn.com/imgextra/i3/2215420820934/O1CN01Tdfh941Ilooyu89Lb_!!2215420820934.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"//img.alicdn.com/imgextra/i2/2215420820934/O1CN016zDoim1IlootLzw9A_!!2215420820934.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"//img.alicdn.com/imgextra/i4/2215420820934/O1CN01p8RubQ1Ilop0H3ydm_!!2215420820934.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"//img.alicdn.com/imgextra/i3/2215420820934/O1CN01hbiBVD1IlootLxn8V_!!2215420820934.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"//img.alicdn.com/imgextra/i3/2215420820934/O1CN014xs13J1IlootLz8Ev_!!2215420820934.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"//img.alicdn.com/imgextra/i4/2215420820934/O1CN01Q0qrxl1IloosF93is_!!2215420820934.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"//img.alicdn.com/imgextra/i4/2215420820934/O1CN0183ANXH1IlouDhNqEq_!!2215420820934.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"//img.alicdn.com/imgextra/i1/2215420820934/O1CN01djf09X1Ilou45JrcO_!!2215420820934.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"//img.alicdn.com/imgextra/i2/2215420820934/O1CN015rAfsH1Ilou45Lk5g_!!2215420820934.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"//img.alicdn.com/imgextra/i1/2215420820934/O1CN011xdVx11Ilou9gsCFV_!!2215420820934.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"//img.alicdn.com/imgextra/i3/2215420820934/O1CN01VVp0fO1IlouBiSSGF_!!2215420820934.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"//img.alicdn.com/imgextra/i3/2215420820934/O1CN01ACUFIo1IlouDtMTyG_!!2215420820934.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"//img.alicdn.com/imgextra/i3/2215420820934/O1CN01Vorngu1IlouF3NGMt_!!2215420820934.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"//img.alicdn.com/imgextra/i3/2215420820934/O1CN01cKWK2m1IlouDhOZtI_!!2215420820934.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"//img.alicdn.com/imgextra/i4/2215420820934/O1CN01xKbcjx1IlouCuvqJ7_!!2215420820934.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"//img.alicdn.com/imgextra/i1/2215420820934/O1CN01wfQQ2R1IlouF3LBQy_!!2215420820934.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"//img.alicdn.com/imgextra/i4/2215420820934/O1CN01enmFdQ1IlouCRJq8a_!!2215420820934.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"//img.alicdn.com/imgextra/i3/2215420820934/O1CN01FOkLMf1IlouAxBu3B_!!2215420820934.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"//img.alicdn.com/imgextra/i1/2215420820934/O1CN01Fx2ECe1IlouCRJhpb_!!2215420820934.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"//img.alicdn.com/imgextra/i4/2215420820934/O1CN019BUDCM1IlouB3eglr_!!2215420820934.jpg\"\u003E\u003C/div\u003E\u003C/div\u003E",
+      "productImgList": [
+        "//img.alicdn.com/imgextra/i4/2215420820934/O1CN01QI6ijf1IloovsIruP_!!2215420820934.jpg",
+        "//img.alicdn.com/imgextra/i1/2215420820934/O1CN01jA6arq1IloqmIsZCQ_!!2215420820934.jpg",
+        "//img.alicdn.com/imgextra/i3/2215420820934/O1CN01CFnmvY1Ilou8alu8h_!!2215420820934.jpg",
+        "//img.alicdn.com/imgextra/i4/2215420820934/O1CN01cFgNNE1IloowttoXT_!!2215420820934.jpg",
+        "//img.alicdn.com/imgextra/i3/2215420820934/O1CN016nzOv81Iloovsmw1V_!!2215420820934.jpg",
+        "//img.alicdn.com/imgextra/i3/2215420820934/O1CN01Tdfh941Ilooyu89Lb_!!2215420820934.jpg",
+        "//img.alicdn.com/imgextra/i2/2215420820934/O1CN016zDoim1IlootLzw9A_!!2215420820934.jpg",
+        "//img.alicdn.com/imgextra/i4/2215420820934/O1CN01p8RubQ1Ilop0H3ydm_!!2215420820934.jpg",
+        "//img.alicdn.com/imgextra/i3/2215420820934/O1CN01hbiBVD1IlootLxn8V_!!2215420820934.jpg",
+        "//img.alicdn.com/imgextra/i3/2215420820934/O1CN014xs13J1IlootLz8Ev_!!2215420820934.jpg",
+        "//img.alicdn.com/imgextra/i4/2215420820934/O1CN01Q0qrxl1IloosF93is_!!2215420820934.jpg",
+        "//img.alicdn.com/imgextra/i4/2215420820934/O1CN0183ANXH1IlouDhNqEq_!!2215420820934.jpg",
+        "//img.alicdn.com/imgextra/i1/2215420820934/O1CN01djf09X1Ilou45JrcO_!!2215420820934.jpg",
+        "//img.alicdn.com/imgextra/i2/2215420820934/O1CN015rAfsH1Ilou45Lk5g_!!2215420820934.jpg",
+        "//img.alicdn.com/imgextra/i1/2215420820934/O1CN011xdVx11Ilou9gsCFV_!!2215420820934.jpg",
+        "//img.alicdn.com/imgextra/i3/2215420820934/O1CN01VVp0fO1IlouBiSSGF_!!2215420820934.jpg",
+        "//img.alicdn.com/imgextra/i3/2215420820934/O1CN01ACUFIo1IlouDtMTyG_!!2215420820934.jpg",
+        "//img.alicdn.com/imgextra/i3/2215420820934/O1CN01Vorngu1IlouF3NGMt_!!2215420820934.jpg",
+        "//img.alicdn.com/imgextra/i3/2215420820934/O1CN01cKWK2m1IlouDhOZtI_!!2215420820934.jpg",
+        "//img.alicdn.com/imgextra/i4/2215420820934/O1CN01xKbcjx1IlouCuvqJ7_!!2215420820934.jpg",
+        "//img.alicdn.com/imgextra/i1/2215420820934/O1CN01wfQQ2R1IlouF3LBQy_!!2215420820934.jpg",
+        "//img.alicdn.com/imgextra/i4/2215420820934/O1CN01enmFdQ1IlouCRJq8a_!!2215420820934.jpg",
+        "//img.alicdn.com/imgextra/i3/2215420820934/O1CN01FOkLMf1IlouAxBu3B_!!2215420820934.jpg",
+        "//img.alicdn.com/imgextra/i1/2215420820934/O1CN01Fx2ECe1IlouCRJhpb_!!2215420820934.jpg",
+        "//img.alicdn.com/imgextra/i4/2215420820934/O1CN019BUDCM1IlouB3eglr_!!2215420820934.jpg"
+      ]
+    },
+    "productRemark": {
+      "sensitiveWords": [],
+      "isCanJump2Shop": true,
+      "isCanPurchased": false,
+      "isInBlackList": false
+    },
+    "sign": "TjgoK4pon8ZpK/swbD3609YmMdGHUBDjEUU+e5hrSz7yInXVeA31isVWvt3r7pCQa4rRaZbwYOfo4wJkG0zGcVYrYCoi9fZKMQ7MdwFNZz3r2UfXLNPdHZQx+2HJyeusoPQhZSLhaW5UFf51Io4hg5rBogJS1qmkmgaWX3tS6r2cN+KHwcWysEckDlJ3UZBoh4D9xwuuOJ4rffRHBk3uQx4UaWCli94PqhhBSl2kYPUM5Z71x+OvEjEK1sJz46HMMa0mTmJu+a4gjgGhLLlXYZ3YDLpJicxZpwiIuaR2Ikv7PExtldsWzgiOksZPHXVeOrWrg5sYcgeNmF+GdfeA/Q==",
+    "cache": true,
+    "offSale": false
+  }
+}

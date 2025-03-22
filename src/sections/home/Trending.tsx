@@ -2,34 +2,9 @@ import { useEffect, useState } from "react";
 import ProductCard from "../../components/ProductCard";
 import { TProduct } from "../../types/product.type";
 import Slider from "react-slick";
-import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-// Custom Next and Prev Buttons
-const NextArrow = (props: any) => {
-  const { onClick } = props;
-  return (
-    <button
-      onClick={onClick}
-      className="absolute right-2 top-1/2 transform -translate-y-1/2 z-10"
-    >
-      <FiArrowRight className="size-8 rounded-full border-2 text-primary dark:text-black border-primary p-1 bg-white shadow-md hover:bg-gray-100 duration-300" />
-    </button>
-  );
-};
-
-const PrevArrow = (props: any) => {
-  const { onClick } = props;
-  return (
-    <button
-      onClick={onClick}
-      className="absolute left-2 top-1/2 transform -translate-y-1/2 z-10"
-    >
-      <FiArrowLeft className="size-8 rounded-full border-2 text-primary dark:text-black border-primary p-1 bg-white shadow-md hover:bg-gray-100 duration-300" />
-    </button>
-  );
-};
+import { NextArrow, PrevArrow } from "../../components/SlickComponents";
 
 const Trending = () => {
   const [products, setProducts] = useState<TProduct[]>([]);

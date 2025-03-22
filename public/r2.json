@@ -1,0 +1,117 @@
+{
+  "code": 200,
+  "msg": "",
+  "data": {
+    "requestID": "939d50dc-5c9d-46e7-b17b-086ebd6125e4",
+    "productInfo": {
+      "title": "今勺今勺纯棉短袖T恤男夏季2025新款蜘蛛印花潮牌男装半袖体恤衫",
+      "titleTrans": "Today's Spoon Today's Spoon pure cotton Short-Sleeved T-Shirt Men's Summer 2025 New arrival Spider Print Trendy Men's Half-Sleeved T-Shirt",
+      "imgList": [
+        "https://img.alicdn.com/bao/uploaded/i4/2219388059912/O1CN01f9xGsI2N5kq3Fsk7q_!!4611686018427379976-0-item_pic.jpg",
+        "https://img.alicdn.com/bao/uploaded/i2/2219388059912/O1CN01oGrj172N5kq4m6P4Q_!!2219388059912.jpg",
+        "https://img.alicdn.com/bao/uploaded/i4/2219388059912/O1CN01dcqgtm2N5kq3sUIjb_!!2219388059912.jpg",
+        "https://img.alicdn.com/bao/uploaded/i2/2219388059912/O1CN01qmbd8Q2N5kq4ngpRA_!!2219388059912.jpg"
+      ],
+      "props": {
+        "上市年份季节": "2025年春",
+        "品牌": "今勺",
+        "版型": "宽松型",
+        "花型图案": "格子",
+        "袖长": "长袖",
+        "货号": "001",
+        "领型": "燕子领",
+        "颜色": "灰色"
+      },
+      "propsTrans": {
+        "Clothing version": "Loose type",
+        "Collar type": "Swallow collar",
+        "Color classification": "Gray",
+        "Item No.": "001",
+        "Pattern": "Lattice",
+        "Sleeve length": "Long sleeves",
+        "Year of listing season": "Spring 2025",
+        "barnd": "This spoon"
+      },
+      "sales": -1,
+      "productAttr": [
+        {
+          "attrID": "1627207",
+          "attr": "颜色",
+          "attrTrans": "Color classification",
+          "values": [
+            {
+              "valueID": "28334",
+              "value": "灰色",
+              "valueTrans": "Gray",
+              "image": "https://img.alicdn.com/bao/uploaded/i3/2219388059912/O1CN01HzLQBn2N5kq222iJe_!!2219388059912.jpg"
+            }
+          ]
+        }
+      ],
+      "fee": -1,
+      "guarantee": null,
+      "deliveryTime": "",
+      "minNum": 1,
+      "skus": [
+        {
+          "skuID": "5736842769856",
+          "name": "颜色:灰色",
+          "nameTrans": "Color classification:Gray",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/2219388059912/O1CN01HzLQBn2N5kq222iJe_!!2219388059912.jpg",
+          "stock": 200,
+          "propsID": "1627207:28334",
+          "propsCode": [28334],
+          "specId": "",
+          "price": "2000.00"
+        }
+      ],
+      "sellerInfo": {
+        "shopLogo": "https://gw.alicdn.com/imgextra/i1/O1CN01z163bz1lHF5yQ50CC_!!6000000004793-2-tps-172-108.png",
+        "shopTitle": "今勺服饰旗舰店",
+        "shopID": "308340346",
+        "shopLink": "https://shop308340346.taobao.com",
+        "sellerId": ""
+      },
+      "price": "2000.00",
+      "imageMapList": {
+        "28334": "https://img.alicdn.com/bao/uploaded/i3/2219388059912/O1CN01HzLQBn2N5kq222iJe_!!2219388059912.jpg"
+      },
+      "skuPropNamesMap": {
+        "1627207": "颜色"
+      },
+      "skuPropValsMap": {
+        "28334": "灰色"
+      }
+    },
+    "productDetail": {
+      "productDesc": "\u003Cdiv style=\"width: 750.0px;height: 12508.0px;overflow: hidden;\"\u003E\u003Cdiv style=\"width: 750.0px;height: 12508.0px;overflow: hidden;\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i3/2219388059912/O1CN01HzLQBn2N5kq222iJe_!!2219388059912.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i1/2219388059912/O1CN01JMix5K2N5kq5jKCKI_!!2219388059912.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i1/2219388059912/O1CN01sFHzJS2N5kq223S33_!!2219388059912.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i4/2219388059912/O1CN0193I79Q2N5kq3JFTls_!!2219388059912.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i2/2219388059912/O1CN01qmbd8Q2N5kq4ngpRA_!!2219388059912.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i2/2219388059912/O1CN01qg7FeT2N5kq1F2T9r_!!2219388059912.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i4/2219388059912/O1CN01Xtm7Fx2N5kq3FFXPm_!!2219388059912.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i2/2219388059912/O1CN01d4ounG2N5kq3ReASb_!!2219388059912.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i3/2219388059912/O1CN01HzLQBn2N5kq222iJe_!!2219388059912.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i1/2219388059912/O1CN01JMix5K2N5kq5jKCKI_!!2219388059912.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i1/2219388059912/O1CN01sFHzJS2N5kq223S33_!!2219388059912.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i4/2219388059912/O1CN0193I79Q2N5kq3JFTls_!!2219388059912.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i2/2219388059912/O1CN01qmbd8Q2N5kq4ngpRA_!!2219388059912.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i2/2219388059912/O1CN01qg7FeT2N5kq1F2T9r_!!2219388059912.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i4/2219388059912/O1CN01Xtm7Fx2N5kq3FFXPm_!!2219388059912.jpg\"\u003E\u003Cimg style=\"display: block;width: 100.0%;\" src=\"https://img.alicdn.com/imgextra/i2/2219388059912/O1CN01d4ounG2N5kq3ReASb_!!2219388059912.jpg\"\u003E\u003C/div\u003E\u003C/div\u003E",
+      "productImgList": [
+        "https://img.alicdn.com/imgextra/i3/2219388059912/O1CN01HzLQBn2N5kq222iJe_!!2219388059912.jpg",
+        "https://img.alicdn.com/imgextra/i1/2219388059912/O1CN01JMix5K2N5kq5jKCKI_!!2219388059912.jpg",
+        "https://img.alicdn.com/imgextra/i1/2219388059912/O1CN01sFHzJS2N5kq223S33_!!2219388059912.jpg",
+        "https://img.alicdn.com/imgextra/i4/2219388059912/O1CN0193I79Q2N5kq3JFTls_!!2219388059912.jpg",
+        "https://img.alicdn.com/imgextra/i2/2219388059912/O1CN01qmbd8Q2N5kq4ngpRA_!!2219388059912.jpg",
+        "https://img.alicdn.com/imgextra/i2/2219388059912/O1CN01qg7FeT2N5kq1F2T9r_!!2219388059912.jpg",
+        "https://img.alicdn.com/imgextra/i4/2219388059912/O1CN01Xtm7Fx2N5kq3FFXPm_!!2219388059912.jpg",
+        "https://img.alicdn.com/imgextra/i2/2219388059912/O1CN01d4ounG2N5kq3ReASb_!!2219388059912.jpg",
+        "https://img.alicdn.com/imgextra/i3/2219388059912/O1CN01HzLQBn2N5kq222iJe_!!2219388059912.jpg",
+        "https://img.alicdn.com/imgextra/i1/2219388059912/O1CN01JMix5K2N5kq5jKCKI_!!2219388059912.jpg",
+        "https://img.alicdn.com/imgextra/i1/2219388059912/O1CN01sFHzJS2N5kq223S33_!!2219388059912.jpg",
+        "https://img.alicdn.com/imgextra/i4/2219388059912/O1CN0193I79Q2N5kq3JFTls_!!2219388059912.jpg",
+        "https://img.alicdn.com/imgextra/i2/2219388059912/O1CN01qmbd8Q2N5kq4ngpRA_!!2219388059912.jpg",
+        "https://img.alicdn.com/imgextra/i2/2219388059912/O1CN01qg7FeT2N5kq1F2T9r_!!2219388059912.jpg",
+        "https://img.alicdn.com/imgextra/i4/2219388059912/O1CN01Xtm7Fx2N5kq3FFXPm_!!2219388059912.jpg",
+        "https://img.alicdn.com/imgextra/i2/2219388059912/O1CN01d4ounG2N5kq3ReASb_!!2219388059912.jpg"
+      ]
+    },
+    "productRemark": {
+      "sensitiveWords": [],
+      "isCanJump2Shop": true,
+      "isCanPurchased": false,
+      "isInBlackList": false
+    },
+    "sign": "d8c3ORtQdTX4zt8Ekj8T3g4Sy7FuzdC/iskIhWjPhLSgY2L/hcJPTc7VXv1JiZVxU9xwq3NIgepfCWbJ7UO+sXqqSn3WVz5bu+88tomR9GX2Qm05BrvOQw58jbaiB+dZ4WZxKaXNlyLZyOBVHo9+nesUvTGI5GliwzaCjrY8rDVOh0+Sz/og8DJRpu5b4jGAf9ZAiwODJ6Kgnz3jsuRHtjW2aBv9E6YnBhHLxwqmgEGRIvG/zhJ34snH2ALqm5uVj+mTiKS64hOg0RVGW6gfx/zScojXYrEP7wSj+LLMN6fVdyqdRl+wBhi2WbrE+VPRBhebOMMlzyrCfA9PuyD33w==",
+    "cache": true,
+    "offSale": false
+  }
+}

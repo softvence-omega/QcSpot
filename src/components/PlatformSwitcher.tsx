@@ -1,3 +1,4 @@
+import { X } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const platforms = [
@@ -108,7 +109,7 @@ const PlatformSwitcher = () => {
               className="absolute top-2 right-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
               onClick={() => setIsOpen(false)}
             >
-              ✕
+              <X />
             </button>
           </div>
         </div>
