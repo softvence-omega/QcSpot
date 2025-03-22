@@ -1,11 +1,10 @@
-import { Clock, Loader2, Plus, Share2 } from "lucide-react";
+import { Loader2, Plus, Share2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PLatformLink from "../components/PlatformLink";
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
+import axios from "axios";
 
 interface Product {
   title: string;
@@ -13,106 +12,58 @@ interface Product {
   imgList: string[];
 }
 
-type Sku = {
-  group: {
-    name: string;
-    name_cn?: string; // Optional for Chinese name
-  };
-  value: {
-    name: string;
-    name_cn?: string; // Optional for Chinese name
-  };
-};
-
-type ProductData = {
-  create_time: string;
-  sku_id: string;
-  sku: Sku[];
-  imgs: string[];
-};
-
-// Custom Next and Prev Buttons
-const NextArrow = (props: any) => {
-  const { onClick } = props;
-  return (
-    <button
-      onClick={onClick}
-      className="absolute right-2 top-1/2 transform -translate-y-1/2 z-10"
-    >
-      <FiArrowRight className="size-8 rounded-full border-2 text-primary dark:text-black border-primary p-1 bg-white shadow-md hover:bg-gray-100 duration-300" />
-    </button>
-  );
-};
-
-const PrevArrow = (props: any) => {
-  const { onClick } = props;
-  return (
-    <button
-      onClick={onClick}
-      className="absolute left-2 top-1/2 transform -translate-y-1/2 z-10"
-    >
-      <FiArrowLeft className="size-8 rounded-full border-2 text-primary dark:text-black border-primary p-1 bg-white shadow-md hover:bg-gray-100 duration-300" />
-    </button>
-  );
-};
-
 const ProductDetails = () => {
   const { shopType, id } = useParams<{ shopType: string; id: string }>();
   const [product, setProduct] = useState<Product | null>(null);
-  const [qc, setQc] = useState<ProductData[] | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [qc, setQc] = useState<string[] | null>(null);
+  const [productLoading, setProductLoading] = useState<boolean>(true);
+  const [qcLoading, setQcLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response1 = await fetch(
+        const res = await fetch(
           `https://cnfans.com/search-api/detail/product-info?platform=${shopType}&productID=${id}&forceReload=false&site=cnfans&lang=en&wmc-currency=USD`
         );
-        const response2 = await fetch(
-          `https://www.lovegobuy.com/index.php?s=/api/open/qc&shopType=${shopType}&goodsId=${id}`
-        );
-        const data1 = await response1.json();
-        const data2 = await response2.json();
-        setProduct(data1?.data?.productInfo || null);
-        setQc(data2.data);
+        const data = await res.json();
+        setProduct(data?.data?.productInfo || null);
       } catch (error) {
         console.error("Error fetching product:", error);
       } finally {
-        setLoading(false);
+        setProductLoading(false);
+      }
+    };
+
+    const fetchQcPhotos = async () => {
+      try {
+        const response = await axios.get(
+          `https://qc-spot-proxy-server.vercel.app/api/qc-photos/${id}`
+        );
+        const data = response.data.data.photos;
+        setQc(data);
+      } catch (error) {
+        console.error("Error fetching QC photos:", error);
+        setQc(null); // Set QC photos to null if there's an error
+      } finally {
+        setQcLoading(false);
       }
     };
 
     if (id) {
       fetchProduct();
+      fetchQcPhotos();
     }
   }, [id]);
 
-  const calculateDaysAgo = (createTime: string) => {
-    const productDate = new Date(createTime);
-    const currentDate = new Date();
-    const timeDifference = currentDate.getTime() - productDate.getTime();
-    const daysDifference = Math.floor(timeDifference / (1000 * 3600 * 24)); // Convert milliseconds to days
-    return daysDifference;
-  };
-
-  if (loading)
+  if (productLoading)
     return (
       <div className="flex justify-center items-center py-40 text-4xl">
         <Loader2 className="w-20 h-20 animate-spin" />
       </div>
     );
+
   if (!product)
     return <div className="text-center py-10 text-4xl">Product not found.</div>;
-
-  // Slick settings
-  const settings = {
-    dots: false,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-  };
 
   return (
     <div className="max-w-7xl mx-auto pt-40 md:pt-24 pb-10 px-4">
@@ -151,30 +102,28 @@ const ProductDetails = () => {
         </div>
       </div>
 
-      <div className="grid gris-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {qc &&
-          qc.length > 0 &&
-          qc.map((product, index) => (
-            <div key={index} className="my-20">
-              <Slider {...settings}>
-                {product.imgs.map((img, imgIndex) => (
-                  <div key={imgIndex}>
-                    <img
-                      src={img}
-                      alt={`product-image-${imgIndex}`}
-                      className="w-full h-[480px] object-cover"
-                    />
-                  </div>
-                ))}
-              </Slider>
-              <h3 className="text-center mb-2 mt-5">{`Product SKU: ${product.sku_id}`}</h3>
-              <div className="flex justify-center items-center gap-3">
-                <Clock />
-                <p>{calculateDaysAgo(product?.create_time)} days ago</p>
-              </div>
-            </div>
-          ))}
-      </div>
+      {/* QC Photos Section */}
+      {qcLoading ? (
+        <div className="flex justify-center items-center py-10">
+          <Loader2 className="w-16 h-16 animate-spin" />
+        </div>
+      ) : qc && qc.length > 0 ? (
+        <>
+          <h2 className="text-2xl font-semibold mt-5">QC Photos:</h2>
+          <div className="grid gris-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 mt-3">
+            {qc.map((img, index) => (
+              <img
+                key={index}
+                src={img}
+                alt={`product-image`}
+                className="w-full h-[480px] object-cover rounded hover:shadow-xl"
+              />
+            ))}
+          </div>
+        </>
+      ) : (
+        <p className="text-center py-10 text-xl">No QC photos available</p>
+      )}
     </div>
   );
 };
