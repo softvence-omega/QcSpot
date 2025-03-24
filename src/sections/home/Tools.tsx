@@ -2,12 +2,9 @@ import { useState } from "react";
 import {
   Search,
   Users,
-  Gift,
   Clock,
   Scale,
-  Link2,
   ExternalLink,
-  Chrome,
   MessageSquare,
 } from "lucide-react";
 import { handleQcSearch } from "../../components/handleQcSearch";

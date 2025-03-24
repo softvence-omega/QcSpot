@@ -6,6 +6,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
 import Slider from "react-slick";
+import {
+  NextArrow,
+  PrevArrow,
+  ProdNextArrow,
+  ProdPrevArrow,
+} from "../components/SlickComponents";
 
 interface Sku {
   skuID: string;
@@ -47,8 +53,12 @@ const ProductDetails = () => {
         setProduct(productData);
 
         // Initialize selected SKU with the first available SKU
-        if (productData?.skus?.length > 0) {
-          setSelectedSku(productData.skus[0]);
+        // Select the first SKU that has a non-empty imgUrl
+        const validSku = productData?.skus?.find((sku: Sku) =>
+          sku.imgUrl?.trim()
+        );
+        if (validSku) {
+          setSelectedSku(validSku);
         }
       } catch (error) {
         console.error("Error fetching product:", error);
@@ -97,6 +107,8 @@ const ProductDetails = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
+    nextArrow: <ProdNextArrow />,
+    prevArrow: <ProdPrevArrow />,
   };
 
   return (
@@ -106,11 +118,12 @@ const ProductDetails = () => {
         <div className="w-96 p-3 mx-auto">
           {selectedSku?.imgUrl && (
             <img
-              className="w-full object-cover rounded-lg mx-auto"
+              className="w-full max-h-96 object-cover object-center rounded-lg mx-auto"
               src={selectedSku?.imgUrl}
               alt={product?.title}
             />
           )}
+          <p className="text-center mt-2">{selectedSku?.nameTrans}</p>
 
           <Slider {...settings} className="my-3">
             {product?.imgList?.map((img, index) => (
@@ -135,6 +148,10 @@ const ProductDetails = () => {
             <button className="w-full rounded-lg text-xl font-semibold bg-gray-100 hover:bg-gray-300 duration-200 px-4 py-2 transition text-black">
               Price: ¥ {selectedSku?.price || product?.price}
             </button>
+            {/* Stock */}
+            <button className="w-full text-white rounded-lg text-xl font-semibold bg-gray-500 duration-200 px-4 py-2 ">
+              Stock: {selectedSku?.stock}
+            </button>
             {/* Description */}
             <button
               onClick={() => setShowDescription(true)}
@@ -147,19 +164,21 @@ const ProductDetails = () => {
           {/* Classification */}
           <h2 className="font-bold text-sm">Classification: </h2>
           <div className="flex flex-wrap gap-2 my-3">
-            {product?.skus?.map((sku) => (
-              <img
-                key={sku.skuID}
-                className={`w-10 object-cover cursor-pointer border-2 ${
-                  selectedSku?.skuID === sku.skuID
-                    ? "border-blue-500"
-                    : "border-transparent"
-                }`}
-                src={sku.imgUrl}
-                alt={sku.nameTrans}
-                onClick={() => setSelectedSku(sku)}
-              />
-            ))}
+            {product?.skus
+              ?.filter((sku) => sku.imgUrl?.trim())
+              .map((sku) => (
+                <img
+                  key={sku.skuID}
+                  className={`w-10 object-cover cursor-pointer border-2 ${
+                    selectedSku?.skuID === sku.skuID
+                      ? "border-blue-500"
+                      : "border-transparent"
+                  }`}
+                  src={sku.imgUrl}
+                  alt={sku.nameTrans}
+                  onClick={() => setSelectedSku(sku)}
+                />
+              ))}
           </div>
 
           {/* Action Buttons */}
@@ -198,15 +217,17 @@ const ProductDetails = () => {
         <p className="text-center py-10 text-xl">No QC photos available</p>
       )}
       {showDescription && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-          <div className="pt-12 max-h-[720px] overflow-scroll bg-white p-5 rounded-lg max-w-2xl w-full relative">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className=" py-10 max-h-[720px] overflow-y-scroll bg-white p-5 rounded-lg max-w-2xl w-full relative">
             <button
-              className="absolute top-2 right-2 text-xl"
+              className="absolute top-2 right-2 text-xl text-red-500"
               onClick={() => setShowDescription(false)}
             >
               <X />
             </button>
-            <h2 className="text-lg font-semibold mb-3">Product Details</h2>
+            <h2 className="text-xl font-semibold mb-5 text-btn">
+              Product Details
+            </h2>
             {Object.entries(product?.propsTrans || {}).map(([key, value]) => (
               <p key={key} className="mb-1">
                 <strong>{key}:</strong> {String(value)}
