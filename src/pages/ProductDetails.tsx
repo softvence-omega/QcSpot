@@ -6,12 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
 import Slider from "react-slick";
-import {
-  NextArrow,
-  PrevArrow,
-  ProdNextArrow,
-  ProdPrevArrow,
-} from "../components/SlickComponents";
+import { ProdNextArrow, ProdPrevArrow } from "../components/SlickComponents";
 
 interface Sku {
   skuID: string;
@@ -129,7 +124,7 @@ const ProductDetails = () => {
             {product?.imgList?.map((img, index) => (
               <img
                 key={index}
-                className="w-16 object-cover px-2 rounded-lg cursor-grab"
+                className="w-16 h-16 object-cover object-center px-2 rounded-lg cursor-grab"
                 src={img}
                 alt="IMAGE"
               />
@@ -217,8 +212,14 @@ const ProductDetails = () => {
         <p className="text-center py-10 text-xl">No QC photos available</p>
       )}
       {showDescription && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className=" py-10 max-h-[720px] overflow-y-scroll bg-white p-5 rounded-lg max-w-2xl w-full relative">
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+          onClick={() => setShowDescription(false)}
+        >
+          <div
+            className=" py-10 max-h-[720px] overflow-y-scroll bg-white p-5 rounded-lg max-w-2xl w-full relative"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
               className="absolute top-2 right-2 text-xl text-red-500"
               onClick={() => setShowDescription(false)}

@@ -1,43 +1,31 @@
 import { X } from "lucide-react";
 import { useState, useEffect } from "react";
+import Oopbuy from "../assets/Oopbuy.webp";
+import ACBuy from "../assets/Acbuy.webp";
+import Ootdbuy from "../assets/Ootdbuy.webp";
+import Lovegobuy from "../assets/Lovegobuy.jpeg";
+import Hippoobuy from "../assets/Hippoobuy.jpeg";
+import CSSBuy from "../assets/Cssbuy.jpeg";
+import CNFans from "../assets/Cnfans.webp";
+import Loongbuy from "../assets/Loongbuy.webp";
+import Mulebuy from "../assets/Mulebuy.jpeg";
+import Joyabuy from "../assets/Joyabuy.webp";
+import Eastmallbuy from "../assets/Eastmallbuy.webp";
+import Superbuy from "../assets/Superbuy.webp";
 
 const platforms = [
-  {
-    name: "Oopbuy",
-    img: "https://pub-5251f9ba66d04bfdbeac0b196bdfd61d.r2.dev/thumbnails/affiliate-platforms/Oopbuy",
-  },
-  {
-    name: "ACBuy",
-    img: "https://pub-5251f9ba66d04bfdbeac0b196bdfd61d.r2.dev/thumbnails/affiliate-platforms/Acbuy",
-  },
-  {
-    name: "Ootdbuy",
-    img: "https://pub-5251f9ba66d04bfdbeac0b196bdfd61d.r2.dev/thumbnails/affiliate-platforms/Ootdbuy",
-  },
-  {
-    name: "Lovegobuy",
-    img: "https://image.finds.ly/thumbnails/affiliate-platforms/Lovegobuy",
-  },
-  {
-    name: "Kakobuy",
-    img: "https://pub-5251f9ba66d04bfdbeac0b196bdfd61d.r2.dev/thumbnails/affiliate-platforms/Kakobuy",
-  },
-  {
-    name: "CSSBuy",
-    img: "https://image.finds.ly/thumbnails/affiliate-platforms/Cssbuy",
-  },
-  {
-    name: "CNFans",
-    img: "https://pub-5251f9ba66d04bfdbeac0b196bdfd61d.r2.dev/thumbnails/affiliate-platforms/Cnfans",
-  },
-  {
-    name: "Loongbuy",
-    img: "https://pub-5251f9ba66d04bfdbeac0b196bdfd61d.r2.dev/thumbnails/affiliate-platforms/Loongbuy",
-  },
-  {
-    name: "Mulebuy",
-    img: "https://image.finds.ly/thumbnails/affiliate-platforms/Mulebuy",
-  },
+  { name: "Oopbuy", img: Oopbuy },
+  { name: "ACBuy", img: ACBuy },
+  { name: "Ootdbuy", img: Ootdbuy },
+  { name: "Lovegobuy", img: Lovegobuy },
+  { name: "Hippoobuy", img: Hippoobuy },
+  { name: "CSSBuy", img: CSSBuy },
+  { name: "CNFans", img: CNFans },
+  { name: "Loongbuy", img: Loongbuy },
+  { name: "Mulebuy", img: Mulebuy },
+  { name: "Joyabuy", img: Joyabuy },
+  { name: "Eastmallbuy", img: Eastmallbuy },
+  { name: "Superbuy", img: Superbuy },
 ];
 
 const PlatformSwitcher = () => {
@@ -75,8 +63,14 @@ const PlatformSwitcher = () => {
       </button>
 
       {isOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-md w-full relative">
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+          onClick={() => setIsOpen(false)}
+        >
+          <div
+            className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-md w-full relative"
+            onClick={(e) => e.stopPropagation()}
+          >
             <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
               Select a Platform
             </h2>
@@ -106,7 +100,7 @@ const PlatformSwitcher = () => {
               ))}
             </div>
             <button
-              className="absolute top-2 right-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+              className="text-red-500 absolute top-2 right-2 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
               onClick={() => setIsOpen(false)}
             >
               <X />
