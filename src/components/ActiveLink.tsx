@@ -12,8 +12,8 @@ const ActiveLink = ({ to, children }: IActiveLink) => {
       to={to}
       className={({ isActive }) =>
         isActive
-          ? "text-primary text-lg py-2 inline-block"
-          : "hover:underline text-lg hover:text-primary duration-300 py-2 inline-block"
+          ? "bg-green-600 w-full px-3 rounded text-lg py-2 inline-block"
+          : "hover:underline w-full text-lg duration-300 py-2 inline-block"
       }
     >
       {children}

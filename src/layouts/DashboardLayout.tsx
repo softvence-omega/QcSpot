@@ -1,8 +1,7 @@
 import ActiveLink from "../components/ActiveLink";
-import { FaHome } from "react-icons/fa";
+import { FaCartPlus, FaHome } from "react-icons/fa";
 import { Link, Outlet } from "react-router-dom";
-import { IoMdPerson, IoMdPhotos } from "react-icons/io";
-import { GrGallery } from "react-icons/gr";
+import { IoIosAddCircle, IoMdPerson } from "react-icons/io";
 import { RiLockPasswordFill } from "react-icons/ri";
 import logo from "../assets/QcSpot-Logo-design-2.png";
 
@@ -47,14 +46,14 @@ const DashboardLayout = () => {
           <li>
             <ActiveLink to="/dashboard/add-a-product">
               <div className="flex items-center gap-2 text-sm sm:text-base duration-300">
-                <IoMdPhotos /> Add a Product
+                <IoIosAddCircle /> Add a Product
               </div>
             </ActiveLink>
           </li>
           <li>
             <ActiveLink to="/dashboard/manage-products">
               <div className="flex items-center gap-2 text-sm sm:text-base duration-300">
-                <GrGallery /> Manage Products
+                <FaCartPlus /> Manage Products
               </div>
             </ActiveLink>
           </li>

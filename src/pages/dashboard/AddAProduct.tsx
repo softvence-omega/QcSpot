@@ -4,10 +4,9 @@ import { useForm } from "react-hook-form";
 type ProductForm = {
   name: string;
   price: number;
-  thumbnailImg: {
-    main: string;
-    hover: string;
-  };
+  mainImage: FileList;
+  hoverImage: FileList;
+  productImages: FileList;
   weight: number;
   shippingTime: number;
   dimensions: string;
@@ -29,45 +28,82 @@ const AddProduct = () => {
     setClasses([...classes, { key: "", value: "" }]);
   };
 
-  const onSubmit = (data: ProductForm) => {
-    const productDetails = {
-      product: {
-        name: data?.name,
-        price: data?.price,
-        thumbnailImg: [data?.thumbnailImg?.main, data?.thumbnailImg?.hover],
-        weight: data?.price,
-        shippingTime: data?.shippingTime,
-        dimensions: data?.dimensions,
-        storeName: data?.storeName,
-        productCode: data?.productCode,
-      },
-      variant: {
-        belt: "synthetic",
-        size: "xl",
-        depth: "50m",
-        color: "black",
-        forHuman: false,
-        black: "yellow",
-        quantity: data?.quantity,
-        photos: [
-          "https://example.com/images/smartwatch_black1.jpg",
-          "https://example.com/images/smartwatch_black2.jpg",
-        ],
-      },
+  const onSubmit = async (data: ProductForm) => {
+    const formData = new FormData();
+
+    // Append product details
+    formData.append("name", data.name);
+    formData.append("price", data.price.toString());
+    formData.append("weight", data.weight.toString());
+    formData.append("shippingTime", data.shippingTime.toString());
+    formData.append("dimensions", data.dimensions);
+    formData.append("storeName", data.storeName);
+    formData.append("productCode", data.productCode);
+    formData.append("quantity", data.quantity.toString());
+
+    // Append images
+    if (data.mainImage && data.mainImage[0]) {
+      formData.append("thumbnailImg", data.mainImage[0]);
+    }
+    if (data.hoverImage && data.hoverImage[0]) {
+      formData.append("thumbnailImg", data.hoverImage[0]);
+    }
+
+    // Append additional product images (up to 10)
+    if (data.productImages) {
+      for (let i = 0; i < Math.min(data.productImages.length, 10); i++) {
+        formData.append("photos", data.productImages[i]);
+      }
+    }
+
+    // Append variant data
+    const variantData: Record<string, string> = {
+      belt: "synthetic",
+      size: "xl",
+      depth: "50m",
+      color: "black",
+      forHuman: "false",
+      black: "yellow",
     };
 
-    console.log(productDetails);
+    // Add dynamic variant fields from classes
+    classes.forEach((item) => {
+      if (item.key && item.value) {
+        variantData[item.key] = item.value;
+      }
+    });
 
-    console.log("Product Data:", data);
-    console.log(classes);
-    alert("Product added successfully!");
-    // reset();
+    formData.append("variant", JSON.stringify(variantData));
+
+    try {
+      const response = await fetch("your-backend-endpoint", {
+        method: "POST",
+        body: formData,
+        // Don't set Content-Type header - the browser will set it automatically with the correct boundary
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const result = await response.json();
+      console.log("Success:", result);
+      alert("Product added successfully!");
+      reset();
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Error submitting form");
+    }
   };
 
   return (
     <div className="max-w-5xl mx-auto pt-40 md:pt-24 pb-10 px-4">
       <h2 className="text-2xl font-semibold text-center mb-4">Add a Product</h2>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="space-y-4"
+        encType="multipart/form-data"
+      >
         {/* Product Details */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Product Name */}
@@ -102,42 +138,38 @@ const AddProduct = () => {
             )}
           </div>
 
-          {/* Main Image URL */}
+          {/* Main Image Upload */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Main Image URL
+              Main Image
             </label>
             <input
-              type="text"
-              {...register("thumbnailImg.main", {
-                required: "Main image URL is required",
-              })}
-              placeholder="e.g.: https://example.com/images/smartwatch1.jpg"
+              type="file"
+              accept="image/*"
+              {...register("mainImage", { required: "Main image is required" })}
               className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500"
             />
-            {errors.thumbnailImg?.main && (
-              <p className="text-red-500 text-sm">
-                {errors.thumbnailImg.main.message}
-              </p>
+            {errors.mainImage && (
+              <p className="text-red-500 text-sm">{errors.mainImage.message}</p>
             )}
           </div>
 
-          {/* Hover Image URL */}
+          {/* Hover Image Upload */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Hover Image URL
+              Hover Image
             </label>
             <input
-              type="text"
-              {...register("thumbnailImg.hover", {
-                required: "Hover image URL is required",
+              type="file"
+              accept="image/*"
+              {...register("hoverImage", {
+                required: "Hover image is required",
               })}
-              placeholder="e.g.: https://example.com/images/smartwatch2.jpg"
               className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500"
             />
-            {errors.thumbnailImg?.hover && (
+            {errors.hoverImage && (
               <p className="text-red-500 text-sm">
-                {errors.thumbnailImg.hover.message}
+                {errors.hoverImage.message}
               </p>
             )}
           </div>
@@ -304,17 +336,31 @@ const AddProduct = () => {
           {/* quantity */}
           <div className="w-60 mx-auto">
             <label className="block text-sm font-medium text-gray-700">
-              Store Name
+              Quantity
             </label>
             <input
               type="text"
               {...register("quantity", { required: "Quantity is required" })}
-              placeholder="e.g.: Taobao"
+              placeholder="e.g.: 20"
               className="mt-1 p-2 border rounded outline-none focus:border-green-500"
             />
             {errors.quantity && (
               <p className="text-red-500 text-sm">{errors.quantity.message}</p>
             )}
+          </div>
+
+          {/* Additional Product Images */}
+          <div className="mt-4">
+            <label className="block text-sm font-medium text-gray-700">
+              Additional Product Images (Max 10)
+            </label>
+            <input
+              type="file"
+              multiple
+              accept="image/*"
+              {...register("productImages")}
+              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500"
+            />
           </div>
         </div>
 
