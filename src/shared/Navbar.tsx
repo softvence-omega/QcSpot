@@ -1,4 +1,4 @@
-import { Search } from "lucide-react";
+import { LayoutDashboard, Search, SquarePlus } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import ThemeSwitcher from "../components/ThemeSwitcher";
 import { useState } from "react";
@@ -63,7 +63,20 @@ const Navbar = () => {
 
         {/* Right Section */}
         <div className="flex items-center space-x-6">
-          <PlatformSwitcher />
+          <div className="relative group">
+            <Link to="/dashboard/admin-home">
+              <SquarePlus className="cursor-pointer" />
+            </Link>
+            <span className="absolute z-30 left-1/2 top-full mt-2 mb-2 w-max -translate-x-1/2 scale-0 transition-all rounded bg-btn px-1 text-xs text-white group-hover:scale-100">
+              Add a Product
+            </span>
+          </div>
+          <div className="relative group">
+            <PlatformSwitcher />
+            <span className="absolute z-30 left-1/2 top-full mt-1 mb-2 w-max -translate-x-1/2 scale-0 transition-all rounded bg-btn px-1 text-xs text-white group-hover:scale-100">
+              Select Platforms
+            </span>
+          </div>
           <ThemeSwitcher />
           <Link
             to="/login"

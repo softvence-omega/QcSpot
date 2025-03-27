@@ -1,22 +1,39 @@
-import React, { useState } from "react";
+import { FormEvent, useState } from "react";
 import { Mail, Lock, Loader2 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import axiosSecure from "../hooks/useAxios";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const handleEmailLogin = async (e: React.FormEvent) => {
+  const handleEmailLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
 
+    const form = e.target as HTMLFormElement;
+    const formValue = {
+      email: form.email.value,
+      password: form.password.value,
+    };
+
     try {
-      // Add your authentication logic here
-      toast.success("Logged in successfully!");
+      const res = await axiosSecure.post("/auth/login", formValue);
+      if (res.status === 200) {
+        toast.success("Logged in successfully!");
+        navigate("/");
+      } else toast.error("Unexpected response from server.");
     } catch (error: any) {
-      toast.error(error.message || "Failed to login");
+      if (error.response) {
+        toast.error(
+          error.response.data?.message || "Invalid username or password"
+        );
+      } else {
+        toast.error("Failed to login. Please try again.");
+      }
     } finally {
       setLoading(false);
     }
@@ -31,7 +48,7 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gray-50 dark:bg-dark transition-colors">
+    <div className="min-h-[calc(100vh-120px)] flex items-center justify-center p-4 bg-gray-50 dark:bg-dark transition-colors">
       <div className="max-w-md w-full space-y-8 bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
         <div className="text-center">
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900 dark:text-white">
