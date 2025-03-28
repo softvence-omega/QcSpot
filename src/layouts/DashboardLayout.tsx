@@ -7,12 +7,12 @@ import logo from "../assets/QcSpot-Logo-design-2.png";
 
 const DashboardLayout = () => {
   return (
-    <div className="drawer lg:drawer-open">
+    <div className="drawer lg:drawer-open min-h-screen bg-gray-50 dark:bg-dark text-black dark:text-white transition-colors duration-200">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content m-2 lg:m-0">
         <label
           htmlFor="my-drawer-2"
-          className="fixed text-xl sm:text-2xl md:text-3xl text-btn cursor-pointer rounded-full btn-primary drawer-button lg:hidden"
+          className="fixed text-xl sm:text-2xl md:text-3xl text-btn cursor-pointer rounded-full drawer-button lg:hidden"
         >
           <span>☰</span>
         </label>

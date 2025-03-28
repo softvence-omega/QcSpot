@@ -3,12 +3,14 @@ import { Mail, Lock, Loader2 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import axiosSecure from "../hooks/useAxios";
+import { useAuth } from "../context/AuthContext";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { setUser } = useAuth();
 
   const handleEmailLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -23,6 +25,10 @@ function Login() {
     try {
       const res = await axiosSecure.post("/auth/login", formValue);
       if (res.status === 200) {
+        const token = res.data?.approvalToken;
+        if (token) localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(res.data?.user));
+        setUser(res.data?.user);
         toast.success("Logged in successfully!");
         navigate("/");
       } else toast.error("Unexpected response from server.");
@@ -48,7 +54,7 @@ function Login() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-120px)] flex items-center justify-center p-4 bg-gray-50 dark:bg-dark transition-colors">
+    <div className="min-h-screen  flex items-center justify-center p-4 bg-gray-50 dark:bg-dark transition-colors">
       <div className="max-w-md w-full space-y-8 bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
         <div className="text-center">
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900 dark:text-white">

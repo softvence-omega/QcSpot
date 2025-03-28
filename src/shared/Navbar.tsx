@@ -1,4 +1,4 @@
-import { LayoutDashboard, Search, SquarePlus } from "lucide-react";
+import { LayoutDashboard, Search } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import ThemeSwitcher from "../components/ThemeSwitcher";
 import { useState } from "react";
@@ -7,10 +7,14 @@ import logo from "../assets/QcSpot-Logo-design-1.png";
 import logo_dark from "../assets/QcSpot-Logo-design-2.png";
 import { useTheme } from "../context/ThemeContext";
 import PlatformSwitcher from "../components/PlatformSwitcher";
+import { useAuth } from "../context/AuthContext";
+import { PiSignOutBold } from "react-icons/pi";
 
 const Navbar = () => {
   const [qcSearchInput, setQcSearchInput] = useState("");
   const { theme } = useTheme();
+  const { user, logout } = useAuth();
+  console.log(user);
 
   const navigate = useNavigate();
   const searchHandler = () => {
@@ -63,14 +67,16 @@ const Navbar = () => {
 
         {/* Right Section */}
         <div className="flex items-center space-x-6">
-          <div className="relative group">
-            <Link to="/dashboard/admin-home">
-              <SquarePlus className="cursor-pointer" />
-            </Link>
-            <span className="absolute z-30 left-1/2 top-full mt-2 mb-2 w-max -translate-x-1/2 scale-0 transition-all rounded bg-btn px-1 text-xs text-white group-hover:scale-100">
-              Add a Product
-            </span>
-          </div>
+          {user && user?.role == "admin" && (
+            <div className="relative group">
+              <Link to="/dashboard/admin-home">
+                <LayoutDashboard className="cursor-pointer" />
+              </Link>
+              <span className="absolute z-30 left-1/2 top-full mt-2 mb-2 w-max -translate-x-1/2 scale-0 transition-all rounded bg-btn px-1 text-xs text-white group-hover:scale-100">
+                Dashboard
+              </span>
+            </div>
+          )}
           <div className="relative group">
             <PlatformSwitcher />
             <span className="absolute z-30 left-1/2 top-full mt-1 mb-2 w-max -translate-x-1/2 scale-0 transition-all rounded bg-btn px-1 text-xs text-white group-hover:scale-100">
@@ -78,13 +84,25 @@ const Navbar = () => {
             </span>
           </div>
           <ThemeSwitcher />
-          <Link
-            to="/login"
-            className="bg-btn text-white px-6 py-2 rounded-md hover:bg-green-600 
+          {!user ? (
+            <Link
+              to="/login"
+              className="bg-btn text-white px-6 py-2 rounded-md hover:bg-green-600 
                      transition-colors duration-200 font-medium"
-          >
-            Login / Signup
-          </Link>
+            >
+              Login / Signup
+            </Link>
+          ) : (
+            <button
+              onClick={logout}
+              className="relative group text-red-500 hover:text-red-800 duration-200 font-medium text-xl"
+            >
+              <PiSignOutBold />
+              <span className="absolute z-30 left-1/2 top-full mt-1 mb-2 w-max -translate-x-1/2 scale-0 transition-all rounded bg-btn px-1 text-xs text-white group-hover:scale-100">
+                Logout
+              </span>
+            </button>
+          )}
         </div>
       </nav>
 

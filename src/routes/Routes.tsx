@@ -10,7 +10,7 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import AdminHome from "../pages/dashboard/AdminHome";
 import ManageProducts from "../pages/dashboard/ManageProducts";
 import ChangePassword from "../pages/dashboard/ChangePassword";
-import Users from "../pages/dashboard/users";
+import Users from "../pages/dashboard/Users";
 
 const router = createBrowserRouter([
   {
@@ -19,8 +19,6 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { path: "/", element: <HomePage /> },
-      { path: "register", element: <RegisterPage /> },
-      { path: "login", element: <LoginPage /> },
       { path: "/product/:shopType/:id", element: <ProductDetails /> },
     ],
   },
@@ -36,6 +34,8 @@ const router = createBrowserRouter([
       { path: "change-password", element: <ChangePassword /> },
     ],
   },
+  { path: "register", element: <RegisterPage /> },
+  { path: "login", element: <LoginPage /> },
 ]);
 
 export default router;

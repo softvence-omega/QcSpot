@@ -8,7 +8,7 @@ export const NextArrow = (props: any) => {
       onClick={onClick}
       className="absolute right-2 top-1/2 transform -translate-y-1/2 z-10"
     >
-      <FiArrowRight className="size-8 rounded-full border-2 text-primary dark:text-black border-primary p-1 bg-white shadow-md hover:bg-gray-100 duration-300" />
+      <FiArrowRight className="size-8 rounded-full border-2  dark:text-black p-1 bg-white shadow-md hover:bg-gray-100 duration-300" />
     </button>
   );
 };
@@ -20,7 +20,7 @@ export const PrevArrow = (props: any) => {
       onClick={onClick}
       className="absolute left-2 top-1/2 transform -translate-y-1/2 z-10"
     >
-      <FiArrowLeft className="size-8 rounded-full border-2 text-primary dark:text-black border-primary p-1 bg-white shadow-md hover:bg-gray-100 duration-300" />
+      <FiArrowLeft className="size-8 rounded-full border-2  dark:text-black p-1 bg-white shadow-md hover:bg-gray-100 duration-300" />
     </button>
   );
 };
