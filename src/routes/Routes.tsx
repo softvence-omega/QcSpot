@@ -11,6 +11,7 @@ import AdminHome from "../pages/dashboard/AdminHome";
 import ManageProducts from "../pages/dashboard/ManageProducts";
 import ChangePassword from "../pages/dashboard/ChangePassword";
 import Users from "../pages/dashboard/Users";
+import ManageProductsDetails from "../pages/dashboard/ManageProductsDetails";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
       { path: "admin-home", element: <AdminHome /> },
       { path: "add-a-product", element: <AddAProduct /> },
       { path: "manage-products", element: <ManageProducts /> },
+      { path: "manage-products/:id", element: <ManageProductsDetails /> },
       { path: "users", element: <Users /> },
       { path: "change-password", element: <ChangePassword /> },
     ],

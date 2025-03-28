@@ -471,7 +471,7 @@ const AddProduct = () => {
                 <input
                   type="text"
                   placeholder="Key (e.g. color, size)"
-                  className="w-60 border p-2 rounded-md focus:outline-none focus:border-btn dark:bg-black"
+                  className="w-40 sm:w-60 border p-2 rounded-md focus:outline-none focus:border-btn dark:bg-black"
                   value={singleClass.key}
                   onChange={(e) => {
                     const updatedClasses = [...varient];
@@ -482,7 +482,7 @@ const AddProduct = () => {
                 <input
                   type="text"
                   placeholder="Value (e.g. black, xl)"
-                  className="w-60 border p-2 rounded-md focus:outline-none focus:border-btn dark:bg-black"
+                  className="w-40 sm:w-60 border p-2 rounded-md focus:outline-none focus:border-btn dark:bg-black"
                   value={singleClass.value}
                   onChange={(e) => {
                     const updatedClasses = [...varient];
