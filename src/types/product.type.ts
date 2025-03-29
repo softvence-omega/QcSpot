@@ -19,3 +19,25 @@ export type TQualityCheck = {
   createdAt: string;
   updatedAt: string;
 };
+
+// src/types.ts
+export type ProductForm = {
+  name: string;
+  price: number;
+  weight: number;
+  shippingTime: number;
+  dimensions: string;
+  storeName: "taobao" | "weidian" | "1688";
+  productCode: string;
+  quantity: number;
+};
+
+export type ProductVariant = {
+  key: string;
+  value: string;
+};
+
+export type ProductImage = {
+  file: File;
+  preview: string;
+};

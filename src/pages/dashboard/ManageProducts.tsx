@@ -1,6 +1,6 @@
-import { Loader2 } from "lucide-react";
 import useProduct from "../../hooks/useProducts";
 import ManageProductCard from "../../sections/dashboard/manageProducts/ManageProductCard";
+import Loader from "../../components/Loader";
 
 export interface IProduct {
   _id: string;
@@ -19,21 +19,15 @@ export interface IProduct {
   searchField: string[];
   thumbnailImg: string[];
   variants: string[];
-  createdAt: string; // ISO date string
-  updatedAt: string; // ISO date string
-  lastUpdatedAt: number; // Unix timestamp
+  createdAt: string;
+  updatedAt: string;
+  lastUpdatedAt: number;
   __v: number;
 }
 
 const ManageProducts = () => {
   const { productData, productLoading, productRefetch } = useProduct();
-
-  if (productLoading)
-    return (
-      <div className="flex justify-center items-center py-40 text-4xl">
-        <Loader2 className="w-20 h-20 animate-spin" />
-      </div>
-    );
+  if (productLoading) return <Loader />;
 
   return (
     <div className="max-w-5xl mx-auto py-20 md:pt-24 px-8 lg:px-4">

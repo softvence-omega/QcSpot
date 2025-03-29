@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
 import Slider from "react-slick";
 import { ProdNextArrow, ProdPrevArrow } from "../components/SlickComponents";
+import Loader from "../components/Loader";
 
 interface Sku {
   skuID: string;
@@ -83,12 +84,7 @@ const ProductDetails = () => {
     }
   }, [id]);
 
-  if (productLoading)
-    return (
-      <div className="flex justify-center items-center py-40 text-4xl">
-        <Loader2 className="w-20 h-20 animate-spin" />
-      </div>
-    );
+  if (productLoading) return <Loader />;
 
   if (!product)
     return <div className="text-center py-10 text-4xl">Product not found.</div>;

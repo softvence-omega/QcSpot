@@ -59,7 +59,18 @@ const ManageProductCard: React.FC<ManageProductCardProps> = ({
   };
 
   return (
-    <div className="w-[300px] rounded-lg shadow-md dark:shadow-shadow">
+    <div className="relative w-[300px] rounded-lg shadow-md dark:shadow-shadow">
+      <p className="absolute top-3 right-3">
+        {onTrend ? (
+          <button className="bg-green-200 rounded text-xs py-1 px-2 cursor-pointer">
+            Trending
+          </button>
+        ) : (
+          <button className="bg-yellow-200 rounded text-xs py-1 px-2 cursor-pointer">
+            Mark as Trending
+          </button>
+        )}
+      </p>
       <img
         className="w-full h-[300px] object-cover object-center rounded-t-lg"
         src={thumbnailImg[0]}

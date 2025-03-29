@@ -53,7 +53,7 @@ const Navbar = () => {
               placeholder="Enter product URL for QC search"
               className="w-full px-4 py-2 rounded-lg border border-r-0 border-gray-300 dark:border-gray-600 
                        focus:outline-none focus:ring-1 focus:ring-btn focus:border-transparent
-                       dark:bg-black dark:text-white transition-colors"
+                       bg-white dark:bg-black dark:text-white transition-colors"
             />
             <button
               onClick={searchHandler}
@@ -95,10 +95,10 @@ const Navbar = () => {
           ) : (
             <button
               onClick={logout}
-              className="relative group text-red-500 hover:text-red-800 duration-200 font-medium text-xl"
+              className="relative group text-red-500 hover:text-red-800 duration-200 font-medium text-2xl"
             >
               <PiSignOutBold />
-              <span className="absolute z-30 left-1/2 top-full mt-1 mb-2 w-max -translate-x-1/2 scale-0 transition-all rounded bg-btn px-1 text-xs text-white group-hover:scale-100">
+              <span className="absolute mt-2 z-30 left-1/2 top-full mb-2 w-max -translate-x-1/2 scale-0 transition-all rounded bg-btn px-1 text-xs text-white group-hover:scale-100">
                 Logout
               </span>
             </button>
@@ -116,7 +116,7 @@ const Navbar = () => {
             placeholder="Enter product URL for QC search"
             className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 
                      focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent
-                     dark:bg-black dark:text-white transition-colors"
+                     bg-white dark:bg-black dark:text-white transition-colors"
           />
           <button
             onClick={searchHandler}

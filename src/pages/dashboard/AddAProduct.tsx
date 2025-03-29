@@ -1,19 +1,18 @@
+// src/components/AddProduct.tsx
 import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
-import { X } from "lucide-react";
+import { Loader2, X } from "lucide-react";
 import toast from "react-hot-toast";
 import axiosSecure from "../../hooks/useAxios";
-
-type ProductForm = {
-  name: string;
-  price: number;
-  weight: number;
-  shippingTime: number;
-  dimensions: string;
-  storeName: "taobao" | "weidian" | "1688";
-  productCode: string;
-  quantity: number;
-};
+import { ProductForm, ProductVariant, ProductImage } from "../../types";
+import {
+  handleImageChange,
+  handleMultipleImagesChange,
+  removeImage,
+  removeProductImage,
+  handleIncreaseInputField,
+} from "../../components/ProductFormUtils";
+import { AxiosError } from "axios";
 
 const AddProduct = () => {
   const {
@@ -23,192 +22,123 @@ const AddProduct = () => {
     formState: { errors },
   } = useForm<ProductForm>();
 
-  const [varient, setVarient] = useState([{ key: "", value: "" }]);
+  const [varient, setVarient] = useState<ProductVariant[]>([
+    { key: "", value: "" },
+  ]);
   const [mainImagePreview, setMainImagePreview] = useState<string | null>(null);
   const [hoverImagePreview, setHoverImagePreview] = useState<string | null>(
     null
   );
-  const [, setProductImagesPreview] = useState<string[]>([]);
-  const [productImages, setProductImages] = useState<
-    {
-      file: File;
-      preview: string;
-    }[]
-  >([]);
-
+  const [productImages, setProductImages] = useState<ProductImage[]>([]);
+  const [loading, setLoading] = useState(false);
   const mainImageRef = useRef<HTMLInputElement | null>(null);
   const hoverImageRef = useRef<HTMLInputElement | null>(null);
   const productImagesRef = useRef<HTMLInputElement | null>(null);
 
-  const handleIncreaseInputField = () => {
-    setVarient([...varient, { key: "", value: "" }]);
+  const handleMainImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    handleImageChange(e, setMainImagePreview, mainImageRef);
   };
 
-  const handleImageChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    setPreview: (value: string | null) => void,
-    ref: React.RefObject<HTMLInputElement | null>
-  ) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    if (!file.type.startsWith("image/")) {
-      toast.error("Please select an image file");
-      if (ref.current) ref.current.value = "";
-      return;
-    }
-
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setPreview(reader.result as string);
-    };
-    reader.readAsDataURL(file);
+  const handleHoverImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    handleImageChange(e, setHoverImagePreview, hoverImageRef);
   };
 
-  const handleMultipleImagesChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const files = e.target.files;
-    if (!files) return;
-
-    const newFiles = Array.from(files).filter((file) =>
-      file.type.startsWith("image/")
+  const handleMultipleImages = (e: React.ChangeEvent<HTMLInputElement>) => {
+    handleMultipleImagesChange(
+      e,
+      productImages,
+      setProductImages,
+      productImagesRef
     );
-
-    if (newFiles.length !== files.length) {
-      alert("Some files were not images and were not selected");
-    }
-
-    const remainingSlots = 10 - productImages.length;
-    if (remainingSlots <= 0) {
-      alert("You've reached the maximum of 10 images");
-      return;
-    }
-
-    const filesToAdd = newFiles.slice(0, remainingSlots);
-    if (filesToAdd.length < newFiles.length) {
-      alert(`Only ${remainingSlots} more images can be added (max 10 total)`);
-    }
-
-    // Create array of new files with previews
-    const newFilesWithPreviews = filesToAdd.map((file) => ({
-      file,
-      preview: URL.createObjectURL(file), // Create preview URL
-    }));
-
-    setProductImages((prev) => [...prev, ...newFilesWithPreviews]);
-
-    // Reset input to allow selecting same files again
-    if (productImagesRef.current) {
-      productImagesRef.current.value = "";
-    }
   };
 
-  const removeImage = (
-    setPreview: (value: string | null) => void,
-    ref: React.RefObject<HTMLInputElement | null>
-  ) => {
-    setPreview(null);
-    if (ref.current) ref.current.value = "";
+  const removeMainImage = () => {
+    removeImage(setMainImagePreview, mainImageRef);
   };
 
-  const removeProductImage = (index: number) => {
-    setProductImages((prev) => {
-      // Revoke the object URL to prevent memory leaks
-      URL.revokeObjectURL(prev[index].preview);
-      return prev.filter((_, i) => i !== index);
-    });
+  const removeHoverImage = () => {
+    removeImage(setHoverImagePreview, hoverImageRef);
   };
 
+  const removeProductImg = (index: number) => {
+    removeProductImage(index, setProductImages);
+  };
+
+  const handleIncrease = () => {
+    handleIncreaseInputField(varient, setVarient);
+  };
+
+  // ------------ Submit Handler -----------------
   const onSubmit = async (data: ProductForm) => {
     const formData = new FormData();
 
-    // Append thumnail (as thumbnailImg)
+    // Append thumbnails
     const thumbnails: File[] = [];
     if (mainImageRef.current?.files?.[0])
       thumbnails.push(mainImageRef.current.files[0]);
     if (hoverImageRef.current?.files?.[0])
       thumbnails.push(hoverImageRef.current.files[0]);
-    thumbnails.forEach((file) => {
-      formData.append("thumbnailImg", file);
-    });
+    thumbnails.forEach((file) => formData.append("thumbnailImg", file));
 
-    // Append additional product images
-    productImages.forEach((image) => {
-      formData.append("photos", image.file);
-    });
+    // Append product images
+    productImages.forEach((image) => formData.append("photos", image.file));
 
-    // Append variant data
-    let variantData: Record<string, string> = {};
-
-    // Add dynamic variant fields from classes
+    // Prepare variant data
+    const variantData: Record<string, string> = {};
     varient.forEach((item) => {
-      if (item.key && item.value) {
-        variantData[item.key] = item.value;
-      }
+      if (item.key && item.value) variantData[item.key] = item.value;
     });
 
     const productInfo = {
       product: {
-        name: data?.name,
-        price: data?.price,
-        weight: data?.weight,
-        shippingTime: data?.shippingTime,
-        dimensions: data?.dimensions,
-        storeName: data?.storeName,
-        productCode: data?.productCode,
+        name: data.name,
+        price: data.price,
+        weight: data.weight,
+        shippingTime: data.shippingTime,
+        dimensions: data.dimensions,
+        storeName: data.storeName,
+        productCode: data.productCode,
       },
       variant: {
         ...variantData,
-        quantity: data?.quantity,
+        quantity: data.quantity,
       },
     };
-    console.log(productInfo);
 
     formData.append("data", JSON.stringify(productInfo));
 
-    // For debugging - log FormData contents
-    console.log("FormData contents:");
-    for (const [key, value] of formData.entries()) {
-      if (value instanceof File) {
-        console.log(key, `File: ${value.name} (${value.size} bytes)`);
-      } else {
-        console.log(key, value);
-      }
-    }
-
     try {
+      setLoading(true);
       const res = await axiosSecure.post("/products/addProduct", formData);
-      console.log(res);
-
-      if (res.status !== 200) {
-        throw new Error("Network response was not ok");
-      }
-
-      const result = await res?.data;
-      console.log("Success:", result);
+      if (res.status !== 200) throw new Error("Network response was not ok");
       toast.success("Product added successfully!");
-
-      // Reset form
-      reset();
-      setMainImagePreview(null);
-      setHoverImagePreview(null);
-      setProductImagesPreview([]);
-      setProductImages([]);
-      setVarient([{ key: "", value: "" }]);
-      if (mainImageRef.current) mainImageRef.current.value = "";
-      if (hoverImageRef.current) hoverImageRef.current.value = "";
-      if (productImagesRef.current) productImagesRef.current.value = "";
-    } catch (error) {
+      resetForm();
+    } catch (error: any) {
       console.error("Error:", error);
+      const errorMessage =
+        error.response?.data?.message || "Failed to add product";
+      toast.error(errorMessage);
+    } finally {
+      setLoading(false);
     }
+  };
+
+  const resetForm = () => {
+    reset();
+    setMainImagePreview(null);
+    setHoverImagePreview(null);
+    setProductImages([]);
+    setVarient([{ key: "", value: "" }]);
+    if (mainImageRef.current) mainImageRef.current.value = "";
+    if (hoverImageRef.current) hoverImageRef.current.value = "";
+    if (productImagesRef.current) productImagesRef.current.value = "";
   };
 
   return (
     <div className="max-w-5xl mx-auto py-20 md:pt-24 px-8 lg:px-4">
       <h2 className="text-2xl font-semibold text-center mb-4">Add a Product</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        {/* ---------------------Top Section: Product Details--------------------- */}
+        {/* Product Details Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Product Name */}
           <div>
@@ -218,7 +148,7 @@ const AddProduct = () => {
             <input
               {...register("name", { required: "Product name is required" })}
               placeholder="e.g.: Shirt X200"
-              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 dark:bg-black"
+              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black"
             />
             {errors.name && (
               <p className="text-red-500 text-sm">{errors.name.message}</p>
@@ -238,14 +168,14 @@ const AddProduct = () => {
                 min: { value: 0, message: "Price must be positive" },
               })}
               placeholder="e.g.: 500.99"
-              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 dark:bg-black"
+              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black"
             />
             {errors.price && (
               <p className="text-red-500 text-sm">{errors.price.message}</p>
             )}
           </div>
 
-          {/* Main Image Upload */}
+          {/* Main Image */}
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
               Main Image <span className="text-red-500">*</span>
@@ -259,7 +189,7 @@ const AddProduct = () => {
                 />
                 <button
                   type="button"
-                  onClick={() => removeImage(setMainImagePreview, mainImageRef)}
+                  onClick={removeMainImage}
                   className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-red-500 flex items-center justify-center text-white"
                 >
                   <X className="size-3" />
@@ -270,22 +200,20 @@ const AddProduct = () => {
               type="file"
               accept="image/*"
               ref={mainImageRef}
-              onChange={(e) =>
-                handleImageChange(e, setMainImagePreview, mainImageRef)
-              }
+              onChange={handleMainImage}
               className="hidden"
               required
             />
             <button
               type="button"
-              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 dark:bg-black"
-              onClick={() => productImagesRef.current?.click()}
+              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black"
+              onClick={() => mainImageRef.current?.click()}
             >
               Add Product Thumbnail
             </button>
           </div>
 
-          {/* Hover Image Upload */}
+          {/* Hover Image */}
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
               Hover Image <span className="text-red-500">*</span>
@@ -299,9 +227,7 @@ const AddProduct = () => {
                 />
                 <button
                   type="button"
-                  onClick={() =>
-                    removeImage(setHoverImagePreview, hoverImageRef)
-                  }
+                  onClick={removeHoverImage}
                   className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-red-500 flex items-center justify-center text-white"
                 >
                   <X className="size-3" />
@@ -312,16 +238,14 @@ const AddProduct = () => {
               type="file"
               accept="image/*"
               ref={hoverImageRef}
-              onChange={(e) =>
-                handleImageChange(e, setHoverImagePreview, hoverImageRef)
-              }
+              onChange={handleHoverImage}
               className="hidden"
               required
             />
             <button
               type="button"
-              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 dark:bg-black"
-              onClick={() => productImagesRef.current?.click()}
+              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black"
+              onClick={() => hoverImageRef.current?.click()}
             >
               Add Thumbnail hover
             </button>
@@ -340,7 +264,7 @@ const AddProduct = () => {
                 min: { value: 0, message: "Weight must be positive" },
               })}
               placeholder="e.g.: 0.3"
-              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 dark:bg-black"
+              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black"
             />
             {errors.weight && (
               <p className="text-red-500 text-sm">{errors.weight.message}</p>
@@ -359,7 +283,7 @@ const AddProduct = () => {
                 min: { value: 1, message: "Minimum 1 day" },
               })}
               placeholder="e.g.: 7"
-              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 dark:bg-black"
+              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black"
             />
             {errors.shippingTime && (
               <p className="text-red-500 text-sm">
@@ -379,7 +303,7 @@ const AddProduct = () => {
                 required: "Dimensions are required",
               })}
               placeholder="e.g.: 4.5x4.5x1 cm"
-              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 dark:bg-black"
+              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black"
             />
             {errors.dimensions && (
               <p className="text-red-500 text-sm">
@@ -389,11 +313,10 @@ const AddProduct = () => {
           </div>
         </div>
 
-        {/* -----------------------Store Name and Product Code-------------------- */}
+        {/* Store Info Section */}
         <h2 className="text-2xl font-semibold text-center pt-10 mb-4">
           Store Name and Product Code
         </h2>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Store Name */}
           <div>
@@ -402,7 +325,7 @@ const AddProduct = () => {
             </label>
             <select
               {...register("storeName", { required: "Store name is required" })}
-              className="w-full mt-1 p-2 border rounded outline-none dark:bg-black"
+              className="w-full mt-1 p-2 border rounded outline-none bg-white dark:bg-black"
             >
               <option value="">Select a store</option>
               <option value="taobao">Taobao</option>
@@ -425,7 +348,7 @@ const AddProduct = () => {
                 required: "Product code is required",
               })}
               placeholder="e.g.: 178963f"
-              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 dark:bg-black"
+              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black"
             />
             {errors.productCode && (
               <p className="text-red-500 text-sm">
@@ -435,7 +358,7 @@ const AddProduct = () => {
           </div>
         </div>
 
-        {/* ----------------------Add a Product varient------------------------ */}
+        {/* Variant Section */}
         <h2 className="text-2xl font-semibold text-center pt-10 mb-4">
           Add a Product Variant
         </h2>
@@ -452,16 +375,17 @@ const AddProduct = () => {
                 min: { value: 1, message: "Minimum quantity is 1" },
               })}
               placeholder="e.g.: 20"
-              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 dark:bg-black"
+              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black"
             />
             {errors.quantity && (
               <p className="text-red-500 text-sm">{errors.quantity.message}</p>
             )}
           </div>
-          {/* Key Value pair */}
+
+          {/* Variant Key-Value Pairs */}
           <div className="flex flex-col gap-3">
             <label className="flex justify-center items-center text-sm font-medium text-gray-700 dark:text-gray-300">
-              Key Value pair
+              Key Value pair <span className="text-red-500 ml-1">*</span>
             </label>
             {varient.map((singleClass, index) => (
               <div
@@ -471,7 +395,7 @@ const AddProduct = () => {
                 <input
                   type="text"
                   placeholder="Key (e.g. color, size)"
-                  className="w-40 sm:w-60 border p-2 rounded-md focus:outline-none focus:border-btn dark:bg-black"
+                  className="w-40 sm:w-60 border p-2 rounded-md focus:outline-none focus:border-btn bg-white dark:bg-black"
                   value={singleClass.key}
                   onChange={(e) => {
                     const updatedClasses = [...varient];
@@ -482,7 +406,7 @@ const AddProduct = () => {
                 <input
                   type="text"
                   placeholder="Value (e.g. black, xl)"
-                  className="w-40 sm:w-60 border p-2 rounded-md focus:outline-none focus:border-btn dark:bg-black"
+                  className="w-40 sm:w-60 border p-2 rounded-md focus:outline-none focus:border-btn bg-white dark:bg-black"
                   value={singleClass.value}
                   onChange={(e) => {
                     const updatedClasses = [...varient];
@@ -506,7 +430,7 @@ const AddProduct = () => {
             <div className="flex justify-center">
               <button
                 type="button"
-                onClick={handleIncreaseInputField}
+                onClick={handleIncrease}
                 className="h-8 w-fit px-5 rounded-lg flex items-center justify-center bg-gray-100 duration-300 dark:text-black border"
               >
                 Add More
@@ -514,7 +438,7 @@ const AddProduct = () => {
             </div>
           </div>
 
-          {/* Additional Product Images */}
+          {/* Additional Images */}
           <div className="mt-6">
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
               Additional Product Images (Max 10)
@@ -530,7 +454,7 @@ const AddProduct = () => {
                     />
                     <button
                       type="button"
-                      onClick={() => removeProductImage(index)}
+                      onClick={() => removeProductImg(index)}
                       className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-red-500 flex items-center justify-center text-white"
                     >
                       <X className="size-3" />
@@ -539,13 +463,12 @@ const AddProduct = () => {
                 ))}
               </div>
             )}
-            <button></button>
             <input
               type="file"
               multiple
               accept="image/*"
               ref={productImagesRef}
-              onChange={handleMultipleImagesChange}
+              onChange={handleMultipleImages}
               className="hidden"
             />
             <button
@@ -561,9 +484,14 @@ const AddProduct = () => {
         {/* Submit Button */}
         <button
           type="submit"
+          disabled={loading}
           className="w-full bg-btn text-white py-2 rounded hover:bg-green-500 transition mt-6"
         >
-          Add Product
+          {loading ? (
+            <Loader2 className="h-5 w-5 animate-spin mx-auto" />
+          ) : (
+            "Add Product"
+          )}
         </button>
       </form>
     </div>

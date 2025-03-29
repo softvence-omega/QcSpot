@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
-    <div className="px-4 py-3">
-      <p className="text-sm text-zinc-600">
+    <div className="max-w-7xl mx-auto px-4 py-3">
+      <p className="text-xs text-zinc-600 text-center">
         <span className="font-bold">Disclaimer:</span> QcSpot is a platform
         designed to assist users in browsing Chinese marketplaces such as
         Taobao, Weidian, 1688, and others, primarily by providing access to "QC
