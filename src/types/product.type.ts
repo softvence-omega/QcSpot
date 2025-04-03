@@ -1,26 +1,28 @@
-export type TProduct = {
-  id: number;
+// Get all products - response structure
+export interface IProduct {
+  _id: string;
   name: string;
-  type: string;
+  productCode: string;
   price: number;
-  thumbnail: string;
+  inStock: number;
+  storeName: string;
+  shippingTime: number;
   weight: number;
-  shipmentTime: number;
-  totalImages: number;
-  views: number;
-  qc: TQualityCheck[];
+  dimensions: string;
+  isDeleted: boolean;
+  onTrend: boolean;
+  totalView: number;
+  totalPhoto: number;
+  searchField: string[];
+  thumbnailImg: string[];
+  variants: string[];
   createdAt: string;
   updatedAt: string;
-};
+  lastUpdatedAt: number;
+  __v: number;
+}
 
-export type TQualityCheck = {
-  name: string;
-  images: string[];
-  createdAt: string;
-  updatedAt: string;
-};
-
-// src/types.ts
+// Add A Product - Body Structure
 export type ProductForm = {
   name: string;
   price: number;

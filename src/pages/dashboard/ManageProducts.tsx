@@ -1,5 +1,5 @@
 import useProduct from "../../hooks/useProducts";
-import ManageProductCard from "../../sections/dashboard/manageProducts/ManageProductCard";
+import ManageProductCard from "../../components/ManageProductCard";
 import Loader from "../../components/Loader";
 
 export interface IProduct {

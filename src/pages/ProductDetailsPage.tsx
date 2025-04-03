@@ -8,6 +8,7 @@ import axios from "axios";
 import Slider from "react-slick";
 import { ProdNextArrow, ProdPrevArrow } from "../components/SlickComponents";
 import Loader from "../components/Loader";
+import Magnifier from "../components/Magnifier";
 
 interface Sku {
   skuID: string;
@@ -29,7 +30,7 @@ interface Product {
   skus: Sku[];
 }
 
-const ProductDetails = () => {
+const ProductDetailsPage = () => {
   const { shopType, id } = useParams<{ shopType: string; id: string }>();
   const [product, setProduct] = useState<Product | null>(null);
   const [qc, setQc] = useState<string[] | null>(null);
@@ -107,13 +108,7 @@ const ProductDetails = () => {
       <div className="flex flex-col lg:flex-row rounded-lg shadow-lg overflow-hidden border dark:border-shadow dark:shadow-shadow">
         {/* Product Image */}
         <div className="w-96 p-3 mx-auto">
-          {selectedSku?.imgUrl && (
-            <img
-              className="w-full max-h-96 object-cover object-center rounded-lg mx-auto"
-              src={selectedSku?.imgUrl}
-              alt={product?.title}
-            />
-          )}
+          {selectedSku?.imgUrl && <Magnifier imageUrl={selectedSku.imgUrl} />}
           <p className="text-center mt-2">{selectedSku?.nameTrans}</p>
 
           <Slider {...settings} className="my-3">
@@ -237,4 +232,4 @@ const ProductDetails = () => {
   );
 };
 
-export default ProductDetails;
+export default ProductDetailsPage;

@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../../components/ProductCard";
-import { TProduct } from "../../types/product.type";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { NextArrow, PrevArrow } from "../../components/SlickComponents";
 import { Link } from "react-router-dom";
+import { IProduct } from "../../types";
 
 const Trending = () => {
-  const [products, setProducts] = useState<TProduct[]>([]);
+  const [products, setProducts] = useState<IProduct[]>([]);
 
   useEffect(() => {
     fetch("/products.json")
@@ -53,11 +53,11 @@ const Trending = () => {
             {products.map((product, index) => (
               <div key={index} className="px-2">
                 <ProductCard
-                  image={product.thumbnail}
+                  image={product.thumbnailImg[0]}
                   title={product.name}
                   price={product.price}
-                  views={product.views}
-                  photos={product.totalImages}
+                  views={product.totalView}
+                  photos={product.totalPhoto}
                 />
               </div>
             ))}

@@ -18,7 +18,7 @@ const platforms = [
   { name: "ACBuy", img: ACBuy },
   { name: "Ootdbuy", img: Ootdbuy },
   { name: "Lovegobuy", img: Lovegobuy },
-  { name: "Hippoobuy", img: Hippoobuy },
+  // { name: "Hippoobuy", img: Hippoobuy },
   { name: "CSSBuy", img: CSSBuy },
   { name: "CNFans", img: CNFans },
   { name: "Loongbuy", img: Loongbuy },

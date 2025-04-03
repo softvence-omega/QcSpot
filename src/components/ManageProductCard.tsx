@@ -1,6 +1,6 @@
 import { Camera, Eye } from "lucide-react";
-import { IProduct } from "../../../pages/dashboard/ManageProducts";
-import axiosSecure from "../../../hooks/useAxios";
+import { IProduct } from "../pages/dashboard/ManageProducts";
+import axiosSecure from "../hooks/useAxios";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";

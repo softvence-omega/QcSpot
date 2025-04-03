@@ -31,6 +31,7 @@ const ResetPasswordPage = () => {
     if (token) localStorage.setItem("token", token);
 
     try {
+      setLoading(true);
       const res = await axiosSecure.post("/auth/resetPassword", {
         id,
         newPassword: data.newPassword,
@@ -50,6 +51,8 @@ const ResetPasswordPage = () => {
       } else {
         toast.error("Something went wrong. Please try again.");
       }
+    } finally {
+      setLoading(false);
     }
   };
 
