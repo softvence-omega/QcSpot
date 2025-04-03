@@ -12,7 +12,6 @@ import {
   removeProductImage,
   handleIncreaseInputField,
 } from "../../components/ProductFormUtils";
-import { AxiosError } from "axios";
 
 const AddProduct = () => {
   const {
@@ -148,7 +147,7 @@ const AddProduct = () => {
             <input
               {...register("name", { required: "Product name is required" })}
               placeholder="e.g.: Shirt X200"
-              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black"
+              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black dark:border-shadow"
             />
             {errors.name && (
               <p className="text-red-500 text-sm">{errors.name.message}</p>
@@ -168,7 +167,7 @@ const AddProduct = () => {
                 min: { value: 0, message: "Price must be positive" },
               })}
               placeholder="e.g.: 500.99"
-              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black"
+              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black dark:border-shadow"
             />
             {errors.price && (
               <p className="text-red-500 text-sm">{errors.price.message}</p>
@@ -206,7 +205,7 @@ const AddProduct = () => {
             />
             <button
               type="button"
-              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black"
+              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black dark:border-shadow"
               onClick={() => mainImageRef.current?.click()}
             >
               Add Product Thumbnail
@@ -244,7 +243,7 @@ const AddProduct = () => {
             />
             <button
               type="button"
-              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black"
+              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black dark:border-shadow"
               onClick={() => hoverImageRef.current?.click()}
             >
               Add Thumbnail hover
@@ -264,7 +263,7 @@ const AddProduct = () => {
                 min: { value: 0, message: "Weight must be positive" },
               })}
               placeholder="e.g.: 0.3"
-              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black"
+              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black dark:border-shadow"
             />
             {errors.weight && (
               <p className="text-red-500 text-sm">{errors.weight.message}</p>
@@ -283,7 +282,7 @@ const AddProduct = () => {
                 min: { value: 1, message: "Minimum 1 day" },
               })}
               placeholder="e.g.: 7"
-              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black"
+              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black dark:border-shadow"
             />
             {errors.shippingTime && (
               <p className="text-red-500 text-sm">
@@ -303,7 +302,7 @@ const AddProduct = () => {
                 required: "Dimensions are required",
               })}
               placeholder="e.g.: 4.5x4.5x1 cm"
-              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black"
+              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black dark:border-shadow"
             />
             {errors.dimensions && (
               <p className="text-red-500 text-sm">
@@ -325,7 +324,7 @@ const AddProduct = () => {
             </label>
             <select
               {...register("storeName", { required: "Store name is required" })}
-              className="w-full mt-1 p-2 border rounded outline-none bg-white dark:bg-black"
+              className="w-full mt-1 p-2 border rounded outline-none bg-white dark:bg-black dark:border-shadow"
             >
               <option value="">Select a store</option>
               <option value="taobao">Taobao</option>
@@ -348,7 +347,7 @@ const AddProduct = () => {
                 required: "Product code is required",
               })}
               placeholder="e.g.: 178963f"
-              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black"
+              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black dark:border-shadow"
             />
             {errors.productCode && (
               <p className="text-red-500 text-sm">
@@ -375,7 +374,7 @@ const AddProduct = () => {
                 min: { value: 1, message: "Minimum quantity is 1" },
               })}
               placeholder="e.g.: 20"
-              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black"
+              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black dark:border-shadow"
             />
             {errors.quantity && (
               <p className="text-red-500 text-sm">{errors.quantity.message}</p>
@@ -395,7 +394,7 @@ const AddProduct = () => {
                 <input
                   type="text"
                   placeholder="Key (e.g. color, size)"
-                  className="w-40 sm:w-60 border p-2 rounded-md focus:outline-none focus:border-btn bg-white dark:bg-black"
+                  className="w-40 sm:w-60 border p-2 rounded-md focus:outline-none focus:border-btn bg-white dark:bg-black dark:border-shadow"
                   value={singleClass.key}
                   onChange={(e) => {
                     const updatedClasses = [...varient];
@@ -406,7 +405,7 @@ const AddProduct = () => {
                 <input
                   type="text"
                   placeholder="Value (e.g. black, xl)"
-                  className="w-40 sm:w-60 border p-2 rounded-md focus:outline-none focus:border-btn bg-white dark:bg-black"
+                  className="w-40 sm:w-60 border p-2 rounded-md focus:outline-none focus:border-btn bg-white dark:bg-black dark:border-shadow"
                   value={singleClass.value}
                   onChange={(e) => {
                     const updatedClasses = [...varient];
@@ -473,7 +472,7 @@ const AddProduct = () => {
             />
             <button
               type="button"
-              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500"
+              className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 dark:border-shadow"
               onClick={() => productImagesRef.current?.click()}
             >
               Add Qc Images

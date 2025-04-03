@@ -3,6 +3,7 @@ import { IProduct } from "../../../pages/dashboard/ManageProducts";
 import axiosSecure from "../../../hooks/useAxios";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 interface ManageProductCardProps {
   product: IProduct;
@@ -13,24 +14,24 @@ const ManageProductCard: React.FC<ManageProductCardProps> = ({
   product,
   refetch,
 }) => {
-  const {
-    _id,
-    name,
-    productCode,
-    price,
-    inStock,
-    storeName,
-    shippingTime,
-    weight,
-    dimensions,
-    isDeleted,
-    onTrend,
-    totalView,
-    totalPhoto,
-    searchField,
-    thumbnailImg,
-    variants,
-  } = product;
+  const { _id, name, price, onTrend, totalView, totalPhoto, thumbnailImg } =
+    product;
+
+  const toggleTrending = () => {
+    axiosSecure
+      .patch(
+        `/products/setOrRemoveProductOnTend?product_id=${_id}&status=${!onTrend}`
+      )
+      .then((res) => {
+        if (res.status === 200) {
+          refetch();
+          toast.success("Trending list updated!");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const deleteProduct = () => {
     Swal.fire({
@@ -62,11 +63,17 @@ const ManageProductCard: React.FC<ManageProductCardProps> = ({
     <div className="relative w-[300px] rounded-lg shadow-md dark:shadow-shadow">
       <p className="absolute top-3 right-3">
         {onTrend ? (
-          <button className="bg-green-200 rounded text-xs py-1 px-2 cursor-pointer">
+          <button
+            onClick={toggleTrending}
+            className="bg-green-200 rounded text-xs py-1 px-2 cursor-pointer"
+          >
             Trending
           </button>
         ) : (
-          <button className="bg-yellow-200 rounded text-xs py-1 px-2 cursor-pointer">
+          <button
+            onClick={toggleTrending}
+            className="bg-yellow-200 rounded text-xs py-1 px-2 cursor-pointer"
+          >
             Mark as Trending
           </button>
         )}

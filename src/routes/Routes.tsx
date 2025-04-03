@@ -12,6 +12,9 @@ import ManageProducts from "../pages/dashboard/ManageProducts";
 import ChangePassword from "../pages/dashboard/ChangePassword";
 import Users from "../pages/dashboard/Users";
 import ManageProductsDetails from "../pages/dashboard/ManageProductsDetails";
+import Popular from "../pages/Popular";
+import PrivateRoute from "./PrivateRoute";
+import ResetPasswordPage from "../pages/ResetPasswordPage";
 
 const router = createBrowserRouter([
   {
@@ -21,11 +24,16 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <HomePage /> },
       { path: "/product/:shopType/:id", element: <ProductDetails /> },
+      { path: "/popular", element: <Popular /> },
     ],
   },
   {
     path: "dashboard",
-    element: <DashboardLayout />,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
     errorElement: <ErrorPage />,
     children: [
       { path: "admin-home", element: <AdminHome /> },
@@ -38,6 +46,7 @@ const router = createBrowserRouter([
   },
   { path: "register", element: <RegisterPage /> },
   { path: "login", element: <LoginPage /> },
+  { path: "reset-password", element: <ResetPasswordPage /> },
 ]);
 
 export default router;

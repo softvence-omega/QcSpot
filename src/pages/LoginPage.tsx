@@ -1,20 +1,24 @@
 import { FormEvent, useState } from "react";
-import { Mail, Lock, Loader2 } from "lucide-react";
+import { Mail, Lock, Loader2, X } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import axiosSecure from "../hooks/useAxios";
 import { useAuth } from "../context/AuthContext";
+import Swal from "sweetalert2";
 
 function Login() {
   const [email, setEmail] = useState("");
+  const [forgetPassMail, setForgetPassMail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loginLoading, setLoginLoading] = useState(false);
+  const [forgotPassLoading, setForgotPassLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const { setUser } = useAuth();
 
   const handleEmailLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
+    setLoginLoading(true);
 
     const form = e.target as HTMLFormElement;
     const formValue = {
@@ -30,7 +34,7 @@ function Login() {
         localStorage.setItem("user", JSON.stringify(res.data?.user));
         setUser(res.data?.user);
         toast.success("Logged in successfully!");
-        navigate("/");
+        navigate("/dashboard/admin-home");
       } else toast.error("Unexpected response from server.");
     } catch (error: any) {
       if (error.response) {
@@ -41,7 +45,7 @@ function Login() {
         toast.error("Failed to login. Please try again.");
       }
     } finally {
-      setLoading(false);
+      setLoginLoading(false);
     }
   };
 
@@ -50,6 +54,28 @@ function Login() {
       // Add your Google authentication logic here
     } catch (error: any) {
       toast.error(error.message || "Failed to login with Google");
+    }
+  };
+
+  const handleForgotPassword = async () => {
+    try {
+      setForgotPassLoading(true);
+      const res = await axiosSecure.post("/auth/forgetPassword", {
+        email: forgetPassMail,
+      });
+      if (res.status !== 200) throw new Error("Network response was not ok");
+      Swal.fire("Please check your mail!");
+      setIsOpen(false);
+    } catch (error: any) {
+      if (error.response) {
+        toast.error(
+          error.response.data?.message || "Invalid username or password"
+        );
+      } else {
+        toast.error("Failed to login. Please try again.");
+      }
+    } finally {
+      setForgotPassLoading(false);
     }
   };
 
@@ -78,7 +104,7 @@ function Login() {
                 Email address
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <div className="absolute z-10 inset-y-0 left-0 pl-3 flex items-center ">
                   <Mail className="h-5 w-5 text-gray-400" />
                 </div>
                 <input
@@ -107,7 +133,7 @@ function Login() {
                 Password
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <div className="absolute z-10 inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <Lock className="h-5 w-5 text-gray-400" />
                 </div>
                 <input
@@ -130,12 +156,18 @@ function Login() {
                 />
               </div>
             </div>
+            <p
+              onClick={() => setIsOpen(true)}
+              className="text-xs text-right hover:text-green-500 cursor-pointer duration-300"
+            >
+              Forgot Password?
+            </p>
           </div>
 
           <div>
             <button
               type="submit"
-              disabled={loading}
+              disabled={loginLoading}
               className="group relative w-full flex justify-center py-2 px-4 
                        border border-transparent text-sm font-medium rounded-md 
                        text-white hover:bg-green-500 bg-btn duration-200
@@ -143,7 +175,7 @@ function Login() {
                        disabled:opacity-50 disabled:cursor-not-allowed
                        transition-colors"
             >
-              {loading ? (
+              {loginLoading ? (
                 <Loader2 className="h-5 w-5 animate-spin" />
               ) : (
                 "Sign in"
@@ -183,6 +215,70 @@ function Login() {
           </div>
         </form>
       </div>
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+          onClick={() => setIsOpen(false)}
+        >
+          <div
+            className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-md w-full relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+              Please provide your mail
+            </h2>
+            <div>
+              <label htmlFor="email" className="sr-only">
+                Email address
+              </label>
+              <div className="relative">
+                <div className="absolute z-10 inset-y-0 left-0 pl-3 flex items-center ">
+                  <Mail className="h-5 w-5 text-gray-400" />
+                </div>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  value={forgetPassMail}
+                  onChange={(e) => setForgetPassMail(e.target.value)}
+                  className="appearance-none relative block w-full px-3 py-2 pl-10 
+                           border border-gray-300 dark:border-gray-600 
+                           placeholder-gray-500 dark:placeholder-gray-400 
+                           text-gray-900 dark:text-white 
+                           rounded-md 
+                           bg-white dark:bg-gray-700
+                           focus:outline-none focus:ring-green-500 focus:border-green-500 
+                           sm:text-sm
+                           transition-colors"
+                  placeholder="Email address"
+                />
+              </div>
+            </div>
+            <button
+              disabled={forgotPassLoading}
+              onClick={handleForgotPassword}
+              className="group relative w-full flex justify-center py-2 px-4 
+                       border border-transparent text-sm font-medium rounded-md 
+                       text-white hover:bg-green-500 bg-btn duration-200
+                       focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 
+                       transition-colors mt-5"
+            >
+              {forgotPassLoading ? (
+                <Loader2 className="h-5 w-5 animate-spin" />
+              ) : (
+                "Send Mail"
+              )}
+            </button>
+            <button
+              className="text-red-500 absolute top-2 right-2 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+              onClick={() => setIsOpen(false)}
+            >
+              <X />
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

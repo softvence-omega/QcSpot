@@ -5,7 +5,7 @@ import Loader from "../../components/Loader";
 import { ProductImage, TSingleProduct } from "../../types";
 import { FaTruck, FaWeightHanging } from "react-icons/fa";
 import { RxDimensions } from "react-icons/rx";
-import { Camera, Eye, Loader2, X } from "lucide-react";
+import { Camera, Eye, Key, Loader2, X } from "lucide-react";
 import { AiOutlineStock } from "react-icons/ai";
 import { FaArrowTrendUp } from "react-icons/fa6";
 import Slider from "react-slick";
@@ -196,7 +196,7 @@ const ManageProductsDetails = () => {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
           {product?.variants.map((varient, i) => (
-            <>
+            <div className="flex flex-col gap-3">
               {/* <h4>{varient?.name}</h4> */}
               {varient?.photos.length > 1 && (
                 <Slider {...settings} key={i} className="">
@@ -218,7 +218,15 @@ const ManageProductsDetails = () => {
                   alt="IMAGE"
                 />
               )}
-            </>
+              <p className="mx-auto">
+                <b>Quantity:</b> {varient?.quantity};{" "}
+                {varientKeys.map((key) => (
+                  <span>
+                    <b>{key}</b>: {varient[`${key}`]};{" "}
+                  </span>
+                ))}
+              </p>
+            </div>
           ))}
         </div>
       </section>
