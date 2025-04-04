@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import ProductCard from "../../components/ProductCard";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -6,15 +5,11 @@ import "slick-carousel/slick/slick-theme.css";
 import { NextArrow, PrevArrow } from "../../components/SlickComponents";
 import { Link } from "react-router-dom";
 import { IProduct } from "../../types";
+import useProduct from "../../hooks/useProducts";
 
 const Trending = () => {
-  const [products, setProducts] = useState<IProduct[]>([]);
-
-  useEffect(() => {
-    fetch("/products.json")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, []);
+  const { productData, productLoading } = useProduct({ Trending: "true" });
+  // { Trending: "true" }
 
   // Slick settings
   const settings = {
@@ -23,8 +18,6 @@ const Trending = () => {
     speed: 500,
     slidesToShow: 6,
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 5000,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     responsive: [
@@ -49,19 +42,32 @@ const Trending = () => {
         </h2>
 
         <div className="mx-auto px-2 relative">
-          <Slider {...settings} className="pb-10 px-6 md:px-12">
-            {products.map((product, index) => (
-              <div key={index} className="px-2">
-                <ProductCard
-                  image={product.thumbnailImg[0]}
-                  title={product.name}
-                  price={product.price}
-                  views={product.totalView}
-                  photos={product.totalPhoto}
-                />
-              </div>
-            ))}
-          </Slider>
+          {productLoading ? (
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 mx-10">
+              {Array.from({ length: 8 }).map((_, index) => (
+                <div
+                  key={index}
+                  className="border p-2 rounded shadow animate-pulse"
+                >
+                  <div className="h-48 bg-gray-300 rounded-md"></div>
+                  <div className="h-4 bg-gray-300 my-2 rounded w-3/4"></div>
+                  <div className="h-4 bg-gray-300 rounded w-1/2"></div>
+                  <div className="flex justify-between gap-3 mt-2">
+                    <div className="h-4 bg-gray-300 rounded w-1/2"></div>
+                    <div className="h-4 bg-gray-300 rounded w-1/2"></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <Slider {...settings} className="pb-10 px-6 md:px-12">
+              {productData.map((product: IProduct) => (
+                <div key={product?._id} className="px-2">
+                  <ProductCard key={product?._id} product={product} />
+                </div>
+              ))}
+            </Slider>
+          )}
         </div>
       </div>
     </div>

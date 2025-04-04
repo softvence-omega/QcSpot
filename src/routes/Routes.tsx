@@ -15,6 +15,7 @@ import ManageProductsDetails from "../pages/dashboard/ManageProductsDetails";
 import PrivateRoute from "./PrivateRoute";
 import ResetPasswordPage from "../pages/ResetPasswordPage";
 import PopularPage from "../pages/PopularPage";
+import Collection from "../pages/Collection";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,14 @@ const router = createBrowserRouter([
       { path: "/", element: <HomePage /> },
       { path: "/product/:shopType/:id", element: <ProductDetailsPage /> },
       { path: "/popular", element: <PopularPage /> },
+      {
+        path: "/collection",
+        element: (
+          <PrivateRoute>
+            <Collection />
+          </PrivateRoute>
+        ),
+      },
     ],
   },
   {

@@ -1,4 +1,4 @@
-import { Loader2, Plus, Share2, X } from "lucide-react";
+import { Loader2, Plus, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PLatformLink from "../components/PlatformLink";
@@ -9,6 +9,7 @@ import Slider from "react-slick";
 import { ProdNextArrow, ProdPrevArrow } from "../components/SlickComponents";
 import Loader from "../components/Loader";
 import Magnifier from "../components/Magnifier";
+import { useAuth } from "../context/AuthContext";
 
 interface Sku {
   skuID: string;
@@ -38,6 +39,7 @@ const ProductDetailsPage = () => {
   const [qcLoading, setQcLoading] = useState<boolean>(true);
   const [selectedSku, setSelectedSku] = useState<Sku | null>(null);
   const [showDescription, setShowDescription] = useState(false);
+  const { user } = useAuth();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -87,8 +89,16 @@ const ProductDetailsPage = () => {
 
   if (productLoading) return <Loader />;
 
-  if (!product)
-    return <div className="text-center py-10 text-4xl">Product not found.</div>;
+  if (!product?.imgList)
+    return (
+      <div className="text-center pt-40 md:pt-24 pb-10 px-4">
+        <p className="text-4xl">Product not found!</p>
+        <p className="text-sm mt-3 text-red-500">
+          Oops! The product code seems to be incorrect.
+        </p>
+      </div>
+    );
+  console.log(product);
 
   // Slick settings
   const settings = {
@@ -169,13 +179,25 @@ const ProductDetailsPage = () => {
 
           {/* Action Buttons */}
           <div className="mt-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            <PLatformLink id={id} shopType={shopType} />
-            <button className="bg-gray-500 px-4 py-2 rounded-lg text-white flex justify-center items-center gap-2 w-full">
+            <PLatformLink
+              className="bg-btn hover:bg-green-500 duration-200 px-4 py-2 rounded-lg text-white  w-full"
+              id={id}
+              shopType={shopType}
+            />
+            <button
+              disabled={!user}
+              className="bg-gray-500 px-4 py-2 rounded-lg text-white flex justify-center items-center gap-2 w-full disabled:opacity-50 disabled:cursor-not-allowed relative group"
+            >
               <Plus /> Add to Collection
+              {!user && (
+                <span className="absolute z-30 left-1/2 top-full mt-0.5 w-max -translate-x-1/2 scale-0 disabled:opacity-100 transition-all rounded bg-btn px-1 text-xs text-white group-hover:scale-100">
+                  Please login to add this product to collection
+                </span>
+              )}
             </button>
-            <button className="bg-gray-500 px-4 py-2 rounded-lg text-white flex justify-center items-center gap-2 w-full">
+            {/* <button className="bg-gray-500 px-4 py-2 rounded-lg text-white flex justify-center items-center gap-2 w-full">
               <Share2 /> Affiliate Share
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

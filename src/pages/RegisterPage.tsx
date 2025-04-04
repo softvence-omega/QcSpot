@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Mail, Lock, User, Loader2 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import axiosSecure from "../hooks/useAxios";
 
 function Register() {
   const [name, setName] = useState("");
@@ -9,16 +10,36 @@ function Register() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match");
+      setLoading(false);
+      return;
+    }
+    const formValue = {
+      name,
+      email,
+      password,
+    };
 
     try {
-      // Registration functionality will be added later
-      toast.success("Account created successfully!");
+      const res = await axiosSecure.post("/users/createUser", formValue);
+      if (res.status === 200) {
+        toast.success("Account created successfully!");
+        navigate("/login");
+      }
     } catch (error: any) {
-      toast.error(error.message || "Failed to create account");
+      if (error.response) {
+        toast.error(
+          error.response.data?.message || "Invalid username or password"
+        );
+      } else {
+        toast.error("Failed to login. Please try again.");
+      }
     } finally {
       setLoading(false);
     }

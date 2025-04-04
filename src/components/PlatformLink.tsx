@@ -1,7 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const PlatformLink = ({ id, shopType }: { id?: string; shopType?: string }) => {
+interface PlatformLinkProps {
+  id?: string;
+  shopType?: string;
+  className?: string;
+}
+
+const PlatformLink = ({ id, shopType, className }: PlatformLinkProps) => {
   const [selectedPlatform, setSelectedPlatform] = useState<string>("");
   const [selectedImage, setSelectedImage] = useState<string>("");
 
@@ -102,7 +108,7 @@ const PlatformLink = ({ id, shopType }: { id?: string; shopType?: string }) => {
     <Link
       to={to}
       target="_blank"
-      className="bg-btn hover:bg-green-500 duration-200 px-4 py-2 rounded-lg text-white flex justify-center items-center gap-5 w-full"
+      className={`flex justify-center items-center gap-2 md:gap-4 ${className}`}
     >
       <img className="w-6 h-6 rounded" src={selectedImage} alt="" />
       Buy

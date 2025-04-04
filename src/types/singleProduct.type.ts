@@ -26,3 +26,10 @@ interface Product {
   __v: number;
   _id: string;
 }
+
+export interface IVarient {
+  _id: string;
+  photos: string[];
+  quantity: number;
+  [key: string]: any;
+}

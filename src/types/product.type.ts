@@ -43,3 +43,10 @@ export type ProductImage = {
   file: File;
   preview: string;
 };
+
+// Query
+export interface ProductQueryParams {
+  Storefront?: string;
+  MinPrice?: number;
+  MaxPrice?: number;
+}

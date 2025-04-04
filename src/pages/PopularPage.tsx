@@ -1,22 +1,27 @@
 import { useState } from "react";
 import { Users, CheckCircle, History, Shuffle } from "lucide-react";
 import { IoMdTrendingUp } from "react-icons/io";
-import Loader from "../components/Loader";
 import useProduct from "../hooks/useProducts";
 import { IProduct } from "../types";
 import ProductCard from "../components/ProductCard";
 
 const PopularPage = () => {
-  const [filter, setFilter] = useState("Popular");
-  const [storefront, setStorefront] = useState("All");
   const [compactMode, setCompactMode] = useState(false);
-  const [requireQC, setRequireQC] = useState(false);
+  // const [requireQC, setRequireQC] = useState(false);
 
-  const { productData, productLoading, productRefetch } = useProduct();
-  if (productLoading) return <Loader />;
+  const [filters, setFilters] = useState({
+    MinPrice: "",
+    MaxPrice: "",
+    Storefront: "",
+  });
 
-  console.log(productData);
+  // Clean filters for queryParams (remove empty fields)
+  const queryParams = Object.fromEntries(
+    Object.entries(filters).filter(([_, value]) => value !== "")
+  );
 
+  console.log(queryParams);
+  const { productData, productLoading } = useProduct(queryParams);
   return (
     <div className="max-w-7xl mx-auto pt-40 md:pt-24 pb-10 px-4">
       {/* Header Section */}
@@ -60,73 +65,91 @@ const PopularPage = () => {
         <label className="flex items-center space-x-2">
           <input
             type="checkbox"
-            defaultChecked
-            className="toggle toggle-sm border-white bg-white checked:bg-green-400 checked:text-btn checked:border-green-500 "
+            className="toggle toggle-sm border-white bg-white checked:bg-green-400 checked:text-btn checked:border-green-500"
             onChange={(e) => setCompactMode(e.target.checked)}
           />
           <span className="text-sm">Compact mode</span>
         </label>
 
         {/* Require QC */}
-        <label className="flex items-center space-x-2">
+        {/* <label className="flex items-center space-x-2">
           <input
             type="checkbox"
-            className="toggle toggle-sm border-white bg-white checked:bg-green-400 checked:text-btn checked:border-green-500 "
+            className="toggle toggle-sm border-white bg-white checked:bg-green-400 checked:text-btn checked:border-green-500"
             checked={requireQC}
             onChange={(e) => setRequireQC(e.target.checked)}
           />
           <span className="text-sm">Require QC</span>
-        </label>
+        </label> */}
 
+        {/* Min & Max Price */}
         <div className="flex items-center space-x-2">
-          {/* Min Price */}
           <label className="text-sm">Min Price</label>
           <input
             type="number"
             className="border rounded px-2 py-1 w-20 sm:w-24 outline-none focus:border-green-500 bg-white dark:bg-black text-sm"
+            value={filters?.MinPrice}
+            onChange={(e) =>
+              setFilters((prev) => ({ ...prev, MinPrice: e.target.value }))
+            }
           />
 
-          {/* Max Price */}
           <label className="text-sm pl-3">Max Price</label>
           <input
             type="number"
             className="border rounded px-2 py-1 w-20 sm:w-24 outline-none focus:border-green-500 bg-white dark:bg-black text-sm"
+            value={filters?.MaxPrice}
+            onChange={(e) =>
+              setFilters((prev) => ({ ...prev, MaxPrice: e.target.value }))
+            }
           />
         </div>
-        {/* Store */}
+
+        {/* Storefront Filter */}
         <div>
           <label className="text-sm pr-3">Storefront</label>
           <select
-            value={storefront}
-            onChange={(e) => setStorefront(e.target.value)}
+            value={filters?.Storefront}
+            onChange={(e) =>
+              setFilters((prev) => ({ ...prev, Storefront: e.target.value }))
+            }
             className="border rounded px-2 py-1 outline-none focus:border-green-500 bg-white dark:bg-black text-sm"
           >
-            <option value="All">All</option>
-            <option value="Taobao">Taobao</option>
-            <option value="Weidian">Weidian</option>
+            <option value="">All</option>
+            <option value="taobao">Taobao</option>
+            <option value="weidian">Weidian</option>
             <option value="1688">1688</option>
           </select>
         </div>
       </div>
 
       {/* Product Grid */}
+
       <div
-        className={`grid  ${
+        className={`grid ${
           compactMode
-            ? "grid-cols-1 md:grid-cols-3 lg:grid-cols-5"
-            : "grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
+            ? "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+            : "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
         } gap-2`}
       >
-        {productData.map((product: IProduct) => (
-          <ProductCard
-            key={product?._id}
-            image={product.thumbnailImg[0]}
-            title={product.name}
-            price={product.price}
-            views={product.totalView}
-            photos={product.totalPhoto}
-          />
-        ))}
+        {productLoading
+          ? Array.from({ length: 8 }).map((_, index) => (
+              <div
+                key={index}
+                className="border p-2 rounded shadow animate-pulse"
+              >
+                <div className="h-48 bg-gray-300 rounded-md"></div>
+                <div className="h-4 bg-gray-300 my-2 rounded w-3/4"></div>
+                <div className="h-4 bg-gray-300 rounded w-1/2"></div>
+                <div className="flex justify-between gap-3 mt-2">
+                  <div className="h-4 bg-gray-300 rounded w-1/2"></div>
+                  <div className="h-4 bg-gray-300 rounded w-1/2"></div>
+                </div>
+              </div>
+            ))
+          : productData.map((product: IProduct, index: number) => (
+              <ProductCard key={index} product={product} />
+            ))}
       </div>
     </div>
   );
