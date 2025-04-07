@@ -65,14 +65,14 @@ const ManageProductCard: React.FC<ManageProductCardProps> = ({
         {onTrend ? (
           <button
             onClick={toggleTrending}
-            className="bg-green-200 rounded text-xs py-1 px-2 cursor-pointer"
+            className="bg-green-200 dark:bg-btn rounded text-xs py-1 px-2 cursor-pointer"
           >
             Trending
           </button>
         ) : (
           <button
             onClick={toggleTrending}
-            className="bg-yellow-200 rounded text-xs py-1 px-2 cursor-pointer"
+            className="bg-yellow-200 dark:text-black rounded text-xs py-1 px-2 cursor-pointer"
           >
             Mark as Trending
           </button>

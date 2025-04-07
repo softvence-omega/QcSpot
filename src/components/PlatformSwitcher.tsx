@@ -4,7 +4,6 @@ import Oopbuy from "../assets/Oopbuy.webp";
 import ACBuy from "../assets/Acbuy.webp";
 import Ootdbuy from "../assets/Ootdbuy.webp";
 import Lovegobuy from "../assets/Lovegobuy.jpeg";
-import Hippoobuy from "../assets/Hippoobuy.jpeg";
 import CSSBuy from "../assets/Cssbuy.jpeg";
 import CNFans from "../assets/Cnfans.webp";
 import Loongbuy from "../assets/Loongbuy.webp";
