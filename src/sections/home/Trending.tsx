@@ -43,8 +43,8 @@ const Trending = () => {
 
         <div className="mx-auto px-2 relative">
           {productLoading ? (
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 mx-10">
-              {Array.from({ length: 8 }).map((_, index) => (
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 mx-10 mb-10">
+              {Array.from({ length: 6 }).map((_, index) => (
                 <div
                   key={index}
                   className="border p-2 rounded shadow animate-pulse"

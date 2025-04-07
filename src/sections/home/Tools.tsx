@@ -8,6 +8,9 @@ import {
   MessageSquare,
   Link2,
   Chrome,
+  Upload,
+  Image,
+  Sparkles,
 } from "lucide-react";
 import { handleQcSearch } from "../../components/handleQcSearch";
 import { useNavigate } from "react-router-dom";
@@ -21,11 +24,11 @@ const Tools = () => {
       <h1 className="text-center w-fit mx-auto duration-300 text-2xl font-bold my-6">
         Tools
       </h1>
-      <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4 max-w-7xl mx-auto">
+      <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-4">
         {/* QC Lookup Card */}
         <div className="flex-1 min-w-[300px] rounded-xl p-6 shadow-lg border dark:border-shadow">
-          <h2 className="text-lg font-semibold">QC Lookup</h2>
-          <p className="text-gray-500 text-sm mt-2">
+          <h2 className="text-lg font-semibold text-center">QC Lookup</h2>
+          <p className="text-zinc-500 text-sm text-center mt-2">
             Enter a product link to verify its quality
           </p>
 
@@ -34,7 +37,7 @@ const Tools = () => {
               <div className="text-green-500 mb-1">
                 <Search size={20} />
               </div>
-              <span className="text-xs text-gray-500 max-w-[80px]">
+              <span className="text-xs text-zinc-500 max-w-[80px]">
                 Real customer photos
               </span>
             </div>
@@ -42,7 +45,7 @@ const Tools = () => {
               <div className="text-blue-500 mb-1">
                 <Users size={20} />
               </div>
-              <span className="text-xs text-gray-500 max-w-[80px]">
+              <span className="text-xs text-zinc-500 max-w-[80px]">
                 Avoid Bait & Switch sellers
               </span>
             </div>
@@ -50,7 +53,7 @@ const Tools = () => {
               <div className="text-yellow-500 mb-1">
                 <Clock size={20} />
               </div>
-              <span className="text-xs text-gray-500 max-w-[80px]">
+              <span className="text-xs text-zinc-500 max-w-[80px]">
                 Updated daily
               </span>
             </div>
@@ -75,8 +78,10 @@ const Tools = () => {
 
         {/* Shipping Calculator Card */}
         <div className="flex-1 min-w-[300px] rounded-xl p-6 shadow-lg border dark:border-shadow">
-          <h2 className="text-lg font-semibold">Shipping Calculator</h2>
-          <p className="text-gray-500 text-sm mt-2">
+          <h2 className="text-lg font-semibold text-center">
+            Shipping Calculator
+          </h2>
+          <p className="text-zinc-500 text-sm text-center mt-2">
             Find the cheapest shipping based on your country
           </p>
 
@@ -85,7 +90,7 @@ const Tools = () => {
               <div className="text-blue-500 mb-1">
                 <Clock size={20} />
               </div>
-              <span className="text-xs text-gray-500 max-w-[80px]">
+              <span className="text-xs text-zinc-500 max-w-[80px]">
                 Delivery estimates
               </span>
             </div>
@@ -93,7 +98,7 @@ const Tools = () => {
               <div className="text-green-500 mb-1">
                 <Scale size={20} />
               </div>
-              <span className="text-xs text-gray-500 max-w-[80px]">
+              <span className="text-xs text-zinc-500 max-w-[80px]">
                 Compare Agents
               </span>
             </div>
@@ -107,8 +112,10 @@ const Tools = () => {
 
         {/* Chrome Extension Card */}
         <div className="flex-1 min-w-[300px] rounded-xl p-6 shadow-lg border dark:border-shadow">
-          <h2 className="text-lg font-semibold">Chrome Extension</h2>
-          <p className="text-gray-500 text-sm mt-2">
+          <h2 className="text-lg font-semibold text-center">
+            Chrome Extension
+          </h2>
+          <p className="text-zinc-500 text-sm text-center mt-2">
             Shop smarter with our browser extension
           </p>
 
@@ -117,7 +124,7 @@ const Tools = () => {
               <div className="text-green-500 mb-1">
                 <Link2 size={20} />
               </div>
-              <span className="text-xs text-gray-500 max-w-[80px]">
+              <span className="text-xs text-zinc-500 max-w-[80px]">
                 Auto Link Conversion
               </span>
             </div>
@@ -125,7 +132,7 @@ const Tools = () => {
               <div className="text-blue-500 mb-1">
                 <Search size={20} />
               </div>
-              <span className="text-xs text-gray-500 max-w-[80px]">
+              <span className="text-xs text-zinc-500 max-w-[80px]">
                 QC directly on agent
               </span>
             </div>
@@ -135,6 +142,46 @@ const Tools = () => {
             <Chrome size={20} />
             Add to Chrome
             <ExternalLink size={16} />
+          </button>
+        </div>
+
+        {/* Image Search Card */}
+        <div className="flex-1 min-w-[300px] rounded-xl p-6 shadow-lg border dark:border-shadow">
+          <h2 className="text-lg font-semibold text-center">Image Search</h2>
+          <p className="text-zinc-500 text-sm text-center mt-2">
+            Upload an image to find similar products
+          </p>
+
+          <div className="flex justify-around mt-6">
+            <div className="flex flex-col items-center text-center">
+              <div className="text-green-500 mb-1">
+                <Search size={20} />
+              </div>
+              <span className="text-xs text-zinc-500 max-w-[80px]">
+                Visual search technology
+              </span>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <div className="text-blue-500 mb-1">
+                <Upload size={20} />
+              </div>
+              <span className="text-xs text-zinc-500 max-w-[80px]">
+                Drag & drop support
+              </span>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <div className="text-yellow-500 mb-1">
+                <Sparkles size={20} />
+              </div>
+              <span className="text-xs text-zinc-500 max-w-[80px]">
+                Simple & Effective
+              </span>
+            </div>
+          </div>
+
+          <button className="w-full mt-6 hover:bg-green-600 text-white py-2.5 rounded-lg flex items-center justify-center gap-2 bg-btn transition-colors duration-200 ">
+            <Image size={20} />
+            Image Search
           </button>
         </div>
       </div>

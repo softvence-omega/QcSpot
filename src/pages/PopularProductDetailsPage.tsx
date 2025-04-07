@@ -46,7 +46,7 @@ const settings = {
   prevArrow: <ProdPrevArrow />,
 };
 
-const ProductDetailsPage = () => {
+const PopularProductDetailsPage = () => {
   const { shopType, id } = useParams<{ shopType: string; id: string }>();
   const [product, setProduct] = useState<Product | null>(null);
   const [qc, setQc] = useState<string[] | null>(null);
@@ -271,4 +271,4 @@ const ProductDetailsPage = () => {
   );
 };
 
-export default ProductDetailsPage;
+export default PopularProductDetailsPage;

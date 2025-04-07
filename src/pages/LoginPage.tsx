@@ -5,27 +5,31 @@ import { toast } from "react-hot-toast";
 import axiosSecure from "../hooks/useAxios";
 import { useAuth } from "../context/AuthContext";
 import Swal from "sweetalert2";
+import { loginUser, useGoogleLogin } from "../components/handleGoogleLogin";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [forgetPassMail, setForgetPassMail] = useState("");
   const [password, setPassword] = useState("");
+  const [googlePassword, setGooglePassword] = useState("");
   const [loginLoading, setLoginLoading] = useState(false);
   const [forgotPassLoading, setForgotPassLoading] = useState(false);
+  const [googlePassLoading, setGooglePassLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isPassOpen, setIsPassOpen] = useState(false);
+  const [tempUser, setTempUser] = useState<any>(null);
   const navigate = useNavigate();
   const { setUser } = useAuth();
 
   const handleEmailLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoginLoading(true);
-
-    const form = e.target as HTMLFormElement;
-    const formValue = {
-      email: form.email.value,
-      password: form.password.value,
-    };
-
+    if (!email || !password) {
+      toast.error("Please fill in all fields");
+      setLoginLoading(false);
+      return;
+    }
+    const formValue = { email, password };
     try {
       const res = await axiosSecure.post("/auth/login", formValue);
       if (res.status === 200) {
@@ -51,13 +55,67 @@ function Login() {
     }
   };
 
-  const handleGoogleLogin = async () => {
+  const handleGoogleLogin = useGoogleLogin(setIsPassOpen, setTempUser);
+  const handleCreateUser = async () => {
+    setGooglePassLoading(true);
+    if (!googlePassword) {
+      toast.error("Please fill in all fields");
+      setGooglePassLoading(false);
+      return;
+    }
     try {
-      // Add your Google authentication logic here
+      const formValue = {
+        email: tempUser.email,
+        name: tempUser.displayName,
+        GooglePassword: googlePassword,
+      };
+
+      await axiosSecure.post("/users/createUser", formValue);
+      toast.success("User created successfully!");
+      setIsPassOpen(false);
+      setGooglePassword("");
+
+      // Proceed to login
+      await loginUser(tempUser.email, setUser, navigate);
     } catch (error: any) {
-      toast.error(error.message || "Failed to login with Google");
+      toast.error(error.response?.data?.message || "Failed to create user.");
+    } finally {
+      setGooglePassLoading(false);
     }
   };
+
+  // const handleGoogleLogin = async () => {
+  //   try {
+  //     const googleProvider = new GoogleAuthProvider();
+  //     const result = await signInWithPopup(auth, googleProvider);
+  //     const user = result.user;
+  //     const isUserExists = usersData?.find((u: any) => u.email === user.email);
+  //     if (!isUserExists) {
+  //       setIsOpen(true);
+  //     }
+
+  //     const res = await axiosSecure.post("/auth/login", {
+  //       email: user.email,
+  //       method: "google",
+  //     });
+  //     if (res.status === 200) {
+  //       const token = res.data?.approvalToken;
+  //       if (token) localStorage.setItem("token", token);
+  //       localStorage.setItem("user", JSON.stringify(res.data?.user));
+  //       setUser(res.data?.user);
+  //       toast.success("Logged in successfully!");
+  //       res.data?.user?.role === "admin"
+  //         ? navigate("/dashboard/admin-home")
+  //         : navigate("/");
+  //     } else toast.error("Unexpected response from server.");
+  //   } catch (error: any) {
+  //     if (error.response) {
+  //       toast.error(error.response.data?.message || "Something went wrong!");
+  //     } else {
+  //       toast.error("Failed to Login. Please try again.");
+  //     }
+  //   }
+  // };
 
   const handleForgotPassword = async () => {
     try {
@@ -217,6 +275,51 @@ function Login() {
           </div>
         </form>
       </div>
+
+      {/* Set a Password Modal */}
+      {isPassOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-md w-full relative">
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+              Hey {tempUser?.displayName}, set a password
+            </h2>
+            <div className="popup">
+              <input
+                type="password"
+                value={googlePassword}
+                className="appearance-none relative block w-full px-3 py-2 pl-10 
+                border border-gray-300 dark:border-gray-600 
+                placeholder-gray-500 dark:placeholder-gray-400 
+                text-gray-900 dark:text-white 
+                rounded-md 
+                bg-white dark:bg-gray-700
+                focus:outline-none focus:ring-green-500 focus:border-green-500 
+                sm:text-sm
+                transition-colors"
+                onChange={(e) => setGooglePassword(e.target.value)}
+                placeholder="Set a password"
+              />
+              <button
+                disabled={googlePassLoading}
+                onClick={handleCreateUser}
+                className="group relative w-full flex justify-center py-2 px-4 
+                       border border-transparent text-sm font-medium rounded-md 
+                       text-white hover:bg-green-500 bg-btn duration-200
+                       focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 
+                       transition-colors mt-5"
+              >
+                {googlePassLoading ? (
+                  <Loader2 className="h-5 w-5 animate-spin" />
+                ) : (
+                  "Set Password"
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Forgot Password Modal */}
       {isOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"

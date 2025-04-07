@@ -10,7 +10,7 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   console.log(product);
   const {
-    _id,
+    // _id,
     thumbnailImg,
     name,
     price,
@@ -25,9 +25,15 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <img
           src={thumbnailImg[0]}
           alt={name}
-          className="w-full aspect-square object-cover object-center"
+          className="w-full aspect-square object-cover object-center transition-opacity duration-300 ease-in-out"
+        />
+        <img
+          src={thumbnailImg[1]}
+          alt={name}
+          className="w-full aspect-square object-cover object-center absolute top-0 left-0 opacity-0 transition-opacity duration-300 ease-in-out hover:opacity-100"
         />
       </div>
+
       <div className="p-2 sm:p-4 dark:bg-dark dark:text-white">
         <h3 className="font-medium line-clamp-2 h-10">{name}</h3>
         <div className="mt-2 flex items-center justify-between">
@@ -43,7 +49,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </div>
         <div className="mt-4 flex space-x-2">
           <Link
-            to={`/product/${storeName}/${productCode}`}
+            to={`/popular/${storeName}/${productCode}`}
             className="flex-1 p-1 md:p-2 border border-gray-300 rounded-md text-xs sm:text-sm font-medium text-gray-700 dark:text-white flex justify-center items-center"
           >
             View QC
