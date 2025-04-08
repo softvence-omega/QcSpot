@@ -8,7 +8,6 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  console.log(product);
   const {
     _id,
     thumbnailImg,

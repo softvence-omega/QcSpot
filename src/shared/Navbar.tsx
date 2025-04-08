@@ -14,7 +14,6 @@ const Navbar = () => {
   const [qcSearchInput, setQcSearchInput] = useState("");
   const { theme } = useTheme();
   const { user, logout } = useAuth();
-  console.log(user);
 
   const navigate = useNavigate();
   const searchHandler = () => {

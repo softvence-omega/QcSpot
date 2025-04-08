@@ -1,46 +1,32 @@
 import { X } from "lucide-react";
 import { useState, useEffect } from "react";
-import Oopbuy from "../assets/Oopbuy.webp";
-import ACBuy from "../assets/Acbuy.webp";
-import Ootdbuy from "../assets/Ootdbuy.webp";
-import Lovegobuy from "../assets/Lovegobuy.jpeg";
-import CSSBuy from "../assets/Cssbuy.jpeg";
-import CNFans from "../assets/Cnfans.webp";
-import Loongbuy from "../assets/Loongbuy.webp";
-import Mulebuy from "../assets/Mulebuy.jpeg";
-import Joyabuy from "../assets/Joyabuy.webp";
-import Eastmallbuy from "../assets/Eastmallbuy.webp";
-import Superbuy from "../assets/Superbuy.webp";
+import useAgent from "../hooks/useAgent";
 
-const platforms = [
-  { name: "Oopbuy", img: Oopbuy },
-  { name: "ACBuy", img: ACBuy },
-  { name: "Ootdbuy", img: Ootdbuy },
-  { name: "Lovegobuy", img: Lovegobuy },
-  { name: "CSSBuy", img: CSSBuy },
-  { name: "CNFans", img: CNFans },
-  { name: "Loongbuy", img: Loongbuy },
-  { name: "Mulebuy", img: Mulebuy },
-  { name: "Joyabuy", img: Joyabuy },
-  { name: "Eastmallbuy", img: Eastmallbuy },
-  { name: "Superbuy", img: Superbuy },
-];
+interface TAgent {
+  name: string;
+  img: string;
+}
+
+interface UseAgentResult {
+  agentData: TAgent[];
+}
 
 const PlatformSwitcher = () => {
-  const [selectedPlatform, setSelectedPlatform] = useState(
+  const { agentData } = useAgent() as UseAgentResult;
+  const [selectedPlatform, setSelectedPlatform] = useState<string>(
     () => localStorage.getItem("platform") || "CNFans"
   );
-  const [selectedImage, setSelectedImage] = useState(
+  const [selectedImage, setSelectedImage] = useState<string>(
     () =>
       localStorage.getItem("platform_img") ||
-      platforms.find((platform) => platform.name === selectedPlatform)?.img ||
+      agentData.find((platform) => platform.name === selectedPlatform)?.img ||
       ""
   );
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    const platform_img = platforms.find(
-      (platform) => platform.name === selectedPlatform
+    const platform_img = agentData.find(
+      (agent) => agent.name === selectedPlatform
     )?.img;
 
     localStorage.setItem("platform", selectedPlatform);
@@ -48,7 +34,7 @@ const PlatformSwitcher = () => {
       setSelectedImage(platform_img);
       localStorage.setItem("platform_img", platform_img);
     }
-  }, [selectedPlatform]);
+  }, [selectedPlatform, agentData]);
 
   return (
     <div className="relative">
@@ -73,7 +59,7 @@ const PlatformSwitcher = () => {
               Select a Platform
             </h2>
             <div className="grid grid-cols-3 gap-4">
-              {platforms.map((platform) => (
+              {agentData.map((platform) => (
                 <button
                   key={platform.name}
                   className={`border p-2 rounded-lg transition-colors ${
