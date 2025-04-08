@@ -1,10 +1,17 @@
+import CollectionCard from "../components/CollectionCard";
 import Loader from "../components/Loader";
 import useCollection from "../hooks/useCollection";
 
+export interface CollectionProps {
+  _id: string;
+  storeName: string;
+  productCode: string;
+}
+
 const Collection = () => {
-  const { collectionData, collectionLoading } = useCollection();
+  const { collectionData, collectionLoading, collectionRefetch } =
+    useCollection();
   if (collectionLoading) return <Loader />;
-  console.log("collectionData", collectionData);
 
   return (
     <div className="max-w-7xl mx-auto pt-40 md:pt-24 pb-10 px-4">
@@ -12,7 +19,21 @@ const Collection = () => {
         My Collection
       </h2>
 
-      <div></div>
+      <div>
+        {collectionData?.length > 0 ? (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            {collectionData.map((collection: CollectionProps) => (
+              <CollectionCard
+                collection={collection}
+                refetch={collectionRefetch}
+                key={collection._id}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="text-center text-gray-500">No collections found.</div>
+        )}
+      </div>
     </div>
   );
 };

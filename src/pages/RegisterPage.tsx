@@ -62,16 +62,16 @@ function Register() {
       const formValue = {
         email: tempUser.email,
         name: tempUser.displayName,
-        GooglePassword: googlePassword,
+        password: googlePassword,
       };
 
       await axiosSecure.post("/users/createUser", formValue);
-      toast.success("User created successfully!");
+      toast.success("User registered successfully!");
       setIsPassOpen(false);
       setGooglePassword("");
 
       // Proceed to login
-      await loginUser(tempUser.email, setUser, navigate);
+      await loginUser(tempUser, setUser, navigate, setIsPassOpen, setTempUser);
     } catch (error: any) {
       toast.error(error.response?.data?.message || "Failed to create user.");
     } finally {
@@ -273,7 +273,7 @@ function Register() {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-md w-full relative">
             <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-              Hey {tempUser?.displayName}, set a password
+              Hi {tempUser?.displayName}, set a password
             </h2>
             <div className="popup">
               <input

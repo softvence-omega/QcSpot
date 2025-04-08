@@ -2,6 +2,7 @@ import ActiveLink from "../components/ActiveLink";
 import { FaCartPlus, FaHome } from "react-icons/fa";
 import { Link, Outlet } from "react-router-dom";
 import { IoIosAddCircle, IoMdPerson } from "react-icons/io";
+import { IoCardOutline } from "react-icons/io5";
 import { RiLockPasswordFill } from "react-icons/ri";
 import logo from "../assets/QcSpot-Logo-design-2.png";
 
@@ -54,6 +55,13 @@ const DashboardLayout = () => {
             <ActiveLink to="/dashboard/manage-products">
               <div className="flex items-center gap-2 text-sm sm:text-base duration-300">
                 <FaCartPlus /> Manage Products
+              </div>
+            </ActiveLink>
+          </li>
+          <li>
+            <ActiveLink to="/dashboard/set-agent">
+              <div className="flex items-center gap-2 text-sm sm:text-base duration-300">
+                <IoCardOutline /> Set Agent
               </div>
             </ActiveLink>
           </li>

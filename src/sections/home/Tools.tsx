@@ -13,7 +13,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { handleQcSearch } from "../../components/handleQcSearch";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Tools = () => {
   const [qcSearchInput, setQcSearchInput] = useState("");
@@ -138,11 +138,16 @@ const Tools = () => {
             </div>
           </div>
 
-          <button className="w-full mt-6 hover:bg-green-600 text-white py-2.5 rounded-lg flex items-center justify-center gap-2 bg-btn transition-colors duration-200 ">
-            <Chrome size={20} />
-            Add to Chrome
-            <ExternalLink size={16} />
-          </button>
+          <Link
+            to="https://chromewebstore.google.com/detail/cnfans-risk-reminder-remo/klkmdlceadbnkoeklinelidmhpjkdgbj?utm_source=item-share-cp&pli=1"
+            target="_blank"
+          >
+            <button className="w-full mt-6 hover:bg-green-600 text-white py-2.5 rounded-lg flex items-center justify-center gap-2 bg-btn transition-colors duration-200 ">
+              <Chrome size={20} />
+              Add to Chrome
+              <ExternalLink size={16} />
+            </button>
+          </Link>
         </div>
 
         {/* Image Search Card */}

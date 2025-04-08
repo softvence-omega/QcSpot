@@ -16,7 +16,8 @@ import PrivateRoute from "./PrivateRoute";
 import ResetPasswordPage from "../pages/ResetPasswordPage";
 import PopularPage from "../pages/PopularPage";
 import Collection from "../pages/Collection";
-import PopularProductDetailsPage from "../pages/PopularProductDetailsPage";
+import SetAgent from "../pages/dashboard/SetAgent";
+import ProductDetailsProxyPage from "../pages/ProductDetailsProxyPage";
 
 const router = createBrowserRouter([
   {
@@ -27,10 +28,7 @@ const router = createBrowserRouter([
       { path: "/", element: <HomePage /> },
       { path: "/product/:shopType/:id", element: <ProductDetailsPage /> },
       { path: "/popular", element: <PopularPage /> },
-      {
-        path: "/popular/:shopType/:id",
-        element: <PopularProductDetailsPage />,
-      },
+      { path: "/product/:id", element: <ProductDetailsProxyPage /> },
       {
         path: "/collection",
         element: (
@@ -56,6 +54,7 @@ const router = createBrowserRouter([
       { path: "manage-products/:id", element: <ManageProductsDetails /> },
       { path: "users", element: <Users /> },
       { path: "change-password", element: <ChangePassword /> },
+      { path: "set-agent", element: <SetAgent /> },
     ],
   },
   { path: "register", element: <RegisterPage /> },

@@ -32,6 +32,7 @@ function Login() {
     const formValue = { email, password };
     try {
       const res = await axiosSecure.post("/auth/login", formValue);
+      console.log(res);
       if (res.status === 200) {
         const token = res.data?.approvalToken;
         if (token) localStorage.setItem("token", token);
@@ -43,6 +44,7 @@ function Login() {
           : navigate("/");
       } else toast.error("Unexpected response from server.");
     } catch (error: any) {
+      console.log(error);
       if (error.response) {
         toast.error(
           error.response.data?.message || "Invalid username or password"
@@ -67,24 +69,22 @@ function Login() {
       const formValue = {
         email: tempUser.email,
         name: tempUser.displayName,
-        GooglePassword: googlePassword,
+        password: googlePassword,
       };
 
       await axiosSecure.post("/users/createUser", formValue);
-      toast.success("User created successfully!");
+      toast.success("User registered successfully!");
       setIsPassOpen(false);
       setGooglePassword("");
 
       // Proceed to login
-      await loginUser(tempUser.email, setUser, navigate);
+      await loginUser(tempUser, setUser, navigate, setIsPassOpen, setTempUser);
     } catch (error: any) {
       toast.error(error.response?.data?.message || "Failed to create user.");
     } finally {
       setGooglePassLoading(false);
     }
   };
-
-  // const handleGoogleLogin = async () => {
   //   try {
   //     const googleProvider = new GoogleAuthProvider();
   //     const result = await signInWithPopup(auth, googleProvider);
@@ -281,7 +281,7 @@ function Login() {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-md w-full relative">
             <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-              Hey {tempUser?.displayName}, set a password
+              Hi {tempUser?.displayName}, set a password
             </h2>
             <div className="popup">
               <input

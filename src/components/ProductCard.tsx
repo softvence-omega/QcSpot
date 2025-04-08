@@ -10,7 +10,7 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   console.log(product);
   const {
-    // _id,
+    _id,
     thumbnailImg,
     name,
     price,
@@ -35,7 +35,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </div>
 
       <div className="p-2 sm:p-4 dark:bg-dark dark:text-white">
-        <h3 className="font-medium line-clamp-2 h-10">{name}</h3>
+        <h3 className="font-medium line-clamp-2 h-12">{name}</h3>
         <div className="mt-2 flex items-center justify-between">
           <div className="text-sm sm:text-base flex items-center space-x-2">
             <span className="font-semibold">¥{price}</span>
@@ -49,7 +49,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </div>
         <div className="mt-4 flex space-x-2">
           <Link
-            to={`/popular/${storeName}/${productCode}`}
+            to={`/product/${storeName}/${productCode}?_id=${_id}`}
             className="flex-1 p-1 md:p-2 border border-gray-300 rounded-md text-xs sm:text-sm font-medium text-gray-700 dark:text-white flex justify-center items-center"
           >
             View QC
