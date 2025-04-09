@@ -5,7 +5,10 @@ export interface ITo {
 }
 
 export interface IAgent {
+  _id: string;
+  sl: number;
   name: string;
   img: string;
   to: ITo;
+  active: boolean;
 }

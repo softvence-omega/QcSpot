@@ -1,101 +1,134 @@
 [
   {
+    "_id": 1,
+    "sl": 1,
     "name": "Oopbuy",
     "img": "https://res.cloudinary.com/dvda0vxlb/image/upload/v1744111574/Oopbuy_jodz45.webp",
     "to": {
       "taobao": "https://oopbuy.com/goods/details?id={id}&channel=taobao&inviteCode=GW72B7VYF",
       "weidian": "https://oopbuy.com/goods/details?id={id}&channel=weidian&inviteCode=GW72B7VYF",
       "1688": "https://oopbuy.com/goods/details?id={id}&channel=1688&inviteCode=GW72B7VYF"
-    }
+    },
+    "active": true
   },
   {
+    "_id": 2,
+    "sl": 2,
     "name": "ACBuy",
     "img": "https://res.cloudinary.com/dvda0vxlb/image/upload/v1744111575/Acbuy_euw3h4.webp",
     "to": {
       "taobao": "https://www.acbuy.com/product?id={id}&source=TB&u=XRTG9T",
       "weidian": "https://www.acbuy.com/product?id={id}&source=WD&u=XRTG9T",
       "1688": "https://www.acbuy.com/product?id={id}&source=AL&u=XRTG9T"
-    }
+    },
+    "active": true
   },
   {
+    "_id": 3,
+    "sl": 3,
     "name": "Ootdbuy",
     "img": "https://res.cloudinary.com/dvda0vxlb/image/upload/v1744111516/Ootdbuy_vzu25w.webp",
     "to": {
       "taobao": "https://www.ootdbuy.com/goods/details?id={id}&channel=taobao&inviteCode=FINDSLY",
       "weidian": "https://www.ootdbuy.com/goods/details?id={id}&channel=weidian&inviteCode=FINDSLY",
       "1688": "https://www.ootdbuy.com/goods/details?id={id}&channel=1688&inviteCode=FINDSLY"
-    }
+    },
+    "active": true
   },
   {
+    "_id": 4,
+    "sl": 4,
     "name": "Lovegobuy",
     "img": "https://res.cloudinary.com/dvda0vxlb/image/upload/v1744111628/Lovegobuy_yzrrmx.jpg",
     "to": {
       "taobao": "https://lovegobuy.com/product?id={id}&shop_type=taobao&invite_code=Q7W6G7",
       "weidian": "https://lovegobuy.com/product?id={id}&shop_type=weidian&invite_code=Q7W6G7",
       "1688": "https://lovegobuy.com/product?id={id}&shop_type=1688&invite_code=Q7W6G7"
-    }
+    },
+    "active": true
   },
   {
+    "_id": 5,
+    "sl": 5,
     "name": "CSSBuy",
     "img": "https://res.cloudinary.com/dvda0vxlb/image/upload/v1744111628/Cssbuy_adayuw.jpg",
     "to": {
       "taobao": "https://www.cssbuy.com/item-{id}.html?promotionCode=d34d2363db4cdb95",
       "weidian": "https://www.cssbuy.com/item-micro-{id}.html?promotionCode=d34d2363db4cdb95",
       "1688": "https://www.cssbuy.com/item-1688-{id}.html?promotionCode=d34d2363db4cdb95"
-    }
+    },
+    "active": true
   },
   {
+    "_id": 6,
+    "sl": 6,
     "name": "CNFans",
     "img": "https://res.cloudinary.com/dvda0vxlb/image/upload/v1744111575/Cnfans_tm457i.webp",
     "to": {
       "taobao": "https://cnfans.com/product/?shop_type=taobao&id={id}&ref=72365",
       "weidian": "https://cnfans.com/product/?shop_type=weidian&id={id}&ref=72365",
       "1688": "https://cnfans.com/product/?shop_type=ali_1688&id={id}&ref=72365"
-    }
+    },
+    "active": true
   },
   {
+    "_id": 7,
+    "sl": 7,
     "name": "Loongbuy",
     "img": "https://res.cloudinary.com/dvda0vxlb/image/upload/v1744111575/Loongbuy_r9qmok.webp",
     "to": {
       "taobao": "https://loongbuy.com/product-details?goodsId={id}&platform=taobao",
       "weidian": "https://loongbuy.com/product-details?goodsId={id}&platform=weidian",
       "1688": "https://loongbuy.com/product-details?goodsId={id}&platform=1688"
-    }
+    },
+    "active": true
   },
   {
+    "_id": 8,
+    "sl": 8,
     "name": "Mulebuy",
     "img": "https://res.cloudinary.com/dvda0vxlb/image/upload/v1744111629/Mulebuy_ili1ke.jpg",
     "to": {
       "taobao": "https://mulebuy.com/product/?shop_type=taobao&id={id}&ref=200162669",
       "weidian": "https://mulebuy.com/product/?shop_type=weidian&id={id}&ref=200162669",
       "1688": "https://mulebuy.com/product/?shop_type=ali_1688&id={id}&ref=200162669"
-    }
+    },
+    "active": true
   },
   {
+    "_id": 9,
+    "sl": 9,
     "name": "Joyabuy",
     "img": "https://res.cloudinary.com/dvda0vxlb/image/upload/v1744111575/Joyabuy_ocwmwm.webp",
     "to": {
       "taobao": "https://joyabuy.com/product/?shop_type=taobao&id={id}&ref=300083887",
       "weidian": "https://joyabuy.com/product/?shop_type=weidian&id={id}&ref=300083887",
       "1688": "https://joyabuy.com/product/?shop_type=ali_1688&id={id}&ref=300083887"
-    }
+    },
+    "active": true
   },
   {
+    "_id": 10,
+    "sl": 10,
     "name": "Eastmallbuy",
     "img": "https://res.cloudinary.com/dvda0vxlb/image/upload/v1744111575/Eastmallbuy_qkrrnk.webp",
     "to": {
       "taobao": "https://www.eastmallbuy.com/index/item/index.html?url=https%3A%2F%2Fitem.taobao.com%2Fitem.htm%3Fid%3D{id}&inviter=Findsly",
       "weidian": "https://www.eastmallbuy.com/index/item/index.html?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D{id}&inviter=Findsly",
       "1688": "https://www.eastmallbuy.com/index/item/index.html?url=https%3A%2F%2Fdetail.1688.com%2Foffer%2F{id}.html&inviter=Findsly"
-    }
+    },
+    "active": true
   },
   {
+    "_id": 11,
+    "sl": 11,
     "name": "Superbuy",
     "img": "https://res.cloudinary.com/dvda0vxlb/image/upload/v1744111507/Superbuy_mskmtl.webp",
     "to": {
       "taobao": "https://www.superbuy.com/en/page/buy/?url=https://item.taobao.com/item.htm?id={id}&partnercode=wcQdgk",
       "weidian": "https://www.superbuy.com/en/page/buy/?url=https://weidian.com/item.html?itemID={id}&partnercode=wcQdgk",
       "1688": "https://www.superbuy.com/en/page/buy/?url=https://detail.1688.com/offer/{id}.html&partnercode=wcQdgk"
-    }
+    },
+    "active": true
   }
 ]

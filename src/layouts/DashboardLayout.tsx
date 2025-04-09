@@ -59,9 +59,9 @@ const DashboardLayout = () => {
             </ActiveLink>
           </li>
           <li>
-            <ActiveLink to="/dashboard/set-agent">
+            <ActiveLink to="/dashboard/manage-agent">
               <div className="flex items-center gap-2 text-sm sm:text-base duration-300">
-                <IoCardOutline /> Set Agent
+                <IoCardOutline /> Manage Agent
               </div>
             </ActiveLink>
           </li>
