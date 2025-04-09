@@ -70,7 +70,6 @@ const ProductDetailsPage = () => {
       (collection: CollectionProps) => collection.productCode === id
     );
   }
-  console.log(isProductInCollection);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -105,7 +104,10 @@ const ProductDetailsPage = () => {
           `https://www.lovegobuy.com/index.php?s=/api/open/qc&shopType=${shopType}&goodsId=${id}`
         );
         const data2 = response2?.data?.data[0]?.imgs;
-        setQc([...data1, ...data2]);
+        if (data1 && data2) setQc([...data1, ...data2]);
+        else if (data1) setQc(data1);
+        else if (data2) setQc(data2);
+        else setQc([]);
       } catch (error) {
         console.error("Error fetching QC photos:", error);
         setQc(null);
@@ -165,6 +167,7 @@ const ProductDetailsPage = () => {
               {product?.imgList?.map((img, index) => (
                 <img
                   key={index}
+                  onClick={() => setSelectedSku(product?.skus[index])}
                   className="w-16 h-16 object-cover object-center px-2 rounded-lg cursor-grab"
                   src={img}
                   alt="IMAGE"

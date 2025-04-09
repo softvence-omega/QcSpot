@@ -16,7 +16,7 @@ import PrivateRoute from "./PrivateRoute";
 import ResetPasswordPage from "../pages/ResetPasswordPage";
 import PopularPage from "../pages/PopularPage";
 import Collection from "../pages/Collection";
-import SetAgent from "../pages/dashboard/SetAgent";
+import ManageAgent from "../pages/dashboard/ManageAgent";
 import ProductDetailsProxyPage from "../pages/ProductDetailsProxyPage";
 
 const router = createBrowserRouter([
@@ -26,8 +26,8 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { path: "/", element: <HomePage /> },
-      { path: "/product/:shopType/:id", element: <ProductDetailsPage /> },
       { path: "/popular", element: <PopularPage /> },
+      { path: "/product/:shopType/:id", element: <ProductDetailsPage /> },
       { path: "/product/:id", element: <ProductDetailsProxyPage /> },
       {
         path: "/collection",
@@ -54,18 +54,14 @@ const router = createBrowserRouter([
       { path: "manage-products/:id", element: <ManageProductsDetails /> },
       { path: "users", element: <Users /> },
       { path: "change-password", element: <ChangePassword /> },
-      { path: "set-agent", element: <SetAgent /> },
+      { path: "set-agent", element: <ManageAgent /> },
     ],
   },
   { path: "register", element: <RegisterPage /> },
   { path: "login", element: <LoginPage /> },
   {
     path: "reset-password",
-    element: (
-      // <PrivateRoute>
-      <ResetPasswordPage />
-      // </PrivateRoute>
-    ),
+    element: <ResetPasswordPage />,
   },
 ]);
 
