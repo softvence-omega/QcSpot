@@ -1,7 +1,7 @@
 export interface ITo {
   taobao: string;
   weidian: string;
-  "1688": string;
+  ali_1688: string;
 }
 
 export interface IAgent {
@@ -10,5 +10,6 @@ export interface IAgent {
   name: string;
   img: string;
   to: ITo;
+  offer: string;
   active: boolean;
 }

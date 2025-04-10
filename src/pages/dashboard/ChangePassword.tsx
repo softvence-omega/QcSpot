@@ -62,7 +62,7 @@ const ChangePassword = () => {
       </h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="space-y-4 max-w-md mx-auto bg-white p-6 rounded-lg shadow-md"
+        className="space-y-4 max-w-md mx-auto bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-md"
       >
         {/* Current Password */}
         <div>
@@ -85,7 +85,7 @@ const ChangePassword = () => {
         <div>
           <label className="block text-sm font-medium mb-1">New Password</label>
           <input
-            type="text"
+            type="password"
             {...register("newPassword", {
               required: "New password is required",
               minLength: {

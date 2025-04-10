@@ -18,6 +18,7 @@ import PopularPage from "../pages/PopularPage";
 import Collection from "../pages/Collection";
 import ManageAgent from "../pages/dashboard/ManageAgent";
 import ProductDetailsProxyPage from "../pages/ProductDetailsProxyPage";
+import AddAnAgent from "../pages/dashboard/AddAnAgent";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,7 @@ const router = createBrowserRouter([
       { path: "admin-home", element: <AdminHome /> },
       { path: "add-a-product", element: <AddAProduct /> },
       { path: "manage-products", element: <ManageProducts /> },
+      { path: "add-an-agent", element: <AddAnAgent /> },
       { path: "manage-products/:id", element: <ManageProductsDetails /> },
       { path: "users", element: <Users /> },
       { path: "change-password", element: <ChangePassword /> },

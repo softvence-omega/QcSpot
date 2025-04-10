@@ -3,7 +3,13 @@ import axiosSecure from "../../hooks/useAxios";
 import { useRef, useState } from "react";
 import Loader from "../../components/Loader";
 import { IVarient, ProductImage } from "../../types";
-import { FaTruck, FaWeightHanging } from "react-icons/fa";
+import {
+  FaCode,
+  FaEdit,
+  FaShoppingCart,
+  FaTruck,
+  FaWeightHanging,
+} from "react-icons/fa";
 import { RxDimensions } from "react-icons/rx";
 import { Camera, Eye, Loader2, X } from "lucide-react";
 import { AiOutlineStock } from "react-icons/ai";
@@ -17,11 +23,13 @@ import toast from "react-hot-toast";
 import VarientCard from "../../components/VarientCard";
 import useSingleProduct from "../../hooks/useSingleProduct";
 import { useAuth } from "../../context/AuthContext";
+import ProductEdit from "../../components/ProductEdit";
 
 const ManageProductsDetails = () => {
   const { id } = useParams();
   const { user } = useAuth();
   const [varientLoading, setVarientLoading] = useState(false);
+  const [isEditClicked, setIsEditClicked] = useState(false);
   const [productImages, setProductImages] = useState<ProductImage[]>([]);
   const productImagesRef = useRef<HTMLInputElement | null>(null);
   const { singleProductData, singleProductLoading, singleProductRefetch } =
@@ -44,16 +52,12 @@ const ManageProductsDetails = () => {
   };
 
   if (singleProductLoading) return <Loader />;
-
   if (!singleProductData)
     return (
       <p className="text-center text-2xl font-semibold my-20">
         Product not found.
       </p>
     );
-
-  const varientKeys = Object.keys(singleProductData.filterDataFields);
-
   const {
     _id,
     name,
@@ -61,15 +65,18 @@ const ManageProductsDetails = () => {
     inStock,
     shippingTime,
     weight,
+    storeName,
+    productCode,
     dimensions,
     onTrend,
     totalView,
     totalPhoto,
     thumbnailImg,
   } = singleProductData.product;
+  const varientKeys = Object.keys(singleProductData.filterDataFields);
 
-  // ------------ Submit Handler -----------------
-  const onSubmit = async (data: any) => {
+  // ------------ Varient Submit Handler -----------------
+  const onVarientSubmit = async (data: any) => {
     const formData = new FormData();
 
     // Append product images
@@ -109,58 +116,76 @@ const ManageProductsDetails = () => {
   return (
     <section className="max-w-5xl mx-auto py-20 md:pt-24 px-8 lg:px-4">
       {/*-------------------------- Top Section - Product Details ------------------*/}
-      <section className="flex flex-col md:flex-row rounded-lg shadow-lg overflow-hidden border dark:border-shadow dark:shadow-shadow">
-        {/* Product Image */}
-        {thumbnailImg && (
+      {!isEditClicked ? (
+        <section className="relative flex flex-col md:flex-row rounded-lg shadow-lg overflow-hidden border dark:border-shadow dark:shadow-shadow">
+          {/* Product Image */}
           <img
             className="w-full max-w-96 p-3 mt-2 md:mt-0 max-h-96 object-cover object-center mx-auto"
             src={thumbnailImg[0]}
             alt={name}
           />
-        )}
 
-        {/* Product Description */}
-        <div className="p-5 flex flex-col flex-1">
-          <h2 className="text-xl md:text-2xl font-semibold mb-2">{name}</h2>
-          {/* Views and Photos Count */}
-          <div className="flex items-center space-x-2  text-sm">
-            <Eye size={16} />
-            <span className="pr-6">{totalView}</span>
-            <Camera size={16} />
-            <span>{totalPhoto}</span>
-          </div>
+          {/* Product Description */}
+          <div className="p-5 flex flex-col flex-1">
+            <h2 className="text-xl md:text-2xl font-semibold mb-2">{name}</h2>
+            {/* Views and Photos Count */}
+            <div className="flex items-center space-x-2  text-sm">
+              <Eye size={16} />
+              <span className="pr-6">{totalView}</span>
+              <Camera size={16} />
+              <span>{totalPhoto}</span>
+            </div>
 
-          <div className="grid grid-cols-2 gap-5 items-center justify-between my-5">
-            {/* Price */}
-            <button className="w-full flex justify-center items-center gap-2 rounded-lg font-semibold bg-gray-100 hover:bg-gray-300 duration-200 px-4 py-2 transition text-black">
-              ¥ {price}
-            </button>
-            {/* Weight */}
-            <button className="w-full flex justify-center items-center gap-2  rounded-lg font-semibold bg-gray-100 hover:bg-gray-300 duration-200 px-4 py-2 transition text-black">
-              <FaWeightHanging />
-              {weight} g
-            </button>
-            {/* Dimensions */}
-            <button className="w-full flex justify-center items-center gap-2  rounded-lg font-semibold bg-gray-100 hover:bg-gray-300 duration-200 px-4 py-2 transition text-black">
-              <RxDimensions /> {dimensions}
-            </button>
-            {/* Shipping Time */}
-            <button className="w-full flex justify-center items-center gap-2  rounded-lg font-semibold bg-gray-100 hover:bg-gray-300 duration-200 px-4 py-2 transition text-black">
-              <FaTruck /> {shippingTime} days
-            </button>
-            {/* Stock */}
-            <button className="w-full flex justify-center items-center gap-2  rounded-lg font-semibold bg-gray-100 hover:bg-gray-300 duration-200 px-4 py-2 transition text-black">
-              <AiOutlineStock />
-              {inStock ? "In Stock" : "Out of Stock"}
-            </button>
-            {/* trending */}
-            <button className="w-full flex justify-center items-center gap-2  rounded-lg font-semibold bg-gray-100 hover:bg-gray-300 duration-200 px-4 py-2 transition text-black">
-              <FaArrowTrendUp />
-              {onTrend ? "Trending" : "Not Trending"}
-            </button>
+            <div className="grid grid-cols-2 gap-3 md:gap-5 items-center justify-between my-5">
+              {/* Price */}
+              <p className="w-full flex justify-center items-center gap-2 rounded-lg font-semibold bg-gray-100 hover:bg-gray-300 duration-200 px-2 md:px-4 py-1 md:py-2 transition text-black text-sm md:text-base">
+                ¥ {price}
+              </p>
+              {/* Weight */}
+              <p className="w-full flex justify-center items-center gap-2  rounded-lg font-semibold bg-gray-100 hover:bg-gray-300 duration-200 px-2 md:px-4 py-1 md:py-2 transition text-black text-sm md:text-base">
+                <FaWeightHanging />
+                {weight} g
+              </p>
+              {/* Dimensions */}
+              <p className="w-full flex justify-center items-center gap-2  rounded-lg font-semibold bg-gray-100 hover:bg-gray-300 duration-200 px-2 md:px-4 py-1 md:py-2 transition text-black text-sm md:text-base">
+                <RxDimensions /> {dimensions}
+              </p>
+              {/* Shipping Time */}
+              <p className="w-full flex justify-center items-center gap-2  rounded-lg font-semibold bg-gray-100 hover:bg-gray-300 duration-200 px-2 md:px-4 py-1 md:py-2 transition text-black text-sm md:text-base">
+                <FaTruck /> {shippingTime} days
+              </p>
+              {/* Stock */}
+              <p className="w-full flex justify-center items-center gap-2  rounded-lg font-semibold bg-gray-100 hover:bg-gray-300 duration-200 px-2 md:px-4 py-1 md:py-2 transition text-black text-sm md:text-base">
+                <AiOutlineStock />
+                {inStock ? "In Stock" : "Out of Stock"}
+              </p>
+              {/* trending */}
+              <p className="w-full flex justify-center items-center gap-2  rounded-lg font-semibold bg-gray-100 hover:bg-gray-300 duration-200 px-2 md:px-4 py-1 md:py-2 transition text-black text-sm md:text-base">
+                <FaArrowTrendUp />
+                {onTrend ? "Trending" : "Not Trending"}
+              </p>
+              <p className="w-full flex justify-center items-center gap-2 rounded-lg font-semibold bg-gray-100 hover:bg-gray-300 duration-200 px-2 md:px-4 py-1 md:py-2 transition text-black text-sm md:text-base">
+                <FaShoppingCart /> {storeName}
+              </p>
+              <p className="w-full flex justify-center items-center gap-2 rounded-lg font-semibold bg-gray-100 hover:bg-gray-300 duration-200 px-2 md:px-4 py-1 md:py-2 transition text-black text-sm md:text-base">
+                <FaCode /> {productCode}
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
+          <div
+            onClick={() => setIsEditClicked(true)}
+            className="absolute top-2 right-2 cursor-pointer"
+          >
+            <FaEdit className="text-green-500 rounded p-1 text-2xl" />
+          </div>
+        </section>
+      ) : (
+        <ProductEdit
+          product={singleProductData.product}
+          setIsEditClicked={setIsEditClicked}
+          refetch={singleProductRefetch}
+        />
+      )}
 
       {/*-------------------------- Mid Section - Variants --------------------*/}
       <section className="mt-10 mx-auto">
@@ -184,7 +209,7 @@ const ManageProductsDetails = () => {
             Add a Varient
           </h2>
           <form
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit(onVarientSubmit)}
             className="grid grid-cols-2 md:grid-cols-3 gap-4"
           >
             {/* Quantity */}

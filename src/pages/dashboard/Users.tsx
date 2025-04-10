@@ -13,10 +13,10 @@ const Users = () => {
       </h2>
 
       <div className="overflow-x-auto">
-        <table className="table text-center text-black dark:text-white w-full">
+        <table className=" text-center text-black dark:text-white w-full">
           {/* head */}
           <thead>
-            <tr>
+            <tr className="bg-zinc-200 dark:bg-zinc-700 border-b dark:border-shadow h-12">
               <th>Sl</th>
               <th>Name</th>
               <th>Email</th>
@@ -25,8 +25,11 @@ const Users = () => {
           <tbody>
             {/* row 1 */}
             {usersData?.map((user: any, index: number) => (
-              <tr key={user._id}>
-                <th>{index + 1}</th>
+              <tr
+                key={user._id}
+                className="text-sm sm:text-base bg-white dark:bg-black border-b dark:border-zinc-700 h-12"
+              >
+                <th className="">{index + 1}</th>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
               </tr>

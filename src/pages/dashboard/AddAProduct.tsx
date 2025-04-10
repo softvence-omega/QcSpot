@@ -135,7 +135,9 @@ const AddProduct = () => {
 
   return (
     <div className="max-w-5xl mx-auto py-20 md:pt-24 px-8 lg:px-4">
-      <h2 className="text-2xl font-semibold text-center mb-4">Add a Product</h2>
+      <h2 className="text-xl sm:text-2xl font-semibold text-center mb-4">
+        Add a Product
+      </h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         {/* Product Details Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -161,7 +163,7 @@ const AddProduct = () => {
             </label>
             <input
               type="number"
-              step="0.01"
+              step="1"
               {...register("price", {
                 required: "Price is required",
                 min: { value: 0, message: "Price must be positive" },
@@ -257,7 +259,7 @@ const AddProduct = () => {
             </label>
             <input
               type="number"
-              step="0.01"
+              step="1"
               {...register("weight", {
                 required: "Weight is required",
                 min: { value: 0, message: "Weight must be positive" },
@@ -313,7 +315,7 @@ const AddProduct = () => {
         </div>
 
         {/* Store Info Section */}
-        <h2 className="text-2xl font-semibold text-center pt-10 mb-4">
+        <h2 className="text-xl sm:text-2xl font-semibold text-center pt-10 mb-4">
           Store Name and Product Code
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -358,7 +360,7 @@ const AddProduct = () => {
         </div>
 
         {/* Variant Section */}
-        <h2 className="text-2xl font-semibold text-center pt-10 mb-4">
+        <h2 className="text-xl sm:text-2xl font-semibold text-center pt-10 mb-4">
           Add a Product Variant
         </h2>
         <div className="w-full">
@@ -394,7 +396,7 @@ const AddProduct = () => {
                 <input
                   type="text"
                   placeholder="Key (e.g. color, size)"
-                  className="w-40 sm:w-60 border p-2 rounded-md focus:outline-none focus:border-btn bg-white dark:bg-black dark:border-shadow"
+                  className="w-28 sm:w-60 border p-2 rounded-md focus:outline-none focus:border-btn bg-white dark:bg-black dark:border-shadow"
                   value={singleClass.key}
                   onChange={(e) => {
                     const updatedClasses = [...varient];
@@ -405,7 +407,7 @@ const AddProduct = () => {
                 <input
                   type="text"
                   placeholder="Value (e.g. black, xl)"
-                  className="w-40 sm:w-60 border p-2 rounded-md focus:outline-none focus:border-btn bg-white dark:bg-black dark:border-shadow"
+                  className="w-28 sm:w-60 border p-2 rounded-md focus:outline-none focus:border-btn bg-white dark:bg-black dark:border-shadow"
                   value={singleClass.value}
                   onChange={(e) => {
                     const updatedClasses = [...varient];

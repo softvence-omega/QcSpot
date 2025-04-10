@@ -48,7 +48,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </div>
         <div className="mt-4 flex space-x-2">
           <Link
-            to={`/product/${storeName}/${productCode}?_id=${_id}`}
+            to={`/product/${
+              storeName == "1688" ? "ali_1688" : storeName
+            }/${productCode}?_id=${_id}`}
             className="flex-1 p-1 md:p-2 border border-gray-300 rounded-md text-xs sm:text-sm font-medium text-gray-700 dark:text-white flex justify-center items-center"
           >
             View QC

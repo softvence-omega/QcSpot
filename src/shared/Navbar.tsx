@@ -91,7 +91,7 @@ const Navbar = () => {
           <div className="relative group">
             <PlatformSwitcher />
             <span className="absolute z-30 left-1/2 top-full mt-1 mb-2 w-max -translate-x-1/2 scale-0 transition-all rounded bg-btn px-1 text-xs text-white group-hover:scale-100">
-              Select Platforms
+              Select Agent
             </span>
           </div>
           <ThemeSwitcher />

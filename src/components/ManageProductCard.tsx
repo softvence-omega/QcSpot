@@ -60,7 +60,7 @@ const ManageProductCard: React.FC<ManageProductCardProps> = ({
   };
 
   return (
-    <div className="relative w-[300px] rounded-lg shadow-md dark:shadow-shadow">
+    <div className="relative w-[300px] rounded-lg dark:bg-zinc-800 shadow-md dark:shadow-shadow">
       <p className="absolute top-3 right-3">
         {onTrend ? (
           <button

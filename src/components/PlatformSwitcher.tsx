@@ -1,14 +1,10 @@
 import { X } from "lucide-react";
 import { useState, useEffect } from "react";
 import useAgent from "../hooks/useAgent";
-
-interface TAgent {
-  name: string;
-  img: string;
-}
+import { IAgent } from "../types/agent.type";
 
 interface UseAgentResult {
-  agentData: TAgent[];
+  agentData: IAgent[];
 }
 
 const PlatformSwitcher = () => {
@@ -52,34 +48,52 @@ const PlatformSwitcher = () => {
           onClick={() => setIsOpen(false)}
         >
           <div
-            className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-md w-full relative"
+            className="bg-white dark:bg-gray-800 py-6 pl-6 pr-4 rounded-lg shadow-lg max-w-md w-full relative"
             onClick={(e) => e.stopPropagation()}
           >
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-              Select a Platform
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+              Select an agent
             </h2>
-            <div className="grid grid-cols-3 gap-4">
-              {agentData.map((platform) => (
+            <p className="text-sm mb-4 text-zinc-500">
+              Select the agent you want to buy on
+            </p>
+            <div
+              className={`overflow-y-scroll max-h-[420px] scrollbar-visible scroll-px-1`}
+            >
+              {agentData.map((agent, index) => (
                 <button
-                  key={platform.name}
-                  className={`border p-2 rounded-lg transition-colors ${
-                    selectedPlatform === platform.name
+                  key={agent.name}
+                  className={`relative flex items-center gap-4 w-full border rounded-lg transition-colors mb-2 ${
+                    selectedPlatform === agent.name
                       ? "border-green-500 bg-green-100 dark:bg-green-900"
+                      : index === 0
+                      ? "border-gray-300 bg-red-50 dark:border-gray-600"
                       : "border-gray-300 dark:border-gray-600"
                   }`}
                   onClick={() => {
-                    setSelectedPlatform(platform.name);
+                    setSelectedPlatform(agent.name);
                     setIsOpen(false);
                   }}
                 >
                   <img
-                    src={platform.img}
-                    alt={platform.name}
-                    className="w-16 h-16 object-contain mx-auto"
+                    src={agent.img}
+                    alt={agent.name}
+                    className="w-12 h-12 object-contain mx-auto rounded-l-lg"
+                    loading="lazy"
                   />
-                  <p className="text-center mt-2 text-sm text-gray-700 dark:text-gray-300">
-                    {platform.name}
-                  </p>
+                  <div className="w-full text-left">
+                    <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                      {agent.name}
+                    </p>
+                    <p className="text-sm text-gray-700 dark:text-gray-300 line-clamp-1">
+                      {agent?.offer}
+                    </p>
+                  </div>
+                  {index === 0 && (
+                    <p className="absolute top-0 right-0 bg-red-200 text-xs py-0.5 px-2 rounded-tr-lg rounded-bl-lg">
+                      Recommended
+                    </p>
+                  )}
                 </button>
               ))}
             </div>

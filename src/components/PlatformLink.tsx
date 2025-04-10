@@ -34,7 +34,7 @@ const PlatformLink = ({ id, shopType, className }: PlatformLinkProps) => {
   const generateToUrl = (): string => {
     if (!agentToBeUsed || !formattedShopType || !id) return "/";
     const shopTypeKey =
-      formattedShopType === "ali_1688" ? "1688" : formattedShopType;
+      formattedShopType === "1688" ? "ali_1688" : formattedShopType;
     const pattern = agentToBeUsed.to?.[shopTypeKey];
     if (!pattern) return "/";
     return pattern.replace(/\{id\}/g, id);

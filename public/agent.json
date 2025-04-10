@@ -7,8 +7,9 @@
     "to": {
       "taobao": "https://oopbuy.com/goods/details?id={id}&channel=taobao&inviteCode=GW72B7VYF",
       "weidian": "https://oopbuy.com/goods/details?id={id}&channel=weidian&inviteCode=GW72B7VYF",
-      "1688": "https://oopbuy.com/goods/details?id={id}&channel=1688&inviteCode=GW72B7VYF"
+      "ali_1688": "https://oopbuy.com/goods/details?id={id}&channel=1688&inviteCode=GW72B7VYF"
     },
+    "offer": "$200 coupons + 16% discount for new users!",
     "active": true
   },
   {
@@ -19,8 +20,9 @@
     "to": {
       "taobao": "https://www.acbuy.com/product?id={id}&source=TB&u=XRTG9T",
       "weidian": "https://www.acbuy.com/product?id={id}&source=WD&u=XRTG9T",
-      "1688": "https://www.acbuy.com/product?id={id}&source=AL&u=XRTG9T"
+      "ali_1688": "https://www.acbuy.com/product?id={id}&source=AL&u=XRTG9T"
     },
+    "offer": "$200 coupons + 16% discount for new users!",
     "active": true
   },
   {
@@ -31,8 +33,9 @@
     "to": {
       "taobao": "https://www.ootdbuy.com/goods/details?id={id}&channel=taobao&inviteCode=FINDSLY",
       "weidian": "https://www.ootdbuy.com/goods/details?id={id}&channel=weidian&inviteCode=FINDSLY",
-      "1688": "https://www.ootdbuy.com/goods/details?id={id}&channel=1688&inviteCode=FINDSLY"
+      "ali_1688": "https://www.ootdbuy.com/goods/details?id={id}&channel=1688&inviteCode=FINDSLY"
     },
+    "offer": "$200 coupons + 16% discount for new users!",
     "active": true
   },
   {
@@ -45,6 +48,7 @@
       "weidian": "https://lovegobuy.com/product?id={id}&shop_type=weidian&invite_code=Q7W6G7",
       "1688": "https://lovegobuy.com/product?id={id}&shop_type=1688&invite_code=Q7W6G7"
     },
+    "offer": "$200 coupons + 16% discount for new users!",
     "active": true
   },
   {
@@ -55,8 +59,9 @@
     "to": {
       "taobao": "https://www.cssbuy.com/item-{id}.html?promotionCode=d34d2363db4cdb95",
       "weidian": "https://www.cssbuy.com/item-micro-{id}.html?promotionCode=d34d2363db4cdb95",
-      "1688": "https://www.cssbuy.com/item-1688-{id}.html?promotionCode=d34d2363db4cdb95"
+      "ali_1688": "https://www.cssbuy.com/item-1688-{id}.html?promotionCode=d34d2363db4cdb95"
     },
+    "offer": "$200 coupons + 16% discount for new users!",
     "active": true
   },
   {
@@ -67,8 +72,9 @@
     "to": {
       "taobao": "https://cnfans.com/product/?shop_type=taobao&id={id}&ref=72365",
       "weidian": "https://cnfans.com/product/?shop_type=weidian&id={id}&ref=72365",
-      "1688": "https://cnfans.com/product/?shop_type=ali_1688&id={id}&ref=72365"
+      "ali_1688": "https://cnfans.com/product/?shop_type=ali_1688&id={id}&ref=72365"
     },
+    "offer": "$200 coupons + 16% discount for new users!",
     "active": true
   },
   {
@@ -79,8 +85,9 @@
     "to": {
       "taobao": "https://loongbuy.com/product-details?goodsId={id}&platform=taobao",
       "weidian": "https://loongbuy.com/product-details?goodsId={id}&platform=weidian",
-      "1688": "https://loongbuy.com/product-details?goodsId={id}&platform=1688"
+      "ali_1688": "https://loongbuy.com/product-details?goodsId={id}&platform=1688"
     },
+    "offer": "$200 coupons + 16% discount for new users!",
     "active": true
   },
   {
@@ -91,8 +98,9 @@
     "to": {
       "taobao": "https://mulebuy.com/product/?shop_type=taobao&id={id}&ref=200162669",
       "weidian": "https://mulebuy.com/product/?shop_type=weidian&id={id}&ref=200162669",
-      "1688": "https://mulebuy.com/product/?shop_type=ali_1688&id={id}&ref=200162669"
+      "ali_1688": "https://mulebuy.com/product/?shop_type=ali_1688&id={id}&ref=200162669"
     },
+    "offer": "$200 coupons + 16% discount for new users!",
     "active": true
   },
   {
@@ -103,8 +111,9 @@
     "to": {
       "taobao": "https://joyabuy.com/product/?shop_type=taobao&id={id}&ref=300083887",
       "weidian": "https://joyabuy.com/product/?shop_type=weidian&id={id}&ref=300083887",
-      "1688": "https://joyabuy.com/product/?shop_type=ali_1688&id={id}&ref=300083887"
+      "ali_1688": "https://joyabuy.com/product/?shop_type=ali_1688&id={id}&ref=300083887"
     },
+    "offer": "$200 coupons + 16% discount for new users!",
     "active": true
   },
   {
@@ -115,8 +124,9 @@
     "to": {
       "taobao": "https://www.eastmallbuy.com/index/item/index.html?url=https%3A%2F%2Fitem.taobao.com%2Fitem.htm%3Fid%3D{id}&inviter=Findsly",
       "weidian": "https://www.eastmallbuy.com/index/item/index.html?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D{id}&inviter=Findsly",
-      "1688": "https://www.eastmallbuy.com/index/item/index.html?url=https%3A%2F%2Fdetail.1688.com%2Foffer%2F{id}.html&inviter=Findsly"
+      "ali_1688": "https://www.eastmallbuy.com/index/item/index.html?url=https%3A%2F%2Fdetail.1688.com%2Foffer%2F{id}.html&inviter=Findsly"
     },
+    "offer": "$200 coupons + 16% discount for new users!",
     "active": true
   },
   {
@@ -127,8 +137,9 @@
     "to": {
       "taobao": "https://www.superbuy.com/en/page/buy/?url=https://item.taobao.com/item.htm?id={id}&partnercode=wcQdgk",
       "weidian": "https://www.superbuy.com/en/page/buy/?url=https://weidian.com/item.html?itemID={id}&partnercode=wcQdgk",
-      "1688": "https://www.superbuy.com/en/page/buy/?url=https://detail.1688.com/offer/{id}.html&partnercode=wcQdgk"
+      "ali_1688": "https://www.superbuy.com/en/page/buy/?url=https://detail.1688.com/offer/{id}.html&partnercode=wcQdgk"
     },
+    "offer": "$200 coupons + 16% discount for new users!",
     "active": true
   }
 ]

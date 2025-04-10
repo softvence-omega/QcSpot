@@ -48,6 +48,16 @@ function handleCssBuyUrl(url: string) {
   return { shopType, itemId };
 }
 
+function handleAcBuyUrl(source: string) {
+  if (source === "AL") {
+    return "ali_1688";
+  } else if (source === "TB") {
+    return "TAOBAO";
+  } else if (source === "WD") {
+    return "WEIDIAN";
+  }
+}
+
 // Handle Qc Search
 export const handleQcSearch = async (
   input: string,
@@ -57,6 +67,7 @@ export const handleQcSearch = async (
     const url = new URL(input);
     const searchedUrl = url.searchParams.get("url");
     const cssBuyUrl = url.href.includes("www.cssbuy.com");
+    const acBuyUrl = url.href.includes("www.acbuy.com");
 
     let shopType: string | undefined;
     let id: string | undefined;
@@ -65,10 +76,11 @@ export const handleQcSearch = async (
       url.searchParams.get("shoptype") ||
       url.searchParams.get("shop_type") ||
       url.searchParams.get("channel") ||
-      url.searchParams.get("source") ||
       url.searchParams.get("platform") ||
       (searchedUrl && extractFromUrl(searchedUrl).domain) ||
-      ((cssBuyUrl && handleCssBuyUrl(url.href)?.shopType) as string);
+      ((cssBuyUrl && handleCssBuyUrl(url.href)?.shopType) as string) ||
+      ((acBuyUrl &&
+        handleAcBuyUrl(url.searchParams.get("source") as string)) as string);
 
     id =
       url.searchParams.get("id") ||
@@ -99,4 +111,4 @@ export const handleQcSearch = async (
   }
 };
 
-// https://www.eastmallbuy.com/index/item/index.html?url=https%3A%2F%2Fitem.taobao.com%2Fitem.htm%3Fid%3D842690740893&inviter=Findsly
+// https://www.acbuy.com/product?id=808389068660&source=AL&u=XRTG9T

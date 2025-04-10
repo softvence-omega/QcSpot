@@ -22,3 +22,8 @@
   left: 0;
   top: 0;
 }
+
+.scrollbar-visible {
+  scrollbar-width: thin;
+  scrollbar-color: #d1d5db transparent;
+}

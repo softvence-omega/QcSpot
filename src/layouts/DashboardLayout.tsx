@@ -19,10 +19,10 @@ const DashboardLayout = () => {
         </label>
         <Outlet></Outlet>
       </div>
-      <div className="drawer-side">
+      <div className="drawer-side z-50">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
 
-        <ul className="p-4 w-56 sm:w-64 lg:w-[280px] duration-300 max-w-sm h-full bg-title bg-btn text-white">
+        <ul className="p-4 w-56 sm:w-64 lg:w-[280px] duration-300 max-w-sm h-full bg-title bg-btn text-white ">
           <li>
             <div className="flex gap-5 mt-3 mb-5">
               <Link to="/" className="flex justify-center items-center gap-3">
@@ -55,6 +55,13 @@ const DashboardLayout = () => {
             <ActiveLink to="/dashboard/manage-products">
               <div className="flex items-center gap-2 text-sm sm:text-base duration-300">
                 <FaCartPlus /> Manage Products
+              </div>
+            </ActiveLink>
+          </li>
+          <li>
+            <ActiveLink to="/dashboard/add-an-agent">
+              <div className="flex items-center gap-2 text-sm sm:text-base duration-300">
+                <IoIosAddCircle /> Add an agent
               </div>
             </ActiveLink>
           </li>

@@ -179,7 +179,7 @@ const ProductDetailsPage = () => {
               {product?.imgList?.map((img, index) => (
                 <img
                   key={index}
-                  className="w-16 h-16 object-cover object-center rounded-lg cursor-grab"
+                  className="w-16 h-16 object-cover object-center rounded-lg"
                   src={img}
                   alt="IMAGE"
                 />
