@@ -8,9 +8,6 @@ import {
   MessageSquare,
   Link2,
   Chrome,
-  Upload,
-  Image,
-  Sparkles,
 } from "lucide-react";
 import { handleQcSearch } from "../../components/handleQcSearch";
 import { Link, useNavigate } from "react-router-dom";
@@ -24,7 +21,7 @@ const Tools = () => {
       <h1 className="text-center w-fit mx-auto duration-300 text-2xl font-bold my-6">
         Tools
       </h1>
-      <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-4">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 xl:grid-cols-3 gap-4">
         {/* QC Lookup Card */}
         <div className="flex-1 min-w-[300px] rounded-xl p-6 shadow-lg border dark:border-shadow">
           <h2 className="text-lg font-semibold text-center">QC Lookup</h2>
@@ -103,11 +100,13 @@ const Tools = () => {
               </span>
             </div>
           </div>
-          <button className="w-full mt-6 hover:bg-green-600 text-white py-2.5 rounded-lg flex items-center justify-center gap-2 bg-btn transition-colors duration-200 ">
-            <MessageSquare size={20} />
-            Calculate Shipping
-            <ExternalLink size={16} />
-          </button>
+          <Link to="/estimation">
+            <button className="w-full mt-6 hover:bg-green-600 text-white py-2.5 rounded-lg flex items-center justify-center gap-2 bg-btn transition-colors duration-200 ">
+              <MessageSquare size={20} />
+              Calculate Shipping
+              <ExternalLink size={16} />
+            </button>
+          </Link>
         </div>
 
         {/* Chrome Extension Card */}
@@ -151,7 +150,7 @@ const Tools = () => {
         </div>
 
         {/* Image Search Card */}
-        <div className="flex-1 min-w-[300px] rounded-xl p-6 shadow-lg border dark:border-shadow">
+        {/* <div className="flex-1 min-w-[300px] rounded-xl p-6 shadow-lg border dark:border-shadow">
           <h2 className="text-lg font-semibold text-center">Image Search</h2>
           <p className="text-zinc-500 text-sm text-center mt-2">
             Upload an image to find similar products
@@ -188,7 +187,7 @@ const Tools = () => {
             <Image size={20} />
             Image Search
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

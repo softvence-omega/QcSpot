@@ -37,7 +37,6 @@ const AddAnAgent = () => {
         ali_1688: data.to.ali_1688,
       },
     };
-    console.log(agentInfo);
     const formData = new FormData();
     if (imageRef.current?.files?.[0])
       formData.append("image", imageRef.current.files[0]);
@@ -46,7 +45,7 @@ const AddAnAgent = () => {
 
     try {
       setLoading(true);
-      const res = await axiosSecure.post("/agent/add", formData);
+      const res = await axiosSecure.post("/agent/createAgent", formData);
       if (res.status !== 200) throw new Error("Network response was not ok");
       toast.success("Agent added successfully!");
       reset();

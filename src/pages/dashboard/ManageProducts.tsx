@@ -1,5 +1,5 @@
 import useProduct from "../../hooks/useProducts";
-import ManageProductCard from "../../components/ManageProductCard";
+import ManageProductTableRow from "../../components/ManageProductTableRow";
 import Loader from "../../components/Loader";
 import { useState } from "react";
 
@@ -58,11 +58,44 @@ const ManageProducts = () => {
       </div>
 
       {/* Products */}
-      <section>
+      <div className="overflow-x-auto">
+        {productData.length > 0 ? (
+          <table className="text-center text-black dark:text-white w-full">
+            {/* head */}
+            <thead>
+              <tr className="bg-zinc-200 dark:bg-zinc-700 border-b dark:border-shadow h-12">
+                <th>Sl</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>State</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* row 1 */}
+              {productData?.map((product: IProduct, index: number) => (
+                <ManageProductTableRow
+                  key={product?._id}
+                  index={index}
+                  product={product}
+                  refetch={productRefetch}
+                />
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <div>
+            <p className="text-center">No Product Found</p>
+          </div>
+        )}
+      </div>
+
+      {/* <section>
         {productData.length > 0 ? (
           <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4 place-items-center">
             {productData.map((product: IProduct) => (
-              <ManageProductCard
+              <ManageProductTableRow
                 key={product?._id}
                 product={product}
                 refetch={productRefetch}
@@ -74,7 +107,7 @@ const ManageProducts = () => {
             <p className="text-center">No Product Found</p>
           </div>
         )}
-      </section>
+      </section> */}
     </div>
   );
 };

@@ -19,6 +19,7 @@ import Collection from "../pages/Collection";
 import ManageAgent from "../pages/dashboard/ManageAgent";
 import ProductDetailsProxyPage from "../pages/ProductDetailsProxyPage";
 import AddAnAgent from "../pages/dashboard/AddAnAgent";
+import Estimation from "../pages/Estimation";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
       { path: "/popular", element: <PopularPage /> },
       { path: "/product/:shopType/:id", element: <ProductDetailsPage /> },
       { path: "/product/:id", element: <ProductDetailsProxyPage /> },
+      { path: "/estimation", element: <Estimation /> },
       {
         path: "/collection",
         element: (

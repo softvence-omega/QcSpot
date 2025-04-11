@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 import useAgent from "../hooks/useAgent";
 import { IAgent } from "../types/agent.type";
 import { Loader2, X } from "lucide-react";
@@ -113,40 +113,41 @@ const ManageAgentTableRow = ({ agent, refetch }: IAgentData) => {
       formData.append("image", imageRef.current.files[0]);
     formData.append("data", JSON.stringify(agentInfo));
 
-    // try {
-    //   setLoading(true);
-    //   const res = await axiosSecure.post("/agent/update", formData);
-    //   if (res.status !== 200) throw new Error("Network response was not ok");
-    //   toast.success("Agent updated successfully!");
-    //   reset();
-    //   refetch();
-    //   setImage(null);
-    //   if (imageRef.current) imageRef.current.value = "";
-    // } catch (error: any) {
-    //   console.error("Error:", error);
-    //   const errorMessage =
-    //     error.response?.data?.message || "Failed to update agent details";
-    //   toast.error(errorMessage);
-    // } finally {
-    //   setLoading(false);
-    // }
+    try {
+      setLoading(true);
+      const res = await axiosSecure.post("/agent/update", formData);
+      if (res.status !== 200) throw new Error("Network response was not ok");
+      toast.success("Agent updated successfully!");
+      reset();
+      refetch();
+      setImage(null);
+      if (imageRef.current) imageRef.current.value = "";
+    } catch (error: any) {
+      console.error("Error:", error);
+      const errorMessage =
+        error.response?.data?.message || "Failed to update agent details";
+      toast.error(errorMessage);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <tr className="text-sm sm:text-base bg-white dark:bg-black border-b dark:border-zinc-700 h-12">
       <th>
-        <select className="bg-white dark:bg-black">
-          <option disabled selected value={agent.sl}>
+        <select
+          onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+            handleAgentSerial(parseInt(e.target.value))
+          }
+          className="bg-white dark:bg-black"
+        >
+          <option selected value={agent.sl}>
             {agent.sl}
           </option>
           {agentData
             ?.filter((a: IAgent) => a.sl !== agent.sl)
             ?.map((a: IAgent) => (
-              <option
-                onClick={() => handleAgentSerial(a.sl)}
-                key={a._id}
-                value={a.sl}
-              >
+              <option key={a._id} value={a.sl}>
                 {a.sl}
               </option>
             ))}
@@ -161,13 +162,12 @@ const ManageAgentTableRow = ({ agent, refetch }: IAgentData) => {
       </td>
       <td>{agent.name}</td>
       <td>
-        <select className="bg-white dark:bg-black">
-          <option disabled selected>
-            {agent.active ? "active" : "inactive"}
-          </option>
-          <option onClick={() => handleAgentState()}>
-            {!agent.active ? "active" : "inactive"}
-          </option>
+        <select
+          onChange={() => handleAgentState()}
+          className="bg-white dark:bg-black"
+        >
+          <option selected>{agent.active ? "active" : "inactive"}</option>
+          <option>{!agent.active ? "active" : "inactive"}</option>
         </select>
       </td>
       <td className="">

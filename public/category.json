@@ -1,0 +1,583 @@
+[
+  {
+    "id": "1621463515779121154",
+    "name": "Clothes & Accessories",
+    "children": [
+      {
+        "id": "1622303455412785154",
+        "name": "General cargo",
+        "remark": "Products that do not contain sensitive properties such as brand, electricity/magnetism, liquid, powder, paste, flammable and explosive materials"
+      },
+      {
+        "id": "1622303455429562369",
+        "name": "Ordinary brand",
+        "remark": ""
+      },
+      {
+        "id": "1622303455442145282",
+        "name": "International brand ",
+        "remark": ""
+      },
+      {
+        "id": "1622303455450533889",
+        "name": "Luxury brands",
+        "remark": ""
+      },
+      {
+        "id": "1622303455467311105",
+        "name": "Built in battery",
+        "remark": ""
+      }
+    ]
+  },
+  {
+    "id": "1621463579591262210",
+    "name": "Shoes",
+    "children": [
+      {
+        "id": "1622303513952686081",
+        "name": "General cargo",
+        "remark": "Products that do not contain sensitive properties such as brand, electricity/magnetism, liquid, powder, paste, flammable and explosive materials"
+      },
+      {
+        "id": "1622795934289895426",
+        "name": "Ordinary brand",
+        "remark": ""
+      },
+      {
+        "id": "1622303548073349122",
+        "name": "International brand ",
+        "remark": ""
+      },
+      {
+        "id": "1622303513965268994",
+        "name": "Luxury brands",
+        "remark": ""
+      },
+      {
+        "id": "1622303513977851905",
+        "name": "Built in battery",
+        "remark": ""
+      }
+    ]
+  },
+  {
+    "id": "1621463636352778242",
+    "name": "Ornaments",
+    "children": [
+      {
+        "id": "1622914696109187073",
+        "name": "General cargo",
+        "remark": "Products that do not contain sensitive properties such as brand, electricity/magnetism, liquid, powder, paste, flammable and explosive materials"
+      },
+      {
+        "id": "1622914696138547202",
+        "name": "Ordinary brand",
+        "remark": ""
+      },
+      {
+        "id": "1622914696151130113",
+        "name": "International brand ",
+        "remark": ""
+      },
+      {
+        "id": "1622914696159518721",
+        "name": "Luxury brands",
+        "remark": ""
+      },
+      {
+        "id": "1622914696172101633",
+        "name": "Built in battery",
+        "remark": ""
+      }
+    ]
+  },
+  {
+    "id": "1621463715411214337",
+    "name": "Wrist watch",
+    "children": [
+      {
+        "id": "1622914829496442882",
+        "name": "General cargo",
+        "remark": "Products that do not contain sensitive properties such as brand, electricity/magnetism, liquid, powder, paste, flammable and explosive materials"
+      },
+      {
+        "id": "1622914829483859969",
+        "name": "Ordinary brand",
+        "remark": ""
+      },
+      {
+        "id": "1622914829509025794",
+        "name": "International brand ",
+        "remark": ""
+      },
+      {
+        "id": "1622914829517414402",
+        "name": "Luxury brands",
+        "remark": ""
+      },
+      {
+        "id": "1622914829525803010",
+        "name": "Built in battery",
+        "remark": ""
+      },
+      {
+        "id": "1622914829534191618",
+        "name": "Supporting battery",
+        "remark": ""
+      }
+    ]
+  },
+  {
+    "id": "1621463780972380161",
+    "name": "Glasses",
+    "children": [
+      {
+        "id": "1622914989681106946",
+        "name": "General cargo",
+        "remark": "Products that do not contain sensitive properties such as brand, electricity/magnetism, liquid, powder, paste, flammable and explosive materials"
+      },
+      {
+        "id": "1622914989693689858",
+        "name": "Ordinary brand",
+        "remark": ""
+      },
+      {
+        "id": "1622914989702078465",
+        "name": "International brand ",
+        "remark": ""
+      },
+      {
+        "id": "1622914989710467074",
+        "name": "Luxury brands",
+        "remark": ""
+      }
+    ]
+  },
+  {
+    "id": "1621463878452199426",
+    "name": "Luggage",
+    "children": [
+      {
+        "id": "1622915044123172865",
+        "name": "General cargo",
+        "remark": "Products that do not contain sensitive properties such as brand, electricity/magnetism, liquid, powder, paste, flammable and explosive materials"
+      },
+      {
+        "id": "1622915044135755778",
+        "name": "Ordinary brand",
+        "remark": ""
+      },
+      {
+        "id": "1622915044148338689",
+        "name": "International brand ",
+        "remark": ""
+      },
+      {
+        "id": "1622915044156727298",
+        "name": "Luxury brands",
+        "remark": ""
+      }
+    ]
+  },
+  {
+    "id": "1621463966322868225",
+    "name": "Belt",
+    "children": [
+      {
+        "id": "1622915145591775234",
+        "name": "General cargo",
+        "remark": "Products that do not contain sensitive properties such as brand, electricity/magnetism, liquid, powder, paste, flammable and explosive materials"
+      },
+      {
+        "id": "1622915145600163842",
+        "name": "Ordinary brand",
+        "remark": ""
+      },
+      {
+        "id": "1622915145612746753",
+        "name": "International brand ",
+        "remark": ""
+      },
+      {
+        "id": "1622915145621135361",
+        "name": "Luxury brands",
+        "remark": ""
+      }
+    ]
+  },
+  {
+    "id": "1621464055351164929",
+    "name": "Food",
+    "children": [
+      {
+        "id": "1622915257097347074",
+        "name": "Liquid",
+        "remark": ""
+      },
+      {
+        "id": "1622915257088958466",
+        "name": "Non meat foods",
+        "remark": ""
+      },
+      {
+        "id": "1622915257076375553",
+        "name": "Meat products",
+        "remark": ""
+      },
+      {
+        "id": "1622915257105735682",
+        "name": "Paste body",
+        "remark": ""
+      },
+      {
+        "id": "1622915257114124290",
+        "name": "Powder",
+        "remark": ""
+      },
+      {
+        "id": "1622915257122512897",
+        "name": "Flammable goods",
+        "remark": ""
+      }
+    ]
+  },
+  {
+    "id": "1621464115119996930",
+    "name": "Drug",
+    "children": [
+      {
+        "id": "1622915441906769922",
+        "name": "Liquid",
+        "remark": ""
+      },
+      {
+        "id": "1622915441915158529",
+        "name": "Paste body",
+        "remark": ""
+      },
+      {
+        "id": "1622915441927741441",
+        "name": "Powder",
+        "remark": ""
+      },
+      {
+        "id": "1622915441944518657",
+        "name": "Flammable goods",
+        "remark": ""
+      },
+      {
+        "id": "1622915441936130050",
+        "name": "Herbs",
+        "remark": ""
+      },
+      {
+        "id": "1622915441952907266",
+        "name": "Other",
+        "remark": ""
+      }
+    ]
+  },
+  {
+    "id": "1621464191296946178",
+    "name": "Cosmetics",
+    "children": [
+      {
+        "id": "1671190909479919617",
+        "name": "General cargo",
+        "remark": "Products that do not contain sensitive properties such as brand, electricity/magnetism, liquid, powder, paste, flammable and explosive materials"
+      },
+      {
+        "id": "1622915685595832322",
+        "name": "Ordinary brand",
+        "remark": ""
+      },
+      {
+        "id": "1622915685604220930",
+        "name": "International brand ",
+        "remark": ""
+      },
+      {
+        "id": "1622915685612609537",
+        "name": "Luxury brands",
+        "remark": ""
+      },
+      {
+        "id": "1622915685658746881",
+        "name": "Paste body",
+        "remark": ""
+      },
+      {
+        "id": "1622915685667135489",
+        "name": "Powder",
+        "remark": ""
+      },
+      {
+        "id": "1622915685675524097",
+        "name": "Other",
+        "remark": ""
+      },
+      {
+        "id": "1622915685629386754",
+        "name": "100ML and below liquid",
+        "remark": ""
+      },
+      {
+        "id": "1622915685637775362",
+        "name": "Liquid above 100ML",
+        "remark": ""
+      },
+      {
+        "id": "1622915685641969665",
+        "name": "Perfume & Liquid Aromatherapy & Toner (100ML and Below)",
+        "remark": ""
+      }
+    ]
+  },
+  {
+    "id": "1621464262407176193",
+    "name": "Electronic product",
+    "children": [
+      {
+        "id": "1622915853330243585",
+        "name": "General cargo",
+        "remark": "Products that do not contain sensitive properties such as brand, electricity/magnetism, liquid, powder, paste, flammable and explosive materials"
+      },
+      {
+        "id": "1622915853338632193",
+        "name": "Ordinary brand",
+        "remark": ""
+      },
+      {
+        "id": "1622915853347020801",
+        "name": "International brand ",
+        "remark": ""
+      },
+      {
+        "id": "1622915853355409409",
+        "name": "Luxury brands",
+        "remark": ""
+      },
+      {
+        "id": "1622915853363798018",
+        "name": "Built in battery",
+        "remark": ""
+      },
+      {
+        "id": "1752897434603819010",
+        "name": "With magnetic",
+        "remark": "ProductFeatureDO:remark:1752897057510723586"
+      },
+      {
+        "id": "1622915853372186625",
+        "name": "Supporting battery",
+        "remark": ""
+      },
+      {
+        "id": "1721908398401863681",
+        "name": "Mobile phone",
+        "remark": "ProductFeatureDO:remark:1721908231640526849"
+      },
+      {
+        "id": "1828458105386643457",
+        "name": "Game console",
+        "remark": "ProductFeatureDO:remark:1828457988575289346"
+      }
+    ]
+  },
+  {
+    "id": "1621464598672916482",
+    "name": "Daily necessities",
+    "children": [
+      {
+        "id": "1622300905934458881",
+        "name": "General cargo",
+        "remark": "Products that do not contain sensitive properties such as brand, electricity/magnetism, liquid, powder, paste, flammable and explosive materials"
+      },
+      {
+        "id": "1622300905951236098",
+        "name": "Ordinary brand",
+        "remark": ""
+      },
+      {
+        "id": "1622301915583123458",
+        "name": "International brand ",
+        "remark": ""
+      },
+      {
+        "id": "1622916406995148802",
+        "name": "Luxury brands",
+        "remark": ""
+      },
+      {
+        "id": "1622301915595706369",
+        "name": "Built in battery",
+        "remark": ""
+      },
+      {
+        "id": "1752897474084798467",
+        "name": "With magnetic",
+        "remark": "ProductFeatureDO:remark:1752897057510723586"
+      },
+      {
+        "id": "1622301915629260802",
+        "name": "Supporting battery",
+        "remark": ""
+      },
+      {
+        "id": "1622916407016120322",
+        "name": "Paste body",
+        "remark": ""
+      },
+      {
+        "id": "1622916407028703234",
+        "name": "Powder",
+        "remark": ""
+      },
+      {
+        "id": "1622916407037091842",
+        "name": "Flammable goods",
+        "remark": ""
+      },
+      {
+        "id": "1671191105077092354",
+        "name": "100ML and below liquid",
+        "remark": ""
+      },
+      {
+        "id": "1671191105068703745",
+        "name": "Liquid above 100ML",
+        "remark": ""
+      }
+    ]
+  },
+  {
+    "id": "1621464371329056770",
+    "name": "Adult products",
+    "children": [
+      {
+        "id": "1622915973069234177",
+        "name": "Built in battery",
+        "remark": ""
+      },
+      {
+        "id": "1752897534533111810",
+        "name": "With magnetic",
+        "remark": "ProductFeatureDO:remark:1752897057510723586"
+      },
+      {
+        "id": "1622915973077622785",
+        "name": "Supporting battery",
+        "remark": ""
+      },
+      {
+        "id": "1622915973094400001",
+        "name": "Other",
+        "remark": ""
+      },
+      {
+        "id": "1671191044700086274",
+        "name": "100ML and below liquid",
+        "remark": ""
+      },
+      {
+        "id": "1671191044708474882",
+        "name": "Liquid above 100ML",
+        "remark": ""
+      }
+    ]
+  },
+  {
+    "id": "1621464434822430722",
+    "name": "Pure battery",
+    "children": [
+      {
+        "id": "1622923399256432642",
+        "name": "Battery",
+        "remark": ""
+      }
+    ]
+  },
+  {
+    "id": "1621464502388473858",
+    "name": "Book/CD",
+    "children": [
+      {
+        "id": "1622301739942449153",
+        "name": "General cargo",
+        "remark": "Products that do not contain sensitive properties such as brand, electricity/magnetism, liquid, powder, paste, flammable and explosive materials"
+      }
+    ]
+  },
+  {
+    "id": "1621464668554215425",
+    "name": "Toy games",
+    "children": [
+      {
+        "id": "1621805542559485953",
+        "name": "General cargo",
+        "remark": "Products that do not contain sensitive properties such as brand, electricity/magnetism, liquid, powder, paste, flammable and explosive materials"
+      },
+      {
+        "id": "1621805729344425985",
+        "name": "Ordinary brand",
+        "remark": ""
+      },
+      {
+        "id": "1622300874003222530",
+        "name": "International brand ",
+        "remark": ""
+      },
+      {
+        "id": "1622916676105887745",
+        "name": "Luxury brands",
+        "remark": ""
+      },
+      {
+        "id": "1622916676118470657",
+        "name": "Built in battery",
+        "remark": ""
+      },
+      {
+        "id": "1752897559048814594",
+        "name": "With magnetic",
+        "remark": "ProductFeatureDO:remark:1752897057510723586"
+      },
+      {
+        "id": "1622916676126859265",
+        "name": "Liquid",
+        "remark": ""
+      },
+      {
+        "id": "1622916676135247874",
+        "name": "Supporting battery",
+        "remark": ""
+      },
+      {
+        "id": "1622916676143636482",
+        "name": "Paste body",
+        "remark": ""
+      },
+      {
+        "id": "1622916676152025090",
+        "name": "Powder",
+        "remark": ""
+      },
+      {
+        "id": "1622916676160413697",
+        "name": "Flammable goods",
+        "remark": ""
+      },
+      {
+        "id": "1622916676063944706",
+        "name": "Hand operated with a height of less than 30CM",
+        "remark": ""
+      },
+      {
+        "id": "1622916676063944707",
+        "name": "Handmade with a height of over 30CM",
+        "remark": ""
+      }
+    ]
+  }
+]
