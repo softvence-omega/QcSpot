@@ -1,7 +1,5 @@
 [
   {
-    "_id": 1,
-    "sl": 1,
     "name": "Oopbuy",
     "img": "https://res.cloudinary.com/dvda0vxlb/image/upload/v1744111574/Oopbuy_jodz45.webp",
     "to": {
@@ -13,8 +11,6 @@
     "active": true
   },
   {
-    "_id": 2,
-    "sl": 2,
     "name": "ACBuy",
     "img": "https://res.cloudinary.com/dvda0vxlb/image/upload/v1744111575/Acbuy_euw3h4.webp",
     "to": {
@@ -26,8 +22,6 @@
     "active": true
   },
   {
-    "_id": 3,
-    "sl": 3,
     "name": "Ootdbuy",
     "img": "https://res.cloudinary.com/dvda0vxlb/image/upload/v1744111516/Ootdbuy_vzu25w.webp",
     "to": {
@@ -39,8 +33,6 @@
     "active": true
   },
   {
-    "_id": 4,
-    "sl": 4,
     "name": "Lovegobuy",
     "img": "https://res.cloudinary.com/dvda0vxlb/image/upload/v1744111628/Lovegobuy_yzrrmx.jpg",
     "to": {
@@ -52,8 +44,6 @@
     "active": true
   },
   {
-    "_id": 5,
-    "sl": 5,
     "name": "CSSBuy",
     "img": "https://res.cloudinary.com/dvda0vxlb/image/upload/v1744111628/Cssbuy_adayuw.jpg",
     "to": {
@@ -65,8 +55,6 @@
     "active": true
   },
   {
-    "_id": 6,
-    "sl": 6,
     "name": "CNFans",
     "img": "https://res.cloudinary.com/dvda0vxlb/image/upload/v1744111575/Cnfans_tm457i.webp",
     "to": {
@@ -78,8 +66,6 @@
     "active": true
   },
   {
-    "_id": 7,
-    "sl": 7,
     "name": "Loongbuy",
     "img": "https://res.cloudinary.com/dvda0vxlb/image/upload/v1744111575/Loongbuy_r9qmok.webp",
     "to": {
@@ -91,8 +77,6 @@
     "active": true
   },
   {
-    "_id": 8,
-    "sl": 8,
     "name": "Mulebuy",
     "img": "https://res.cloudinary.com/dvda0vxlb/image/upload/v1744111629/Mulebuy_ili1ke.jpg",
     "to": {
@@ -104,8 +88,6 @@
     "active": true
   },
   {
-    "_id": 9,
-    "sl": 9,
     "name": "Joyabuy",
     "img": "https://res.cloudinary.com/dvda0vxlb/image/upload/v1744111575/Joyabuy_ocwmwm.webp",
     "to": {
@@ -117,8 +99,6 @@
     "active": true
   },
   {
-    "_id": 10,
-    "sl": 10,
     "name": "Eastmallbuy",
     "img": "https://res.cloudinary.com/dvda0vxlb/image/upload/v1744111575/Eastmallbuy_qkrrnk.webp",
     "to": {
@@ -130,8 +110,6 @@
     "active": true
   },
   {
-    "_id": 11,
-    "sl": 11,
     "name": "Superbuy",
     "img": "https://res.cloudinary.com/dvda0vxlb/image/upload/v1744111507/Superbuy_mskmtl.webp",
     "to": {

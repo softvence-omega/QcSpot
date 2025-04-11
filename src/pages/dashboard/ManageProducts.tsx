@@ -19,6 +19,7 @@ export interface IProduct {
   totalPhoto: number;
   searchField: string[];
   thumbnailImg: string[];
+  serial_No?: number;
   variants: string[];
   createdAt: string;
   updatedAt: string;

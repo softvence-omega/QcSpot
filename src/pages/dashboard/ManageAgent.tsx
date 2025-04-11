@@ -25,10 +25,11 @@ const ManageAgent = () => {
           </thead>
           <tbody>
             {/* row 1 */}
-            {agentData?.map((agent: IAgent) => (
+            {agentData?.map((agent: IAgent, index: number) => (
               <ManageAgentTableRow
                 key={agent?._id}
                 agent={agent}
+                index={index}
                 refetch={agentRefetch}
               />
             ))}

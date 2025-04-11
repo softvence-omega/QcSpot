@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { RiShareBoxLine } from "react-icons/ri";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
+import useProduct from "../hooks/useProducts";
 
 interface ManageProductCardProps {
   product: IProduct;
@@ -19,7 +20,30 @@ const ManageProductTableRow: React.FC<ManageProductCardProps> = ({
   refetch,
 }) => {
   const { _id, name, price, onTrend, thumbnailImg } = product;
+  const { productData } = useProduct();
   const [isTrending, setIsTrending] = useState(onTrend);
+  const serials = Array.from(
+    { length: productData?.length || 0 },
+    (_, i) => i + 1
+  );
+
+  // Product serial number change
+  const handleProductSerial = (sl: number) => {
+    axiosSecure
+      .patch(`/products/setProductSerial?product_id=${_id}&serial_No=${sl}`)
+      .then((res) => {
+        if (res.status === 200) {
+          toast.success(`Serial updated successfully!`);
+          refetch();
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(
+          error.response?.data?.message || "Failed to update agent serial"
+        );
+      });
+  };
 
   const toggleTrending = () => {
     axiosSecure
@@ -67,21 +91,22 @@ const ManageProductTableRow: React.FC<ManageProductCardProps> = ({
   return (
     <tr className="text-sm sm:text-base bg-white dark:bg-black border-b dark:border-zinc-700 h-12">
       <th>
-        <select className="bg-white dark:bg-black">
-          <option disabled selected value={index}>
+        <select
+          onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+            handleProductSerial(parseInt(e.target.value))
+          }
+          className="bg-white dark:bg-black"
+        >
+          <option selected value={index + 1}>
             {index + 1}
           </option>
-          {/* {agentData
-            ?.filter((a: IAgent) => a.sl !== agent.sl)
-            ?.map((a: IAgent) => (
-              <option
-                onClick={() => handleAgentSerial(a.sl)}
-                key={a._id}
-                value={a.sl}
-              >
-                {a.sl}
+          {serials
+            ?.filter((a: number) => a !== index + 1)
+            ?.map((a: number) => (
+              <option key={a} value={a}>
+                {a}
               </option>
-            ))} */}
+            ))}
         </select>
       </th>
       <td>
@@ -91,7 +116,14 @@ const ManageProductTableRow: React.FC<ManageProductCardProps> = ({
           alt={name}
         />
       </td>
-      <td>{name.length > 30 ? name.slice(0, 30) + " ..." : name}</td>
+      <td>
+        <Link
+          className="cursor-pointer hover:underline hover:text-green-500 duration-300"
+          to={`/dashboard/manage-products/${_id}`}
+        >
+          {name.length > 30 ? name.slice(0, 30) + " ..." : name}
+        </Link>
+      </td>
       <td>{price}</td>
       <td>
         <select

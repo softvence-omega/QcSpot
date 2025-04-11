@@ -33,35 +33,6 @@ export type ICurrencyEnum = {
 };
 
 export type IFeeDetail = {
-  weight: number;
-  length: number;
-  width: number;
-  height: number;
-  currency: string;
-  volumeWeight: number;
-  chargeableWeight: number;
-  [key: string]: any;
-};
-
-export type ICategoryRestriction = {
-  name: string;
-  [key: string]: any;
-};
-
-export type IRestrictions = {
-  minWeight: number;
-  maxWeight: number;
-  [key: string]: any;
-};
-
-export type IShippingData = {
-  addressMaxLength: number | null;
-  available: boolean;
-  declarePerKg: number;
-  declareRatio: string;
-  defaultDeclareType: string;
-  features: string;
-  feeDetail: IFeeDetail;
   additionalFee: any;
   airSurcharge: number;
   chargeableWeight: number;
@@ -87,6 +58,30 @@ export type IShippingData = {
   weightContinue: number;
   weightFirst: number;
   width: number;
+  [key: string]: any;
+};
+
+export type ICategoryRestriction = {
+  name: string;
+  [key: string]: any;
+};
+
+export type IRestrictions = {
+  minWeight: number;
+  maxWeight: number;
+  dimensionRestriction: string;
+  volumeWeightRule: string;
+  [key: string]: any;
+};
+
+export type IShippingData = {
+  addressMaxLength: number | null;
+  available: boolean;
+  declarePerKg: number;
+  declareRatio: string;
+  defaultDeclareType: string;
+  features: string;
+  feeDetail: IFeeDetail;
   freeInsure: boolean;
   iconUrl: string;
   id: string;
@@ -98,10 +93,8 @@ export type IShippingData = {
   prepayTariff: boolean;
   restrictions: IRestrictions;
   categoryRestrictions: ICategoryRestriction[];
-  dimensionRestriction: string;
   maxWeight: number;
   minWeight: number;
-  volumeWeightRule: string;
   sort: number;
   tariffRate: number | null;
   taxInclude: boolean;

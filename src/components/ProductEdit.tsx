@@ -49,8 +49,16 @@ const ProductEdit = ({
     removeImage(setHoverImagePreview, hoverImageRef);
   };
 
-  const { _id, name, price, dimensions, shippingTime, weight, productCode } =
-    product;
+  const {
+    _id,
+    name,
+    price,
+    dimensions,
+    shippingTime,
+    weight,
+    productCode,
+    storeName,
+  } = product;
 
   const {
     register,
@@ -61,6 +69,7 @@ const ProductEdit = ({
 
   // ------------- Product Edit Handler ---------------
   const onProductEditSubmit = async (data: IProductEdit) => {
+    console.log("first");
     const formData = new FormData();
     // Append thumbnails
     const thumbnails: File[] = [];
@@ -84,12 +93,12 @@ const ProductEdit = ({
 
     try {
       setLoading(true);
-      const res = await axiosSecure.post(
+      const res = await axiosSecure.patch(
         `/products/updateProduct?product_id=${_id}`,
         formData
       );
       if (res.status !== 200) throw new Error("Network response was not ok");
-      toast.success("Product added successfully!");
+      toast.success("Product updated successfully!");
       refetch();
       setIsEditClicked(false);
       reset();
@@ -100,7 +109,7 @@ const ProductEdit = ({
     } catch (error: any) {
       console.error("Error:", error);
       const errorMessage =
-        error.response?.data?.message || "Failed to add product";
+        error.response?.data?.message || "Failed to update product";
       toast.error(errorMessage);
     } finally {
       setLoading(false);
@@ -302,6 +311,7 @@ const ProductEdit = ({
               Store Name <span className="text-red-500">*</span>
             </label>
             <select
+              defaultValue={storeName}
               {...register("storeName", { required: "Store name is required" })}
               className="w-full mt-1 p-2 border rounded outline-none bg-white dark:bg-black dark:border-shadow"
             >

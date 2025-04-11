@@ -8,7 +8,7 @@ interface UseAgentResult {
 }
 
 const PlatformSwitcher = () => {
-  const { agentData } = useAgent() as UseAgentResult;
+  const { agentData } = useAgent({ active: "true" }) as UseAgentResult;
   const [selectedPlatform, setSelectedPlatform] = useState<string>(
     () => localStorage.getItem("platform") || "CNFans"
   );
@@ -67,7 +67,7 @@ const PlatformSwitcher = () => {
                     selectedPlatform === agent.name
                       ? "border-green-500 bg-green-100 dark:bg-green-900"
                       : index === 0
-                      ? "border-gray-300 bg-red-50 dark:border-gray-600"
+                      ? "border-gray-300 bg-red-50 dark:bg-red-800 dark:border-gray-600"
                       : "border-gray-300 dark:border-gray-600"
                   }`}
                   onClick={() => {
@@ -90,7 +90,7 @@ const PlatformSwitcher = () => {
                     </p>
                   </div>
                   {index === 0 && (
-                    <p className="absolute top-0 right-0 bg-red-200 text-xs py-0.5 px-2 rounded-tr-lg rounded-bl-lg">
+                    <p className="absolute top-0 right-0 bg-red-200 text-xs py-0.5 px-2 rounded-tr-lg rounded-bl-lg dark:bg-red-950">
                       Recommended
                     </p>
                   )}

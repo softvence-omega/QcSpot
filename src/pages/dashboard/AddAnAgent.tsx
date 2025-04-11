@@ -11,7 +11,6 @@ import {
 
 const AddAnAgent = () => {
   const [loading, setLoading] = useState(false);
-  const [imageError, setImageError] = useState("");
   const [image, setImage] = useState<string | null>(null);
   const imageRef = useRef<HTMLInputElement | null>(null);
   const {
@@ -36,11 +35,16 @@ const AddAnAgent = () => {
         weidian: data.to.weidian,
         ali_1688: data.to.ali_1688,
       },
+      active: true,
     };
     const formData = new FormData();
     if (imageRef.current?.files?.[0])
-      formData.append("image", imageRef.current.files[0]);
-    else setImageError("Image is required");
+      formData.append("file", imageRef.current.files[0]);
+    else {
+      toast.error("Please provide an image");
+      setLoading(false);
+      return;
+    }
     formData.append("data", JSON.stringify(agentInfo));
 
     try {
@@ -176,7 +180,6 @@ const AddAnAgent = () => {
             ref={imageRef}
             onChange={handleMainImage}
             className="hidden"
-            required
           />
           <button
             type="button"
@@ -185,9 +188,6 @@ const AddAnAgent = () => {
           >
             Add agent image
           </button>
-          {imageError !== "" && (
-            <p className="text-red-500 text-sm">{imageError}</p>
-          )}
         </div>
         {/* Submit Button */}
         <button

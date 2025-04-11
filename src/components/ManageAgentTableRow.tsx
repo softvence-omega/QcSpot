@@ -12,20 +12,27 @@ import Swal from "sweetalert2";
 interface IAgentData {
   agent: IAgent;
   refetch: () => void;
+  index: number;
 }
 
-const ManageAgentTableRow = ({ agent, refetch }: IAgentData) => {
+const ManageAgentTableRow = ({ agent, refetch, index }: IAgentData) => {
   const { agentData } = useAgent();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [image, setImage] = useState<string | null>(null);
   const imageRef = useRef<HTMLInputElement | null>(null);
+  const [isActive, setIsActive] = useState(agent?.active);
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm<IAgent>();
+
+  const serials = Array.from(
+    { length: agentData?.length || 0 },
+    (_, i) => i + 1
+  );
 
   // Image change handlers
   const handleMainImage = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,7 +43,7 @@ const ManageAgentTableRow = ({ agent, refetch }: IAgentData) => {
   // Agent serial number change
   const handleAgentSerial = (sl: number) => {
     axiosSecure
-      .patch(`/agent/serial?agentId=${agent._id}`, { sl })
+      .patch(`/agent/setAgentSerial?agent_id=${agent._id}&serial_No=${sl}`)
       .then((res) => {
         if (res.status === 200) {
           toast.success(`${agent.name} serial updated successfully!`);
@@ -54,11 +61,20 @@ const ManageAgentTableRow = ({ agent, refetch }: IAgentData) => {
   // Agent state change
   const handleAgentState = () => {
     axiosSecure
-      .patch(`/agent/state?agentId=${agent._id}`)
+      .patch(
+        `/agent/activeOrDactiveAnAgent?agent_id=${
+          agent._id
+        }&active=${!isActive}`
+      )
       .then((res) => {
         if (res.status === 200) {
-          toast.success(`${agent.name} state updated successfully!`);
           refetch();
+          setIsActive(!isActive);
+          toast.success(
+            `${agent.name} state updated to ${
+              isActive ? "Active" : "Inactive"
+            }!`
+          );
         }
       })
       .catch((error) => {
@@ -82,7 +98,7 @@ const ManageAgentTableRow = ({ agent, refetch }: IAgentData) => {
     }).then((result) => {
       if (result.isConfirmed) {
         axiosSecure
-          .delete(`/agent/remove?agentId=${agent._id}`)
+          .delete(`/agent/deleteAgent?agent_id=${agent._id}`)
           .then((res) => {
             if (res.status === 200) {
               refetch();
@@ -110,17 +126,21 @@ const ManageAgentTableRow = ({ agent, refetch }: IAgentData) => {
     console.log(agentInfo);
     const formData = new FormData();
     if (imageRef.current?.files?.[0])
-      formData.append("image", imageRef.current.files[0]);
+      formData.append("file", imageRef.current.files[0]);
     formData.append("data", JSON.stringify(agentInfo));
 
     try {
       setLoading(true);
-      const res = await axiosSecure.post("/agent/update", formData);
+      const res = await axiosSecure.post(
+        `/agent/updateAgent?agent_id=${agent._id}`,
+        formData
+      );
       if (res.status !== 200) throw new Error("Network response was not ok");
       toast.success("Agent updated successfully!");
       reset();
       refetch();
       setImage(null);
+      setIsModalOpen(false);
       if (imageRef.current) imageRef.current.value = "";
     } catch (error: any) {
       console.error("Error:", error);
@@ -141,14 +161,14 @@ const ManageAgentTableRow = ({ agent, refetch }: IAgentData) => {
           }
           className="bg-white dark:bg-black"
         >
-          <option selected value={agent.sl}>
-            {agent.sl}
+          <option selected value={index + 1}>
+            {index + 1}
           </option>
-          {agentData
-            ?.filter((a: IAgent) => a.sl !== agent.sl)
-            ?.map((a: IAgent) => (
-              <option key={a._id} value={a.sl}>
-                {a.sl}
+          {serials
+            ?.filter((a: number) => a !== index + 1)
+            ?.map((a: number) => (
+              <option key={a} value={a}>
+                {a}
               </option>
             ))}
         </select>
@@ -164,10 +184,12 @@ const ManageAgentTableRow = ({ agent, refetch }: IAgentData) => {
       <td>
         <select
           onChange={() => handleAgentState()}
-          className="bg-white dark:bg-black"
+          className={`text-sm rounded-lg px-1 ${
+            isActive ? "bg-green-300" : "bg-red-300"
+          }`}
         >
-          <option selected>{agent.active ? "active" : "inactive"}</option>
-          <option>{!agent.active ? "active" : "inactive"}</option>
+          <option selected>{isActive ? "active" : "inactive"}</option>
+          <option>{!isActive ? "active" : "inactive"}</option>
         </select>
       </td>
       <td className="">

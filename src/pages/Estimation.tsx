@@ -7,6 +7,7 @@ import { FaTimes } from "react-icons/fa";
 import { ICategory, ICategoryChild, ICountry } from "../types/estimation.type";
 import { Loader2 } from "lucide-react";
 import EstimationCard from "../components/EstimationCard";
+import axiosSecure from "../hooks/useAxios";
 
 interface TEstimation {
   destination: string;
@@ -39,7 +40,7 @@ const Estimation = () => {
   } = useForm<TEstimation>();
 
   const onSubmit = async (data: TEstimation) => {
-    const estimationData = {
+    const submittedData = {
       destination: selectedCountryCode,
       weight: data.weight,
       features: selectedItemCode.join(","),
@@ -47,19 +48,13 @@ const Estimation = () => {
       width: data.width,
       height: data.height,
     };
-
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:5002/api/get_estimation", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(estimationData),
-      });
-      const result = await res.json();
+      const res = await axiosSecure.post("get_estimation", submittedData);
+      console.log(res?.data?.data);
+      const result = res?.data?.data;
       if (res.status !== 200) toast.error("Something went wrong!");
-      setEstimationData(result?.data);
+      setEstimationData(result);
       reset();
     } catch (error: any) {
       console.error("Error:", error);
@@ -422,17 +417,11 @@ const Estimation = () => {
       </form>
 
       <section className="mt-10">
-        {estimationData.length > 0 ? (
-          <div>
-            {estimationData.map((item: any) => (
-              <EstimationCard key={item.id} data={item} />
-            ))}
-          </div>
-        ) : (
-          <div className="flex justify-center items-center h-96">
-            <p className="text-gray-500">No estimation data available</p>
-          </div>
-        )}
+        <div>
+          {estimationData.map((item: any) => (
+            <EstimationCard key={item.id} data={item} />
+          ))}
+        </div>
       </section>
     </div>
   );
