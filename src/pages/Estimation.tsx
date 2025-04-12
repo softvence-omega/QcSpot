@@ -29,6 +29,7 @@ const Estimation = () => {
   const [activeOption, setActiveOption] = useState<string | null>(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [estimationData, setEstimationData] = useState([]);
+  const [submitted, setSubmitted] = useState(false);
   const { countryData } = useCountry();
   const { categoryData } = useCategory();
 
@@ -63,6 +64,7 @@ const Estimation = () => {
       toast.error(errorMessage);
     } finally {
       setLoading(false);
+      setSubmitted(true);
     }
   };
 
@@ -417,11 +419,16 @@ const Estimation = () => {
       </form>
 
       <section className="mt-10">
-        <div>
-          {estimationData.map((item: any) => (
-            <EstimationCard key={item.id} data={item} />
+        {submitted &&
+          (estimationData.length > 0 ? (
+            <div>
+              {estimationData.map((item: any) => (
+                <EstimationCard key={item.id} data={item} />
+              ))}
+            </div>
+          ) : (
+            <p className="text-center text-gray-500">No data available</p>
           ))}
-        </div>
       </section>
     </div>
   );

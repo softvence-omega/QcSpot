@@ -58,12 +58,12 @@ export type IFeeDetail = {
   weightContinue: number;
   weightFirst: number;
   width: number;
-  [key: string]: any;
 };
 
 export type ICategoryRestriction = {
   name: string;
-  [key: string]: any;
+  allowList: string[];
+  blockList: string[];
 };
 
 export type IRestrictions = {
@@ -71,7 +71,7 @@ export type IRestrictions = {
   maxWeight: number;
   dimensionRestriction: string;
   volumeWeightRule: string;
-  [key: string]: any;
+  categoryRestrictions: ICategoryRestriction[];
 };
 
 export type IShippingData = {

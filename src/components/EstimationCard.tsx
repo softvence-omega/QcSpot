@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IShippingData } from "../types/estimation.type";
+import { ICategoryRestriction, IShippingData } from "../types/estimation.type";
 
 const EstimationCard = ({ data }: { data: IShippingData }) => {
   const {
@@ -25,7 +25,13 @@ const EstimationCard = ({ data }: { data: IShippingData }) => {
           <img className="w-12 h-12 rounded-full" src={iconUrl} alt={name} />
           <div>
             <h2 className="text-lg font-semibold">{name}</h2>
-            <p className="text-sm text-zinc-500">Shipping Fee: </p>
+            <p className="text-sm text-zinc-500">
+              Shipping Fee:{" "}
+              <span className="text-xl text-red-500 font-semibold">
+                {feeDetail?.currencyEnum?.symbol}
+                {feeDetail?.total}
+              </span>
+            </p>
           </div>
         </div>
 
@@ -52,9 +58,9 @@ const EstimationCard = ({ data }: { data: IShippingData }) => {
         <div className="p-4 border rounded-lg shadow-sm bg-zinc-50 dark:bg-zinc-900 dark:border-zinc-800">
           {/* Parcel Restrictions */}
           <h2 className="text-lg font-semibold mb-2">Parcel Restrictions:</h2>
-          <div className="p-3 pt-5 rounded-lg border dark:border-shadow">
+          <div className="p-3 pt-5 rounded-lg border dark:border-shadow space-y-2">
             <p className="text-sm text-zinc-500 dark:text-zinc-300">
-              <span className="font-semibold mr-2">Weight Restriction:</span>{" "}
+              <span className="font-semibold mr-2">Weight Restriction:</span>
               {restrictions?.minWeight}g -{restrictions?.maxWeight}g
             </p>
             <p className="text-sm text-zinc-500 dark:text-zinc-300">
@@ -91,7 +97,7 @@ const EstimationCard = ({ data }: { data: IShippingData }) => {
                 <tbody>
                   {restrictions?.categoryRestrictions &&
                     restrictions?.categoryRestrictions?.map(
-                      (r: any, index: number) => (
+                      (r: ICategoryRestriction, index: number) => (
                         <tr
                           key={index}
                           className="bg-white dark:bg-black border-b dark:border-zinc-700"
@@ -146,24 +152,31 @@ const EstimationCard = ({ data }: { data: IShippingData }) => {
               <tbody>
                 <tr className="bg-white dark:bg-black border-b dark:border-zinc-700">
                   <td className="border border-zinc-300 dark:border-zinc-700 px-2 py-2">
-                    {feeDetail?.feeFirst}
+                    {feeDetail?.currencyEnum?.symbol}
+                    {feeDetail?.feeFirst} / {feeDetail?.weightFirst} g
                   </td>
                   <td className="border border-zinc-300 dark:border-zinc-700 px-2 py-2">
-                    {feeDetail?.feeContinue}
+                    {feeDetail?.currencyEnum?.symbol}
+                    {feeDetail?.feeContinue} / {feeDetail?.weightContinue} g
                   </td>
                   <td className="border border-zinc-300 dark:border-zinc-700 px-2 py-2">
+                    {feeDetail?.currencyEnum?.symbol}
                     {feeDetail?.customsFee}
                   </td>
                   <td className="border border-zinc-300 dark:border-zinc-700 px-2 py-2">
+                    {feeDetail?.currencyEnum?.symbol}
                     {feeDetail?.airSurcharge}
                   </td>
                   <td className="border border-zinc-300 dark:border-zinc-700 px-2 py-2">
+                    {feeDetail?.currencyEnum?.symbol}
                     {feeDetail?.fuelFee}
                   </td>
                   <td className="border border-zinc-300 dark:border-zinc-700 px-2 py-2">
+                    {feeDetail?.currencyEnum?.symbol}
                     {feeDetail?.serviceFee}
                   </td>
                   <td className="border border-zinc-300 dark:border-zinc-700 px-2 py-2">
+                    {feeDetail?.currencyEnum?.symbol}
                     {feeDetail?.chargeableWeight}
                   </td>
                 </tr>
