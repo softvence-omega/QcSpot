@@ -1,6 +1,6 @@
-import { Loader2, Plus, X } from "lucide-react";
+import { ExternalLink, Loader2, MessageSquare, Plus, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import PLatformLink from "../components/PlatformLink";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -254,6 +254,13 @@ const ProductDetailsPage = () => {
                 </span>
               )}
             </div>
+            <Link to="/estimation">
+              <button className="w-full hover:bg-green-600 text-white py-2.5 rounded-lg flex items-center justify-center gap-2 bg-btn transition-colors duration-200 ">
+                <MessageSquare size={20} />
+                Calculate Shipping
+                <ExternalLink size={16} />
+              </button>
+            </Link>
             {/* <button className="bg-gray-500 px-4 py-2 rounded-lg text-white flex justify-center items-center gap-2 w-full">
               <Share2 /> Affiliate Share
             </button> */}
@@ -286,7 +293,7 @@ const ProductDetailsPage = () => {
       )}
       {showDescription && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+          className="fixed scrollbar-visible inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
           onClick={() => setShowDescription(false)}
         >
           <div

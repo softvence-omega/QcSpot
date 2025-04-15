@@ -69,12 +69,12 @@ const ManageAgentTableRow = ({ agent, refetch, index }: IAgentData) => {
       .then((res) => {
         if (res.status === 200) {
           refetch();
-          setIsActive(!isActive);
           toast.success(
             `${agent.name} state updated to ${
-              isActive ? "Active" : "Inactive"
+              !isActive ? "Active" : "Inactive"
             }!`
           );
+          setIsActive(!isActive);
         }
       })
       .catch((error) => {
@@ -153,7 +153,7 @@ const ManageAgentTableRow = ({ agent, refetch, index }: IAgentData) => {
   };
 
   return (
-    <tr className="text-sm sm:text-base bg-white dark:bg-black border-b dark:border-zinc-700 h-12">
+    <tr className="text-xs sm:text-base bg-white dark:bg-black border-b dark:border-zinc-700 h-12">
       <th>
         <select
           onChange={(e: ChangeEvent<HTMLSelectElement>) =>
@@ -175,7 +175,7 @@ const ManageAgentTableRow = ({ agent, refetch, index }: IAgentData) => {
       </th>
       <td>
         <img
-          className="w-10 h-10 rounded mx-auto"
+          className="w-8 sm:w-10 h-8 sm:h-10 rounded mx-auto"
           src={agent?.img}
           alt={agent?.name}
         />
@@ -183,27 +183,28 @@ const ManageAgentTableRow = ({ agent, refetch, index }: IAgentData) => {
       <td>{agent.name}</td>
       <td>
         <select
+          value={isActive ? "active" : "inactive"}
           onChange={() => handleAgentState()}
-          className={`text-sm rounded-lg px-1 ${
+          className={`text-xs sm:text-sm rounded-lg px-1 max-w-20 cursor-pointer ${
             isActive ? "bg-green-300" : "bg-red-300"
           }`}
         >
-          <option selected>{isActive ? "active" : "inactive"}</option>
-          <option>{!isActive ? "active" : "inactive"}</option>
+          <option value="active">active</option>
+          <option value="inactive">inactive</option>
         </select>
       </td>
-      <td className="">
+      <td className="space-x-1 sm:space-x-2">
         <button
           onClick={() => setIsModalOpen(true)}
-          className="text-xs sm:px-2 py-1 rounded cursor-pointer duration-300"
+          className="text-xs py-1 rounded cursor-pointer duration-300"
         >
-          <FaEdit className="text-lg text-green-500" />
+          <FaEdit className="sm:text-lg text-green-500" />
         </button>
         <button
           onClick={() => handleAgentDelete()}
-          className="text-xs sm:px-2 py-1 rounded cursor-pointer duration-300"
+          className="text-xs py-1 rounded cursor-pointer duration-300"
         >
-          <FaRegTrashAlt className="text-lg text-red-500" />
+          <FaRegTrashAlt className="sm:text-lg text-red-500" />
         </button>
       </td>
 

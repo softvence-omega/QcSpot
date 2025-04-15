@@ -64,7 +64,7 @@ const ManageProducts = () => {
           <table className="text-center text-black dark:text-white w-full">
             {/* head */}
             <thead>
-              <tr className="bg-zinc-200 dark:bg-zinc-700 border-b dark:border-shadow h-12">
+              <tr className="text-sm sm:text-base bg-zinc-200 dark:bg-zinc-700 border-b dark:border-shadow h-12">
                 <th>Sl</th>
                 <th>Image</th>
                 <th>Name</th>

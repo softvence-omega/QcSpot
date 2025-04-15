@@ -89,7 +89,7 @@ const ManageProductTableRow: React.FC<ManageProductCardProps> = ({
   };
 
   return (
-    <tr className="text-sm sm:text-base bg-white dark:bg-black border-b dark:border-zinc-700 h-12">
+    <tr className="text-xs sm:text-base bg-white dark:bg-black border-b dark:border-zinc-700 h-12">
       <th>
         <select
           onChange={(e: ChangeEvent<HTMLSelectElement>) =>
@@ -111,14 +111,14 @@ const ManageProductTableRow: React.FC<ManageProductCardProps> = ({
       </th>
       <td>
         <img
-          className="w-10 h-10 object-cover object-center rounded mx-auto"
+          className="w-8 sm:w-10 h-8 sm:h-10 object-cover object-center rounded mx-auto"
           src={thumbnailImg[0]}
           alt={name}
         />
       </td>
       <td>
         <Link
-          className="cursor-pointer hover:underline hover:text-green-500 duration-300"
+          className="cursor-pointer hover:underline hover:text-green-500 duration-300 line-clamp-1 sm:line-clamp-none"
           to={`/dashboard/manage-products/${_id}`}
         >
           {name.length > 30 ? name.slice(0, 30) + " ..." : name}
@@ -127,29 +127,28 @@ const ManageProductTableRow: React.FC<ManageProductCardProps> = ({
       <td>{price}</td>
       <td>
         <select
+          value={isTrending ? "trending" : "not trending"}
           onChange={toggleTrending}
-          className={`text-sm rounded-lg px-1 ${
+          className={`text-xs sm:text-sm rounded-lg px-1 max-w-20 sm:max-w-none cursor-pointer ${
             isTrending ? "bg-green-300" : "bg-red-300"
           }`}
         >
-          <option selected disabled>
-            {isTrending ? "Trending" : "Not Trending"}
-          </option>
-          <option>{!isTrending ? "Trending" : "Not Trending"}</option>
+          <option value="trending">Trending</option>
+          <option value="not trending">Not Trending</option>
         </select>
       </td>
-      <td className="flex gap-2 justify-center items-center mt-2">
+      <td className="flex gap-2 justify-center items-center mt-3 sm:mt-2">
         <Link
           to={`/dashboard/manage-products/${_id}`}
           className="text-xs sm:px-2 py-1 rounded cursor-pointer duration-300"
         >
-          <RiShareBoxLine className="text-lg text-green-500" />
+          <RiShareBoxLine className="sm:text-lg text-green-500" />
         </Link>
         <button
           onClick={() => deleteProduct()}
           className="text-xs sm:px-2 py-1 rounded cursor-pointer duration-300"
         >
-          <FaRegTrashAlt className="text-lg text-red-500" />
+          <FaRegTrashAlt className="sm:text-lg text-red-500" />
         </button>
       </td>
     </tr>
