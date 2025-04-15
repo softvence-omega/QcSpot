@@ -167,7 +167,6 @@ const ProductDetailsPage = () => {
               {product?.imgList?.map((img, index) => (
                 <img
                   key={index}
-                  onClick={() => setSelectedSku(product?.skus[index])}
                   className="w-16 h-16 object-cover object-center px-2 rounded-lg cursor-grab"
                   src={img}
                   alt="IMAGE"
