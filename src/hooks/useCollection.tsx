@@ -10,7 +10,7 @@ const useCollection = () => {
     queryKey: ["collectionData"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/users/viewCollection`);
-      return res.data?.data?.productCollection;
+      return res.data?.data?.productCollection || [];
     },
   });
 

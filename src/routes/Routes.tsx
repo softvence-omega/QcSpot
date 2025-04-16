@@ -20,6 +20,7 @@ import ManageAgent from "../pages/dashboard/ManageAgent";
 import ProductDetailsProxyPage from "../pages/ProductDetailsProxyPage";
 import AddAnAgent from "../pages/dashboard/AddAnAgent";
 import Estimation from "../pages/Estimation";
+import Managereview from "../pages/dashboard/ManageReview";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,7 @@ const router = createBrowserRouter([
       { path: "users", element: <Users /> },
       { path: "change-password", element: <ChangePassword /> },
       { path: "manage-agent", element: <ManageAgent /> },
+      { path: "manage-review", element: <Managereview /> },
     ],
   },
   { path: "register", element: <RegisterPage /> },

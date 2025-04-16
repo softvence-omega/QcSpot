@@ -185,8 +185,8 @@ const ManageAgentTableRow = ({ agent, refetch, index }: IAgentData) => {
         <select
           value={isActive ? "active" : "inactive"}
           onChange={() => handleAgentState()}
-          className={`text-xs sm:text-sm rounded-lg px-1 max-w-20 cursor-pointer ${
-            isActive ? "bg-green-300" : "bg-red-300"
+          className={`text-xs text-white sm:text-sm rounded-lg px-1 max-w-20 cursor-pointer ${
+            isActive ? "bg-green-500" : "bg-red-500"
           }`}
         >
           <option value="active">active</option>

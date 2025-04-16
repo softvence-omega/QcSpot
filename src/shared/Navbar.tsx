@@ -66,34 +66,39 @@ const Navbar = () => {
 
         {/* Right Section */}
         <div className="flex items-center space-x-6">
-          {user &&
-            (user?.role == "admin" ? (
-              // Admin Dashboard
-              <div className="relative group">
-                <Link to="/dashboard/admin-home">
-                  <LayoutDashboard className="cursor-pointer" />
-                </Link>
-                <span className="absolute z-30 left-1/2 top-full mt-2 mb-2 w-max -translate-x-1/2 scale-0 transition-all rounded bg-btn px-1 text-xs text-white group-hover:scale-100">
-                  Dashboard
-                </span>
-              </div>
-            ) : (
-              // User Collection
-              <div className="relative group">
-                <Link to="/collection">
-                  <Heart className="cursor-pointer text-btn" fill="#32854e" />
-                </Link>
-                <span className="absolute z-30 left-1/2 top-full mt-2 mb-2 w-max -translate-x-1/2 scale-0 transition-all rounded bg-btn px-1 text-xs text-white group-hover:scale-100">
-                  My Collection
-                </span>
-              </div>
-            ))}
+          {/* Collection */}
+          {user && (
+            <div className="relative group">
+              <Link to="/collection">
+                <Heart className="cursor-pointer text-btn" fill="#32854e" />
+              </Link>
+              <span className="absolute z-30 left-1/2 top-full mt-2 mb-2 w-max -translate-x-1/2 scale-0 transition-all rounded bg-btn px-1 text-xs text-white group-hover:scale-100">
+                My Collection
+              </span>
+            </div>
+          )}
+
+          {/* Admin Dashboard */}
+          {user && user?.role == "admin" && (
+            <div className="relative group">
+              <Link to="/dashboard/admin-home">
+                <LayoutDashboard className="cursor-pointer" />
+              </Link>
+              <span className="absolute z-30 left-1/2 top-full mt-2 mb-2 w-max -translate-x-1/2 scale-0 transition-all rounded bg-btn px-1 text-xs text-white group-hover:scale-100">
+                Dashboard
+              </span>
+            </div>
+          )}
+
+          {/* Agent Selection */}
           <div className="relative group">
             <PlatformSwitcher />
             <span className="absolute z-30 left-1/2 top-full mt-1 mb-2 w-max -translate-x-1/2 scale-0 transition-all rounded bg-btn px-1 text-xs text-white group-hover:scale-100">
               Select Agent
             </span>
           </div>
+
+          {/* Theme selection */}
           <ThemeSwitcher />
           <div className="hidden sm:block">
             {!user ? (

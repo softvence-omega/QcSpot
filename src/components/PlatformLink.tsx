@@ -48,7 +48,9 @@ const PlatformLink = ({ id, shopType, className }: PlatformLinkProps) => {
       target="_blank"
       className={`flex justify-center items-center gap-2 md:gap-4 ${className}`}
     >
-      <img className="w-6 h-6 rounded" src={selectedImage} alt="" />
+      {selectedImage && (
+        <img className="w-6 h-6 rounded" src={selectedImage} alt="" />
+      )}
       Buy
     </Link>
   );

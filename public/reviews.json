@@ -1,0 +1,35 @@
+[
+  {
+    "_id": "1",
+    "store_name": "weidian",
+    "product_code": "7307881185",
+    "name": "Hedayatullah",
+    "comment": "Amazing product. Loved the price and customer service provided. Amazing product. Loved the price and customer service provided. Amazing product. Loved the price and customer service provided",
+    "rating": 3,
+    "status": "pending",
+    "createdAt": "",
+    "updatedAt": ""
+  },
+  {
+    "_id": "2",
+    "store_name": "weidian",
+    "product_code": "7307881185",
+    "name": "Ashik",
+    "comment": "Amazing product. Loved the price and customer service provided. Amazing product. Loved the price and customer service provided. Amazing product. Loved the price and customer service provided",
+    "rating": 2,
+    "status": "denied",
+    "createdAt": "",
+    "updatedAt": ""
+  },
+  {
+    "_id": "3",
+    "store_name": "weidian",
+    "product_code": "7307881185",
+    "name": "Nadim",
+    "comment": "Amazing product. Loved the price and customer service provided. Amazing product. Loved the price and customer service provided. Amazing product. Loved the price and customer service provided",
+    "rating": 5,
+    "status": "approved",
+    "createdAt": "",
+    "updatedAt": ""
+  }
+]

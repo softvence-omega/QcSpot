@@ -129,8 +129,8 @@ const ManageProductTableRow: React.FC<ManageProductCardProps> = ({
         <select
           value={isTrending ? "trending" : "not trending"}
           onChange={toggleTrending}
-          className={`text-xs sm:text-sm rounded-lg px-1 max-w-20 sm:max-w-none cursor-pointer ${
-            isTrending ? "bg-green-300" : "bg-red-300"
+          className={`text-xs sm:text-sm text-white rounded-lg px-1 max-w-20 sm:max-w-none cursor-pointer ${
+            isTrending ? "bg-green-500" : "bg-red-500"
           }`}
         >
           <option value="trending">Trending</option>

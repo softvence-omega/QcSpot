@@ -9,7 +9,7 @@ import { Loader2 } from "lucide-react";
 import EstimationCard from "../components/EstimationCard";
 import axiosSecure from "../hooks/useAxios";
 
-interface TEstimation {
+export interface TEstimation {
   destination: string;
   weight?: number;
   features?: string[];

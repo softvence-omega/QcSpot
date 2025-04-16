@@ -5,6 +5,7 @@ import { IoIosAddCircle, IoMdPerson } from "react-icons/io";
 import { IoCardOutline } from "react-icons/io5";
 import { RiLockPasswordFill } from "react-icons/ri";
 import logo from "../assets/QcSpot-Logo-design-2.png";
+import { MdComment } from "react-icons/md";
 
 const DashboardLayout = () => {
   return (
@@ -69,6 +70,13 @@ const DashboardLayout = () => {
             <ActiveLink to="/dashboard/manage-agent">
               <div className="flex items-center gap-2 text-sm sm:text-base duration-300">
                 <IoCardOutline /> Manage Agent
+              </div>
+            </ActiveLink>
+          </li>
+          <li>
+            <ActiveLink to="/dashboard/manage-review">
+              <div className="flex items-center gap-2 text-sm sm:text-base duration-300">
+                <MdComment /> Manage Review
               </div>
             </ActiveLink>
           </li>
