@@ -163,7 +163,6 @@ const AddProduct = () => {
             </label>
             <input
               type="number"
-              step="1"
               {...register("price", {
                 required: "Price is required",
                 min: { value: 0, message: "Price must be positive" },
@@ -255,11 +254,10 @@ const AddProduct = () => {
           {/* Weight */}
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-              Weight (kg) <span className="text-red-500">*</span>
+              Weight (g) <span className="text-red-500">*</span>
             </label>
             <input
               type="number"
-              step="1"
               {...register("weight", {
                 required: "Weight is required",
                 min: { value: 0, message: "Weight must be positive" },

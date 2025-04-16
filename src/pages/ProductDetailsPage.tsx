@@ -14,6 +14,7 @@ import toast from "react-hot-toast";
 import axiosSecure from "../hooks/useAxios";
 import useCollection from "../hooks/useCollection";
 import { CollectionProps } from "./Collection";
+import useSingleProduct from "../hooks/useSingleProduct";
 
 export interface Sku {
   skuID: string;
@@ -63,6 +64,9 @@ const ProductDetailsPage = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const _id = queryParams.get("_id");
+  const { singleProductData, singleProductLoading } = useSingleProduct(
+    _id as string
+  );
 
   let isProductInCollection;
   if (collectionData?.length > 0) {
@@ -161,7 +165,6 @@ const ProductDetailsPage = () => {
         <div className="w-96 p-3 mx-auto">
           {selectedSku?.imgUrl && <Magnifier imageUrl={selectedSku.imgUrl} />}
           <p className="text-center mt-2">{selectedSku?.nameTrans}</p>
-
           {product?.imgList && product?.imgList.length > 4 ? (
             <Slider {...settings} className="my-3">
               {product?.imgList?.map((img, index) => (
@@ -211,10 +214,29 @@ const ProductDetailsPage = () => {
               Description
             </button>
           </div>
+          <div className="flex justify-between items-center gap-5">
+            <h2 className="font-bold text-sm">Classification: </h2>
+            {!singleProductLoading &&
+              singleProductData?.product?.dimensions && (
+                <p className="font-bold">
+                  Dimensions:{" "}
+                  <span className="text-red-500">
+                    {singleProductData?.product?.dimensions}
+                  </span>
+                </p>
+              )}
+            {!singleProductLoading && singleProductData?.product?.weight && (
+              <p className="font-bold">
+                weight:{" "}
+                <span className="text-red-500">
+                  {singleProductData?.product?.weight}g
+                </span>
+              </p>
+            )}
+          </div>
 
           {/* Classification */}
-          <h2 className="font-bold text-sm">Classification: </h2>
-          <div className="flex flex-wrap gap-2 my-3">
+          <div className="flex flex-wrap justify-center gap-2 my-3">
             {product?.skus
               ?.filter((sku) => sku.imgUrl?.trim())
               .map((sku) => (
@@ -296,7 +318,7 @@ const ProductDetailsPage = () => {
           onClick={() => setShowDescription(false)}
         >
           <div
-            className=" py-10 max-h-[720px] overflow-y-scroll bg-white p-5 rounded-lg max-w-2xl w-full relative"
+            className=" py-10 max-h-[720px] overflow-y-scroll bg-white dark:bg-gray-500 p-5 rounded-lg max-w-2xl w-full relative"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -305,7 +327,7 @@ const ProductDetailsPage = () => {
             >
               <X />
             </button>
-            <h2 className="text-xl font-semibold mb-5 text-btn">
+            <h2 className="text-xl font-semibold mb-5 text-btn dark:text-green-500">
               Product Details
             </h2>
             {Object.entries(product?.propsTrans || {}).map(([key, value]) => (

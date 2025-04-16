@@ -37,7 +37,7 @@ const Magnifier = ({ imageUrl }: MagnifierProps) => {
   return (
     <div
       id="imageZoom"
-      className="w-full max-h-96 object-cover object-center rounded-lg mx-auto relative cursor-zoom-in"
+      className="w-full max-h-96 object-cover object-center aspect-square rounded-lg mx-auto relative cursor-zoom-in"
       ref={imageZoomRef}
       style={
         {
