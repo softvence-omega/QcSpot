@@ -20,7 +20,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   } = product;
   return (
     <div className="bg-white dark:border-2 border-shadow rounded-lg shadow-md dark:shadow-shadow overflow-hidden">
-      <div className="relative">
+      <Link
+        to={`/product/${
+          storeName == "1688" ? "ali_1688" : storeName
+        }/${productCode}?_id=${_id}`}
+        className="relative cursor-pointer"
+      >
         <img
           src={thumbnailImg[0]}
           alt={name}
@@ -31,10 +36,17 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           alt={name}
           className="w-full aspect-square object-cover object-center absolute top-0 left-0 opacity-0 transition-opacity duration-300 ease-in-out hover:opacity-100"
         />
-      </div>
+      </Link>
 
       <div className="p-2 sm:p-4 dark:bg-dark dark:text-white">
-        <h3 className="font-medium line-clamp-2 h-12">{name}</h3>
+        <Link
+          to={`/product/${
+            storeName == "1688" ? "ali_1688" : storeName
+          }/${productCode}?_id=${_id}`}
+          className="font-medium line-clamp-2 h-12"
+        >
+          {name}
+        </Link>
         <div className="mt-2 flex items-center justify-between">
           <div className="text-sm sm:text-base flex items-center space-x-2">
             <span className="font-semibold">¥{price}</span>

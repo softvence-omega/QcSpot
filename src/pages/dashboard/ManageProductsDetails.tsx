@@ -148,7 +148,7 @@ const ManageProductsDetails = () => {
               </p>
               {/* Dimensions */}
               <p className="w-full flex justify-center items-center gap-2  rounded-lg font-semibold bg-gray-100 hover:bg-gray-300 duration-200 px-2 md:px-4 py-1 md:py-2 transition text-black text-sm md:text-base">
-                <RxDimensions /> {dimensions}
+                <RxDimensions /> {dimensions} cm
               </p>
               {/* Shipping Time */}
               <p className="w-full flex justify-center items-center gap-2  rounded-lg font-semibold bg-gray-100 hover:bg-gray-300 duration-200 px-2 md:px-4 py-1 md:py-2 transition text-black text-sm md:text-base">

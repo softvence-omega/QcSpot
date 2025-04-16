@@ -69,7 +69,6 @@ const ProductEdit = ({
 
   // ------------- Product Edit Handler ---------------
   const onProductEditSubmit = async (data: IProductEdit) => {
-    console.log("first");
     const formData = new FormData();
     // Append thumbnails
     const thumbnails: File[] = [];
@@ -150,7 +149,6 @@ const ProductEdit = ({
             ref={mainImageRef}
             onChange={handleMainImage}
             className="hidden"
-            required
           />
           <button
             type="button"
@@ -188,7 +186,6 @@ const ProductEdit = ({
             ref={hoverImageRef}
             onChange={handleHoverImage}
             className="hidden"
-            required
           />
           <button
             type="button"

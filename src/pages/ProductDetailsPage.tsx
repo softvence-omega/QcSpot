@@ -401,6 +401,12 @@ const ProductDetailsPage = () => {
     setRating(0);
   };
 
+  // Finding out the length, width and height from dimensions
+  const dimensionsString = singleProductData?.product?.dimensions || "";
+  const [length, width, height] = dimensionsString
+    .split(/\s*x\s*/i)
+    .map((dim: any) => dim.trim());
+
   return (
     <div className="max-w-7xl mx-auto pt-40 md:pt-24 pb-10 px-4">
       <div className="flex flex-col lg:flex-row rounded-lg shadow-lg overflow-hidden border dark:border-shadow dark:shadow-shadow">
@@ -571,6 +577,7 @@ const ProductDetailsPage = () => {
               </label>
               <input
                 type="number"
+                defaultValue={singleProductData?.product?.weight}
                 {...register("weight", { required: "Weight is required" })}
                 className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black dark:border-shadow"
               />
@@ -585,6 +592,7 @@ const ProductDetailsPage = () => {
                 Length(cm)
               </label>
               <input
+                defaultValue={length}
                 type="number"
                 {...register("length")}
                 className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black dark:border-shadow"
@@ -597,6 +605,7 @@ const ProductDetailsPage = () => {
                 Width(cm)
               </label>
               <input
+                defaultValue={width}
                 type="number"
                 {...register("width")}
                 className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black dark:border-shadow"
@@ -609,6 +618,7 @@ const ProductDetailsPage = () => {
                 Height(cm)
               </label>
               <input
+                defaultValue={height}
                 type="number"
                 {...register("height")}
                 className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black dark:border-shadow"
@@ -642,9 +652,16 @@ const ProductDetailsPage = () => {
 
         {/* Product Description */}
         <div className="p-5 flex flex-col flex-1">
-          <h2 className="text-xl md:text-2xl font-semibold mb-2">
-            {product?.title}
-          </h2>
+          <div className="flex justify-between items-center gap-5">
+            <h2 className="text-xl md:text-2xl font-semibold mb-2">
+              {product?.title}
+            </h2>
+
+            <div>
+              <p>Average rating:</p>
+              <p>Number of reviews:</p>
+            </div>
+          </div>
 
           <div className="sm:grid grid-cols-2 md:grid-cols-3 gap-5 items-center space-y-5 sm:space-y-0 a justify-between my-5">
             {/* Price */}
