@@ -3,6 +3,8 @@ import PlatformLink from "./PlatformLink";
 import { Link } from "react-router-dom";
 import { IProduct } from "../types";
 import { TfiCommentAlt } from "react-icons/tfi";
+import { Rating } from "@smastrom/react-rating";
+import { ratingStyles } from "../pages/ProductDetailsPage";
 
 interface ProductCardProps {
   product: IProduct;
@@ -15,9 +17,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     name,
     price,
     totalView,
-    totalPhoto,
     storeName,
     productCode,
+    avgRetting,
+    tolatReview,
   } = product;
   return (
     <div className="bg-white dark:border-2 border-shadow rounded-lg shadow-md dark:shadow-shadow overflow-hidden">
@@ -48,16 +51,25 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         >
           {name}
         </Link>
-        <div className="mt-2 flex items-center justify-between">
+        <div className="mt-2 flex items-center justify-between gap-3">
           <div className="text-sm sm:text-base flex items-center space-x-2">
             <span className="font-semibold">¥{price}</span>
           </div>
-          <p>*****</p>
+          {avgRetting ? (
+            <Rating
+              className="max-w-20"
+              readOnly
+              value={avgRetting || 0}
+              itemStyles={ratingStyles}
+            />
+          ) : (
+            <></>
+          )}
           <div className="flex items-center space-x-1 sm:space-x-2 text-gray-500 text-sm">
             <Eye size={16} />
             <span className="pr-1 sm:pr-2 lg:pr-3">{totalView}</span>
             <TfiCommentAlt />
-            <span>{totalPhoto}</span>
+            <span>{tolatReview}</span>
           </div>
         </div>
         <div className="mt-4 flex space-x-2">

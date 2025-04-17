@@ -11,6 +11,8 @@ export interface IProduct {
   dimensions: string;
   isDeleted: boolean;
   onTrend: boolean;
+  avgRetting?: number;
+  tolatReview?: number;
   totalView: number;
   totalPhoto: number;
   searchField: string[];

@@ -68,7 +68,7 @@ const settings = {
 };
 
 // rating style
-const ratingStyles = {
+export const ratingStyles = {
   itemShapes: Star,
   activeFillColor: "#ffb33e",
   inactiveFillColor: "#a78f6d",
@@ -672,10 +672,24 @@ const ProductDetailsPage = () => {
             </h2>
 
             <div>
-              <p>*****</p>
-              <p>
-                <TfiCommentAlt />
-              </p>
+              {singleProductData?.product?.avgRetting ? (
+                <Rating
+                  className="max-w-28"
+                  readOnly
+                  value={singleProductData?.product?.avgRetting || 0}
+                  itemStyles={ratingStyles}
+                />
+              ) : (
+                <></>
+              )}
+              {singleProductData?.product?.tolatReview ? (
+                <p className="flex items-center justify-end mt-2 gap-2">
+                  <TfiCommentAlt />
+                  {singleProductData?.product?.tolatReview}
+                </p>
+              ) : (
+                <></>
+              )}
             </div>
           </div>
 
