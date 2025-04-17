@@ -17,6 +17,7 @@ export interface AuthContextType {
   user: User | null;
   setUser: React.Dispatch<React.SetStateAction<User | null>>;
   logout: () => void;
+  loading: boolean;
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(
@@ -25,8 +26,8 @@ export const AuthContext = createContext<AuthContextType | undefined>(
 
 const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  // Check for existing token on initial load
   useEffect(() => {
     const token = localStorage.getItem("token");
     const user = localStorage.getItem("user");
@@ -34,6 +35,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
       const parsedUser: User = JSON.parse(user);
       setUser(parsedUser);
     }
+    setLoading(false); // done checking
   }, []);
 
   const logout = () => {
@@ -46,6 +48,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     user,
     setUser,
     logout,
+    loading,
   };
 
   return (

@@ -301,7 +301,7 @@ const AddProduct = () => {
               {...register("dimensions", {
                 required: "Dimensions are required",
               })}
-              placeholder="e.g.: 4.5x4.5x1"
+              placeholder="e.g.: 4.5x4.5x1 [Don't write cm or any other unit]"
               className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black dark:border-shadow"
             />
             {errors.dimensions && (

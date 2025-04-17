@@ -15,7 +15,8 @@ const ManageReviewTableRow: React.FC<ManageReviewCardProps> = ({
   index,
   refetch,
 }) => {
-  const { _id, name, comment, rating, status } = review;
+  const { _id, name, comment, rating, status, productName, product_img } =
+    review;
   const [isOpen, setIsOpen] = useState(false);
   const [currentStatus, setCurrentStatus] = useState(status);
 
@@ -24,10 +25,10 @@ const ManageReviewTableRow: React.FC<ManageReviewCardProps> = ({
       "pending" | "denied" | "approved"
     >;
     try {
-      const res = await axiosSecure.patch(`/reviews/status/${_id}`, {
-        status: selectedStatus,
-      });
-      if (res.data.modifiedCount > 0) {
+      const res = await axiosSecure.patch(
+        `/review/approveOrDenyReview?review_id=${_id}&status=${selectedStatus}`
+      );
+      if (res.status == 200) {
         setCurrentStatus(selectedStatus);
         toast.success(`Review status changed to "${selectedStatus}"`);
         refetch();
@@ -42,12 +43,24 @@ const ManageReviewTableRow: React.FC<ManageReviewCardProps> = ({
   return (
     <tr className="text-xs sm:text-base bg-white dark:bg-black border-b dark:border-zinc-700 h-12">
       <th>{index + 1}</th>
+      <td>
+        <img
+          className="w-8 sm:w-10 h-8 sm:h-10 rounded mx-auto"
+          src={product_img}
+          alt={productName}
+        />
+      </td>
+      <td>
+        {productName.length > 10
+          ? productName.slice(0, 10) + " ..."
+          : productName}
+      </td>
       <td>{name}</td>
       <td
         onClick={() => setIsOpen(true)}
         className="max-w-20 sm:max-w-60 sm:min-w-32 cursor-pointer hover:underline"
       >
-        {comment.length > 50 ? comment.slice(0, 50) + " ..." : name}
+        {comment.length > 50 ? comment.slice(0, 50) + " ..." : comment}
       </td>
       <td>{rating}</td>
       <td>

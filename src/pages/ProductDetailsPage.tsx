@@ -32,6 +32,7 @@ import EstimationCard from "../components/EstimationCard";
 import useReview from "../hooks/useReviews";
 import { Rating, Star } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import { TfiCommentAlt } from "react-icons/tfi";
 
 export interface Sku {
   skuID: string;
@@ -80,6 +81,8 @@ const ProductDetailsPage = () => {
   const [qc, setQc] = useState<string[] | null>(null);
   const [productLoading, setProductLoading] = useState<boolean>(true);
   const [qcLoading, setQcLoading] = useState<boolean>(true);
+  const [reviewSubmisssionLoading, setReviewSubmisssionLoading] =
+    useState<boolean>(false);
   const [selectedSku, setSelectedSku] = useState<Sku | null>(null);
   const [showDescription, setShowDescription] = useState(false);
   const [isOpen, setIsOpen] = useState({ img: "", state: false });
@@ -117,7 +120,10 @@ const ProductDetailsPage = () => {
   const { singleProductData, singleProductLoading } = useSingleProduct(
     _id as string
   );
-  const { reviewData, reviewLoading } = useReview();
+  const { reviewData, reviewLoading, reviewRefetch } = useReview({
+    product_code: id as string,
+    status: "approved",
+  });
   const isProductInCollection =
     collectionData?.length > 0
       ? collectionData.some(
@@ -379,26 +385,34 @@ const ProductDetailsPage = () => {
     setSelectedItemCode((prev) => prev.filter((id) => id !== child.id));
   };
 
-  const handleReviewSubmit = (e: React.FormEvent) => {
+  const handleReviewSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (rating === 0 || comment.trim() === "") {
       toast.error("Please enter a comment and select a rating.");
       return;
     }
-
     const reviewData = {
       store_name: shopType == "ali_1688" ? "1688" : shopType,
       product_code: id,
+      productName: product?.title,
+      product_img: product?.skus[0]?.imgUrl,
       name: user?.name,
       comment,
       rating,
     };
-
-    // onSubmitReview({ comment, rating });
-
-    console.log(reviewData);
-    setComment("");
-    setRating(0);
+    try {
+      setReviewSubmisssionLoading(true);
+      const res = await axiosSecure.post("/review/postReview", reviewData);
+      if (res.status !== 200) toast.error("Something went wrong!");
+      (e.target as HTMLFormElement).reset();
+      reviewRefetch();
+      setComment("");
+      setRating(0);
+    } catch (error: any) {
+      toast.error(error.response?.data?.message || "Failed to fetch data!");
+    } finally {
+      setReviewSubmisssionLoading(false);
+    }
   };
 
   // Finding out the length, width and height from dimensions
@@ -658,8 +672,10 @@ const ProductDetailsPage = () => {
             </h2>
 
             <div>
-              <p>Average rating:</p>
-              <p>Number of reviews:</p>
+              <p>*****</p>
+              <p>
+                <TfiCommentAlt />
+              </p>
             </div>
           </div>
 
@@ -789,7 +805,7 @@ const ProductDetailsPage = () => {
                 key={index}
                 onClick={() => setIsOpen({ img, state: true })}
                 src={img}
-                alt={`product-image`}
+                alt={`QC-image`}
                 className="w-full h-[480px] object-cover rounded hover:shadow-xl cursor-pointer"
               />
             ))}
@@ -804,37 +820,38 @@ const ProductDetailsPage = () => {
         <div className="flex justify-center items-center py-10">
           <Loader2 className="w-16 h-16 animate-spin" />
         </div>
-      ) : reviewData && reviewData.length > 0 ? (
-        <>
-          <h2 className="text-2xl font-semibold mt-5">Reviews:</h2>
-          <div className="mt-3">
-            {reviewData.map((data: any, index: number) => (
-              <div
-                key={index}
-                className="flex items-center p-3 rounded border dark:border-shadow mb-2"
-              >
-                <User className="rounded-full border dark:border-shadow size-8 p-1 min-w-8" />
-                <div className="px-3">
-                  <div className="flex items-center gap-3 mb-2">
-                    <p className="text-green-500 text-sm">{data?.name}</p>
-                    <p className="text-zinc-500 dark:text-zinc-300 text-xs">
-                      3 days ago
-                    </p>
-                    <Rating
-                      className="max-w-20 ml-5"
-                      readOnly
-                      value={data?.rating || 0}
-                      itemStyles={ratingStyles}
-                    />
-                  </div>
-                  <p className="text-sm">{data?.comment}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </>
       ) : (
-        <p className="text-center py-10 text-xl">No Reviews available</p>
+        reviewData &&
+        reviewData.length > 0 && (
+          <>
+            <h2 className="text-2xl font-semibold mt-5">Reviews:</h2>
+            <div className="mt-3">
+              {reviewData.map((data: any, index: number) => (
+                <div
+                  key={index}
+                  className="flex items-center p-3 rounded border dark:border-shadow mb-2"
+                >
+                  <User className="rounded-full border dark:border-shadow size-8 p-1 min-w-8" />
+                  <div className="px-3">
+                    <div className="flex items-center gap-3 mb-2">
+                      <p className="text-green-500 text-sm">{data?.name}</p>
+                      <p className="text-zinc-500 dark:text-zinc-300 text-xs">
+                        3 days ago
+                      </p>
+                      <Rating
+                        className="max-w-20 ml-5"
+                        readOnly
+                        value={data?.rating || 0}
+                        itemStyles={ratingStyles}
+                      />
+                    </div>
+                    <p className="text-sm">{data?.comment}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        )
       )}
 
       <h2 className="text-2xl font-semibold mt-5 mb-3">Add a Review:</h2>
@@ -857,11 +874,17 @@ const ProductDetailsPage = () => {
           items={5}
         />
 
-        <input
-          className="bg-btn hover:bg-green-500 text-white px-3 py-1 rounded cursor-pointer"
+        <button
           type="submit"
-          value="Submit"
-        />
+          disabled={reviewSubmisssionLoading}
+          className="bg-btn hover:bg-green-500 text-white px-3 py-1 rounded cursor-pointer"
+        >
+          {reviewSubmisssionLoading ? (
+            <Loader2 className="h-5 w-5 animate-spin mx-auto" />
+          ) : (
+            "Submit"
+          )}
+        </button>
       </form>
       {showDescription && (
         <div

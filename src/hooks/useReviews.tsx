@@ -1,18 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
-// import axiosSecure from "./useAxios";
+import axiosSecure from "./useAxios";
 
 const useReview = (
   queryParams?: Record<string, string | boolean | undefined>
 ) => {
-  // const queryString = queryParams
-  //   ? `?${new URLSearchParams(
-  //       Object.fromEntries(
-  //         Object.entries(queryParams).filter(
-  //           ([_, value]) => value !== undefined && value !== ""
-  //         )
-  //       ) as Record<string, string>
-  //     ).toString()}`
-  //   : "";
+  const queryString = queryParams
+    ? `?${new URLSearchParams(
+        Object.fromEntries(
+          Object.entries(queryParams).filter(
+            ([_, value]) => value !== undefined && value !== ""
+          )
+        ) as Record<string, string>
+      ).toString()}`
+    : "";
   const {
     data: reviewData = [],
     isLoading: reviewLoading,
@@ -20,11 +20,8 @@ const useReview = (
   } = useQuery({
     queryKey: ["reviewData", queryParams],
     queryFn: async () => {
-      //   const res = await axiosSecure.get(`/review/getreview${queryString}`);
-      //   return res.data?.data;
-
-      const response = await fetch("/reviews.json");
-      return await response.json();
+      const res = await axiosSecure.get(`/review/findReview${queryString}`);
+      return res.data?.data;
     },
   });
 

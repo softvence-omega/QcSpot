@@ -1,7 +1,8 @@
-import { Camera, Eye } from "lucide-react";
+import { Eye } from "lucide-react";
 import PlatformLink from "./PlatformLink";
 import { Link } from "react-router-dom";
 import { IProduct } from "../types";
+import { TfiCommentAlt } from "react-icons/tfi";
 
 interface ProductCardProps {
   product: IProduct;
@@ -51,10 +52,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <div className="text-sm sm:text-base flex items-center space-x-2">
             <span className="font-semibold">¥{price}</span>
           </div>
+          <p>*****</p>
           <div className="flex items-center space-x-1 sm:space-x-2 text-gray-500 text-sm">
             <Eye size={16} />
             <span className="pr-1 sm:pr-2 lg:pr-3">{totalView}</span>
-            <Camera size={16} />
+            <TfiCommentAlt />
             <span>{totalPhoto}</span>
           </div>
         </div>
