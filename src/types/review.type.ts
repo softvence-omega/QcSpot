@@ -1,4 +1,4 @@
-export type IReview = {
+export interface IReview {
   _id: string;
   productName: string;
   product_img: string;
@@ -9,4 +9,4 @@ export type IReview = {
   rating: number;
   status: "pending" | "denied" | "approved";
   createdAt: string;
-};
+}

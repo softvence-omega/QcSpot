@@ -33,6 +33,8 @@ import useReview from "../hooks/useReviews";
 import { Rating, Star } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import { TfiCommentAlt } from "react-icons/tfi";
+import { IReview } from "../types/review.type";
+import TimeAgo from "../components/TimeAgo";
 
 export interface Sku {
   skuID: string;
@@ -404,6 +406,7 @@ const ProductDetailsPage = () => {
       setReviewSubmisssionLoading(true);
       const res = await axiosSecure.post("/review/postReview", reviewData);
       if (res.status !== 200) toast.error("Something went wrong!");
+      toast.success("Review Submitted!");
       (e.target as HTMLFormElement).reset();
       reviewRefetch();
       setComment("");
@@ -840,7 +843,7 @@ const ProductDetailsPage = () => {
           <>
             <h2 className="text-2xl font-semibold mt-5">Reviews:</h2>
             <div className="mt-3">
-              {reviewData.map((data: any, index: number) => (
+              {reviewData.map((data: IReview, index: number) => (
                 <div
                   key={index}
                   className="flex items-center p-3 rounded border dark:border-shadow mb-2"
@@ -850,7 +853,7 @@ const ProductDetailsPage = () => {
                     <div className="flex items-center gap-3 mb-2">
                       <p className="text-green-500 text-sm">{data?.name}</p>
                       <p className="text-zinc-500 dark:text-zinc-300 text-xs">
-                        3 days ago
+                        {TimeAgo(data?.createdAt)}
                       </p>
                       <Rating
                         className="max-w-20 ml-5"
