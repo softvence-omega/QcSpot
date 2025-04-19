@@ -25,6 +25,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   } = product;
 
   const handleProductClick = () => {
+    console.log("Clicked on -> ", name);
     ReactGA.event({
       category: name,
       action: "Clicked Button",
