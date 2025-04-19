@@ -67,6 +67,12 @@ function Register() {
       console.error(error);
       if (error.response) {
         toast.error(error.response.data?.message || "Something went wrong!");
+      }
+      if (error.code === "auth/email-already-in-use") {
+        await signInWithEmailAndPassword(auth, tempUser.email, googlePassword);
+      } else if (error.code === "auth/invalid-email") {
+        toast.error("Invalid email address.");
+        return;
       } else {
         toast.error("Failed to Register. Please try again.");
       }

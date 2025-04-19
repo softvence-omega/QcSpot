@@ -19,7 +19,8 @@ const ManageProductTableRow: React.FC<ManageProductCardProps> = ({
   index,
   refetch,
 }) => {
-  const { _id, name, price, onTrend, thumbnailImg } = product;
+  const { _id, name, price, onTrend, thumbnailImg, storeName, productCode } =
+    product;
   const { productData } = useProduct();
   const [isTrending, setIsTrending] = useState(onTrend);
   const serials = Array.from(
@@ -119,7 +120,9 @@ const ManageProductTableRow: React.FC<ManageProductCardProps> = ({
       <td>
         <Link
           className="cursor-pointer hover:underline hover:text-green-500 duration-300 line-clamp-1 sm:line-clamp-none"
-          to={`/dashboard/manage-products/${_id}`}
+          to={`/product/${
+            storeName == "1688" ? "ali_1688" : storeName
+          }/${productCode}`}
         >
           {name.length > 30 ? name.slice(0, 30) + " ..." : name}
         </Link>
@@ -139,7 +142,9 @@ const ManageProductTableRow: React.FC<ManageProductCardProps> = ({
       </td>
       <td className="flex gap-2 justify-center items-center mt-3 sm:mt-2">
         <Link
-          to={`/dashboard/manage-products/${_id}`}
+          to={`/product/${
+            storeName == "1688" ? "ali_1688" : storeName
+          }/${productCode}`}
           className="text-xs sm:px-2 py-1 rounded cursor-pointer duration-300"
         >
           <RiShareBoxLine className="sm:text-lg text-green-500" />

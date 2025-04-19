@@ -7,7 +7,6 @@ import { useAuth } from "../context/AuthContext";
 import Swal from "sweetalert2";
 import { loginUser, useGoogleLogin } from "../components/handleGoogleLogin";
 import {
-  createUserWithEmailAndPassword,
   getAuth,
   sendEmailVerification,
   signInWithEmailAndPassword,
@@ -33,24 +32,23 @@ function Login() {
   const handleEmailLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoginLoading(true);
-
     if (!email || !password) {
       toast.error("Please fill in all fields");
       setLoginLoading(false);
       return;
     }
+    let firebaseUser = null;
 
     try {
-      // Firebase authentication
-      const userCredential = await signInWithEmailAndPassword(
+      const emailPassTry = await signInWithEmailAndPassword(
         auth,
         email,
         password
       );
-      const firebaseUser = userCredential.user;
+      firebaseUser = emailPassTry.user;
 
-      // Check email verification
-      if (!firebaseUser.emailVerified) {
+      // If Firebase login succeeds, check email verification
+      if (firebaseUser && !firebaseUser.emailVerified) {
         await signOut(auth);
         const result = await Swal.fire({
           title: "Email not verified",
@@ -60,6 +58,7 @@ function Login() {
           confirmButtonText: "Resend",
           cancelButtonText: "Cancel",
         });
+
         if (result.isConfirmed) {
           await sendEmailVerification(firebaseUser);
           toast.success("Verification email resent. Check your inbox.");
@@ -69,8 +68,25 @@ function Login() {
         setLoginLoading(false);
         return;
       }
+    } catch (firebaseError: any) {
+      // If invalid credential, skip Firebase verification and continue
+      if (
+        firebaseError.code === "auth/invalid-credential" ||
+        firebaseError.code === "auth/user-not-found"
+      ) {
+        console.log(
+          "Skipping Firebase verification due to:",
+          firebaseError.code
+        );
+      } else {
+        console.log(firebaseError.message || "Firebase login error.");
+        setLoginLoading(false);
+        return;
+      }
+    }
 
-      // Proceed with backend login
+    // Proceed with backend login regardless of Firebase outcome (if not blocked by email verification)
+    try {
       const formValue = { email, password };
       const res = await axiosSecure.post("/auth/login", formValue);
 
@@ -89,38 +105,6 @@ function Login() {
         toast.error("Unexpected response from server.");
       }
     } catch (error: any) {
-      // Firebase auth errors
-      if (error.code === "auth/invalid-credential") {
-        toast.error("Invalid login credentials");
-        setLoginLoading(false);
-        return;
-      }
-
-      if (error.code === "auth/user-not-found") {
-        toast.error("No user found with this email.");
-        setLoginLoading(false);
-        return;
-      }
-
-      if (error.code === "auth/wrong-password") {
-        toast.error("Incorrect password.");
-        setLoginLoading(false);
-        return;
-      }
-
-      if (error.code === "auth/too-many-requests") {
-        toast.error("Too many failed attempts. Try again later.");
-        setLoginLoading(false);
-        return;
-      }
-
-      if (error.code?.startsWith("auth/")) {
-        toast.error("Authentication error. Please try again.");
-        setLoginLoading(false);
-        return;
-      }
-
-      // Backend errors
       if (error.response) {
         toast.error(
           error.response.data?.message || "Invalid username or password"
@@ -148,44 +132,14 @@ function Login() {
         password: googlePassword,
       };
 
-      try {
-        // Try to create user in firebase
-        await createUserWithEmailAndPassword(
-          auth,
-          tempUser.email,
-          googlePassword
-        );
-
-        // If creation successful, create user in your backend too
-        await axiosSecure.post("/users/createUser", formValue);
-        toast.success("User registered successfully!");
-      } catch (firebaseError: any) {
-        // If email already exists, try to log the user in
-        if (firebaseError.code === "auth/email-already-in-use") {
-          await signInWithEmailAndPassword(
-            auth,
-            tempUser.email,
-            googlePassword
-          );
-        } else if (firebaseError.code === "auth/invalid-email") {
-          toast.error("Invalid email address.");
-          return;
-        } else if (firebaseError.code === "auth/weak-password") {
-          toast.error("Password is too weak.");
-          return;
-        } else {
-          toast.error("Firebase authentication error. Please try again.");
-          return;
-        }
-      }
-      await signOut(auth);
+      await axiosSecure.post("/users/createUser", formValue);
+      toast.success("User registered successfully!");
+      setIsPassOpen(false);
+      setGooglePassword("");
 
       // Proceed to login
       await loginUser(tempUser, setUser, navigate, setIsPassOpen, setTempUser);
-      setIsPassOpen(false);
-      setGooglePassword("");
     } catch (error: any) {
-      console.error(error);
       toast.error(error.response?.data?.message || "Failed to create user.");
     } finally {
       setGooglePassLoading(false);

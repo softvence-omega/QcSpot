@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
 
 // Extract domain from url
-function extractFromUrl(url: string) {
+export function extractFromUrl(url: string) {
   let domain: string, itemID: string;
   const urlInput = new URL(url);
   const partBeforeDotCom = url.split(".com")[0];
@@ -26,7 +26,7 @@ function extractFromUrl(url: string) {
 }
 
 // Function to handle the cssbuy URL
-function handleCssBuyUrl(url: string) {
+export function handleCssBuyUrl(url: string) {
   let shopType = "";
   let itemId = "";
 
@@ -48,7 +48,7 @@ function handleCssBuyUrl(url: string) {
   return { shopType, itemId };
 }
 
-function handleAcBuyUrl(source: string) {
+export function handleAcBuyUrl(source: string) {
   if (source === "AL") {
     return "ali_1688";
   } else if (source === "TB") {
@@ -110,5 +110,3 @@ export const handleQcSearch = async (
     });
   }
 };
-
-// https://www.acbuy.com/product?id=808389068660&source=AL&u=XRTG9T

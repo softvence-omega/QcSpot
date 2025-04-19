@@ -44,7 +44,6 @@ export const loginUser = async (
       email: user.email,
       method: "google",
     });
-    console.log(res);
     if (res.status === 200) {
       const token = res.data?.approvalToken;
       if (token) localStorage.setItem("token", token);
