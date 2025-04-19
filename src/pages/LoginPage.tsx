@@ -6,6 +6,14 @@ import axiosSecure from "../hooks/useAxios";
 import { useAuth } from "../context/AuthContext";
 import Swal from "sweetalert2";
 import { loginUser, useGoogleLogin } from "../components/handleGoogleLogin";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  sendEmailVerification,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
+import app from "../firebase/firebase.config";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -20,31 +28,99 @@ function Login() {
   const [tempUser, setTempUser] = useState<any>(null);
   const navigate = useNavigate();
   const { setUser } = useAuth();
+  const auth = getAuth(app);
 
   const handleEmailLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoginLoading(true);
+
     if (!email || !password) {
       toast.error("Please fill in all fields");
       setLoginLoading(false);
       return;
     }
-    const formValue = { email, password };
+
     try {
+      // Firebase authentication
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const firebaseUser = userCredential.user;
+
+      // Check email verification
+      if (!firebaseUser.emailVerified) {
+        await signOut(auth);
+        const result = await Swal.fire({
+          title: "Email not verified",
+          text: "Would you like us to resend the verification email?",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonText: "Resend",
+          cancelButtonText: "Cancel",
+        });
+        if (result.isConfirmed) {
+          await sendEmailVerification(firebaseUser);
+          toast.success("Verification email resent. Check your inbox.");
+        } else {
+          toast.error("Email verification required to continue.");
+        }
+        setLoginLoading(false);
+        return;
+      }
+
+      // Proceed with backend login
+      const formValue = { email, password };
       const res = await axiosSecure.post("/auth/login", formValue);
-      console.log(res);
+
       if (res.status === 200) {
         const token = res.data?.approvalToken;
         if (token) localStorage.setItem("token", token);
         localStorage.setItem("user", JSON.stringify(res.data?.user));
         setUser(res.data?.user);
+
         toast.success("Logged in successfully!");
+
         res.data?.user?.role === "admin"
           ? navigate("/dashboard/admin-home")
           : navigate("/");
-      } else toast.error("Unexpected response from server.");
+      } else {
+        toast.error("Unexpected response from server.");
+      }
     } catch (error: any) {
-      console.log(error);
+      // Firebase auth errors
+      if (error.code === "auth/invalid-credential") {
+        toast.error("Invalid login credentials");
+        setLoginLoading(false);
+        return;
+      }
+
+      if (error.code === "auth/user-not-found") {
+        toast.error("No user found with this email.");
+        setLoginLoading(false);
+        return;
+      }
+
+      if (error.code === "auth/wrong-password") {
+        toast.error("Incorrect password.");
+        setLoginLoading(false);
+        return;
+      }
+
+      if (error.code === "auth/too-many-requests") {
+        toast.error("Too many failed attempts. Try again later.");
+        setLoginLoading(false);
+        return;
+      }
+
+      if (error.code?.startsWith("auth/")) {
+        toast.error("Authentication error. Please try again.");
+        setLoginLoading(false);
+        return;
+      }
+
+      // Backend errors
       if (error.response) {
         toast.error(
           error.response.data?.message || "Invalid username or password"
@@ -72,14 +148,44 @@ function Login() {
         password: googlePassword,
       };
 
-      await axiosSecure.post("/users/createUser", formValue);
-      toast.success("User registered successfully!");
-      setIsPassOpen(false);
-      setGooglePassword("");
+      try {
+        // Try to create user in firebase
+        await createUserWithEmailAndPassword(
+          auth,
+          tempUser.email,
+          googlePassword
+        );
+
+        // If creation successful, create user in your backend too
+        await axiosSecure.post("/users/createUser", formValue);
+        toast.success("User registered successfully!");
+      } catch (firebaseError: any) {
+        // If email already exists, try to log the user in
+        if (firebaseError.code === "auth/email-already-in-use") {
+          await signInWithEmailAndPassword(
+            auth,
+            tempUser.email,
+            googlePassword
+          );
+        } else if (firebaseError.code === "auth/invalid-email") {
+          toast.error("Invalid email address.");
+          return;
+        } else if (firebaseError.code === "auth/weak-password") {
+          toast.error("Password is too weak.");
+          return;
+        } else {
+          toast.error("Firebase authentication error. Please try again.");
+          return;
+        }
+      }
+      await signOut(auth);
 
       // Proceed to login
       await loginUser(tempUser, setUser, navigate, setIsPassOpen, setTempUser);
+      setIsPassOpen(false);
+      setGooglePassword("");
     } catch (error: any) {
+      console.error(error);
       toast.error(error.response?.data?.message || "Failed to create user.");
     } finally {
       setGooglePassLoading(false);

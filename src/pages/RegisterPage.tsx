@@ -5,6 +5,15 @@ import { toast } from "react-hot-toast";
 import axiosSecure from "../hooks/useAxios";
 import { loginUser, useGoogleLogin } from "../components/handleGoogleLogin.tsx";
 import { useAuth } from "../context/AuthContext.tsx";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  sendEmailVerification,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
+import app from "../firebase/firebase.config.ts";
+import Swal from "sweetalert2";
 
 function Register() {
   const [name, setName] = useState("");
@@ -18,28 +27,44 @@ function Register() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { setUser } = useAuth();
+  const auth = getAuth(app);
 
   const handleEmailRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+
     if (password !== confirmPassword) {
       toast.error("Passwords do not match");
       setLoading(false);
       return;
     }
-    const formValue = {
-      name,
-      email,
-      password,
-    };
-
+    const registerData = { name, email, password };
     try {
-      const res = await axiosSecure.post("/users/createUser", formValue);
-      if (res.status === 200) {
-        toast.success("Account created successfully!");
-        navigate("/login");
-      }
+      const result = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      // Send email verification to ensure verified user
+      await sendEmailVerification(result.user);
+      Swal.fire({
+        title: "Check Your mail to verify email address",
+        icon: "info",
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutUp",
+        },
+      });
+      await signOut(auth);
+
+      // Then create the user
+      const res = await axiosSecure.post("/users/createUser", registerData);
+      if (res.status === 200) navigate("/login");
     } catch (error: any) {
+      console.error(error);
       if (error.response) {
         toast.error(error.response.data?.message || "Something went wrong!");
       } else {
@@ -65,14 +90,44 @@ function Register() {
         password: googlePassword,
       };
 
-      await axiosSecure.post("/users/createUser", formValue);
-      toast.success("User registered successfully!");
-      setIsPassOpen(false);
-      setGooglePassword("");
+      try {
+        // Try to create user in firebase
+        await createUserWithEmailAndPassword(
+          auth,
+          tempUser.email,
+          googlePassword
+        );
+
+        // If creation successful, create user in your backend too
+        await axiosSecure.post("/users/createUser", formValue);
+        toast.success("User registered successfully!");
+      } catch (firebaseError: any) {
+        // If email already exists, try to log the user in
+        if (firebaseError.code === "auth/email-already-in-use") {
+          await signInWithEmailAndPassword(
+            auth,
+            tempUser.email,
+            googlePassword
+          );
+        } else if (firebaseError.code === "auth/invalid-email") {
+          toast.error("Invalid email address.");
+          return;
+        } else if (firebaseError.code === "auth/weak-password") {
+          toast.error("Password is too weak.");
+          return;
+        } else {
+          toast.error("Firebase authentication error. Please try again.");
+          return;
+        }
+      }
+      await signOut(auth);
 
       // Proceed to login
       await loginUser(tempUser, setUser, navigate, setIsPassOpen, setTempUser);
+      setIsPassOpen(false);
+      setGooglePassword("");
     } catch (error: any) {
+      console.error(error);
       toast.error(error.response?.data?.message || "Failed to create user.");
     } finally {
       setGooglePassLoading(false);

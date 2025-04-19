@@ -5,6 +5,7 @@ import { IProduct } from "../types";
 import { TfiCommentAlt } from "react-icons/tfi";
 import { Rating } from "@smastrom/react-rating";
 import { ratingStyles } from "../pages/ProductDetailsPage";
+import ReactGA from "react-ga4";
 
 interface ProductCardProps {
   product: IProduct;
@@ -22,6 +23,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     avgRetting,
     tolatReview,
   } = product;
+
+  const handleProductClick = () => {
+    ReactGA.event({
+      category: name,
+      action: "Clicked Button",
+      value: price,
+    });
+  };
   return (
     <div className="bg-white dark:border-2 border-shadow rounded-lg shadow-md dark:shadow-shadow overflow-hidden">
       <Link
@@ -29,6 +38,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           storeName == "1688" ? "ali_1688" : storeName
         }/${productCode}?_id=${_id}`}
         className="relative cursor-pointer"
+        onClick={handleProductClick}
       >
         <img
           src={thumbnailImg[0]}
@@ -48,6 +58,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             storeName == "1688" ? "ali_1688" : storeName
           }/${productCode}?_id=${_id}`}
           className="font-medium line-clamp-2 h-12"
+          onClick={handleProductClick}
         >
           {name}
         </Link>
@@ -78,6 +89,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               storeName == "1688" ? "ali_1688" : storeName
             }/${productCode}?_id=${_id}`}
             className="flex-1 p-1 md:p-2 border border-gray-300 rounded-md text-xs sm:text-sm font-medium text-gray-700 dark:text-white flex justify-center items-center"
+            onClick={handleProductClick}
           >
             View QC
           </Link>
