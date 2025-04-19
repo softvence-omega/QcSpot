@@ -1,13 +1,15 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import ReactGA from "react-ga4";
 
 const GAListener = () => {
-  const location = useLocation();
+  ReactGA.initialize("G-RZQL7ZYCLE");
 
   useEffect(() => {
-    ReactGA.send({ hitType: "pageview", page: location.pathname });
-  }, [location]);
+    ReactGA.send({
+      hitType: "pageview",
+      page: window.location.pathname,
+    });
+  }, []);
 
   return null;
 };
