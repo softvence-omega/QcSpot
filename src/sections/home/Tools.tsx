@@ -124,7 +124,7 @@ const Tools = () => {
                 <Link2 size={20} />
               </div>
               <span className="text-xs text-zinc-500 max-w-[80px]">
-                Auto Link Conversion
+                Remove Warm Reminder
               </span>
             </div>
             <div className="flex flex-col items-center text-center">

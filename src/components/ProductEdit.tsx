@@ -96,7 +96,7 @@ const ProductEdit = ({
         `/products/updateProduct?product_id=${_id}`,
         formData
       );
-      if (res.status !== 200) throw new Error("Network response was not ok");
+      if (res.status !== 200) toast.error("Network response was not ok");
       toast.success("Product updated successfully!");
       refetch();
       setIsEditClicked(false);

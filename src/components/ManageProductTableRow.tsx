@@ -3,10 +3,10 @@ import axiosSecure from "../hooks/useAxios";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
-import { FaRegTrashAlt } from "react-icons/fa";
-import { RiShareBoxLine } from "react-icons/ri";
-import { ChangeEvent, useState } from "react";
+import { FaEdit, FaRegTrashAlt } from "react-icons/fa";
+import { ChangeEvent, FormEvent, useState } from "react";
 import useProduct from "../hooks/useProducts";
+import { Loader2, X } from "lucide-react";
 
 interface ManageProductCardProps {
   product: IProduct;
@@ -23,6 +23,11 @@ const ManageProductTableRow: React.FC<ManageProductCardProps> = ({
     product;
   const { productData } = useProduct();
   const [isTrending, setIsTrending] = useState(onTrend);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [weight, setWeight] = useState("");
+  const [dimensions, setDimensions] = useState("");
+  const [shippingTime, setShippingTime] = useState("");
   const serials = Array.from(
     { length: productData?.length || 0 },
     (_, i) => i + 1
@@ -89,6 +94,29 @@ const ManageProductTableRow: React.FC<ManageProductCardProps> = ({
     });
   };
 
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const product = {
+        ...(weight !== "" && { weight: parseInt(weight) }),
+        ...(shippingTime !== "" && { shippingTime: parseInt(shippingTime) }),
+        ...(dimensions !== "" && { dimensions }),
+      };
+      const updateProductResponse = await axiosSecure.post(
+        `/products/updateProduct?product_id=${_id}`,
+        product
+      );
+      if (updateProductResponse.status !== 200)
+        toast.error("Network response was not ok");
+      toast.success("Product added successfully!");
+    } catch (error) {
+      console.error("Error fetching product:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <tr className="text-xs sm:text-base bg-white dark:bg-black border-b dark:border-zinc-700 h-12">
       <th>
@@ -113,7 +141,7 @@ const ManageProductTableRow: React.FC<ManageProductCardProps> = ({
       <td>
         <img
           className="w-8 sm:w-10 h-8 sm:h-10 object-cover object-center rounded mx-auto"
-          src={thumbnailImg[0]}
+          src={thumbnailImg}
           alt={name}
         />
       </td>
@@ -141,14 +169,12 @@ const ManageProductTableRow: React.FC<ManageProductCardProps> = ({
         </select>
       </td>
       <td className="flex gap-2 justify-center items-center mt-3 sm:mt-2">
-        <Link
-          to={`/product/${
-            storeName == "1688" ? "ali_1688" : storeName
-          }/${productCode}`}
+        <button
+          onClick={() => setIsModalOpen(true)}
           className="text-xs sm:px-2 py-1 rounded cursor-pointer duration-300"
         >
-          <RiShareBoxLine className="sm:text-lg text-green-500" />
-        </Link>
+          <FaEdit className="sm:text-lg text-green-500" />
+        </button>
         <button
           onClick={() => deleteProduct()}
           className="text-xs sm:px-2 py-1 rounded cursor-pointer duration-300"
@@ -156,6 +182,82 @@ const ManageProductTableRow: React.FC<ManageProductCardProps> = ({
           <FaRegTrashAlt className="sm:text-lg text-red-500" />
         </button>
       </td>
+      {/* Product Update Modal */}
+      {isModalOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+          onClick={() => setIsModalOpen(false)}
+        >
+          <div
+            className="bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-lg max-w-md w-full relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2 className="text-lg font-semibold text-zinc-900 dark:text-white mb-4">
+              Update Product Details
+            </h2>
+            <form onSubmit={onSubmit} className="grid grid-cols-2 gap-4">
+              {/* Weight */}
+              <div>
+                <label className="block text-left text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Weight (g)
+                </label>
+                <input
+                  type="number"
+                  value={weight}
+                  onChange={(e) => setWeight(e.target.value)}
+                  placeholder="e.g.: 5"
+                  className="w-full mt-1 p-2 border rounded outline-none placeholder:text-sm focus:border-green-500 bg-white dark:bg-black dark:border-shadow"
+                />
+              </div>
+
+              {/* Shipping Time */}
+              <div>
+                <label className="block text-left text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Shipping Time (days)
+                </label>
+                <input
+                  type="number"
+                  value={shippingTime}
+                  onChange={(e) => setShippingTime(e.target.value)}
+                  placeholder="e.g.: 7"
+                  className="w-full mt-1 p-2 border rounded outline-none placeholder:text-sm focus:border-green-500 bg-white dark:bg-black dark:border-shadow"
+                />
+              </div>
+
+              {/* Dimensions */}
+              <div className="col-span-2">
+                <label className="block text-left text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Dimensions (LxWxH cm)
+                </label>
+                <input
+                  type="text"
+                  value={dimensions}
+                  onChange={(e) => setDimensions(e.target.value)}
+                  placeholder="e.g.: 4.5x4.5x1 [Don't write cm or any other unit]"
+                  className="w-full mt-1 p-2 border rounded outline-none placeholder:text-sm focus:border-green-500 bg-white dark:bg-black dark:border-shadow"
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={loading}
+                className="col-span-2 w-full bg-btn text-white py-2 rounded hover:bg-green-500 transition"
+              >
+                {loading ? (
+                  <Loader2 className="h-5 w-5 animate-spin mx-auto" />
+                ) : (
+                  "Update Details"
+                )}
+              </button>
+            </form>
+            <button
+              className="text-red-500 absolute top-2 right-2 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white"
+              onClick={() => setIsModalOpen(false)}
+            >
+              <X />
+            </button>
+          </div>
+        </div>
+      )}
     </tr>
   );
 };

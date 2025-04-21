@@ -42,7 +42,7 @@ const ChangePassword = () => {
         "/auth/changePassword",
         changePasswordData
       );
-      if (res.status !== 200) throw new Error("Something went wrong!");
+      if (res.status !== 200) toast.error("Something went wrong!");
       toast.success("Password updated successfully!");
       reset();
     } catch (error: any) {

@@ -100,6 +100,7 @@ export const handleQcSearch = async (
       });
       return;
     }
+    localStorage.setItem("url", input);
     navigate(`/product/${shopType}/${id}`);
   } catch (err) {
     Swal.fire({

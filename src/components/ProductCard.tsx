@@ -32,6 +32,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       value: price,
     });
   };
+
   return (
     <div className="bg-white dark:border-2 border-shadow rounded-lg shadow-md dark:shadow-shadow overflow-hidden">
       <Link
@@ -42,14 +43,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         onClick={handleProductClick}
       >
         <img
-          src={thumbnailImg[0]}
+          src={thumbnailImg}
           alt={name}
           className="w-full aspect-square object-cover object-center transition-opacity duration-300 ease-in-out"
-        />
-        <img
-          src={thumbnailImg[1]}
-          alt={name}
-          className="w-full aspect-square object-cover object-center absolute top-0 left-0 opacity-0 transition-opacity duration-300 ease-in-out hover:opacity-100"
         />
       </Link>
 

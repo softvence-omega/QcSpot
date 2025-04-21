@@ -15,9 +15,7 @@ export interface IProduct {
   tolatReview?: number;
   totalView: number;
   totalPhoto: number;
-  searchField: string[];
-  thumbnailImg: string[];
-  variants: string[];
+  thumbnailImg: string;
   createdAt: string;
   updatedAt: string;
   lastUpdatedAt: number;

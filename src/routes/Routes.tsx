@@ -11,13 +11,11 @@ import AdminHome from "../pages/dashboard/AdminHome";
 import ManageProducts from "../pages/dashboard/ManageProducts";
 import ChangePassword from "../pages/dashboard/ChangePassword";
 import Users from "../pages/dashboard/Users";
-import ManageProductsDetails from "../pages/dashboard/ManageProductsDetails";
 import PrivateRoute from "./PrivateRoute";
 import ResetPasswordPage from "../pages/ResetPasswordPage";
 import PopularPage from "../pages/PopularPage";
 import Collection from "../pages/Collection";
 import ManageAgent from "../pages/dashboard/ManageAgent";
-import ProductDetailsProxyPage from "../pages/ProductDetailsProxyPage";
 import AddAnAgent from "../pages/dashboard/AddAnAgent";
 import Estimation from "../pages/Estimation";
 import Managereview from "../pages/dashboard/ManageReview";
@@ -31,7 +29,6 @@ const router = createBrowserRouter([
       { path: "/", element: <HomePage /> },
       { path: "/popular", element: <PopularPage /> },
       { path: "/product/:shopType/:id", element: <ProductDetailsPage /> },
-      { path: "/product/:id", element: <ProductDetailsProxyPage /> },
       { path: "/estimation", element: <Estimation /> },
       {
         path: "/collection",
@@ -56,7 +53,6 @@ const router = createBrowserRouter([
       { path: "add-a-product", element: <AddAProduct /> },
       { path: "manage-products", element: <ManageProducts /> },
       { path: "add-an-agent", element: <AddAnAgent /> },
-      { path: "manage-products/:id", element: <ManageProductsDetails /> },
       { path: "users", element: <Users /> },
       { path: "change-password", element: <ChangePassword /> },
       { path: "manage-agent", element: <ManageAgent /> },

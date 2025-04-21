@@ -35,6 +35,8 @@ import "@smastrom/react-rating/style.css";
 import { TfiCommentAlt } from "react-icons/tfi";
 import { IReview } from "../types/review.type";
 import TimeAgo from "../components/TimeAgo";
+import { MdPlaylistAdd } from "react-icons/md";
+import Swal from "sweetalert2";
 
 export interface Sku {
   skuID: string;
@@ -51,7 +53,7 @@ export interface Sku {
 export interface Product {
   title: string;
   propsTrans: any;
-  price: number;
+  price: string;
   imgList: string[];
   skus: Sku[];
 }
@@ -117,8 +119,14 @@ const ProductDetailsPage = () => {
   const location = useLocation();
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(0);
+  const [isAddProductModalOpen, setIsAddProductModalOpen] = useState(false);
+  const [addProductLoading, setAddProductLoading] = useState(false);
+  const [url, setUrl] = useState(localStorage.getItem("url"));
+  const [weight, setWeight] = useState("");
+  const [dimensions, setDimensions] = useState("");
+  const [shippingTime, setShippingTime] = useState("");
   const queryParams = new URLSearchParams(location.search);
-  const _id = queryParams.get("_id");
+  const _id = queryParams.get("_id") || "";
   const { singleProductData, singleProductLoading } = useSingleProduct(
     _id as string
   );
@@ -418,6 +426,59 @@ const ProductDetailsPage = () => {
     }
   };
 
+  const handleAddToProductList = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setAddProductLoading(true);
+
+    if (!url) {
+      toast.error("URL Not found. Try from Dashboard");
+      setAddProductLoading(false);
+      return;
+    }
+
+    if (!shopType || !id) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Invalid URL or missing parameters!",
+      });
+      setAddProductLoading(false);
+      return;
+    }
+
+    try {
+      const res = await fetch(
+        `https://cnfans.com/search-api/detail/product-info?platform=${shopType}&productID=${id}&forceReload=false&site=cnfans&lang=en&wmc-currency=USD`
+      );
+      const data = await res.json();
+      const productData: Product = data?.data?.productInfo || null;
+
+      const product = {
+        name: productData.title,
+        price: parseInt(productData.price),
+        thumbnailImg: productData.skus[0].imgUrl,
+        ...(weight !== "" && { weight: parseInt(weight) }),
+        ...(shippingTime !== "" && { shippingTime: parseInt(shippingTime) }),
+        ...(dimensions !== "" && { dimensions }),
+        storeName: shopType,
+        productCode: id,
+      };
+
+      console.log(product);
+      const createProductResponse = await axiosSecure.post(
+        "/products/addProduct",
+        product
+      );
+      if (createProductResponse.status !== 200)
+        toast.error("Network response was not ok");
+      toast.success("Product added successfully!");
+    } catch (error) {
+      console.error("Error fetching product:", error);
+    } finally {
+      setAddProductLoading(false);
+    }
+  };
+
   // Finding out the length, width and height from dimensions
   const dimensionsString = singleProductData?.product?.dimensions || "";
   const [length, width, height] = dimensionsString
@@ -658,11 +719,6 @@ const ProductDetailsPage = () => {
                 </>
               )}
             </button>
-            {/* <button className="w-full hover:bg-green-600 text-white py-2.5 rounded-lg flex items-center justify-center gap-2 bg-btn transition-colors duration-200 ">
-                <MessageSquare size={20} />
-                Calculate Shipping
-                <ExternalLink size={16} />
-              </button> */}
           </form>
           {/* Estimation Form ends */}
         </div>
@@ -725,7 +781,7 @@ const ProductDetailsPage = () => {
                 <p className="font-bold">
                   Dimensions:{" "}
                   <span className="text-red-500">
-                    {singleProductData?.product?.dimensions}
+                    {singleProductData?.product?.dimensions} cm
                   </span>
                 </p>
               )}
@@ -779,13 +835,15 @@ const ProductDetailsPage = () => {
                 </span>
               )}
             </div>
-            {/* <Link to="/estimation">
-              <button className="w-full hover:bg-green-600 text-white py-2.5 rounded-lg flex items-center justify-center gap-2 bg-btn transition-colors duration-200 ">
-                <MessageSquare size={20} />
-                Calculate Shipping
-                <ExternalLink size={16} />
+            {user && user.role === "admin" && (
+              <button
+                onClick={() => setIsAddProductModalOpen(true)}
+                className="w-full hover:bg-green-600 text-white py-2.5 rounded-lg flex items-center justify-center gap-2 bg-btn transition-colors duration-200 "
+              >
+                <MdPlaylistAdd className="size-6" />
+                Add to product list
               </button>
-            </Link> */}
+            )}
           </div>
         </div>
       </div>
@@ -943,6 +1001,99 @@ const ProductDetailsPage = () => {
               alt={`product-image`}
               className="w-full h-full object-cover rounded hover:shadow-xl"
             />
+          </div>
+        </div>
+      )}
+
+      {/* Product Update Modal */}
+      {isAddProductModalOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+          onClick={() => setIsAddProductModalOpen(false)}
+        >
+          <div
+            className="bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-lg max-w-md w-full relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2 className="text-lg font-semibold text-zinc-900 dark:text-white mb-4">
+              Add Product
+            </h2>
+            <form
+              onSubmit={handleAddToProductList}
+              className="grid grid-cols-2 gap-4"
+            >
+              {/* URL */}
+              <div className="col-span-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Product URL <span className="text-red-500">*</span>
+                </label>
+                <textarea
+                  placeholder="paste url here"
+                  value={url || ""}
+                  onChange={(e) => setUrl(e.target.value)}
+                  className=" w-full mt-1 p-2 border rounded outline-none placeholder:text-sm focus:border-green-500 bg-white dark:bg-black dark:border-shadow"
+                />
+              </div>
+
+              {/* Weight */}
+              <div>
+                <label className="block text-left text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Weight (g)
+                </label>
+                <input
+                  type="number"
+                  value={weight}
+                  onChange={(e) => setWeight(e.target.value)}
+                  placeholder="e.g.: 5"
+                  className="w-full mt-1 p-2 border rounded outline-none placeholder:text-sm focus:border-green-500 bg-white dark:bg-black dark:border-shadow"
+                />
+              </div>
+
+              {/* Shipping Time */}
+              <div>
+                <label className="block text-left text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Shipping Time (days)
+                </label>
+                <input
+                  type="number"
+                  value={shippingTime}
+                  onChange={(e) => setShippingTime(e.target.value)}
+                  placeholder="e.g.: 7"
+                  className="w-full mt-1 p-2 border rounded outline-none placeholder:text-sm focus:border-green-500 bg-white dark:bg-black dark:border-shadow"
+                />
+              </div>
+
+              {/* Dimensions */}
+              <div className="col-span-2">
+                <label className="block text-left text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Dimensions (LxWxH cm)
+                </label>
+                <input
+                  type="text"
+                  value={dimensions}
+                  onChange={(e) => setDimensions(e.target.value)}
+                  placeholder="e.g.: 4.5x4.5x1 [Don't write cm or any other unit]"
+                  className="w-full mt-1 p-2 border rounded outline-none placeholder:text-sm focus:border-green-500 bg-white dark:bg-black dark:border-shadow"
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={addProductLoading}
+                className="col-span-2 w-full bg-btn text-white py-2 rounded hover:bg-green-500 transition"
+              >
+                {addProductLoading ? (
+                  <Loader2 className="h-5 w-5 animate-spin mx-auto" />
+                ) : (
+                  "Add Product"
+                )}
+              </button>
+            </form>
+            <button
+              className="text-red-500 absolute top-2 right-2 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white"
+              onClick={() => setIsAddProductModalOpen(false)}
+            >
+              <X />
+            </button>
           </div>
         </div>
       )}

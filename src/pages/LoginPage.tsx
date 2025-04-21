@@ -183,7 +183,7 @@ function Login() {
       const res = await axiosSecure.post("/auth/forgetPassword", {
         email: forgetPassMail,
       });
-      if (res.status !== 200) throw new Error("Network response was not ok");
+      if (res.status !== 200) toast.error("Network response was not ok");
       Swal.fire("Please check your mail!");
       setIsOpen(false);
     } catch (error: any) {

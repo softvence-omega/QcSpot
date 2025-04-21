@@ -12,17 +12,17 @@ import { Product } from "../ProductDetailsPage";
 
 const AddAProduct = () => {
   const [input, setInput] = useState("");
-  const [weight, setWeight] = useState(0);
+  const [weight, setWeight] = useState("");
   const [dimensions, setDimensions] = useState("");
-  const [shippingTime, setShippingTime] = useState(0);
+  const [shippingTime, setShippingTime] = useState("");
   const [loading, setLoading] = useState(false);
 
   // Submit Handler
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    if (!input || !weight || !dimensions || !shippingTime) {
-      toast.error("Please fill in all fields");
+    if (!input) {
+      toast.error("Please provide a url");
       setLoading(false);
       return;
     }
@@ -55,6 +55,7 @@ const AddAProduct = () => {
         title: "Oops...",
         text: "Invalid URL or missing parameters!",
       });
+      setLoading(false);
       return;
     }
 
@@ -69,18 +70,22 @@ const AddAProduct = () => {
         name: productData.title,
         price: productData.price,
         thumbnailImg: productData.skus[0].imgUrl,
-        weight,
-        shippingTime,
-        dimensions,
+        ...(weight !== "" && { weight: parseInt(weight) }),
+        ...(shippingTime !== "" && { shippingTime: parseInt(shippingTime) }),
+        ...(dimensions !== "" && { dimensions }),
         storeName: shopType,
         productCode: id,
       };
+
+      console.log(product);
+
       const createProductResponse = await axiosSecure.post(
         "/products/addProduct",
         product
       );
+      console.log(createProductResponse);
       if (createProductResponse.status !== 200)
-        throw new Error("Network response was not ok");
+        toast.error("Network response was not ok");
       toast.success("Product added successfully!");
     } catch (error) {
       console.error("Error fetching product:", error);
@@ -114,7 +119,7 @@ const AddAProduct = () => {
             <input
               type="number"
               value={weight}
-              onChange={(e) => setWeight(parseInt(e.target.value))}
+              onChange={(e) => setWeight(e.target.value)}
               placeholder="e.g.: 0.3"
               className="w-full mt-1 p-2 border rounded outline-none placeholder:text-sm focus:border-green-500 bg-white dark:bg-black dark:border-shadow"
             />
@@ -128,7 +133,7 @@ const AddAProduct = () => {
             <input
               type="number"
               value={shippingTime}
-              onChange={(e) => setShippingTime(parseInt(e.target.value))}
+              onChange={(e) => setShippingTime(e.target.value)}
               placeholder="e.g.: 7"
               className="w-full mt-1 p-2 border rounded outline-none placeholder:text-sm focus:border-green-500 bg-white dark:bg-black dark:border-shadow"
             />

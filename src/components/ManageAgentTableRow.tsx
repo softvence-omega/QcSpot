@@ -135,7 +135,7 @@ const ManageAgentTableRow = ({ agent, refetch, index }: IAgentData) => {
         `/agent/updateAgent?agent_id=${agent._id}`,
         formData
       );
-      if (res.status !== 200) throw new Error("Network response was not ok");
+      if (res.status !== 200) toast.error("Network response was not ok");
       toast.success("Agent updated successfully!");
       reset();
       refetch();

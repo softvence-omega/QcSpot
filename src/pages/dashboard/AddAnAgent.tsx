@@ -50,7 +50,7 @@ const AddAnAgent = () => {
     try {
       setLoading(true);
       const res = await axiosSecure.post("/agent/createAgent", formData);
-      if (res.status !== 200) throw new Error("Network response was not ok");
+      if (res.status !== 200) toast.error("Network response was not ok");
       toast.success("Agent added successfully!");
       reset();
       setImage(null);

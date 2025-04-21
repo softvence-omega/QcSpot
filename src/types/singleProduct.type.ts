@@ -17,7 +17,7 @@ interface Product {
   searchField: string[];
   shippingTime: number;
   storeName: string;
-  thumbnailImg: string[];
+  thumbnailImg: string;
   totalPhoto: number;
   totalView: number;
   updatedAt: string;
