@@ -479,8 +479,10 @@ const ProductDetailsPage = () => {
     }
   };
 
+  console.log(singleProductData);
+
   // Finding out the length, width and height from dimensions
-  const dimensionsString = singleProductData?.product?.dimensions || "";
+  const dimensionsString = singleProductData?.dimensions || "";
   const [length, width, height] = dimensionsString
     .split(/\s*x\s*/i)
     .map((dim: any) => dim.trim());
@@ -655,7 +657,7 @@ const ProductDetailsPage = () => {
               </label>
               <input
                 type="number"
-                defaultValue={singleProductData?.product?.weight}
+                defaultValue={singleProductData?.weight}
                 {...register("weight", { required: "Weight is required" })}
                 className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black dark:border-shadow"
               />
@@ -731,20 +733,20 @@ const ProductDetailsPage = () => {
             </h2>
 
             <div>
-              {singleProductData?.product?.avgRetting ? (
+              {singleProductData?.avgRetting ? (
                 <Rating
                   className="max-w-28"
                   readOnly
-                  value={singleProductData?.product?.avgRetting || 0}
+                  value={singleProductData?.avgRetting || 0}
                   itemStyles={ratingStyles}
                 />
               ) : (
                 <></>
               )}
-              {singleProductData?.product?.tolatReview ? (
+              {singleProductData?.tolatReview ? (
                 <p className="flex items-center justify-end mt-2 gap-2">
                   <TfiCommentAlt />
-                  {singleProductData?.product?.tolatReview}
+                  {singleProductData?.tolatReview}
                 </p>
               ) : (
                 <></>
@@ -776,20 +778,19 @@ const ProductDetailsPage = () => {
           </div>
           <div className="flex flex-col-reverse md:flex-row md:justify-between md:items-center gap-2 md:gap-5">
             <h2 className="font-bold text-sm">Classification: </h2>
-            {!singleProductLoading &&
-              singleProductData?.product?.dimensions && (
-                <p className="font-bold">
-                  Dimensions:{" "}
-                  <span className="text-red-500">
-                    {singleProductData?.product?.dimensions} cm
-                  </span>
-                </p>
-              )}
-            {!singleProductLoading && singleProductData?.product?.weight && (
+            {!singleProductLoading && singleProductData?.dimensions && (
+              <p className="font-bold">
+                Dimensions:{" "}
+                <span className="text-red-500">
+                  {singleProductData?.dimensions} cm
+                </span>
+              </p>
+            )}
+            {!singleProductLoading && singleProductData?.weight && (
               <p className="font-bold">
                 weight:{" "}
                 <span className="text-red-500">
-                  {singleProductData?.product?.weight}g
+                  {singleProductData?.weight}g
                 </span>
               </p>
             )}

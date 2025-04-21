@@ -25,9 +25,9 @@ const ManageProductTableRow: React.FC<ManageProductCardProps> = ({
   const [isTrending, setIsTrending] = useState(onTrend);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [weight, setWeight] = useState("");
-  const [dimensions, setDimensions] = useState("");
-  const [shippingTime, setShippingTime] = useState("");
+  const [weight, setWeight] = useState(product.weight || "");
+  const [dimensions, setDimensions] = useState(product.dimensions || "");
+  const [shippingTime, setShippingTime] = useState(product.shippingTime || "");
   const serials = Array.from(
     { length: productData?.length || 0 },
     (_, i) => i + 1
@@ -99,19 +99,23 @@ const ManageProductTableRow: React.FC<ManageProductCardProps> = ({
     setLoading(true);
     try {
       const product = {
-        ...(weight !== "" && { weight: parseInt(weight) }),
-        ...(shippingTime !== "" && { shippingTime: parseInt(shippingTime) }),
+        ...(weight !== "" && { weight: parseInt(weight as string) }),
+        ...(shippingTime !== "" && {
+          shippingTime: parseInt(shippingTime as string),
+        }),
         ...(dimensions !== "" && { dimensions }),
       };
-      const updateProductResponse = await axiosSecure.post(
+
+      console.log(product);
+      const updateProductResponse = await axiosSecure.patch(
         `/products/updateProduct?product_id=${_id}`,
         product
       );
       if (updateProductResponse.status !== 200)
         toast.error("Network response was not ok");
-      toast.success("Product added successfully!");
+      toast.success("Product updated successfully!");
     } catch (error) {
-      console.error("Error fetching product:", error);
+      console.error("This Error happened:", error);
     } finally {
       setLoading(false);
     }

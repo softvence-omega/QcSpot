@@ -76,14 +76,10 @@ const AddAProduct = () => {
         storeName: shopType,
         productCode: id,
       };
-
-      console.log(product);
-
       const createProductResponse = await axiosSecure.post(
         "/products/addProduct",
         product
       );
-      console.log(createProductResponse);
       if (createProductResponse.status !== 200)
         toast.error("Network response was not ok");
       toast.success("Product added successfully!");
@@ -114,7 +110,7 @@ const AddAProduct = () => {
           {/* Weight */}
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-              Weight (g) <span className="text-red-500">*</span>
+              Weight (g)
             </label>
             <input
               type="number"
@@ -128,7 +124,7 @@ const AddAProduct = () => {
           {/* Shipping Time */}
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-              Shipping Time (days) <span className="text-red-500">*</span>
+              Shipping Time (days)
             </label>
             <input
               type="number"
@@ -142,7 +138,7 @@ const AddAProduct = () => {
           {/* Dimensions */}
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-              Dimensions (LxWxH cm) <span className="text-red-500">*</span>
+              Dimensions (LxWxH cm)
             </label>
             <input
               type="text"
