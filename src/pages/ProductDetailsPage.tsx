@@ -280,7 +280,6 @@ const ProductDetailsPage = () => {
     try {
       setEstimationDataLoading(true);
       const res = await axiosSecure.post("get_estimation", submittedData);
-      console.log(res?.data?.data);
       const result = res?.data?.data;
       if (res.status !== 200) toast.error("Something went wrong!");
       setEstimationData(result);
@@ -456,15 +455,15 @@ const ProductDetailsPage = () => {
       const product = {
         name: productData.title,
         price: parseInt(productData.price),
-        thumbnailImg: productData.skus[0].imgUrl,
+        thumbnailImg: productData.skus[0].imgUrl
+          ? productData.skus[0].imgUrl
+          : productData?.imgList[0],
         ...(weight !== "" && { weight: parseInt(weight) }),
         ...(shippingTime !== "" && { shippingTime: parseInt(shippingTime) }),
         ...(dimensions !== "" && { dimensions }),
-        storeName: shopType,
+        storeName: shopType == "ali_1688" ? "1688" : shopType,
         productCode: id,
       };
-
-      console.log(product);
       const createProductResponse = await axiosSecure.post(
         "/products/addProduct",
         product
@@ -479,8 +478,6 @@ const ProductDetailsPage = () => {
     }
   };
 
-  console.log(singleProductData);
-
   // Finding out the length, width and height from dimensions
   const dimensionsString = singleProductData?.dimensions || "";
   const [length, width, height] = dimensionsString
@@ -492,7 +489,13 @@ const ProductDetailsPage = () => {
       <div className="flex flex-col lg:flex-row rounded-lg shadow-lg overflow-hidden border dark:border-shadow dark:shadow-shadow">
         {/* Product Image */}
         <div className="w-96 p-3 mx-auto">
-          {selectedSku?.imgUrl && <Magnifier imageUrl={selectedSku.imgUrl} />}
+          <Magnifier
+            imageUrl={
+              selectedSku
+                ? selectedSku.imgUrl
+                : (product?.imgList?.[0] as string)
+            }
+          />
           <p className="text-center mt-2">{selectedSku?.nameTrans}</p>
           {product?.imgList && product?.imgList.length > 4 ? (
             <Slider {...settings} className="my-3">
@@ -765,7 +768,10 @@ const ProductDetailsPage = () => {
                 selectedSku?.stock == 0 ? "bg-red-500/50" : "bg-gray-500"
               }`}
             >
-              Stock: {selectedSku?.stock}
+              Stock:
+              {selectedSku?.stock
+                ? selectedSku?.stock
+                : product?.skus[0]?.stock}
             </p>
             {/* Description */}
             <button

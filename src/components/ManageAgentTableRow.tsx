@@ -123,7 +123,6 @@ const ManageAgentTableRow = ({ agent, refetch, index }: IAgentData) => {
         ali_1688: data.to.ali_1688,
       },
     };
-    console.log(agentInfo);
     const formData = new FormData();
     if (imageRef.current?.files?.[0])
       formData.append("file", imageRef.current.files[0]);

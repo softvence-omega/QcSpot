@@ -88,7 +88,6 @@ export const handleQcSearch = async (
       url.searchParams.get("goodsId") ||
       (searchedUrl && extractFromUrl(searchedUrl).itemID) ||
       ((cssBuyUrl && handleCssBuyUrl(url.href)?.itemId) as string);
-    console.log(url, shopType, id);
 
     if (!shopType || !id) {
       Swal.fire({

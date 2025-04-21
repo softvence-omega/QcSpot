@@ -20,7 +20,6 @@ const PopularPage = () => {
     Object.entries(filters).filter(([_, value]) => value !== "")
   );
 
-  console.log(queryParams);
   const { productData, productLoading } = useProduct(queryParams);
   return (
     <div className="max-w-7xl mx-auto pt-40 md:pt-24 pb-10 px-4">

@@ -3,7 +3,6 @@ import { useAuth } from "../../context/AuthContext";
 
 const AdminHome = () => {
   const { user } = useAuth();
-  console.log(user);
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
       <h2 className="text-2xl md:text-4xl">Welcome Home, Mr. {user?.name}</h2>

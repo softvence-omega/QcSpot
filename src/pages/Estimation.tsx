@@ -213,10 +213,6 @@ const Estimation = () => {
     setSelectedOption((prev) => prev.filter((i) => i !== item));
     setSelectedItemCode((prev) => prev.filter((id) => id !== child.id));
   };
-
-  // console.log(selectedCountryCode, selectedItemCode);
-  // console.log(selectedItemCode.join(","));
-
   return (
     <div className="max-w-7xl mx-auto pt-40 md:pt-24 pb-10 px-4">
       <h2 className="text-2xl font-semibold text-center mb-4">

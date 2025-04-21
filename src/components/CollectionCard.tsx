@@ -19,8 +19,6 @@ const CollectionCard = ({ collection, refetch }: CollectionCardProps) => {
   const [product, setProduct] = useState<Product | null>(null);
   const [productLoading, setProductLoading] = useState<boolean>(true);
   const { storeName, productCode } = collection;
-
-  console.log(storeName.toLowerCase(), productCode);
   useEffect(() => {
     const fetchProduct = async () => {
       try {

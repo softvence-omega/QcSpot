@@ -40,7 +40,6 @@ const PlatformLink = ({ id, shopType, className }: PlatformLinkProps) => {
     return pattern.replace(/\{id\}/g, id);
   };
   const to = generateToUrl();
-  // console.log(to);
 
   return (
     <Link

@@ -123,7 +123,7 @@ const Tools = () => {
               <div className="text-green-500 mb-1">
                 <Link2 size={20} />
               </div>
-              <span className="text-xs text-zinc-500 max-w-[80px]">
+              <span className="text-xs text-zinc-500 max-w-[84px]">
                 Remove Warm Reminder
               </span>
             </div>

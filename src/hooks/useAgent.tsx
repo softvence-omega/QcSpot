@@ -21,7 +21,6 @@ const useAgent = (
     queryKey: ["agentData", queryParams],
     queryFn: async () => {
       const res = await axiosSecure.get(`/agent/getAgent${queryString}`);
-      console.log(res.data);
       return res.data?.data;
     },
   });

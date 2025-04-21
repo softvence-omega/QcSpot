@@ -74,10 +74,7 @@ function Login() {
         firebaseError.code === "auth/invalid-credential" ||
         firebaseError.code === "auth/user-not-found"
       ) {
-        console.log(
-          "Skipping Firebase verification due to:",
-          firebaseError.code
-        );
+        console.log("Skipping Firebase verification due to:", firebaseError);
       } else {
         console.log(firebaseError.message || "Firebase login error.");
         setLoginLoading(false);

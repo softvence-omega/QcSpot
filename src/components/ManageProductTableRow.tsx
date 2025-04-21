@@ -106,7 +106,6 @@ const ManageProductTableRow: React.FC<ManageProductCardProps> = ({
         ...(dimensions !== "" && { dimensions }),
       };
 
-      console.log(product);
       const updateProductResponse = await axiosSecure.patch(
         `/products/updateProduct?product_id=${_id}`,
         product
