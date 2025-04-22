@@ -86,6 +86,37 @@ function Login() {
       setGooglePassLoading(false);
     }
   };
+  //   try {
+  //     const googleProvider = new GoogleAuthProvider();
+  //     const result = await signInWithPopup(auth, googleProvider);
+  //     const user = result.user;
+  //     const isUserExists = usersData?.find((u: any) => u.email === user.email);
+  //     if (!isUserExists) {
+  //       setIsOpen(true);
+  //     }
+
+  //     const res = await axiosSecure.post("/auth/login", {
+  //       email: user.email,
+  //       method: "google",
+  //     });
+  //     if (res.status === 200) {
+  //       const token = res.data?.approvalToken;
+  //       if (token) localStorage.setItem("token", token);
+  //       localStorage.setItem("user", JSON.stringify(res.data?.user));
+  //       setUser(res.data?.user);
+  //       toast.success("Logged in successfully!");
+  //       res.data?.user?.role === "admin"
+  //         ? navigate("/dashboard/admin-home")
+  //         : navigate("/");
+  //     } else toast.error("Unexpected response from server.");
+  //   } catch (error: any) {
+  //     if (error.response) {
+  //       toast.error(error.response.data?.message || "Something went wrong!");
+  //     } else {
+  //       toast.error("Failed to Login. Please try again.");
+  //     }
+  //   }
+  // };
 
   const handleForgotPassword = async () => {
     try {
@@ -212,37 +243,38 @@ function Login() {
               )}
             </button>
           </div>
-        </form>
 
-        <div className="relative">
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-gray-300 dark:border-gray-600"></div>
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-gray-300 dark:border-gray-600"></div>
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="px-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400">
+                Or continue with
+              </span>
+            </div>
           </div>
-          <div className="relative flex justify-center text-sm">
-            <span className="px-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400">
-              Or continue with
-            </span>
-          </div>
-        </div>
 
-        {/* Sign up with google */}
-        <button
-          type="button"
-          onClick={handleGoogleLogin}
-          className="w-full flex items-center justify-center gap-3 px-4 py-2 
+          <div>
+            <button
+              type="button"
+              onClick={handleGoogleLogin}
+              className="w-full flex items-center justify-center gap-3 px-4 py-2 
                        border border-gray-300 dark:border-gray-600 rounded-md shadow-sm 
                        text-sm font-medium text-gray-700 dark:text-gray-200 
                        bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 
                        focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500
                        transition-colors"
-        >
-          <img
-            src="https://www.google.com/favicon.ico"
-            alt="Google"
-            className="w-5 h-5"
-          />
-          Sign in with Google
-        </button>
+            >
+              <img
+                src="https://www.google.com/favicon.ico"
+                alt="Google"
+                className="w-5 h-5"
+              />
+              Sign in with Google
+            </button>
+          </div>
+        </form>
       </div>
 
       {/* Set a Password Modal */}
