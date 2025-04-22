@@ -6,6 +6,13 @@ import axiosSecure from "../hooks/useAxios";
 import { useAuth } from "../context/AuthContext";
 import Swal from "sweetalert2";
 import { loginUser, useGoogleLogin } from "../components/handleGoogleLogin";
+import {
+  getAuth,
+  sendEmailVerification,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
+import app from "../firebase/firebase.config";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -20,6 +27,7 @@ function Login() {
   const [tempUser, setTempUser] = useState<any>(null);
   const navigate = useNavigate();
   const { setUser } = useAuth();
+  const auth = getAuth(app);
 
   const handleEmailLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -29,22 +37,71 @@ function Login() {
       setLoginLoading(false);
       return;
     }
-    const formValue = { email, password };
+    let firebaseUser = null;
+
     try {
+      const emailPassTry = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      firebaseUser = emailPassTry.user;
+
+      // If Firebase login succeeds, check email verification
+      if (firebaseUser && !firebaseUser.emailVerified) {
+        await signOut(auth);
+        const result = await Swal.fire({
+          title: "Email not verified",
+          text: "Would you like us to resend the verification email?",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonText: "Resend",
+          cancelButtonText: "Cancel",
+        });
+
+        if (result.isConfirmed) {
+          await sendEmailVerification(firebaseUser);
+          toast.success("Verification email resent. Check your inbox.");
+        } else {
+          toast.error("Email verification required to continue.");
+        }
+        setLoginLoading(false);
+        return;
+      }
+    } catch (firebaseError: any) {
+      // If invalid credential, skip Firebase verification and continue
+      if (
+        firebaseError.code === "auth/invalid-credential" ||
+        firebaseError.code === "auth/user-not-found"
+      ) {
+        console.log("Skipping Firebase verification due to:", firebaseError);
+      } else {
+        console.log(firebaseError.message || "Firebase login error.");
+        setLoginLoading(false);
+        return;
+      }
+    }
+
+    // Proceed with backend login regardless of Firebase outcome (if not blocked by email verification)
+    try {
+      const formValue = { email, password };
       const res = await axiosSecure.post("/auth/login", formValue);
-      console.log(res);
+
       if (res.status === 200) {
         const token = res.data?.approvalToken;
         if (token) localStorage.setItem("token", token);
         localStorage.setItem("user", JSON.stringify(res.data?.user));
         setUser(res.data?.user);
+
         toast.success("Logged in successfully!");
+
         res.data?.user?.role === "admin"
           ? navigate("/dashboard/admin-home")
           : navigate("/");
-      } else toast.error("Unexpected response from server.");
+      } else {
+        toast.error("Unexpected response from server.");
+      }
     } catch (error: any) {
-      console.log(error);
       if (error.response) {
         toast.error(
           error.response.data?.message || "Invalid username or password"
@@ -70,7 +127,6 @@ function Login() {
         email: tempUser.email,
         name: tempUser.displayName,
         password: googlePassword,
-        isVerified: true,
       };
 
       await axiosSecure.post("/users/createUser", formValue);
@@ -93,7 +149,7 @@ function Login() {
       const res = await axiosSecure.post("/auth/forgetPassword", {
         email: forgetPassMail,
       });
-      if (res.status !== 200) throw new Error("Network response was not ok");
+      if (res.status !== 200) toast.error("Network response was not ok");
       Swal.fire("Please check your mail!");
       setIsOpen(false);
     } catch (error: any) {
