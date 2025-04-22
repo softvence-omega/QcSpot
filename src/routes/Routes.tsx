@@ -19,6 +19,7 @@ import ManageAgent from "../pages/dashboard/ManageAgent";
 import AddAnAgent from "../pages/dashboard/AddAnAgent";
 import Estimation from "../pages/Estimation";
 import Managereview from "../pages/dashboard/ManageReview";
+import VerifyEmailPage from "../pages/VerifyEmailPage";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
   {
     path: "reset-password",
     element: <ResetPasswordPage />,
+  },
+  {
+    path: "verify-email",
+    element: <VerifyEmailPage />,
   },
 ]);
 

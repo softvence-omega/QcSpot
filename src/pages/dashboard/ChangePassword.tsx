@@ -3,18 +3,9 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import axiosSecure from "../../hooks/useAxios";
 import toast from "react-hot-toast";
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  updatePassword,
-} from "firebase/auth";
-import app from "../../firebase/firebase.config";
-import { useAuth } from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
 
 const ChangePassword = () => {
   const [loading, setLoading] = useState(false);
-  const { user } = useAuth();
   const {
     register,
     handleSubmit,
@@ -25,8 +16,7 @@ const ChangePassword = () => {
     newPassword: string;
     confirmPassword: string;
   }>();
-  const auth = getAuth(app);
-  const navigate = useNavigate();
+
   const onSubmit = async (data: any) => {
     if (data?.newPassword !== data?.confirmPassword) {
       toast.error("Password did not Match!");
@@ -36,36 +26,30 @@ const ChangePassword = () => {
       oldPassword: data?.oldPassword,
       newPassword: data?.newPassword,
     };
+    // axiosSecure
+    //   .post(`/auth/changePassword`)
+    //   .then((res) => {
+    //     console.log(res);
+    //     if (res.status === 200) toast.success("Password has been updated!");
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+    // reset();
     try {
       setLoading(true);
-      const emailPassTry = await signInWithEmailAndPassword(
-        auth,
-        user?.email as string,
-        data?.oldPassword
-      );
-      const firebaseUser = emailPassTry.user;
-      await updatePassword(firebaseUser, data.newPassword);
       const res = await axiosSecure.post(
         "/auth/changePassword",
         changePasswordData
       );
-      if (res.status !== 200) toast.error("Something went wrong!");
-      toast.success("Password has been updated! Login with new password.");
-      navigate("/login");
-
+      if (res.status !== 200) throw new Error("Something went wrong!");
+      toast.success("Password updated successfully!");
       reset();
     } catch (error: any) {
       console.error("Error:", error);
-      if (error.code === "auth/wrong-password" || "auth/invalid-credential") {
-        toast.error("Incorrect current password");
-      } else if (error.code === "auth/too-many-requests") {
-        toast.error("Too many attempts. Please try again later.");
-      } else if (error.code === "auth/requires-recent-login") {
-        toast.error("Please re-login to change your password.");
-      } else
-        toast.error(
-          error.response?.data?.message || "Failed to change password"
-        );
+      const errorMessage =
+        error.response?.data?.message || "Failed to change password";
+      toast.error(errorMessage);
     } finally {
       setLoading(false);
     }

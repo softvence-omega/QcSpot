@@ -4,13 +4,6 @@ import toast from "react-hot-toast";
 import axiosSecure from "../hooks/useAxios";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  updatePassword,
-} from "firebase/auth";
-import app from "../firebase/firebase.config";
-import { useAuth } from "../context/AuthContext";
 
 const ResetPasswordPage = () => {
   const [loading, setLoading] = useState(false);
@@ -21,8 +14,6 @@ const ResetPasswordPage = () => {
     formState: { errors },
   } = useForm<{ newPassword: string; confirmPassword: string }>();
   const [searchParams] = useSearchParams();
-  const auth = getAuth(app);
-  const { user } = useAuth();
   const navigate = useNavigate();
 
   const id = searchParams.get("id");
@@ -41,17 +32,11 @@ const ResetPasswordPage = () => {
 
     try {
       setLoading(true);
-      const emailPassTry = await signInWithEmailAndPassword(
-        auth,
-        user?.email as string,
-        data?.oldPassword
-      );
-      const firebaseUser = emailPassTry.user;
-      await updatePassword(firebaseUser, data.newPassword);
       const res = await axiosSecure.post("/auth/resetPassword", {
         id,
         newPassword: data.newPassword,
       });
+      console.log(res);
       if (res.status === 200) {
         toast.success("Password changed successfully!");
         navigate("/login");
@@ -59,13 +44,7 @@ const ResetPasswordPage = () => {
         toast.error("Unexpected response from server.");
       }
     } catch (error: any) {
-      if (error.code === "auth/wrong-password" || "auth/invalid-credential") {
-        toast.error("Incorrect current password");
-      } else if (error.code === "auth/too-many-requests") {
-        toast.error("Too many attempts. Please try again later.");
-      } else if (error.code === "auth/requires-recent-login") {
-        toast.error("Please re-login to change your password.");
-      } else if (error.response) {
+      if (error.response) {
         toast.error(
           error.response.data?.message || "Failed to reset password."
         );

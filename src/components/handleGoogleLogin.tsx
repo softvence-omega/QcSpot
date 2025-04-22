@@ -21,6 +21,7 @@ export const useGoogleLogin = (
       // Always try to login first, server will tell us if user exists
       await loginUser(user, setUser, navigate, setIsOpen, setTempUser);
     } catch (error: any) {
+      console.log(error);
       if (error.response) {
         toast.error(error.response.data?.message || "Something went wrong!");
       } else {
