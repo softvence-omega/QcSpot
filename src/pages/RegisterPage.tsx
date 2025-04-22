@@ -72,44 +72,14 @@ function Register() {
         isVerified: true,
       };
 
-      try {
-        // Try to create user in firebase
-        await createUserWithEmailAndPassword(
-          auth,
-          tempUser.email,
-          googlePassword
-        );
-
-        // If creation successful, create user in your backend too
-        await axiosSecure.post("/users/createUser", formValue);
-        toast.success("User registered successfully!");
-      } catch (firebaseError: any) {
-        // If email already exists, try to log the user in
-        if (firebaseError.code === "auth/email-already-in-use") {
-          await signInWithEmailAndPassword(
-            auth,
-            tempUser.email,
-            googlePassword
-          );
-        } else if (firebaseError.code === "auth/invalid-email") {
-          toast.error("Invalid email address.");
-          return;
-        } else if (firebaseError.code === "auth/weak-password") {
-          toast.error("Password is too weak.");
-          return;
-        } else {
-          toast.error("Firebase authentication error. Please try again.");
-          return;
-        }
-      }
-      await signOut(auth);
+      await axiosSecure.post("/users/createUser", formValue);
+      toast.success("User registered successfully!");
+      setIsPassOpen(false);
+      setGooglePassword("");
 
       // Proceed to login
       await loginUser(tempUser, setUser, navigate, setIsPassOpen, setTempUser);
-      setIsPassOpen(false);
-      setGooglePassword("");
     } catch (error: any) {
-      console.error(error);
       toast.error(error.response?.data?.message || "Failed to create user.");
     } finally {
       setGooglePassLoading(false);
@@ -253,56 +223,53 @@ function Register() {
             </div>
           </div>
 
-          <div>
-            <button
-              type="submit"
-              disabled={loading}
-              className="group relative w-full flex justify-center py-2 px-4 
+          <button
+            type="submit"
+            disabled={loading}
+            className="group relative w-full flex justify-center py-2 px-4 
                        border border-transparent text-sm font-medium rounded-md 
                        text-white hover:bg-green-500 bg-btn duration-200
                        focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 
                        disabled:opacity-50 disabled:cursor-not-allowed
                        transition-colors"
-            >
-              {loading ? (
-                <Loader2 className="h-5 w-5 animate-spin" />
-              ) : (
-                "Create Account"
-              )}
-            </button>
-          </div>
+          >
+            {loading ? (
+              <Loader2 className="h-5 w-5 animate-spin" />
+            ) : (
+              "Create Account"
+            )}
+          </button>
+        </form>
 
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300 dark:border-gray-600"></div>
-            </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400">
-                Or continue with
-              </span>
-            </div>
+        <div className="relative">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-gray-300 dark:border-gray-600"></div>
           </div>
+          <div className="relative flex justify-center text-sm">
+            <span className="px-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400">
+              Or continue with
+            </span>
+          </div>
+        </div>
 
-          <div>
-            <button
-              type="button"
-              onClick={handleGoogleLogin}
-              className="w-full flex items-center justify-center gap-3 px-4 py-2 
+        {/* Sign up with google */}
+        <button
+          type="button"
+          onClick={handleGoogleLogin}
+          className="w-full flex items-center justify-center gap-3 px-4 py-2 
                        border border-gray-300 dark:border-gray-600 rounded-md shadow-sm 
                        text-sm font-medium text-gray-700 dark:text-gray-200 
                        bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 
                        focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500
                        transition-colors"
-            >
-              <img
-                src="https://www.google.com/favicon.ico"
-                alt="Google"
-                className="w-5 h-5"
-              />
-              Sign up with Google
-            </button>
-          </div>
-        </form>
+        >
+          <img
+            src="https://www.google.com/favicon.ico"
+            alt="Google"
+            className="w-5 h-5"
+          />
+          Sign up with Google
+        </button>
       </div>
 
       {/* Set a Password Modal */}
