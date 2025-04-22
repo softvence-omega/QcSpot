@@ -9,7 +9,6 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   sendEmailVerification,
-  signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
 import app from "../firebase/firebase.config.ts";
@@ -69,7 +68,7 @@ function Register() {
         toast.error(error.response.data?.message || "Something went wrong!");
       }
       if (error.code === "auth/email-already-in-use") {
-        await signInWithEmailAndPassword(auth, tempUser.email, googlePassword);
+        toast.error("Email Already is use");
       } else if (error.code === "auth/invalid-email") {
         toast.error("Invalid email address.");
         return;
