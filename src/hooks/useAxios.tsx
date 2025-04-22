@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosSecure = axios.create({
-  baseURL: "https://qcspot-backend.onrender.com/api/v1",
+  baseURL: "http://203.161.57.73/api/v1",
 });
 
 axiosSecure.interceptors.request.use((config) => {
