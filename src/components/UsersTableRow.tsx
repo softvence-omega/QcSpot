@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { FaRegTrashAlt } from "react-icons/fa";
 import axiosSecure from "../hooks/useAxios";
 import toast from "react-hot-toast";
-import Swal from "sweetalert2";
 import { IUser } from "../types/user.type";
 
 interface IuserData {
@@ -19,17 +17,17 @@ const UsersTableRow = ({ user, refetch, index }: IuserData) => {
 
   const handleUserVerification = () => {
     axiosSecure
-      .patch(
-        `/user/activeOrDactiveAnuser?user_id=${
-          user._id
-        }&verified=${!isVerified}`
+      .post(
+        `/users/changeUserRoleOrStatus?email=${
+          user.email
+        }&isVerified=${!isVerified}`
       )
       .then((res) => {
         if (res.status === 200) {
           refetch();
           toast.success(
             `${user.name} state updated to ${
-              !isVerified ? "Active" : "Inactive"
+              !isVerified ? "Verified" : "Not Verified"
             }!`
           );
           setIsVerified(!isVerified);
@@ -44,16 +42,18 @@ const UsersTableRow = ({ user, refetch, index }: IuserData) => {
 
   const handleUserRole = () => {
     axiosSecure
-      .patch(`/user/activeOrDactiveAnuser?user_id=${user._id}`, {
-        role: !isUser ? "user" : "admin",
-      })
+      .post(
+        `/users/changeUserRoleOrStatus?email=${user.email}&role=${
+          !isUser ? "user" : "admin"
+        }`
+      )
       .then((res) => {
         if (res.status === 200) {
           refetch();
           toast.success(
             `${user.name} role updated to ${!isUser ? "User" : "Admin"}!`
           );
-          setIsUser(!user);
+          setIsUser((prev) => !prev);
         }
       })
       .catch((error) => {
@@ -63,31 +63,33 @@ const UsersTableRow = ({ user, refetch, index }: IuserData) => {
       });
   };
 
-  const handleUserDelete = () => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        axiosSecure
-          .delete(`/user/deleteuser?user_id=${user._id}`)
-          .then((res) => {
-            if (res.status === 200) {
-              refetch();
-              Swal.fire("Deleted!", "user has been deleted.", "success");
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      }
-    });
-  };
+  // const handleUserDelete = () => {
+  //   Swal.fire({
+  //     title: "Are you sure?",
+  //     text: "You won't be able to revert this!",
+  //     icon: "warning",
+  //     showCancelButton: true,
+  //     confirmButtonColor: "#3085d6",
+  //     cancelButtonColor: "#d33",
+  //     confirmButtonText: "Yes, delete it!",
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       axiosSecure
+  //         .post(
+  //           `/users/changeUserRoleOrStatus?email=${user.email}&isDeleted=true`
+  //         )
+  //         .then((res) => {
+  //           if (res.status === 200) {
+  //             refetch();
+  //             Swal.fire("Deleted!", "user has been deleted.", "success");
+  //           }
+  //         })
+  //         .catch((error) => {
+  //           console.log(error);
+  //         });
+  //     }
+  //   });
+  // };
 
   return (
     <tr className="text-xs sm:text-base bg-white dark:bg-black border-b dark:border-zinc-700 h-12">
@@ -118,14 +120,14 @@ const UsersTableRow = ({ user, refetch, index }: IuserData) => {
           <option value="admin">Admin</option>
         </select>
       </td>
-      <td>
+      {/* <td>
         <button
           onClick={() => handleUserDelete()}
           className="text-xs py-1 rounded cursor-pointer duration-300"
         >
           <FaRegTrashAlt className="sm:text-lg text-red-500" />
         </button>
-      </td>
+      </td> */}
     </tr>
   );
 };

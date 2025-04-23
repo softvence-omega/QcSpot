@@ -46,9 +46,30 @@ function Login() {
     } catch (error: any) {
       console.log(error);
       if (error.response) {
-        toast.error(
-          error.response.data?.message || "Invalid username or password"
-        );
+        if (error.response.data?.message == "User is not verified.") {
+          console.log(email);
+          const result = await Swal.fire({
+            title: "Email not verified",
+            text: "Would you like us to resend the verification email?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Resend",
+            cancelButtonText: "Cancel",
+          });
+
+          if (result.isConfirmed) {
+            await axiosSecure.post("/users/requestVerificationEmail", {
+              email,
+            });
+            toast.success("Verification email resent. Check your inbox.");
+          } else {
+            toast.error("Email verification required to continue.");
+          }
+          return;
+        } else
+          toast.error(
+            error.response.data?.message || "Invalid username or password"
+          );
       } else {
         toast.error("Failed to login. Please try again.");
       }
@@ -72,9 +93,7 @@ function Login() {
         password: googlePassword,
         isVerified: true,
       };
-
       await axiosSecure.post("/users/createUser", formValue);
-      toast.success("User registered successfully!");
       setIsPassOpen(false);
       setGooglePassword("");
 
@@ -93,7 +112,7 @@ function Login() {
       const res = await axiosSecure.post("/auth/forgetPassword", {
         email: forgetPassMail,
       });
-      if (res.status !== 200) throw new Error("Network response was not ok");
+      if (res.status !== 200) toast.error("Network response was not ok");
       Swal.fire("Please check your mail!");
       setIsOpen(false);
     } catch (error: any) {

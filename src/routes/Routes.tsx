@@ -20,6 +20,7 @@ import AddAnAgent from "../pages/dashboard/AddAnAgent";
 import Estimation from "../pages/Estimation";
 import Managereview from "../pages/dashboard/ManageReview";
 import VerifyEmailPage from "../pages/VerifyEmailPage";
+import AdminPrivateRoute from "./AdminPrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -44,9 +45,9 @@ const router = createBrowserRouter([
   {
     path: "dashboard",
     element: (
-      <PrivateRoute>
+      <AdminPrivateRoute>
         <DashboardLayout />
-      </PrivateRoute>
+      </AdminPrivateRoute>
     ),
     errorElement: <ErrorPage />,
     children: [

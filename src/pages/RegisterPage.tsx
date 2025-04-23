@@ -73,7 +73,6 @@ function Register() {
       };
 
       await axiosSecure.post("/users/createUser", formValue);
-      toast.success("User registered successfully!");
       setIsPassOpen(false);
       setGooglePassword("");
 

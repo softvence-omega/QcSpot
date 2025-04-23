@@ -10,9 +10,7 @@ import EstimationCard from "../components/EstimationCard";
 import axiosSecure from "../hooks/useAxios";
 
 export interface TEstimation {
-  destination: string;
   weight?: number;
-  features?: string[];
   length?: number;
   width?: number;
   height?: number;
@@ -25,6 +23,7 @@ const Estimation = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string[]>([]);
   const [selectedCountryCode, setSelectedCountryCode] = useState<string>("");
+  const [countryError, setCountryError] = useState<string>("");
   const [selectedItemCode, setSelectedItemCode] = useState<string[]>([]);
   const [activeOption, setActiveOption] = useState<string | null>(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -40,7 +39,11 @@ const Estimation = () => {
     formState: { errors },
   } = useForm<TEstimation>();
 
-  const onSubmit = async (data: TEstimation) => {
+  const handleEstimationSubmit = async (data: TEstimation) => {
+    if (selectedCountryCode == "") {
+      setCountryError("Country is required");
+      return;
+    }
     const submittedData = {
       destination: selectedCountryCode,
       weight: data.weight,
@@ -219,7 +222,7 @@ const Estimation = () => {
         Shipping Calculator
       </h2>
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit(handleEstimationSubmit)}
         className="grid grid-cols-4 gap-5 w-full"
       >
         {/* --------------- Destination -------------- */}
@@ -246,6 +249,9 @@ const Estimation = () => {
                 </li>
               ))}
             </ul>
+          )}
+          {countryError && (
+            <p className="text-red-500 text-sm">{countryError}</p>
           )}
         </div>
 
@@ -423,7 +429,9 @@ const Estimation = () => {
               ))}
             </div>
           ) : (
-            <p className="text-center text-gray-500">No data available</p>
+            <p className="text-center text-gray-500 mt-10">
+              No Shipping data available
+            </p>
           ))}
       </section>
     </div>

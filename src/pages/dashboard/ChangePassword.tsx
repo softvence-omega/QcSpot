@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import axiosSecure from "../../hooks/useAxios";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const ChangePassword = () => {
   const [loading, setLoading] = useState(false);
@@ -16,6 +17,7 @@ const ChangePassword = () => {
     newPassword: string;
     confirmPassword: string;
   }>();
+  const navigate = useNavigate();
 
   const onSubmit = async (data: any) => {
     if (data?.newPassword !== data?.confirmPassword) {
@@ -26,24 +28,18 @@ const ChangePassword = () => {
       oldPassword: data?.oldPassword,
       newPassword: data?.newPassword,
     };
-    // axiosSecure
-    //   .post(`/auth/changePassword`)
-    //   .then((res) => {
-    //     console.log(res);
-    //     if (res.status === 200) toast.success("Password has been updated!");
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-    // reset();
     try {
       setLoading(true);
       const res = await axiosSecure.post(
         "/auth/changePassword",
         changePasswordData
       );
-      if (res.status !== 200) throw new Error("Something went wrong!");
+      if (res.status !== 200) toast.error("Something went wrong!");
       toast.success("Password updated successfully!");
+      navigate("/login");
+      setTimeout(() => {
+        toast.success("Try login with new password");
+      }, 2000);
       reset();
     } catch (error: any) {
       console.error("Error:", error);

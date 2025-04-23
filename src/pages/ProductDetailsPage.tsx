@@ -27,7 +27,7 @@ import useCountry from "../hooks/useCountry";
 import useCategory from "../hooks/useCategory";
 import { useForm } from "react-hook-form";
 import { TEstimation } from "./Estimation";
-import { FaTimes } from "react-icons/fa";
+import { FaChevronDown, FaChevronUp, FaTimes } from "react-icons/fa";
 import EstimationCard from "../components/EstimationCard";
 import useReview from "../hooks/useReviews";
 import { Rating, Star } from "@smastrom/react-rating";
@@ -101,6 +101,7 @@ const ProductDetailsPage = () => {
   const [activeOption, setActiveOption] = useState<string | null>(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [estimationData, setEstimationData] = useState([]);
+  const [countryError, setCountryError] = useState<string>("");
   const [isEstimationExpanded, setIsEstimationExpanded] = useState(false);
   const { countryData } = useCountry();
   const { categoryData } = useCategory();
@@ -269,6 +270,10 @@ const ProductDetailsPage = () => {
   };
 
   const onEstimationSubmit = async (data: TEstimation) => {
+    if (selectedCountryCode == "") {
+      setCountryError("Country is required");
+      return;
+    }
     const submittedData = {
       destination: selectedCountryCode,
       weight: data.weight,
@@ -550,6 +555,9 @@ const ProductDetailsPage = () => {
                     </li>
                   ))}
                 </ul>
+              )}
+              {countryError && (
+                <p className="text-red-500 text-sm">{countryError}</p>
               )}
             </div>
 
@@ -856,22 +864,34 @@ const ProductDetailsPage = () => {
       </div>
 
       {/* Estimated data show */}
-      {isEstimationExpanded &&
-        (estimationData.length > 0 ? (
-          <div className="mt-10">
-            <button
-              className="underline text-blue-500 mb-3 cursor-pointer text-sm"
-              onClick={() => setIsEstimationExpanded(false)}
-            >
-              Collapse Shipping data
-            </button>
-            {estimationData.map((item: any) => (
+      {estimationData.length > 0 ? (
+        <div className="mt-10">
+          <button
+            className={`${
+              isEstimationExpanded ? "hidden" : "visible"
+            } cursor-pointer hover:text-green-500 duration-300`}
+            onClick={() => setIsEstimationExpanded(true)}
+          >
+            <FaChevronDown />
+          </button>
+          <button
+            className={`${
+              isEstimationExpanded ? "visible" : "hidden"
+            } cursor-pointer hover:text-green-500 duration-300`}
+            onClick={() => setIsEstimationExpanded(false)}
+          >
+            <FaChevronUp />
+          </button>
+          {isEstimationExpanded &&
+            estimationData.map((item: any) => (
               <EstimationCard key={item.id} data={item} />
             ))}
-          </div>
-        ) : (
-          <p className="text-center text-gray-500">No data available</p>
-        ))}
+        </div>
+      ) : (
+        <p className="text-center text-gray-500 mt-10">
+          No Shipping data available
+        </p>
+      )}
 
       {/* QC Photos Section */}
       {qcLoading ? (
