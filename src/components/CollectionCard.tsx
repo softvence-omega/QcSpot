@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Trash } from "lucide-react";
 import Swal from "sweetalert2";
 import axiosSecure from "../hooks/useAxios";
+import toast from "react-hot-toast";
 
 interface CollectionCardProps {
   collection: {
@@ -69,6 +70,7 @@ const CollectionCard = ({ collection, refetch }: CollectionCardProps) => {
             }
           })
           .catch((error) => {
+            toast.error(error.response.data.message || "Something went wrong!");
             console.log(error);
           });
       }

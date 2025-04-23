@@ -50,7 +50,7 @@ const VerifyEmailPage = () => {
           {loading ? (
             <Loader2 className="h-5 w-5 animate-spin mx-auto" />
           ) : (
-            "Click here to Reset Password"
+            "Click here to Verify Email"
           )}
         </button>
       </div>

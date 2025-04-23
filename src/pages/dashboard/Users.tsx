@@ -1,8 +1,9 @@
 import Loader from "../../components/Loader";
+import UsersTableRow from "../../components/UsersTableRow";
 import useUsers from "../../hooks/useUsers";
 
 const Users = () => {
-  const { usersData, usersLoading } = useUsers();
+  const { usersData, usersLoading, usersRefetch } = useUsers();
   if (usersLoading) return <Loader />;
 
   return (
@@ -19,19 +20,14 @@ const Users = () => {
               <th>Sl</th>
               <th>Name</th>
               <th>Email</th>
+              <th>Status</th>
+              <th>Role</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {/* row 1 */}
             {usersData?.map((user: any, index: number) => (
-              <tr
-                key={user._id}
-                className="text-sm sm:text-base bg-white dark:bg-black border-b dark:border-zinc-700 h-12"
-              >
-                <th className="">{index + 1}</th>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-              </tr>
+              <UsersTableRow user={user} index={index} refetch={usersRefetch} />
             ))}
           </tbody>
         </table>

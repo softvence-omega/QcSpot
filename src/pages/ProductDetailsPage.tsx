@@ -832,7 +832,7 @@ const ProductDetailsPage = () => {
               <button
                 onClick={handleAddToCollection}
                 disabled={!user || isProductInCollection}
-                className="bg-gray-500 px-4 py-2 rounded-lg text-white flex justify-center items-center gap-2 w-full disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-gray-500  px-4 py-2 rounded-lg text-white flex justify-center items-center gap-2 w-full disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Plus /> <p>Add to Collection</p>
               </button>
