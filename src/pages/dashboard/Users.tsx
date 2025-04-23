@@ -11,7 +11,10 @@ const Users = () => {
       <h2 className="text-2xl font-semibold text-center mb-4">
         All users in qcspot
       </h2>
-
+      <div className="flex justify-between gap-5 text-xl my-4">
+        <p>Total Users: {usersData.total}</p>
+        <p>Page: {usersData.page}</p>
+      </div>
       <div className="overflow-x-auto">
         <table className=" text-center text-black dark:text-white w-full">
           {/* head */}
@@ -26,7 +29,7 @@ const Users = () => {
             </tr>
           </thead>
           <tbody>
-            {usersData?.map((user: any, index: number) => (
+            {usersData?.users?.map((user: any, index: number) => (
               <UsersTableRow user={user} index={index} refetch={usersRefetch} />
             ))}
           </tbody>

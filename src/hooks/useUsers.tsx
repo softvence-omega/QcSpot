@@ -10,7 +10,7 @@ const useUsers = () => {
     queryKey: ["usersData"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/users/getAllUser`);
-      return res.data?.data?.users;
+      return res.data?.data;
     },
   });
 
