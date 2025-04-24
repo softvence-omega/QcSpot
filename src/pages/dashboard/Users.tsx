@@ -2,7 +2,7 @@ import { useState } from "react";
 import UsersTableRow from "../../components/UsersTableRow";
 import useUsers from "../../hooks/useUsers";
 import Pagination from "../../components/Pagination";
-import { Loader2, Search, User } from "lucide-react";
+import { Loader2, User } from "lucide-react";
 
 const Users = () => {
   const [currentPage, setCurrentPage] = useState(1);
