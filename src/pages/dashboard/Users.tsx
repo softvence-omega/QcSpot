@@ -74,7 +74,7 @@ const Users = () => {
       </div>
 
       {/* Pagination */}
-      {!usersLoading && (
+      {!usersLoading && usersData.users.length > 0 && (
         <Pagination
           currentPage={usersData.page}
           totalPages={usersData.totalPages}
