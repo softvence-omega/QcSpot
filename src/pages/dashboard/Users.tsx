@@ -7,10 +7,13 @@ import { Loader2, User } from "lucide-react";
 const Users = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [email, setEmail] = useState("");
-  const { usersData, usersLoading, usersRefetch } = useUsers({
-    page: currentPage,
-    email: email || undefined,
-  });
+  const { usersData, usersLoading, usersRefetch } = useUsers(
+    email
+      ? { email }
+      : {
+          page: currentPage,
+        }
+  );
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -74,7 +77,7 @@ const Users = () => {
       </div>
 
       {/* Pagination */}
-      {!usersLoading && usersData.users.length > 0 && (
+      {!usersLoading && usersData.users.length >= 100 && (
         <Pagination
           currentPage={usersData.page}
           totalPages={usersData.totalPages}
