@@ -15,7 +15,7 @@ const ManageAgent = () => {
           <Loader2 className="w-16 h-16 animate-spin" />
         </div>
       ) : (
-        <div className="overflow-x-auto">
+        <div className="overflow-x6-auto">
           {agentData.length > 0 ? (
             <table className="text-center text-black dark:text-white w-full">
               {/* head */}

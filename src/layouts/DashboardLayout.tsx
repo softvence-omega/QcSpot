@@ -2,12 +2,14 @@ import ActiveLink from "../components/ActiveLink";
 import { FaCartPlus, FaHome } from "react-icons/fa";
 import { Link, Outlet } from "react-router-dom";
 import { IoIosAddCircle, IoMdPerson } from "react-icons/io";
-import { IoCardOutline } from "react-icons/io5";
+import { IoCardOutline, IoHomeOutline, IoLogOutOutline } from "react-icons/io5";
 import { RiLockPasswordFill } from "react-icons/ri";
 import logo from "../assets/QcSpot-Logo-design-2.png";
 import { MdComment } from "react-icons/md";
+import { useAuth } from "../context/AuthContext";
 
 const DashboardLayout = () => {
+  const { logout } = useAuth();
   return (
     <div className="drawer lg:drawer-open min-h-screen bg-gray-50 dark:bg-dark text-black dark:text-white transition-colors duration-200">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -84,6 +86,25 @@ const DashboardLayout = () => {
             <ActiveLink to="/dashboard/change-password">
               <div className="flex items-center gap-2 text-sm sm:text-base duration-300">
                 <RiLockPasswordFill /> Change password
+              </div>
+            </ActiveLink>
+          </li>
+
+          {/* Page break */}
+          <div className="border-b border-b-white/40 my-5"></div>
+
+          <li>
+            <ActiveLink to="/">
+              <div className="flex items-center gap-2 text-sm sm:text-base duration-300">
+                <IoHomeOutline /> Back to Home Page
+              </div>
+            </ActiveLink>
+          </li>
+          <li onClick={logout}>
+            <ActiveLink to="/login">
+              <div className="flex items-center gap-2 text-sm sm:text-base duration-300 bg-red-500 rounded px-3 py-1">
+                <IoLogOutOutline />
+                Logout
               </div>
             </ActiveLink>
           </li>

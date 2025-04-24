@@ -1,6 +1,5 @@
 import useProduct from "../../hooks/useProducts";
 import ManageProductTableRow from "../../components/ManageProductTableRow";
-import Loader from "../../components/Loader";
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
 
@@ -36,7 +35,6 @@ const ManageProducts = () => {
 
   const { productData, productLoading, productRefetch } =
     useProduct(queryParams);
-  if (productLoading) return <Loader />;
 
   return (
     <div className="max-w-5xl mx-auto py-20 md:pt-24 px-8 lg:px-4">
