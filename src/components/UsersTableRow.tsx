@@ -63,34 +63,6 @@ const UsersTableRow = ({ user, refetch, index }: IuserData) => {
       });
   };
 
-  // const handleUserDelete = () => {
-  //   Swal.fire({
-  //     title: "Are you sure?",
-  //     text: "You won't be able to revert this!",
-  //     icon: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonColor: "#3085d6",
-  //     cancelButtonColor: "#d33",
-  //     confirmButtonText: "Yes, delete it!",
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       axiosSecure
-  //         .post(
-  //           `/users/changeUserRoleOrStatus?email=${user.email}&isDeleted=true`
-  //         )
-  //         .then((res) => {
-  //           if (res.status === 200) {
-  //             refetch();
-  //             Swal.fire("Deleted!", "user has been deleted.", "success");
-  //           }
-  //         })
-  //         .catch((error) => {
-  //           console.log(error);
-  //         });
-  //     }
-  //   });
-  // };
-
   return (
     <tr className="text-xs sm:text-base bg-white dark:bg-black border-b dark:border-zinc-700 h-12">
       <th className="">{index + 1}</th>

@@ -5,7 +5,6 @@ import { toast } from "react-hot-toast";
 import axiosSecure from "../hooks/useAxios";
 import { loginUser, useGoogleLogin } from "../components/handleGoogleLogin.tsx";
 import { useAuth } from "../context/AuthContext.tsx";
-import Swal from "sweetalert2";
 
 function Register() {
   const [name, setName] = useState("");
@@ -32,17 +31,13 @@ function Register() {
       name,
       email,
       password,
+      isVerified: true,
     };
 
     try {
       const res = await axiosSecure.post("/users/createUser", formValue);
       if (res.status === 200) {
-        Swal.fire(
-          "Check Your Email",
-          "We've sent you a verification link. Please verify your email to log in.",
-          "info"
-        );
-
+        toast.success("Account Created Successfullt!");
         navigate("/login");
       }
     } catch (error: any) {

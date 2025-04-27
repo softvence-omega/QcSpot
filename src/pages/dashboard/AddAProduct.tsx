@@ -17,12 +17,31 @@ const AddAProduct = () => {
   const [shippingTime, setShippingTime] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const isValidUrl = (urlString: string) => {
+    try {
+      new URL(urlString);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  };
+
   // Submit Handler
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     if (!input) {
       toast.error("Please provide a url");
+      setLoading(false);
+      return;
+    }
+
+    if (!isValidUrl(input)) {
+      Swal.fire({
+        icon: "error",
+        title: "Invalid URL",
+        text: "Please provide a valid URL starting with http:// or https://",
+      });
       setLoading(false);
       return;
     }
@@ -73,7 +92,7 @@ const AddAProduct = () => {
         ...(weight !== "" && { weight: parseInt(weight) }),
         ...(shippingTime !== "" && { shippingTime: parseInt(shippingTime) }),
         ...(dimensions !== "" && { dimensions }),
-        storeName: shopType,
+        storeName: shopType.toLowerCase(),
         productCode: id,
       };
       const createProductResponse = await axiosSecure.post(

@@ -51,7 +51,6 @@ const ManageAgentTableRow = ({ agent, refetch, index }: IAgentData) => {
         }
       })
       .catch((error) => {
-        console.log(error);
         toast.error(
           error.response?.data?.message || "Failed to update agent serial"
         );
@@ -78,7 +77,6 @@ const ManageAgentTableRow = ({ agent, refetch, index }: IAgentData) => {
         }
       })
       .catch((error) => {
-        console.log(error);
         toast.error(
           error.response?.data?.message || "Failed to update agent state"
         );
@@ -142,7 +140,6 @@ const ManageAgentTableRow = ({ agent, refetch, index }: IAgentData) => {
       setIsModalOpen(false);
       if (imageRef.current) imageRef.current.value = "";
     } catch (error: any) {
-      console.error("Error:", error);
       const errorMessage =
         error.response?.data?.message || "Failed to update agent details";
       toast.error(errorMessage);

@@ -55,13 +55,11 @@ const Estimation = () => {
     try {
       setLoading(true);
       const res = await axiosSecure.post("get_estimation", submittedData);
-      console.log(res?.data?.data);
       const result = res?.data?.data;
       if (res.status !== 200) toast.error("Something went wrong!");
       setEstimationData(result);
       reset();
     } catch (error: any) {
-      console.error("Error:", error);
       const errorMessage =
         error.response?.data?.message || "Failed to fetch data!";
       toast.error(errorMessage);

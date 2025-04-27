@@ -39,7 +39,9 @@ const PlatformSwitcher = () => {
         aria-label="Platform switcher"
         onClick={() => setIsOpen(true)}
       >
-        <img className="w-6 h-6 rounded" src={selectedImage} alt="platform" />
+        {selectedImage && (
+          <img className="w-6 h-6 rounded" src={selectedImage} alt="platform" />
+        )}
       </button>
 
       {isOpen && (

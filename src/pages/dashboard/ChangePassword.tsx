@@ -42,7 +42,6 @@ const ChangePassword = () => {
       }, 2000);
       reset();
     } catch (error: any) {
-      console.error("Error:", error);
       const errorMessage =
         error.response?.data?.message || "Failed to change password";
       toast.error(errorMessage);

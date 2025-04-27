@@ -20,7 +20,6 @@ const useUsers = (
   } = useQuery({
     queryKey: ["usersData", queryParams],
     queryFn: async () => {
-      console.log(queryString);
       const res = await axiosSecure.get(`/users/getAllUser${queryString}`);
       return res.data?.data;
     },

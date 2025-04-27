@@ -32,7 +32,6 @@ function Login() {
     const formValue = { email, password };
     try {
       const res = await axiosSecure.post("/auth/login", formValue);
-      console.log(res);
       if (res.status === 200) {
         const token = res.data?.approvalToken;
         if (token) localStorage.setItem("token", token);
@@ -44,10 +43,8 @@ function Login() {
           : navigate("/");
       } else toast.error("Unexpected response from server.");
     } catch (error: any) {
-      console.log(error);
       if (error.response) {
         if (error.response.data?.message == "User is not verified.") {
-          console.log(email);
           const result = await Swal.fire({
             title: "Email not verified",
             text: "Would you like us to resend the verification email?",

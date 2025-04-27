@@ -56,7 +56,6 @@ const AddAnAgent = () => {
       setImage(null);
       if (imageRef.current) imageRef.current.value = "";
     } catch (error: any) {
-      console.error("Error:", error);
       const errorMessage =
         error.response?.data?.message || "Failed to add agent";
       toast.error(errorMessage);

@@ -44,7 +44,6 @@ const ManageProductTableRow: React.FC<ManageProductCardProps> = ({
         }
       })
       .catch((error) => {
-        console.log(error);
         toast.error(
           error.response?.data?.message || "Failed to update agent serial"
         );

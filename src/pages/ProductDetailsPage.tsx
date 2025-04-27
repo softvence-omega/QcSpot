@@ -290,7 +290,6 @@ const ProductDetailsPage = () => {
       setEstimationData(result);
       reset();
     } catch (error: any) {
-      console.error("Error:", error);
       const errorMessage =
         error.response?.data?.message || "Failed to fetch data!";
       toast.error(errorMessage);

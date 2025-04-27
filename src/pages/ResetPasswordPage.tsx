@@ -36,7 +36,6 @@ const ResetPasswordPage = () => {
         id,
         newPassword: data.newPassword,
       });
-      console.log(res);
       if (res.status === 200) {
         toast.success("Password changed successfully!");
         navigate("/login");
