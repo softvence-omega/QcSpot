@@ -85,7 +85,7 @@ const ProductDetailsPage = () => {
   const [qc, setQc] = useState<string[] | null>(null);
   const [productLoading, setProductLoading] = useState<boolean>(true);
   const [qcLoading, setQcLoading] = useState<boolean>(true);
-  const [reviewSubmisssionLoading, setReviewSubmisssionLoading] =
+  const [reviewSubmissionLoading, setReviewSubmisssionLoading] =
     useState<boolean>(false);
   const [selectedSku, setSelectedSku] = useState<Sku | null>(null);
   const [showDescription, setShowDescription] = useState(false);
@@ -103,6 +103,7 @@ const ProductDetailsPage = () => {
   const [estimationData, setEstimationData] = useState([]);
   const [countryError, setCountryError] = useState<string>("");
   const [isEstimationExpanded, setIsEstimationExpanded] = useState(false);
+  const [isCalculateShippingClicked, setIsCalculateShippingClicked] = useState(false);
   const { countryData } = useCountry();
   const { categoryData } = useCategory();
   const {
@@ -138,8 +139,8 @@ const ProductDetailsPage = () => {
   const isProductInCollection =
     collectionData?.length > 0
       ? collectionData.some(
-          (collection: CollectionProps) => collection.productCode === id
-        )
+        (collection: CollectionProps) => collection.productCode === id
+      )
       : false;
 
   useEffect(() => {
@@ -284,6 +285,7 @@ const ProductDetailsPage = () => {
     };
     try {
       setEstimationDataLoading(true);
+
       const res = await axiosSecure.post("get_estimation", submittedData);
       const result = res?.data?.data;
       if (res.status !== 200) toast.error("Something went wrong!");
@@ -296,6 +298,7 @@ const ProductDetailsPage = () => {
     } finally {
       setEstimationDataLoading(false);
       setIsEstimationExpanded(true);
+      setIsCalculateShippingClicked(true)
     }
   };
 
@@ -771,9 +774,8 @@ const ProductDetailsPage = () => {
             </p>
             {/* Stock */}
             <p
-              className={`w-full text-white rounded-lg text-xl font-semibold  duration-200 px-4 py-2 text-center ${
-                selectedSku?.stock == 0 ? "bg-red-500/50" : "bg-gray-500"
-              }`}
+              className={`w-full text-white rounded-lg text-xl font-semibold  duration-200 px-4 py-2 text-center ${selectedSku?.stock == 0 ? "bg-red-500/50" : "bg-gray-500"
+                }`}
             >
               Stock:
               {selectedSku?.stock
@@ -816,11 +818,10 @@ const ProductDetailsPage = () => {
               .map((sku) => (
                 <img
                   key={sku.skuID}
-                  className={`w-10 object-cover cursor-pointer border-2 ${
-                    selectedSku?.skuID === sku.skuID
-                      ? "border-blue-500"
-                      : "border-transparent"
-                  }`}
+                  className={`w-10 object-cover cursor-pointer border-2 ${selectedSku?.skuID === sku.skuID
+                    ? "border-blue-500"
+                    : "border-transparent"
+                    }`}
                   src={sku.imgUrl}
                   alt={sku.nameTrans}
                   onClick={() => setSelectedSku(sku)}
@@ -863,20 +864,18 @@ const ProductDetailsPage = () => {
       </div>
 
       {/* Estimated data show */}
-      {estimationData.length > 0 ? (
+      {isCalculateShippingClicked && (estimationData.length > 0 ? (
         <div className="mt-10">
           <button
-            className={`${
-              isEstimationExpanded ? "hidden" : "visible"
-            } cursor-pointer hover:text-green-500 duration-300`}
+            className={`${isEstimationExpanded ? "hidden" : "visible"
+              } cursor-pointer hover:text-green-500 duration-300`}
             onClick={() => setIsEstimationExpanded(true)}
           >
             <FaChevronDown />
           </button>
           <button
-            className={`${
-              isEstimationExpanded ? "visible" : "hidden"
-            } cursor-pointer hover:text-green-500 duration-300`}
+            className={`${isEstimationExpanded ? "visible" : "hidden"
+              } cursor-pointer hover:text-green-500 duration-300`}
             onClick={() => setIsEstimationExpanded(false)}
           >
             <FaChevronUp />
@@ -890,7 +889,7 @@ const ProductDetailsPage = () => {
         <p className="text-center text-gray-500 mt-10">
           No Shipping data available
         </p>
-      )}
+      ))}
 
       {/* QC Photos Section */}
       {qcLoading ? (
@@ -975,17 +974,24 @@ const ProductDetailsPage = () => {
           items={5}
         />
 
-        <button
-          type="submit"
-          disabled={reviewSubmisssionLoading}
-          className="bg-btn hover:bg-green-500 text-white px-3 py-1 rounded cursor-pointer"
-        >
-          {reviewSubmisssionLoading ? (
-            <Loader2 className="h-5 w-5 animate-spin mx-auto" />
-          ) : (
-            "Submit"
+        <div className="relative group">
+          <button
+            type="submit"
+            disabled={!user || reviewSubmissionLoading}
+            className="bg-btn hover:bg-green-500 text-white px-3 py-1 rounded cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {reviewSubmissionLoading ? (
+              <Loader2 className="h-5 w-5 animate-spin mx-auto" />
+            ) : (
+              "Submit"
+            )}
+          </button>
+          {!user && (
+            <span className="absolute z-30 sm:right-0 sm:top-1.5 w-max -translate-x-1/2 scale-0 disabled:opacity-100 transition-all rounded bg-btn px-1 text-sm text-white group-hover:scale-100">
+              Please login to add a review
+            </span>
           )}
-        </button>
+        </div>
       </form>
       {showDescription && (
         <div

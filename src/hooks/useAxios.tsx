@@ -3,8 +3,8 @@ import { getNewAccessToken } from "../components/GetNewAccessToken";
 import toast from "react-hot-toast";
 
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:5001/api/v1",
-  // baseURL: "https://api.qcspot.pro/api/v1",
+  // baseURL: "http://localhost:5001/api/v1",
+  baseURL: "https://api.qcspot.pro/api/v1",
 });
 
 axiosSecure.interceptors.request.use((config) => {
@@ -27,7 +27,7 @@ axiosSecure.interceptors.response.use(
     // Check if the error is due to an expired token (status 401 is more common for auth errors)
     if (
       error.response?.data?.message ===
-        "Unauthorized User: Token decoding failed" &&
+      "Unauthorized User: Token decoding failed" &&
       !originalRequest._retry
     ) {
       originalRequest._retry = true;
