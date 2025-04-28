@@ -31,7 +31,6 @@ function Register() {
       name,
       email,
       password,
-      isVerified: true,
     };
 
     try {
@@ -64,7 +63,6 @@ function Register() {
         email: tempUser.email,
         name: tempUser.displayName,
         password: googlePassword,
-        isVerified: true,
       };
 
       await axiosSecure.post("/users/createUser", formValue);

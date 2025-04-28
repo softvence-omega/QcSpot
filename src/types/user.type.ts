@@ -7,6 +7,5 @@ export interface IUser {
   isBlocked: boolean;
   isDeleted: boolean;
   isLoggedIn: boolean;
-  isVerified: boolean;
   passwordChangeTime: string;
 }

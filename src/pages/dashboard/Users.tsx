@@ -54,7 +54,6 @@ const Users = () => {
                 <th>Sl</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Status</th>
                 <th>Role</th>
               </tr>
             </thead>

@@ -10,35 +10,9 @@ interface IuserData {
 }
 
 const UsersTableRow = ({ user, refetch, index }: IuserData) => {
-  const [isVerified, setIsVerified] = useState<boolean>(user?.isVerified);
   const [isUser, setIsUser] = useState<boolean>(
     user?.role == "user" ? true : false
   );
-
-  const handleUserVerification = () => {
-    axiosSecure
-      .post(
-        `/users/changeUserRoleOrStatus?email=${
-          user.email
-        }&isVerified=${!isVerified}`
-      )
-      .then((res) => {
-        if (res.status === 200) {
-          refetch();
-          toast.success(
-            `${user.name} state updated to ${
-              !isVerified ? "Verified" : "Not Verified"
-            }!`
-          );
-          setIsVerified(!isVerified);
-        }
-      })
-      .catch((error) => {
-        toast.error(
-          error.response?.data?.message || "Failed to update user state"
-        );
-      });
-  };
 
   const handleUserRole = () => {
     axiosSecure
@@ -70,18 +44,6 @@ const UsersTableRow = ({ user, refetch, index }: IuserData) => {
       <td>{user.email}</td>
       <td>
         <select
-          value={isVerified ? "verified" : "not verified"}
-          onChange={() => handleUserVerification()}
-          className={`text-xs text-white sm:text-sm rounded-lg px-1 max-w-20 cursor-pointer ${
-            isVerified ? "bg-green-500" : "bg-red-500"
-          }`}
-        >
-          <option value="verified">Verified</option>
-          <option value="not verified">Not verified</option>
-        </select>
-      </td>
-      <td>
-        <select
           value={isUser ? "user" : "admin"}
           onChange={() => handleUserRole()}
           className={`text-xs text-white sm:text-sm rounded-lg px-1 max-w-20 cursor-pointer ${
@@ -92,14 +54,6 @@ const UsersTableRow = ({ user, refetch, index }: IuserData) => {
           <option value="admin">Admin</option>
         </select>
       </td>
-      {/* <td>
-        <button
-          onClick={() => handleUserDelete()}
-          className="text-xs py-1 rounded cursor-pointer duration-300"
-        >
-          <FaRegTrashAlt className="sm:text-lg text-red-500" />
-        </button>
-      </td> */}
     </tr>
   );
 };

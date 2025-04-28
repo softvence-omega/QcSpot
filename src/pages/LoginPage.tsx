@@ -88,7 +88,6 @@ function Login() {
         email: tempUser.email,
         name: tempUser.displayName,
         password: googlePassword,
-        isVerified: true,
       };
       await axiosSecure.post("/users/createUser", formValue);
       setIsPassOpen(false);
