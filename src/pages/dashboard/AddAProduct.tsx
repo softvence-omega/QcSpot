@@ -102,8 +102,9 @@ const AddAProduct = () => {
       if (createProductResponse.status !== 200)
         toast.error("Network response was not ok");
       toast.success("Product added successfully!");
-    } catch (error) {
-      console.error("Error fetching product:", error);
+    } catch (error: any) {
+      if (error.response) toast.error(error.response.data?.message);
+      else toast.error("Something went wrong!");
     } finally {
       setLoading(false);
     }
