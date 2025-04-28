@@ -21,7 +21,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     storeName,
     productCode,
     avgRetting,
-    tolatReview,
+    totalReview,
   } = product;
 
   const handleProductClick = () => {
@@ -75,7 +75,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <Eye size={16} />
             <span className="pr-1 sm:pr-2 lg:pr-3">{totalView}</span>
             <TfiCommentAlt />
-            <span>{tolatReview}</span>
+            <span>{totalReview}</span>
           </div>
         </div>
         <div className="mt-4 flex space-x-2">

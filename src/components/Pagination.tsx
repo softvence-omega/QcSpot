@@ -38,7 +38,7 @@ const Pagination = ({
   const pages = getPaginationRange();
 
   return (
-    <div className="sticky bottom-5 opacity-80 hover:opacity-100 flex justify-center mt-6 duration-100">
+    <div className="sticky bottom-5 opacity-100 flex justify-center mt-6 duration-100">
       <div className="join">
         <button
           className="join-item btn  disabled:hidden"

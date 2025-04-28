@@ -12,7 +12,7 @@ export interface IProduct {
   isDeleted: boolean;
   onTrend: boolean;
   avgRetting?: number;
-  tolatReview?: number;
+  totalReview?: number;
   totalView: number;
   totalPhoto: number;
   thumbnailImg: string;
