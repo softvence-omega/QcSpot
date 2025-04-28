@@ -765,10 +765,10 @@ const ProductDetailsPage = () => {
               ) : (
                 <></>
               )}
-              {singleProductData?.tolatReview ? (
+              {singleProductData?.totalReview > 0 ? (
                 <p className="flex items-center justify-end mt-2 gap-2">
                   <TfiCommentAlt />
-                  {singleProductData?.tolatReview}
+                  {singleProductData?.totalReview}
                 </p>
               ) : (
                 <></>
