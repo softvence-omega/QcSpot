@@ -66,6 +66,14 @@ const Estimation = () => {
     } finally {
       setLoading(false);
       setSubmitted(true);
+      setCountryError("");
+      setSelectedCountry("");
+      setSelectedCountryCode("");
+      setSelectedOption([]);
+      setSelectedItemCode([]);
+      setShowDropdown(false);
+      setDropdownOpen(false);
+      setActiveOption(null);
     }
   };
 

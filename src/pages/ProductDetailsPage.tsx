@@ -103,7 +103,8 @@ const ProductDetailsPage = () => {
   const [estimationData, setEstimationData] = useState([]);
   const [countryError, setCountryError] = useState<string>("");
   const [isEstimationExpanded, setIsEstimationExpanded] = useState(false);
-  const [isCalculateShippingClicked, setIsCalculateShippingClicked] = useState(false);
+  const [isCalculateShippingClicked, setIsCalculateShippingClicked] =
+    useState(false);
   const { countryData } = useCountry();
   const { categoryData } = useCategory();
   const {
@@ -139,8 +140,8 @@ const ProductDetailsPage = () => {
   const isProductInCollection =
     collectionData?.length > 0
       ? collectionData.some(
-        (collection: CollectionProps) => collection.productCode === id
-      )
+          (collection: CollectionProps) => collection.productCode === id
+        )
       : false;
 
   useEffect(() => {
@@ -298,7 +299,15 @@ const ProductDetailsPage = () => {
     } finally {
       setEstimationDataLoading(false);
       setIsEstimationExpanded(true);
-      setIsCalculateShippingClicked(true)
+      setIsCalculateShippingClicked(true);
+      setCountryError("");
+      setSelectedCountry("");
+      setSelectedCountryCode("");
+      setSelectedOption([]);
+      setSelectedItemCode([]);
+      setShowDropdown(false);
+      setDropdownOpen(false);
+      setActiveOption(null);
     }
   };
 
@@ -774,8 +783,9 @@ const ProductDetailsPage = () => {
             </p>
             {/* Stock */}
             <p
-              className={`w-full text-white rounded-lg text-xl font-semibold  duration-200 px-4 py-2 text-center ${selectedSku?.stock == 0 ? "bg-red-500/50" : "bg-gray-500"
-                }`}
+              className={`w-full text-white rounded-lg text-xl font-semibold  duration-200 px-4 py-2 text-center ${
+                selectedSku?.stock == 0 ? "bg-red-500/50" : "bg-gray-500"
+              }`}
             >
               Stock:
               {selectedSku?.stock
@@ -818,10 +828,11 @@ const ProductDetailsPage = () => {
               .map((sku) => (
                 <img
                   key={sku.skuID}
-                  className={`w-10 object-cover cursor-pointer border-2 ${selectedSku?.skuID === sku.skuID
-                    ? "border-blue-500"
-                    : "border-transparent"
-                    }`}
+                  className={`w-10 object-cover cursor-pointer border-2 ${
+                    selectedSku?.skuID === sku.skuID
+                      ? "border-blue-500"
+                      : "border-transparent"
+                  }`}
                   src={sku.imgUrl}
                   alt={sku.nameTrans}
                   onClick={() => setSelectedSku(sku)}
@@ -864,32 +875,35 @@ const ProductDetailsPage = () => {
       </div>
 
       {/* Estimated data show */}
-      {isCalculateShippingClicked && (estimationData.length > 0 ? (
-        <div className="mt-10">
-          <button
-            className={`${isEstimationExpanded ? "hidden" : "visible"
+      {isCalculateShippingClicked &&
+        (estimationData.length > 0 ? (
+          <div className="mt-10">
+            <button
+              className={`${
+                isEstimationExpanded ? "hidden" : "visible"
               } cursor-pointer hover:text-green-500 duration-300`}
-            onClick={() => setIsEstimationExpanded(true)}
-          >
-            <FaChevronDown />
-          </button>
-          <button
-            className={`${isEstimationExpanded ? "visible" : "hidden"
+              onClick={() => setIsEstimationExpanded(true)}
+            >
+              <FaChevronDown />
+            </button>
+            <button
+              className={`${
+                isEstimationExpanded ? "visible" : "hidden"
               } cursor-pointer hover:text-green-500 duration-300`}
-            onClick={() => setIsEstimationExpanded(false)}
-          >
-            <FaChevronUp />
-          </button>
-          {isEstimationExpanded &&
-            estimationData.map((item: any) => (
-              <EstimationCard key={item.id} data={item} />
-            ))}
-        </div>
-      ) : (
-        <p className="text-center text-gray-500 mt-10">
-          No Shipping data available
-        </p>
-      ))}
+              onClick={() => setIsEstimationExpanded(false)}
+            >
+              <FaChevronUp />
+            </button>
+            {isEstimationExpanded &&
+              estimationData.map((item: any) => (
+                <EstimationCard key={item.id} data={item} />
+              ))}
+          </div>
+        ) : (
+          <p className="text-center text-gray-500 mt-10">
+            No Shipping data available
+          </p>
+        ))}
 
       {/* QC Photos Section */}
       {qcLoading ? (
