@@ -71,7 +71,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           ) : (
             <></>
           )}
-          <div className="flex items-center space-x-1 sm:space-x-2 text-gray-500 text-sm">
+          <div className="flex items-center space-x-1 text-gray-500 text-sm">
             <Eye size={16} />
             <span className="pr-1 sm:pr-2 lg:pr-3">{totalView}</span>
             <TfiCommentAlt />
