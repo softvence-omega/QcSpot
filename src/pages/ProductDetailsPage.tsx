@@ -822,7 +822,7 @@ const ProductDetailsPage = () => {
           </div>
 
           {/* Classification */}
-          <div className="flex flex-wrap gap-2 my-3">
+          <div className="flex flex-wrap justify-center gap-2 my-3">
             {product?.skus
               ?.filter((sku) => sku.imgUrl?.trim())
               .map((sku) => (
@@ -991,7 +991,7 @@ const ProductDetailsPage = () => {
         <div className="relative group">
           <button
             type="submit"
-            disabled={!user || reviewSubmissionLoading}
+            disabled={!user || user.role == "admin" || reviewSubmissionLoading}
             className="bg-btn hover:bg-green-500 text-white px-3 py-1 rounded cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {reviewSubmissionLoading ? (
@@ -1003,6 +1003,11 @@ const ProductDetailsPage = () => {
           {!user && (
             <span className="absolute z-30 sm:right-0 sm:top-1.5 w-max -translate-x-1/2 scale-0 disabled:opacity-100 transition-all rounded bg-btn px-1 text-sm text-white group-hover:scale-100">
               Please login to add a review
+            </span>
+          )}
+          {user && user.role == "admin" && (
+            <span className="absolute z-30 -right-[136px] sm:right-0 sm:top-1.5 w-max -translate-x-1/2 scale-0 disabled:opacity-100 transition-all rounded bg-btn px-1 text-sm text-white group-hover:scale-100">
+              Admin cannot add review
             </span>
           )}
         </div>
