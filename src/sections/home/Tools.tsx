@@ -8,12 +8,15 @@ import {
   MessageSquare,
   Link2,
   Chrome,
+  Truck,
+  MapPin,
 } from "lucide-react";
 import { handleQcSearch } from "../../components/handleQcSearch";
 import { Link, useNavigate } from "react-router-dom";
 
 const Tools = () => {
   const [qcSearchInput, setQcSearchInput] = useState("");
+  const [trackingInput, setTrackingInput] = useState("");
   const navigate = useNavigate();
 
   return (
@@ -21,7 +24,7 @@ const Tools = () => {
       <h1 className="text-center w-fit mx-auto duration-300 text-2xl font-bold my-6">
         Tools
       </h1>
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 xl:grid-cols-3 gap-4">
+      <div className="mx-auto grid md:grid-cols-2 xl:grid-cols-4 gap-4">
         {/* QC Lookup Card */}
         <div className="flex-1 min-w-[300px] rounded-xl p-6 shadow-lg border dark:border-shadow">
           <h2 className="text-lg font-semibold text-center">QC Lookup</h2>
@@ -79,7 +82,7 @@ const Tools = () => {
             Shipping Calculator
           </h2>
           <p className="text-zinc-500 text-sm text-center mt-2">
-            Find the cheapest shipping based on your country
+            Find the cheapest shipping based on country
           </p>
 
           <div className="flex justify-around mt-6">
@@ -149,45 +152,59 @@ const Tools = () => {
           </Link>
         </div>
 
-        {/* Image Search Card */}
-        {/* <div className="flex-1 min-w-[300px] rounded-xl p-6 shadow-lg border dark:border-shadow">
-          <h2 className="text-lg font-semibold text-center">Image Search</h2>
+        {/* Package Tracking Card */}
+        <div className="flex-1 min-w-[300px] rounded-xl p-6 shadow-lg border dark:border-shadow">
+          <h2 className="text-lg font-semibold text-center">
+            Package Tracking
+          </h2>
           <p className="text-zinc-500 text-sm text-center mt-2">
-            Upload an image to find similar products
+            Enter your tracking ID to locate your parcel.
           </p>
 
           <div className="flex justify-around mt-6">
             <div className="flex flex-col items-center text-center">
               <div className="text-green-500 mb-1">
-                <Search size={20} />
+                <Truck size={20} />
               </div>
               <span className="text-xs text-zinc-500 max-w-[80px]">
-                Visual search technology
+                Real-time tracking
               </span>
             </div>
             <div className="flex flex-col items-center text-center">
               <div className="text-blue-500 mb-1">
-                <Upload size={20} />
+                <MapPin size={20} />
               </div>
               <span className="text-xs text-zinc-500 max-w-[80px]">
-                Drag & drop support
+                Accurate location data
               </span>
             </div>
             <div className="flex flex-col items-center text-center">
               <div className="text-yellow-500 mb-1">
-                <Sparkles size={20} />
+                <Clock size={20} />
               </div>
               <span className="text-xs text-zinc-500 max-w-[80px]">
-                Simple & Effective
+                Estimated delivery time
               </span>
             </div>
           </div>
-
-          <button className="w-full mt-6 hover:bg-green-600 text-white py-2.5 rounded-lg flex items-center justify-center gap-2 bg-btn transition-colors duration-200 ">
-            <Image size={20} />
-            Image Search
-          </button>
-        </div> */}
+          <div className="mt-6 relative">
+            <input
+              type="text"
+              value={trackingInput}
+              onChange={(e) => setTrackingInput(e.target.value)}
+              placeholder="Enter tracking number"
+              className="w-full px-3 py-2 bg-white dark:bg-black border border- dark:border-shadow focus:outline-none focus:ring-1 focus:ring-btn focus:border-transparent rounded-lg text-sm"
+            />
+            <Link
+              to={`https://parcelsapp.com/en/tracking/${trackingInput}`}
+              target="_blank"
+            >
+              <button className="absolute right-2 top-1/2 -translate-y-1/2 hover:bg-green-600 bg-btn text-white p-1.5 rounded-lg transition-colors duration-200 ">
+                <Search size={16} />
+              </button>
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );

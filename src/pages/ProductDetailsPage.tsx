@@ -7,7 +7,7 @@ import {
   X,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import PLatformLink from "../components/PlatformLink";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -118,8 +118,6 @@ const ProductDetailsPage = () => {
   const itemsBoxRef = useRef<HTMLDivElement>(null);
   // -------------------- Estimation hooks ends ---------------------
   const { user } = useAuth();
-  const navigate = useNavigate();
-  const location = useLocation();
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(0);
   const [isAddProductModalOpen, setIsAddProductModalOpen] = useState(false);
@@ -128,11 +126,9 @@ const ProductDetailsPage = () => {
   const [weight, setWeight] = useState("");
   const [dimensions, setDimensions] = useState("");
   const [shippingTime, setShippingTime] = useState("");
-  const queryParams = new URLSearchParams(location.search);
-  const _id = queryParams.get("_id") || "";
-  const { singleProductData, singleProductLoading } = useSingleProduct(
-    _id as string
-  );
+  const { singleProductData, singleProductLoading, singleProductRefetch } =
+    useSingleProduct(id as string);
+  console.log("single Product Data -> ", singleProductData);
   const { reviewData, reviewLoading, reviewRefetch } = useReview({
     product_code: id as string,
     status: "approved",
@@ -192,6 +188,7 @@ const ProductDetailsPage = () => {
     if (id) {
       fetchProduct();
       fetchQcPhotos();
+      singleProductRefetch();
     }
   }, [id]);
 
@@ -241,16 +238,14 @@ const ProductDetailsPage = () => {
 
   if (productLoading) return <Loader />;
   if (!product?.title) {
-    if (_id) navigate(`/product/${_id}`);
-    else
-      return (
-        <div className="text-center pt-40 md:pt-24 pb-10 px-4">
-          <p className="text-4xl">Product not found!</p>
-          <p className="text-sm mt-3 text-red-500">
-            Oops! The product code seems to be incorrect.
-          </p>
-        </div>
-      );
+    return (
+      <div className="text-center pt-40 md:pt-24 pb-10 px-4">
+        <p className="text-4xl">Product not found!</p>
+        <p className="text-sm mt-3 text-red-500">
+          Oops! The product code seems to be incorrect.
+        </p>
+      </div>
+    );
   }
 
   const handleAddToCollection = async () => {
@@ -512,15 +507,24 @@ const ProductDetailsPage = () => {
                 : (product?.imgList?.[0] as string)
             }
           />
-          <p className="text-center mt-2">{selectedSku?.nameTrans}</p>
           {product?.imgList && product?.imgList.length > 4 ? (
             <Slider {...settings} className="my-3">
               {product?.imgList?.map((img, index) => (
                 <img
+                  onClick={() =>
+                    setSelectedSku((prev) =>
+                      prev
+                        ? {
+                            ...prev,
+                            imgUrl: img,
+                          }
+                        : null
+                    )
+                  }
                   key={index}
-                  className="w-16 h-16 object-cover object-center px-2 rounded-lg cursor-grab"
+                  className="w-16 h-16 object-cover object-center px-2 rounded-lg cursor-pointer"
                   src={img}
-                  alt="IMAGE"
+                  alt={`Thumbnail ${index + 1}`}
                 />
               ))}
             </Slider>
@@ -529,9 +533,14 @@ const ProductDetailsPage = () => {
               {product?.imgList?.map((img, index) => (
                 <img
                   key={index}
-                  className="w-16 h-16 object-cover object-center rounded-lg"
+                  onClick={() =>
+                    setSelectedSku((prev) =>
+                      prev ? { ...prev, imgUrl: img } : null
+                    )
+                  }
+                  className="w-16 h-16 object-cover object-center rounded-lg cursor-pointer"
                   src={img}
-                  alt="IMAGE"
+                  alt={`Thumbnail ${index + 1}`}
                 />
               ))}
             </div>
@@ -679,7 +688,9 @@ const ProductDetailsPage = () => {
               </label>
               <input
                 type="number"
-                defaultValue={singleProductData?.weight}
+                defaultValue={
+                  singleProductData?.weight && singleProductData?.weight
+                }
                 {...register("weight", { required: "Weight is required" })}
                 className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black dark:border-shadow"
               />
@@ -694,7 +705,7 @@ const ProductDetailsPage = () => {
                 Length(cm)
               </label>
               <input
-                defaultValue={length}
+                defaultValue={length && length}
                 type="number"
                 {...register("length")}
                 className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black dark:border-shadow"
@@ -707,7 +718,7 @@ const ProductDetailsPage = () => {
                 Width(cm)
               </label>
               <input
-                defaultValue={width}
+                defaultValue={width && width}
                 type="number"
                 {...register("width")}
                 className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black dark:border-shadow"
@@ -720,7 +731,7 @@ const ProductDetailsPage = () => {
                 Height(cm)
               </label>
               <input
-                defaultValue={height}
+                defaultValue={height && height}
                 type="number"
                 {...register("height")}
                 className="w-full mt-1 p-2 border rounded outline-none focus:border-green-500 bg-white dark:bg-black dark:border-shadow"
@@ -755,23 +766,19 @@ const ProductDetailsPage = () => {
             </h2>
 
             <div>
-              {singleProductData?.avgRetting ? (
+              {!singleProductLoading && singleProductData?.avgRetting > 0 && (
                 <Rating
                   className="max-w-28"
                   readOnly
-                  value={singleProductData?.avgRetting || 0}
+                  value={singleProductData?.avgRetting}
                   itemStyles={ratingStyles}
                 />
-              ) : (
-                <></>
               )}
-              {singleProductData?.totalReview > 0 ? (
+              {!singleProductLoading && singleProductData?.totalReview > 0 && (
                 <p className="flex items-center justify-end mt-2 gap-2">
                   <TfiCommentAlt />
                   {singleProductData?.totalReview}
                 </p>
-              ) : (
-                <></>
               )}
             </div>
           </div>
@@ -783,9 +790,7 @@ const ProductDetailsPage = () => {
             </p>
             {/* Stock */}
             <p
-              className={`w-full text-white rounded-lg text-xl font-semibold  duration-200 px-4 py-2 text-center ${
-                selectedSku?.stock == 0 ? "bg-red-500/50" : "bg-gray-500"
-              }`}
+              className={`w-full text-white rounded-lg text-xl font-semibold  duration-200 px-4 py-2 text-center bg-gray-500`}
             >
               Stock:
               {selectedSku?.stock
@@ -802,7 +807,20 @@ const ProductDetailsPage = () => {
             </button>
           </div>
           <div className="flex flex-col-reverse md:flex-row md:justify-between md:items-center gap-2 md:gap-5">
-            <h2 className="font-bold text-sm">Classification: </h2>
+            <div className="flex flex-col items-start ">
+              {selectedSku?.nameTrans ? (
+                selectedSku?.nameTrans.split(";").map((feat) => (
+                  <p className="text-center mt-2">
+                    <span className="capitalize font-semibold text-green-600">
+                      {feat.split(":")[0]}:
+                    </span>{" "}
+                    <span className="capitalize">{feat.split(":")[1]}</span>
+                  </p>
+                ))
+              ) : (
+                <h2 className="font-bold text-sm">Classification: </h2>
+              )}
+            </div>
             {!singleProductLoading && singleProductData?.dimensions && (
               <p className="font-bold">
                 Dimensions:{" "}

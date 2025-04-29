@@ -7,13 +7,14 @@ const useSingleProduct = (id: string) => {
     isLoading: singleProductLoading,
     refetch: singleProductRefetch,
   } = useQuery({
-    queryKey: ["singleProductData"],
+    queryKey: ["singleProductData", id],
     queryFn: async () => {
       const res = await axiosSecure.get(
-        `/products/findProductById?product_Id=${id}&count=true`
+        `/products/findProductById?productCode=${id}&count=true`
       );
       return res.data?.data;
     },
+    enabled: !!id,
   });
 
   return { singleProductData, singleProductLoading, singleProductRefetch };

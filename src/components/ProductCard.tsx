@@ -13,7 +13,6 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const {
-    _id,
     thumbnailImg,
     name,
     price,
@@ -36,7 +35,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <Link
         to={`/product/${
           storeName == "1688" ? "ali_1688" : storeName
-        }/${productCode}?_id=${_id}`}
+        }/${productCode}`}
         className="relative cursor-pointer"
         onClick={handleProductClick}
       >
@@ -51,7 +50,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <Link
           to={`/product/${
             storeName == "1688" ? "ali_1688" : storeName
-          }/${productCode}?_id=${_id}`}
+          }/${productCode}`}
           className="font-medium line-clamp-2 h-12"
           onClick={handleProductClick}
         >
@@ -82,7 +81,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <Link
             to={`/product/${
               storeName == "1688" ? "ali_1688" : storeName
-            }/${productCode}?_id=${_id}`}
+            }/${productCode}`}
             className="flex-1 p-1 md:p-2 border border-gray-300 rounded-md text-xs sm:text-sm font-medium text-gray-700 dark:text-white flex justify-center items-center"
             onClick={handleProductClick}
           >
