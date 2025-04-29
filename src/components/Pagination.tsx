@@ -1,6 +1,5 @@
 import { FaBackward, FaForward } from "react-icons/fa";
 
-// components/Pagination.tsx
 interface PaginationProps {
   currentPage: number;
   totalPages: number;
@@ -13,24 +12,37 @@ const Pagination = ({
   onPageChange,
 }: PaginationProps) => {
   const getPaginationRange = () => {
-    const pageCountToShow = 10;
+    const pageCountToShow = 5; // Adjust window size if needed
     const half = Math.floor(pageCountToShow / 2);
-    let start = Math.max(1, currentPage - half);
-    let end = Math.min(totalPages, start + pageCountToShow - 1);
+    let start = Math.max(2, currentPage - half);
+    let end = Math.min(totalPages - 1, currentPage + half);
 
     if (end - start + 1 < pageCountToShow) {
-      start = Math.max(1, end - pageCountToShow + 1);
+      if (start === 2) {
+        end = Math.min(
+          totalPages - 1,
+          end + (pageCountToShow - (end - start + 1))
+        );
+      } else if (end === totalPages - 1) {
+        start = Math.max(2, start - (pageCountToShow - (end - start + 1)));
+      }
     }
 
     const pages: (number | "...")[] = [];
 
-    if (start > 1) pages.push("...");
+    // Always add 1st page
+    pages.push(1);
+
+    if (start > 2) pages.push("...");
 
     for (let i = start; i <= end; i++) {
       pages.push(i);
     }
 
-    if (end < totalPages) pages.push("...");
+    if (end < totalPages - 1) pages.push("...");
+
+    // Always add last page
+    if (totalPages > 1) pages.push(totalPages);
 
     return pages;
   };
@@ -41,7 +53,7 @@ const Pagination = ({
     <div className="sticky bottom-5 opacity-100 flex justify-center mt-6 duration-100">
       <div className="join">
         <button
-          className="join-item btn  disabled:hidden"
+          className="join-item btn disabled:hidden"
           disabled={currentPage === 1}
           onClick={() => onPageChange(currentPage - 1)}
         >
@@ -49,7 +61,11 @@ const Pagination = ({
         </button>
         {pages.map((page, idx) =>
           page === "..." ? (
-            <button disabled key={idx} className="join-item btn">
+            <button
+              disabled
+              key={`ellipsis-${idx}`}
+              className="join-item btn !bg-gray-500 !text-white"
+            >
               ...
             </button>
           ) : (
