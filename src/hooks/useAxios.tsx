@@ -26,8 +26,7 @@ axiosSecure.interceptors.response.use(
 
     // Check if the error is due to an expired token (status 401 is more common for auth errors)
     if (
-      error.response?.data?.message ===
-        "Unauthorized User: Token decoding failed" &&
+      error.response.data.message.toLowerCase().includes("unauthorized") &&
       !originalRequest._retry
     ) {
       originalRequest._retry = true;
