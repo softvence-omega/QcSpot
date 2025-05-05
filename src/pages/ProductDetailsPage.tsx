@@ -754,7 +754,7 @@ const ProductDetailsPage = () => {
         <div className="p-5 flex flex-col flex-1">
           <div className="flex justify-between items-center gap-5">
             <h2 className="text-xl md:text-2xl font-semibold mb-2">
-              {product?.title}
+              {singleProductData?.name}
             </h2>
 
             <div>

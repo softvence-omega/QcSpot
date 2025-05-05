@@ -19,14 +19,14 @@ const ManageProductTableRow: React.FC<ManageProductCardProps> = ({
   index,
   refetch,
 }) => {
-  const { _id, name, price, onTrend, thumbnailImg, storeName, productCode } =
-    product;
+  const { _id, price, onTrend, thumbnailImg, storeName, productCode } = product;
   const { productData } = useProduct();
   const [isTrending, setIsTrending] = useState(onTrend);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [weight, setWeight] = useState(product.weight || "");
   const [dimensions, setDimensions] = useState(product.dimensions || "");
+  const [name, setName] = useState(product.name || "");
   const [shippingTime, setShippingTime] = useState(product.shippingTime || "");
   const serials = Array.from(
     { length: productData?.length || 0 },
@@ -103,6 +103,7 @@ const ManageProductTableRow: React.FC<ManageProductCardProps> = ({
           shippingTime: parseInt(shippingTime as string),
         }),
         ...(dimensions !== "" && { dimensions }),
+        ...(name !== "" && { name }),
       };
 
       const updateProductResponse = await axiosSecure.patch(
@@ -111,6 +112,8 @@ const ManageProductTableRow: React.FC<ManageProductCardProps> = ({
       );
       if (updateProductResponse.status !== 200)
         toast.error("Network response was not ok");
+      setIsModalOpen(false);
+      refetch();
       toast.success("Product updated successfully!");
     } catch (error) {
       console.error("This Error happened:", error);
@@ -154,7 +157,9 @@ const ManageProductTableRow: React.FC<ManageProductCardProps> = ({
             storeName == "1688" ? "ali_1688" : storeName
           }/${productCode}`}
         >
-          {name.length > 30 ? name.slice(0, 30) + " ..." : name}
+          {product.name.length > 30
+            ? product.name.slice(0, 30) + " ..."
+            : product.name}
         </Link>
       </td>
       <td>{price}</td>
@@ -198,6 +203,19 @@ const ManageProductTableRow: React.FC<ManageProductCardProps> = ({
               Update Product Details
             </h2>
             <form onSubmit={onSubmit} className="grid grid-cols-2 gap-4">
+              {/* Name */}
+              <div className="col-span-2">
+                <label className="block text-left text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="e.g.: 4.5x4.5x1 [Don't write cm or any other unit]"
+                  className="w-full mt-1 p-2 border rounded outline-none placeholder:text-sm focus:border-green-500 bg-white dark:bg-black dark:border-shadow"
+                />
+              </div>
               {/* Weight */}
               <div>
                 <label className="block text-left text-sm font-medium text-gray-700 dark:text-gray-300">
