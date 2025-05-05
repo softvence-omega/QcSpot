@@ -19,8 +19,6 @@ import Magnifier from "../components/Magnifier";
 import { useAuth } from "../context/AuthContext";
 import toast from "react-hot-toast";
 import axiosSecure from "../hooks/useAxios";
-import useCollection from "../hooks/useCollection";
-import { CollectionProps } from "./Collection";
 import useSingleProduct from "../hooks/useSingleProduct";
 import { ICategory, ICategoryChild, ICountry } from "../types/estimation.type";
 import useCountry from "../hooks/useCountry";
@@ -80,7 +78,6 @@ export const ratingStyles = {
 
 const ProductDetailsPage = () => {
   const { shopType, id } = useParams<{ shopType: string; id: string }>();
-  const { collectionData } = useCollection();
   const [product, setProduct] = useState<Product | null>(null);
   const [qc, setQc] = useState<string[] | null>(null);
   const [productLoading, setProductLoading] = useState<boolean>(true);
@@ -133,12 +130,6 @@ const ProductDetailsPage = () => {
     product_code: id as string,
     status: "approved",
   });
-  const isProductInCollection =
-    collectionData?.length > 0
-      ? collectionData.some(
-          (collection: CollectionProps) => collection.productCode === id
-        )
-      : false;
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -869,8 +860,8 @@ const ProductDetailsPage = () => {
             <div className="relative group">
               <button
                 onClick={handleAddToCollection}
-                disabled={!user || isProductInCollection}
-                className="bg-gray-500  px-4 py-2 rounded-lg text-white flex justify-center items-center gap-2 w-full disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={!user}
+                className="bg-gray-500 hover:bg-gray-600 duration-300 px-4 py-2 rounded-lg text-white flex justify-center items-center gap-2 w-full disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Plus /> <p>Add to Collection</p>
               </button>

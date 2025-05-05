@@ -15,13 +15,19 @@ const MainLayout = () => {
       <Navbar />
       <Outlet />
       <Footer />
-      <Link
-        className="sticky bottom-5 flex justify-end mr-5 cursor-pointer"
-        to="https://www.instagram.com/qcspot?igsh=MjNtczVlMDlsMmQ4&utm_source=qr"
-        target="_blank"
-      >
-        <img className=" w-10 h-10" src={insta} alt="Instagram" />
-      </Link>
+      <div className="fixed bottom-5 right-5 w-fit">
+        <Link
+          to="https://www.instagram.com/qcspot?igsh=MjNtczVlMDlsMmQ4&utm_source=qr"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src={insta}
+            alt="Instagram"
+            className="w-10 h-10 cursor-pointer"
+          />
+        </Link>
+      </div>
     </div>
   );
 };
