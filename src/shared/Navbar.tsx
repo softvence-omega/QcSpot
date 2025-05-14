@@ -44,7 +44,7 @@ const Navbar = () => {
 
         {/* Search Bar */}
         <div className="hidden md:flex flex-1 max-w-xl mx-8">
-          <div className="relative w-full">
+          <form className="relative w-full">
             <input
               type="text"
               value={qcSearchInput}
@@ -61,7 +61,7 @@ const Navbar = () => {
             >
               <Search className="text-white w-5 h-5" />
             </button>
-          </div>
+          </form>
         </div>
 
         {/* Right Section */}
