@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 
 // Extract domain from url
 export function extractFromUrl(url: string) {
+  console.log("Hello");
   let domain: string, itemID: string;
   const urlInput = new URL(url);
   const partBeforeDotCom = url.split(".com")[0];
@@ -20,6 +21,14 @@ export function extractFromUrl(url: string) {
   if (ali_1688Url) {
     itemID = urlInput.href.split("offer/")[1].split(".html")[0];
     domain = "ali_1688";
+  }
+
+  const taobaoUrl = urlInput.href.includes("item.taobao.com");
+  if (taobaoUrl) {
+    console.log("inside taobao");
+    itemID = urlInput.searchParams.get("id") || "";
+    domain = "taobao";
+    console.log(domain, itemID);
   }
 
   return { domain, itemID };
@@ -49,13 +58,9 @@ export function handleCssBuyUrl(url: string) {
 }
 
 export function handleAcBuyUrl(source: string) {
-  if (source === "AL") {
-    return "ali_1688";
-  } else if (source === "TB") {
-    return "TAOBAO";
-  } else if (source === "WD") {
-    return "WEIDIAN";
-  }
+  if (source === "AL") return "ali_1688";
+  else if (source === "TB") return "TAOBAO";
+  else if (source === "WD") return "WEIDIAN";
 }
 
 // Handle Qc Search
@@ -68,9 +73,12 @@ export const handleQcSearch = async (
     const searchedUrl = url.searchParams.get("url");
     const cssBuyUrl = url.href.includes("www.cssbuy.com");
     const acBuyUrl = url.href.includes("www.acbuy.com");
+    const taobaoUrl = url.href.includes("item.taobao.com");
+    const ali_1688Url = url.href.includes("detail.1688.com");
 
     let shopType: string | undefined;
     let id: string | undefined;
+    console.log(searchedUrl);
 
     shopType =
       url.searchParams.get("shoptype") ||
@@ -89,6 +97,16 @@ export const handleQcSearch = async (
       (searchedUrl && extractFromUrl(searchedUrl).itemID) ||
       ((cssBuyUrl && handleCssBuyUrl(url.href)?.itemId) as string);
 
+    if (ali_1688Url) {
+      id = url.href.split("offer/")[1].split(".html")[0];
+      shopType = "ali_1688";
+    }
+    if (taobaoUrl) {
+      console.log("inside taobao");
+      id = url.searchParams.get("id") || "";
+      shopType = "taobao";
+    }
+
     if (!shopType || !id) {
       Swal.fire({
         icon: "error",
@@ -100,6 +118,7 @@ export const handleQcSearch = async (
       return;
     }
     localStorage.setItem("url", input);
+    if (!shopType) shopType = "taobao";
     navigate(`/product/${shopType}/${id}`);
   } catch (err) {
     Swal.fire({

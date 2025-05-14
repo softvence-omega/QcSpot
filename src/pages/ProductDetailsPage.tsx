@@ -125,7 +125,6 @@ const ProductDetailsPage = () => {
   const [shippingTime, setShippingTime] = useState("");
   const { singleProductData, singleProductLoading, singleProductRefetch } =
     useSingleProduct(id as string);
-  console.log("single Product Data -> ", singleProductData);
   const { reviewData, reviewLoading, reviewRefetch } = useReview({
     product_code: id as string,
     status: "approved",
