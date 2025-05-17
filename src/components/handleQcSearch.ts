@@ -73,7 +73,10 @@ export const handleQcSearch = async (
     const searchedUrl = url.searchParams.get("url");
     const cssBuyUrl = url.href.includes("www.cssbuy.com");
     const acBuyUrl = url.href.includes("www.acbuy.com");
-    const taobaoUrl = url.href.includes("item.taobao.com");
+    const taobaoUrl =
+      url.href.includes("item.taobao.com") ||
+      url.href.includes("detail.tmall.com");
+
     const weidianUrl = url.href.includes("weidian.com");
     const ali_1688Url = url.href.includes("detail.1688.com");
 
@@ -133,3 +136,5 @@ export const handleQcSearch = async (
     });
   }
 };
+
+// https://detail.tmall.com/item.htm?id=839492675628&spm=a21bo.jianhua%2Fa.201876.d3.5af92a895eX7XB&scm=1007.40986.436100.0&pvid=a0b4401c-68e3-461e-bf76-be82f1878fe9&xxc=home_recommend&skuId=5965671030031&utparam=%7B%22abid%22%3A%220%22%2C%22x_object_type%22%3A%22item%22%2C%22pc_pvid%22%3A%22a0b4401c-68e3-461e-bf76-be82f1878fe9%22%2C%22mix_group%22%3A%22%22%2C%22pc_scene%22%3A%2220001%22%2C%22aplus_abtest%22%3A%22905c2ac9ebc16d6946661c42b99b1d3f%22%2C%22tpp_buckets%22%3A%2230986%23436100%23module%22%2C%22x_object_id%22%3A839492675628%2C%22ab_info%22%3A%2230986%23436100%23-1%23%22%7D&ltk2=174747188874598y45sscgogzlejx0oyu
