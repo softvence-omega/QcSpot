@@ -44,7 +44,7 @@ const Navbar = () => {
 
         {/* Search Bar */}
         <div className="hidden md:flex flex-1 max-w-xl mx-8">
-          <form className="relative w-full">
+          <div className="relative w-full">
             <input
               type="text"
               value={qcSearchInput}
@@ -53,6 +53,12 @@ const Navbar = () => {
               className="w-full pl-3 pr-16 py-2 rounded-lg border border-r-0 border-gray-300 dark:border-gray-600 
                        focus:outline-none focus:ring-1 focus:ring-btn focus:border-transparent
                        bg-white dark:bg-black dark:text-white transition-colors"
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault(); // Prevent default Enter behavior
+                  searchHandler();
+                }
+              }}
             />
             <button
               onClick={searchHandler}
@@ -61,7 +67,7 @@ const Navbar = () => {
             >
               <Search className="text-white w-5 h-5" />
             </button>
-          </form>
+          </div>
         </div>
 
         {/* Right Section */}

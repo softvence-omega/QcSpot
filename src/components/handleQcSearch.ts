@@ -74,6 +74,7 @@ export const handleQcSearch = async (
     const cssBuyUrl = url.href.includes("www.cssbuy.com");
     const acBuyUrl = url.href.includes("www.acbuy.com");
     const taobaoUrl = url.href.includes("item.taobao.com");
+    const weidianUrl = url.href.includes("weidian.com");
     const ali_1688Url = url.href.includes("detail.1688.com");
 
     let shopType: string | undefined;
@@ -102,9 +103,12 @@ export const handleQcSearch = async (
       shopType = "ali_1688";
     }
     if (taobaoUrl) {
-      console.log("inside taobao");
       id = url.searchParams.get("id") || "";
       shopType = "taobao";
+    }
+    if (weidianUrl) {
+      id = url.searchParams.get("itemID") || "";
+      shopType = "weidian";
     }
 
     if (!shopType || !id) {
