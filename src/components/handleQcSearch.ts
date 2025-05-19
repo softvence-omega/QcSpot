@@ -2,10 +2,10 @@ import Swal from "sweetalert2";
 
 // Extract domain from url
 export function extractFromUrl(url: string) {
-  console.log("Hello");
   let domain: string, itemID: string;
   const urlInput = new URL(url);
   const partBeforeDotCom = url.split(".com")[0];
+  console.log(partBeforeDotCom);
 
   const lastSlashIndex = partBeforeDotCom.lastIndexOf("/");
   const lastDotIndex = partBeforeDotCom.lastIndexOf(".");
@@ -24,12 +24,13 @@ export function extractFromUrl(url: string) {
   }
 
   const taobaoUrl = urlInput.href.includes("item.taobao.com");
+  console.log(urlInput.href);
+  console.log(taobaoUrl);
   if (taobaoUrl) {
-    console.log("inside taobao");
     itemID = urlInput.searchParams.get("id") || "";
     domain = "taobao";
-    console.log(domain, itemID);
   }
+  console.log(itemID, domain);
 
   return { domain, itemID };
 }
@@ -76,7 +77,6 @@ export const handleQcSearch = async (
     const taobaoUrl =
       url.href.includes("item.taobao.com") ||
       url.href.includes("detail.tmall.com");
-
     const weidianUrl = url.href.includes("weidian.com");
     const ali_1688Url = url.href.includes("detail.1688.com");
 
@@ -101,15 +101,15 @@ export const handleQcSearch = async (
       (searchedUrl && extractFromUrl(searchedUrl).itemID) ||
       ((cssBuyUrl && handleCssBuyUrl(url.href)?.itemId) as string);
 
-    if (ali_1688Url) {
+    if (!searchedUrl && ali_1688Url) {
       id = url.href.split("offer/")[1].split(".html")[0];
       shopType = "ali_1688";
     }
-    if (taobaoUrl) {
+    if (!searchedUrl && taobaoUrl) {
       id = url.searchParams.get("id") || "";
       shopType = "taobao";
     }
-    if (weidianUrl) {
+    if (!searchedUrl && weidianUrl) {
       id = url.searchParams.get("itemID") || "";
       shopType = "weidian";
     }
@@ -137,4 +137,10 @@ export const handleQcSearch = async (
   }
 };
 
-// https://detail.tmall.com/item.htm?id=839492675628&spm=a21bo.jianhua%2Fa.201876.d3.5af92a895eX7XB&scm=1007.40986.436100.0&pvid=a0b4401c-68e3-461e-bf76-be82f1878fe9&xxc=home_recommend&skuId=5965671030031&utparam=%7B%22abid%22%3A%220%22%2C%22x_object_type%22%3A%22item%22%2C%22pc_pvid%22%3A%22a0b4401c-68e3-461e-bf76-be82f1878fe9%22%2C%22mix_group%22%3A%22%22%2C%22pc_scene%22%3A%2220001%22%2C%22aplus_abtest%22%3A%22905c2ac9ebc16d6946661c42b99b1d3f%22%2C%22tpp_buckets%22%3A%2230986%23436100%23module%22%2C%22x_object_id%22%3A839492675628%2C%22ab_info%22%3A%2230986%23436100%23-1%23%22%7D&ltk2=174747188874598y45sscgogzlejx0oyu
+// https://item.taobao.com/item.htm?spm=a21bo.jianhua%2Fa.201876.d4.5af92a89aRByzE&id=921978897894&scm=1007.40986.436100.0&pvid=c08108d2-a887-494f-b7d3-f58b07a72161&xxc=home_recommend&skuId=5962873546758&utparam=%7B%22abid%22%3A%220%22%2C%22x_object_type%22%3A%22item%22%2C%22pc_pvid%22%3A%22c08108d2-a887-494f-b7d3-f58b07a72161%22%2C%22mix_group%22%3A%22%22%2C%22pc_scene%22%3A%2220001%22%2C%22aplus_abtest%22%3A%22210c49516e93dec24a9a8dd6012ae2b9%22%2C%22tpp_buckets%22%3A%2230986%23436100%23module%22%2C%22x_object_id%22%3A921978897894%2C%22ab_info%22%3A%2230986%23436100%23-1%23%22%7D&ltk2=1747627234752eqq00dq6j8muizonkzb7
+
+// https://detail.tmall.com/item.htm?id=890519039246&spm=a21bo.tmall%2Fa.201876.d2.6614c3d5cnnBsf&scm=1007.40986.436100.0&pvid=306f19ce-ec88-4610-b318-c80af932d619&xxc=home_recommend&skuId=5903588594908&utparam=%7B%22abid%22%3A%220%22%2C%22x_object_type%22%3A%22item%22%2C%22pc_pvid%22%3A%22306f19ce-ec88-4610-b318-c80af932d619%22%2C%22mix_group%22%3A%22%22%2C%22pc_scene%22%3A%2220001%22%2C%22aplus_abtest%22%3A%225f15c1866dd9e2916e7d79538702f7b4%22%2C%22tpp_buckets%22%3A%2230986%23436100%23module%22%2C%22x_object_id%22%3A890519039246%2C%22ab_info%22%3A%2230986%23436100%23-1%23%22%7D&priceTId=215045b117476272584908885e1c81&ltk2=1747628808718r43g9le19khjopy4xgsns8
+
+// https://detail.1688.com/offer/855621431736.html?offerId=855621431736&spm=a260k.home2025.recommendpart.3
+
+// https://weidian.com/item.html?itemID=2167488966&spider_token=9736

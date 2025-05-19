@@ -80,7 +80,7 @@ const ProductDetailsPage = () => {
   const { shopType, id } = useParams<{ shopType: string; id: string }>();
   const [product, setProduct] = useState<Product | null>(null);
   const [qc, setQc] = useState<string[] | null>(null);
-  const [productLoading, setProductLoading] = useState<boolean>(true);
+  const [productLoading, setProductLoading] = useState<boolean>(false);
   const [qcLoading, setQcLoading] = useState<boolean>(true);
   const [reviewSubmissionLoading, setReviewSubmisssionLoading] =
     useState<boolean>(false);
@@ -133,6 +133,7 @@ const ProductDetailsPage = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
+        setProductLoading(true);
         const res = await fetch(
           `https://cnfans.com/search-api/detail/product-info?platform=${shopType}&productID=${id}&forceReload=false&site=cnfans&lang=en&wmc-currency=USD`
         );
