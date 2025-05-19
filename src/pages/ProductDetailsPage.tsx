@@ -81,7 +81,7 @@ const ProductDetailsPage = () => {
   const [product, setProduct] = useState<Product | null>(null);
   const [qc, setQc] = useState<string[] | null>(null);
   const [productLoading, setProductLoading] = useState<boolean>(false);
-  const [qcLoading, setQcLoading] = useState<boolean>(true);
+  const [qcLoading, setQcLoading] = useState<boolean>(false);
   const [reviewSubmissionLoading, setReviewSubmisssionLoading] =
     useState<boolean>(false);
   const [selectedSku, setSelectedSku] = useState<Sku | null>(null);
@@ -134,6 +134,7 @@ const ProductDetailsPage = () => {
     const fetchProduct = async () => {
       try {
         setProductLoading(true);
+        setSelectedSku(null);
         const res = await fetch(
           `https://cnfans.com/search-api/detail/product-info?platform=${shopType}&productID=${id}&forceReload=false&site=cnfans&lang=en&wmc-currency=USD`
         );
@@ -148,6 +149,18 @@ const ProductDetailsPage = () => {
         );
         if (validSku) {
           setSelectedSku(validSku);
+        } else if (productData.imgList?.[0]) {
+          setSelectedSku({
+            skuID: "default",
+            imgUrl: productData.imgList[0],
+            name: "",
+            nameTrans: "",
+            stock: 0,
+            propsID: "",
+            propsCode: [],
+            specId: "",
+            price: productData.price || "0",
+          });
         }
       } catch (error) {
         console.error("Error fetching product:", error);
@@ -158,6 +171,8 @@ const ProductDetailsPage = () => {
 
     const fetchQcPhotos = async () => {
       try {
+        setQcLoading(true);
+        setQc(null);
         const response1 = await axiosSecure.get(`/qc-photos/${id}`);
         const data1 = response1.data.data.photos;
         const response2 = await axios.get(
@@ -181,7 +196,7 @@ const ProductDetailsPage = () => {
       fetchQcPhotos();
       singleProductRefetch();
     }
-  }, [id]);
+  }, [id, shopType]);
 
   // Close dropdown on outside click on destination
   useEffect(() => {
