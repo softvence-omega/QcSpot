@@ -1,0 +1,647 @@
+{
+  "code": 200,
+  "msg": "",
+  "data": {
+    "requestID": "610c1bb4-e1e7-4183-9116-b8ae04ed0a96",
+    "productInfo": {
+      "title": "夏季薄款直筒冰丝工装裤子男潮牌青少年初中高中学生休闲运动长裤",
+      "titleTrans": "Summer Thin Section Straight-leg Ice Silk Cargo Pants Sub Male Tide Brand Youth Junior High School High School Students Casual Sports pants",
+      "imgList": [
+        "https://img.alicdn.com/bao/uploaded/i4/3355889310/O1CN0171af3C2Ie2QFMUHdL_!!4611686018427383454-0-item_pic.jpg",
+        "https://img.alicdn.com/bao/uploaded/i4/3355889310/O1CN01imQhzq2Ie2QVIw8hD_!!3355889310.jpg",
+        "https://img.alicdn.com/bao/uploaded/i2/3355889310/O1CN01IlwWvr2Ie2QW7mBVh_!!3355889310.jpg",
+        "https://img.alicdn.com/bao/uploaded/i2/3355889310/O1CN01VqrniV2Ie2KNtox1h_!!3355889310.jpg",
+        "https://img.alicdn.com/bao/uploaded/i1/3355889310/O1CN01hNTDwL2Ie2KNtnCtQ_!!3355889310.jpg"
+      ],
+      "props": {
+        "上市年份季节": "2025年夏季",
+        "厚薄": "薄",
+        "品牌": "朴步",
+        "品牌类型": "时尚潮牌",
+        "图案": "纯色",
+        "基础风格": "青春流行",
+        "尺码": "3XL,2XL,4XL,XL,M,L",
+        "工艺处理": "免烫处理",
+        "弹力": "微弹",
+        "服装版型": "宽松型",
+        "材质成分": "聚酰胺纤维(锦纶)100%",
+        "款式": "工装裤",
+        "款式细节": "口袋装饰",
+        "细分风格": "潮",
+        "腰型": "中低腰",
+        "裤型": "工装裤",
+        "裤脚口款式": "直筒",
+        "裤长": "长裤",
+        "裤门襟": "松紧",
+        "货号": "PB-XXKQ-29018-5-",
+        "适用场景": "其他休闲",
+        "适用季节": "夏季",
+        "适用对象": "青少年",
+        "销售渠道类型": "纯电商(只在线上销售)",
+        "面料": "锦纶",
+        "面料功能": "凉感",
+        "颜色": "基础色（黑灰白等）,29018-黑色 【款式升级】,29018-深灰【款式升级】,29018-军绿 【款式升级】,29017-黑色,29017-深灰,29017-军绿"
+      },
+      "propsTrans": {
+        "Applicable objects": "Teenager",
+        "Applicable scenarios": "Other leisure",
+        "Applicable season": "Summer",
+        "Brand": "Pu bu",
+        "Brand type": "fashion Trendy ",
+        "Clothing pattern": "Type Loose",
+        "Color": "29017-military green,29017-dark gray,29017-black,29018-military green [style upgrade],29018-dark gray [style upgrade],29018-black [style upgrade],Comfy Basics colors (black, gray, white, etc.)",
+        "Comfy Basics wind grids": "Youth fashion",
+        "Elasticity": "Micro-elastic",
+        "Fabric": "Nylon",
+        "Material composition": "Polyamide fiber (nylon) 100%",
+        "Pants fly": "Tightness",
+        "Pants length": "pants",
+        "Pants type": "Cargo Pants",
+        "Pattern": "pure color ",
+        "Process treatment": "No ironing treatment",
+        "Size": "4xl,M,Xl,L,2xl,3xl",
+        "Style": "Cargo Pants",
+        "Style details": "Flap Pocket pants decoration",
+        "Subdivision style": "Tide",
+        "Thickness": "Thin",
+        "Trouser cuff style": "straight-leg",
+        "Waist type": "Mid-low waist",
+        "Year and season of launch": "2025 Summer",
+        "fabric function": "Cool feeling",
+        "item No. ": "Pb-xxkq-29018-5-",
+        "sales Channel Type ": "Pure e-commerce (only online sales)"
+      },
+      "sales": -1,
+      "productAttr": [
+        {
+          "attrID": "1627207",
+          "attr": "颜色",
+          "attrTrans": "Color",
+          "values": [
+            {
+              "valueID": "38281077580",
+              "value": "29018-黑色 【款式升级】",
+              "valueTrans": "29018-black [style upgrade]",
+              "image": "https://img.alicdn.com/bao/uploaded/i3/3355889310/O1CN01fCyXKf2Ie2QWglUV0_!!3355889310.jpg"
+            },
+            {
+              "valueID": "38281077581",
+              "value": "29018-深灰【款式升级】",
+              "valueTrans": "29018-dark gray [style upgrade]",
+              "image": "https://img.alicdn.com/bao/uploaded/i2/3355889310/O1CN01VPX4ea2Ie2QWLkT8S_!!3355889310.jpg"
+            },
+            {
+              "valueID": "38281077582",
+              "value": "29018-军绿 【款式升级】",
+              "valueTrans": "29018-military green [style upgrade]",
+              "image": "https://img.alicdn.com/bao/uploaded/i1/3355889310/O1CN01sNcIKL2Ie2QVTzIDY_!!3355889310.jpg"
+            },
+            {
+              "valueID": "38281077583",
+              "value": "29017-黑色",
+              "valueTrans": "29017-black",
+              "image": "https://img.alicdn.com/bao/uploaded/i4/3355889310/O1CN01zbJEq22Ie2QWeJy3R_!!3355889310.jpg"
+            },
+            {
+              "valueID": "38281077584",
+              "value": "29017-深灰",
+              "valueTrans": "29017-dark gray",
+              "image": "https://img.alicdn.com/bao/uploaded/i4/3355889310/O1CN01pjdFCI2Ie2QWeKZVm_!!3355889310.jpg"
+            },
+            {
+              "valueID": "38281077585",
+              "value": "29017-军绿",
+              "valueTrans": "29017-military green",
+              "image": "https://img.alicdn.com/bao/uploaded/i4/3355889310/O1CN01ZVYZDP2Ie2QW7sFUZ_!!3355889310.jpg"
+            }
+          ]
+        },
+        {
+          "attrID": "20518",
+          "attr": "尺码",
+          "attrTrans": "Size",
+          "values": [
+            {
+              "valueID": "28315",
+              "value": "M",
+              "valueTrans": "M",
+              "image": ""
+            },
+            {
+              "valueID": "28316",
+              "value": "L",
+              "valueTrans": "L",
+              "image": ""
+            },
+            {
+              "valueID": "28317",
+              "value": "XL",
+              "valueTrans": "Xl",
+              "image": ""
+            },
+            {
+              "valueID": "6145171",
+              "value": "2XL",
+              "valueTrans": "2xl",
+              "image": ""
+            },
+            {
+              "valueID": "115781",
+              "value": "3XL",
+              "valueTrans": "3xl",
+              "image": ""
+            },
+            {
+              "valueID": "3727387",
+              "value": "4XL",
+              "valueTrans": "4xl",
+              "image": ""
+            }
+          ]
+        }
+      ],
+      "fee": -1,
+      "guarantee": null,
+      "deliveryTime": "",
+      "minNum": 1,
+      "skus": [
+        {
+          "skuID": "5962325994724",
+          "name": "颜色:29018-黑色 【款式升级】;尺码:M",
+          "nameTrans": "Color:29018-black [style upgrade];Size:M",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/3355889310/O1CN01fCyXKf2Ie2QWglUV0_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077580;20518:28315",
+          "propsCode": [38281077580, 28315],
+          "specId": "",
+          "price": "59.90"
+        },
+        {
+          "skuID": "5962325994727",
+          "name": "颜色:29018-黑色 【款式升级】;尺码:L",
+          "nameTrans": "Color:29018-black [style upgrade];Size:L",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/3355889310/O1CN01fCyXKf2Ie2QWglUV0_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077580;20518:28316",
+          "propsCode": [38281077580, 28316],
+          "specId": "",
+          "price": "59.90"
+        },
+        {
+          "skuID": "5962325994730",
+          "name": "颜色:29018-黑色 【款式升级】;尺码:XL",
+          "nameTrans": "Color:29018-black [style upgrade];Size:Xl",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/3355889310/O1CN01fCyXKf2Ie2QWglUV0_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077580;20518:28317",
+          "propsCode": [38281077580, 28317],
+          "specId": "",
+          "price": "59.90"
+        },
+        {
+          "skuID": "5962325994736",
+          "name": "颜色:29018-黑色 【款式升级】;尺码:2XL",
+          "nameTrans": "Color:29018-black [style upgrade];Size:2xl",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/3355889310/O1CN01fCyXKf2Ie2QWglUV0_!!3355889310.jpg",
+          "stock": 201,
+          "propsID": "1627207:38281077580;20518:6145171",
+          "propsCode": [38281077580, 6145171],
+          "specId": "",
+          "price": "59.90"
+        },
+        {
+          "skuID": "5962325994721",
+          "name": "颜色:29018-黑色 【款式升级】;尺码:3XL",
+          "nameTrans": "Color:29018-black [style upgrade];Size:3xl",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/3355889310/O1CN01fCyXKf2Ie2QWglUV0_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077580;20518:115781",
+          "propsCode": [38281077580, 115781],
+          "specId": "",
+          "price": "59.90"
+        },
+        {
+          "skuID": "5962325994733",
+          "name": "颜色:29018-黑色 【款式升级】;尺码:4XL",
+          "nameTrans": "Color:29018-black [style upgrade];Size:4xl",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i3/3355889310/O1CN01fCyXKf2Ie2QWglUV0_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077580;20518:3727387",
+          "propsCode": [38281077580, 3727387],
+          "specId": "",
+          "price": "59.90"
+        },
+        {
+          "skuID": "5962325994725",
+          "name": "颜色:29018-深灰【款式升级】;尺码:M",
+          "nameTrans": "Color:29018-dark gray [style upgrade];Size:M",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i2/3355889310/O1CN01VPX4ea2Ie2QWLkT8S_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077581;20518:28315",
+          "propsCode": [38281077581, 28315],
+          "specId": "",
+          "price": "59.90"
+        },
+        {
+          "skuID": "5962325994728",
+          "name": "颜色:29018-深灰【款式升级】;尺码:L",
+          "nameTrans": "Color:29018-dark gray [style upgrade];Size:L",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i2/3355889310/O1CN01VPX4ea2Ie2QWLkT8S_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077581;20518:28316",
+          "propsCode": [38281077581, 28316],
+          "specId": "",
+          "price": "59.90"
+        },
+        {
+          "skuID": "5962325994731",
+          "name": "颜色:29018-深灰【款式升级】;尺码:XL",
+          "nameTrans": "Color:29018-dark gray [style upgrade];Size:Xl",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i2/3355889310/O1CN01VPX4ea2Ie2QWLkT8S_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077581;20518:28317",
+          "propsCode": [38281077581, 28317],
+          "specId": "",
+          "price": "59.90"
+        },
+        {
+          "skuID": "5962325994737",
+          "name": "颜色:29018-深灰【款式升级】;尺码:2XL",
+          "nameTrans": "Color:29018-dark gray [style upgrade];Size:2xl",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i2/3355889310/O1CN01VPX4ea2Ie2QWLkT8S_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077581;20518:6145171",
+          "propsCode": [38281077581, 6145171],
+          "specId": "",
+          "price": "59.90"
+        },
+        {
+          "skuID": "5962325994722",
+          "name": "颜色:29018-深灰【款式升级】;尺码:3XL",
+          "nameTrans": "Color:29018-dark gray [style upgrade];Size:3xl",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i2/3355889310/O1CN01VPX4ea2Ie2QWLkT8S_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077581;20518:115781",
+          "propsCode": [38281077581, 115781],
+          "specId": "",
+          "price": "59.90"
+        },
+        {
+          "skuID": "5962325994734",
+          "name": "颜色:29018-深灰【款式升级】;尺码:4XL",
+          "nameTrans": "Color:29018-dark gray [style upgrade];Size:4xl",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i2/3355889310/O1CN01VPX4ea2Ie2QWLkT8S_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077581;20518:3727387",
+          "propsCode": [38281077581, 3727387],
+          "specId": "",
+          "price": "59.90"
+        },
+        {
+          "skuID": "5962325994726",
+          "name": "颜色:29018-军绿 【款式升级】;尺码:M",
+          "nameTrans": "Color:29018-military green [style upgrade];Size:M",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/3355889310/O1CN01sNcIKL2Ie2QVTzIDY_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077582;20518:28315",
+          "propsCode": [38281077582, 28315],
+          "specId": "",
+          "price": "59.90"
+        },
+        {
+          "skuID": "5962325994729",
+          "name": "颜色:29018-军绿 【款式升级】;尺码:L",
+          "nameTrans": "Color:29018-military green [style upgrade];Size:L",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/3355889310/O1CN01sNcIKL2Ie2QVTzIDY_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077582;20518:28316",
+          "propsCode": [38281077582, 28316],
+          "specId": "",
+          "price": "59.90"
+        },
+        {
+          "skuID": "5962325994732",
+          "name": "颜色:29018-军绿 【款式升级】;尺码:XL",
+          "nameTrans": "Color:29018-military green [style upgrade];Size:Xl",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/3355889310/O1CN01sNcIKL2Ie2QVTzIDY_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077582;20518:28317",
+          "propsCode": [38281077582, 28317],
+          "specId": "",
+          "price": "59.90"
+        },
+        {
+          "skuID": "5962325994738",
+          "name": "颜色:29018-军绿 【款式升级】;尺码:2XL",
+          "nameTrans": "Color:29018-military green [style upgrade];Size:2xl",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/3355889310/O1CN01sNcIKL2Ie2QVTzIDY_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077582;20518:6145171",
+          "propsCode": [38281077582, 6145171],
+          "specId": "",
+          "price": "59.90"
+        },
+        {
+          "skuID": "5962325994723",
+          "name": "颜色:29018-军绿 【款式升级】;尺码:3XL",
+          "nameTrans": "Color:29018-military green [style upgrade];Size:3xl",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/3355889310/O1CN01sNcIKL2Ie2QVTzIDY_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077582;20518:115781",
+          "propsCode": [38281077582, 115781],
+          "specId": "",
+          "price": "59.90"
+        },
+        {
+          "skuID": "5962325994735",
+          "name": "颜色:29018-军绿 【款式升级】;尺码:4XL",
+          "nameTrans": "Color:29018-military green [style upgrade];Size:4xl",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i1/3355889310/O1CN01sNcIKL2Ie2QVTzIDY_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077582;20518:3727387",
+          "propsCode": [38281077582, 3727387],
+          "specId": "",
+          "price": "59.90"
+        },
+        {
+          "skuID": "5575681950973",
+          "name": "颜色:29017-黑色;尺码:M",
+          "nameTrans": "Color:29017-black;Size:M",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i4/3355889310/O1CN01zbJEq22Ie2QWeJy3R_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077583;20518:28315",
+          "propsCode": [38281077583, 28315],
+          "specId": "",
+          "price": "49.90"
+        },
+        {
+          "skuID": "5575681950974",
+          "name": "颜色:29017-黑色;尺码:L",
+          "nameTrans": "Color:29017-black;Size:L",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i4/3355889310/O1CN01zbJEq22Ie2QWeJy3R_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077583;20518:28316",
+          "propsCode": [38281077583, 28316],
+          "specId": "",
+          "price": "49.90"
+        },
+        {
+          "skuID": "5575681950975",
+          "name": "颜色:29017-黑色;尺码:XL",
+          "nameTrans": "Color:29017-black;Size:Xl",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i4/3355889310/O1CN01zbJEq22Ie2QWeJy3R_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077583;20518:28317",
+          "propsCode": [38281077583, 28317],
+          "specId": "",
+          "price": "49.90"
+        },
+        {
+          "skuID": "5575681950976",
+          "name": "颜色:29017-黑色;尺码:2XL",
+          "nameTrans": "Color:29017-black;Size:2xl",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i4/3355889310/O1CN01zbJEq22Ie2QWeJy3R_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077583;20518:6145171",
+          "propsCode": [38281077583, 6145171],
+          "specId": "",
+          "price": "49.90"
+        },
+        {
+          "skuID": "5575681950977",
+          "name": "颜色:29017-黑色;尺码:3XL",
+          "nameTrans": "Color:29017-black;Size:3xl",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i4/3355889310/O1CN01zbJEq22Ie2QWeJy3R_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077583;20518:115781",
+          "propsCode": [38281077583, 115781],
+          "specId": "",
+          "price": "49.90"
+        },
+        {
+          "skuID": "5575681950978",
+          "name": "颜色:29017-黑色;尺码:4XL",
+          "nameTrans": "Color:29017-black;Size:4xl",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i4/3355889310/O1CN01zbJEq22Ie2QWeJy3R_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077583;20518:3727387",
+          "propsCode": [38281077583, 3727387],
+          "specId": "",
+          "price": "49.90"
+        },
+        {
+          "skuID": "5575681950985",
+          "name": "颜色:29017-深灰;尺码:M",
+          "nameTrans": "Color:29017-dark gray;Size:M",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i4/3355889310/O1CN01pjdFCI2Ie2QWeKZVm_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077584;20518:28315",
+          "propsCode": [38281077584, 28315],
+          "specId": "",
+          "price": "49.90"
+        },
+        {
+          "skuID": "5575681950986",
+          "name": "颜色:29017-深灰;尺码:L",
+          "nameTrans": "Color:29017-dark gray;Size:L",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i4/3355889310/O1CN01pjdFCI2Ie2QWeKZVm_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077584;20518:28316",
+          "propsCode": [38281077584, 28316],
+          "specId": "",
+          "price": "49.90"
+        },
+        {
+          "skuID": "5575681950987",
+          "name": "颜色:29017-深灰;尺码:XL",
+          "nameTrans": "Color:29017-dark gray;Size:Xl",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i4/3355889310/O1CN01pjdFCI2Ie2QWeKZVm_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077584;20518:28317",
+          "propsCode": [38281077584, 28317],
+          "specId": "",
+          "price": "49.90"
+        },
+        {
+          "skuID": "5575681950988",
+          "name": "颜色:29017-深灰;尺码:2XL",
+          "nameTrans": "Color:29017-dark gray;Size:2xl",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i4/3355889310/O1CN01pjdFCI2Ie2QWeKZVm_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077584;20518:6145171",
+          "propsCode": [38281077584, 6145171],
+          "specId": "",
+          "price": "49.90"
+        },
+        {
+          "skuID": "5575681950989",
+          "name": "颜色:29017-深灰;尺码:3XL",
+          "nameTrans": "Color:29017-dark gray;Size:3xl",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i4/3355889310/O1CN01pjdFCI2Ie2QWeKZVm_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077584;20518:115781",
+          "propsCode": [38281077584, 115781],
+          "specId": "",
+          "price": "49.90"
+        },
+        {
+          "skuID": "5575681950990",
+          "name": "颜色:29017-深灰;尺码:4XL",
+          "nameTrans": "Color:29017-dark gray;Size:4xl",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i4/3355889310/O1CN01pjdFCI2Ie2QWeKZVm_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077584;20518:3727387",
+          "propsCode": [38281077584, 3727387],
+          "specId": "",
+          "price": "49.90"
+        },
+        {
+          "skuID": "5575681950979",
+          "name": "颜色:29017-军绿;尺码:M",
+          "nameTrans": "Color:29017-military green;Size:M",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i4/3355889310/O1CN01ZVYZDP2Ie2QW7sFUZ_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077585;20518:28315",
+          "propsCode": [38281077585, 28315],
+          "specId": "",
+          "price": "49.90"
+        },
+        {
+          "skuID": "5575681950980",
+          "name": "颜色:29017-军绿;尺码:L",
+          "nameTrans": "Color:29017-military green;Size:L",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i4/3355889310/O1CN01ZVYZDP2Ie2QW7sFUZ_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077585;20518:28316",
+          "propsCode": [38281077585, 28316],
+          "specId": "",
+          "price": "49.90"
+        },
+        {
+          "skuID": "5575681950981",
+          "name": "颜色:29017-军绿;尺码:XL",
+          "nameTrans": "Color:29017-military green;Size:Xl",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i4/3355889310/O1CN01ZVYZDP2Ie2QW7sFUZ_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077585;20518:28317",
+          "propsCode": [38281077585, 28317],
+          "specId": "",
+          "price": "49.90"
+        },
+        {
+          "skuID": "5575681950982",
+          "name": "颜色:29017-军绿;尺码:2XL",
+          "nameTrans": "Color:29017-military green;Size:2xl",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i4/3355889310/O1CN01ZVYZDP2Ie2QW7sFUZ_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077585;20518:6145171",
+          "propsCode": [38281077585, 6145171],
+          "specId": "",
+          "price": "49.90"
+        },
+        {
+          "skuID": "5575681950983",
+          "name": "颜色:29017-军绿;尺码:3XL",
+          "nameTrans": "Color:29017-military green;Size:3xl",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i4/3355889310/O1CN01ZVYZDP2Ie2QW7sFUZ_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077585;20518:115781",
+          "propsCode": [38281077585, 115781],
+          "specId": "",
+          "price": "49.90"
+        },
+        {
+          "skuID": "5575681950984",
+          "name": "颜色:29017-军绿;尺码:4XL",
+          "nameTrans": "Color:29017-military green;Size:4xl",
+          "imgUrl": "https://img.alicdn.com/bao/uploaded/i4/3355889310/O1CN01ZVYZDP2Ie2QW7sFUZ_!!3355889310.jpg",
+          "stock": 200,
+          "propsID": "1627207:38281077585;20518:3727387",
+          "propsCode": [38281077585, 3727387],
+          "specId": "",
+          "price": "49.90"
+        }
+      ],
+      "sellerInfo": {
+        "shopLogo": "https://gw.alicdn.com/imgextra/i1/O1CN01z163bz1lHF5yQ50CC_!!6000000004793-2-tps-172-108.png",
+        "shopTitle": "朴步旗舰店",
+        "shopID": "349163788",
+        "shopLink": "https://shop349163788.taobao.com",
+        "sellerId": ""
+      },
+      "price": "49.90",
+      "imageMapList": {
+        "38281077580": "https://img.alicdn.com/bao/uploaded/i3/3355889310/O1CN01fCyXKf2Ie2QWglUV0_!!3355889310.jpg",
+        "38281077581": "https://img.alicdn.com/bao/uploaded/i2/3355889310/O1CN01VPX4ea2Ie2QWLkT8S_!!3355889310.jpg",
+        "38281077582": "https://img.alicdn.com/bao/uploaded/i1/3355889310/O1CN01sNcIKL2Ie2QVTzIDY_!!3355889310.jpg",
+        "38281077583": "https://img.alicdn.com/bao/uploaded/i4/3355889310/O1CN01zbJEq22Ie2QWeJy3R_!!3355889310.jpg",
+        "38281077584": "https://img.alicdn.com/bao/uploaded/i4/3355889310/O1CN01pjdFCI2Ie2QWeKZVm_!!3355889310.jpg",
+        "38281077585": "https://img.alicdn.com/bao/uploaded/i4/3355889310/O1CN01ZVYZDP2Ie2QW7sFUZ_!!3355889310.jpg"
+      },
+      "skuPropNamesMap": {
+        "1627207": "颜色",
+        "20518": "尺码"
+      },
+      "skuPropValsMap": {
+        "115781": "3XL",
+        "28315": "M",
+        "28316": "L",
+        "28317": "XL",
+        "3727387": "4XL",
+        "38281077580": "29018-黑色 【款式升级】",
+        "38281077581": "29018-深灰【款式升级】",
+        "38281077582": "29018-军绿 【款式升级】",
+        "38281077583": "29017-黑色",
+        "38281077584": "29017-深灰",
+        "38281077585": "29017-军绿",
+        "6145171": "2XL"
+      }
+    },
+    "productDetail": {
+      "productDesc": "\u003cimg class=\"desc_anchor\" id=\"desc-module-1\" src=\"https://assets.alicdn.com/kissy/1.0.0/build/imglazyload/spaceball.gif\"\u003e\u003cp\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i4/3355889310/O1CN01gc2m4R2Ie2KJ6TkDC_!!3355889310.jpg\" align=\"absmiddle\"\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i2/3355889310/O1CN01zOBH6H2Ie2KKSyK9Q_!!3355889310.jpg\" align=\"absmiddle\"\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i4/3355889310/O1CN01g600sS2Ie2KLHsNpH_!!3355889310.jpg\" align=\"absmiddle\"\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i4/3355889310/O1CN01aKigRT2Ie2KFQBmPj_!!3355889310.jpg\" align=\"absmiddle\"\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i1/3355889310/O1CN01xGHeAF2Ie2KGLPhiv_!!3355889310.jpg\" align=\"absmiddle\"\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i2/3355889310/O1CN01i6SzFT2Ie2KJu4Zkt_!!3355889310.jpg\" align=\"absmiddle\"\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i1/3355889310/O1CN01A65XXe2Ie2KIK14VX_!!3355889310.jpg\" align=\"absmiddle\"\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i1/3355889310/O1CN01il0fzv2Ie2KIK0wCv_!!3355889310.jpg\" align=\"absmiddle\"\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i4/3355889310/O1CN01wezQ1j2Ie2KMxplTt_!!3355889310.jpg\" align=\"absmiddle\"\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i3/3355889310/O1CN01ElZfYG2Ie2KArX5Q0_!!3355889310.jpg\" align=\"absmiddle\"\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i3/3355889310/O1CN01Iqi8e52Ie2KMJKC6z_!!3355889310.jpg\" align=\"absmiddle\"\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i2/3355889310/O1CN01PWJYHh2Ie2KIFdNp5_!!3355889310.jpg\" align=\"absmiddle\"\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i2/3355889310/O1CN01Hmpz1z2Ie2KIK3gg3_!!3355889310.jpg\" align=\"absmiddle\"\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i1/3355889310/O1CN01BB24kg2Ie2KKLu8Ms_!!3355889310.jpg\" align=\"absmiddle\"\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i2/3355889310/O1CN01wsrY5R2Ie2KMJKOah_!!3355889310.jpg\" align=\"absmiddle\"\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i2/3355889310/O1CN01mizwL12Ie2KFQ9ZDH_!!3355889310.jpg\" align=\"absmiddle\"\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i2/3355889310/O1CN01zkpkPF2Ie2KFQCFWQ_!!3355889310.jpg\" align=\"absmiddle\"\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i2/3355889310/O1CN0112HHYY2Ie2KGifxKD_!!3355889310.jpg\" align=\"absmiddle\"\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i4/3355889310/O1CN01AGHgVN2Ie2KIFfKP8_!!3355889310.jpg\" align=\"absmiddle\"\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i1/3355889310/O1CN011y1Bi32Ie2KKSzjU7_!!3355889310.jpg\" align=\"absmiddle\"\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i1/3355889310/O1CN01AT5gEa2Ie2KArVD0u_!!3355889310.jpg\" align=\"absmiddle\"\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i2/3355889310/O1CN01Nbbz5n2Ie2KKLtWvj_!!3355889310.jpg\" align=\"absmiddle\"\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i4/3355889310/O1CN01JGsGeY2Ie2KJ0OJz3_!!3355889310.jpg\" align=\"absmiddle\"\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i1/3355889310/O1CN01CHJh2t2Ie2KIFdqvy_!!3355889310.jpg\" align=\"absmiddle\"\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i2/3355889310/O1CN01Hy6cnY2Ie2KIK2Xzv_!!3355889310.jpg\" align=\"absmiddle\"\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i4/3355889310/O1CN01uYgBK72Ie2KGihABU_!!3355889310.jpg\" align=\"absmiddle\"\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i2/3355889310/O1CN01DoKra72Ie2KKLsj2p_!!3355889310.jpg\" align=\"absmiddle\"\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i1/3355889310/O1CN0104EOEb2Ie2KGLRW1w_!!3355889310.jpg\" align=\"absmiddle\"\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i1/3355889310/O1CN01OCzl422Ie2KIK35H1_!!3355889310.jpg\" align=\"absmiddle\"\u003e\u003cimg src=\"https://img.alicdn.com/imgextra/i4/3355889310/O1CN012odonE2Ie2KKSyexs_!!3355889310.jpg\" align=\"absmiddle\"\u003e \u003c/p\u003e",
+      "productImgList": [
+        "https://img.alicdn.com/imgextra/i4/3355889310/O1CN01gc2m4R2Ie2KJ6TkDC_!!3355889310.jpg",
+        "https://img.alicdn.com/imgextra/i2/3355889310/O1CN01zOBH6H2Ie2KKSyK9Q_!!3355889310.jpg",
+        "https://img.alicdn.com/imgextra/i4/3355889310/O1CN01g600sS2Ie2KLHsNpH_!!3355889310.jpg",
+        "https://img.alicdn.com/imgextra/i4/3355889310/O1CN01aKigRT2Ie2KFQBmPj_!!3355889310.jpg",
+        "https://img.alicdn.com/imgextra/i1/3355889310/O1CN01xGHeAF2Ie2KGLPhiv_!!3355889310.jpg",
+        "https://img.alicdn.com/imgextra/i2/3355889310/O1CN01i6SzFT2Ie2KJu4Zkt_!!3355889310.jpg",
+        "https://img.alicdn.com/imgextra/i1/3355889310/O1CN01A65XXe2Ie2KIK14VX_!!3355889310.jpg",
+        "https://img.alicdn.com/imgextra/i1/3355889310/O1CN01il0fzv2Ie2KIK0wCv_!!3355889310.jpg",
+        "https://img.alicdn.com/imgextra/i4/3355889310/O1CN01wezQ1j2Ie2KMxplTt_!!3355889310.jpg",
+        "https://img.alicdn.com/imgextra/i3/3355889310/O1CN01ElZfYG2Ie2KArX5Q0_!!3355889310.jpg",
+        "https://img.alicdn.com/imgextra/i3/3355889310/O1CN01Iqi8e52Ie2KMJKC6z_!!3355889310.jpg",
+        "https://img.alicdn.com/imgextra/i2/3355889310/O1CN01PWJYHh2Ie2KIFdNp5_!!3355889310.jpg",
+        "https://img.alicdn.com/imgextra/i2/3355889310/O1CN01Hmpz1z2Ie2KIK3gg3_!!3355889310.jpg",
+        "https://img.alicdn.com/imgextra/i1/3355889310/O1CN01BB24kg2Ie2KKLu8Ms_!!3355889310.jpg",
+        "https://img.alicdn.com/imgextra/i2/3355889310/O1CN01wsrY5R2Ie2KMJKOah_!!3355889310.jpg",
+        "https://img.alicdn.com/imgextra/i2/3355889310/O1CN01mizwL12Ie2KFQ9ZDH_!!3355889310.jpg",
+        "https://img.alicdn.com/imgextra/i2/3355889310/O1CN01zkpkPF2Ie2KFQCFWQ_!!3355889310.jpg",
+        "https://img.alicdn.com/imgextra/i2/3355889310/O1CN0112HHYY2Ie2KGifxKD_!!3355889310.jpg",
+        "https://img.alicdn.com/imgextra/i4/3355889310/O1CN01AGHgVN2Ie2KIFfKP8_!!3355889310.jpg",
+        "https://img.alicdn.com/imgextra/i1/3355889310/O1CN011y1Bi32Ie2KKSzjU7_!!3355889310.jpg",
+        "https://img.alicdn.com/imgextra/i1/3355889310/O1CN01AT5gEa2Ie2KArVD0u_!!3355889310.jpg",
+        "https://img.alicdn.com/imgextra/i2/3355889310/O1CN01Nbbz5n2Ie2KKLtWvj_!!3355889310.jpg",
+        "https://img.alicdn.com/imgextra/i4/3355889310/O1CN01JGsGeY2Ie2KJ0OJz3_!!3355889310.jpg",
+        "https://img.alicdn.com/imgextra/i1/3355889310/O1CN01CHJh2t2Ie2KIFdqvy_!!3355889310.jpg",
+        "https://img.alicdn.com/imgextra/i2/3355889310/O1CN01Hy6cnY2Ie2KIK2Xzv_!!3355889310.jpg",
+        "https://img.alicdn.com/imgextra/i4/3355889310/O1CN01uYgBK72Ie2KGihABU_!!3355889310.jpg",
+        "https://img.alicdn.com/imgextra/i2/3355889310/O1CN01DoKra72Ie2KKLsj2p_!!3355889310.jpg",
+        "https://img.alicdn.com/imgextra/i1/3355889310/O1CN0104EOEb2Ie2KGLRW1w_!!3355889310.jpg",
+        "https://img.alicdn.com/imgextra/i1/3355889310/O1CN01OCzl422Ie2KIK35H1_!!3355889310.jpg",
+        "https://img.alicdn.com/imgextra/i4/3355889310/O1CN012odonE2Ie2KKSyexs_!!3355889310.jpg"
+      ]
+    },
+    "productRemark": {
+      "sensitiveWords": [],
+      "isCanJump2Shop": true,
+      "isCanPurchased": false,
+      "isInBlackList": false,
+      "cantPurchasedList": ["潮牌"],
+      "purchaseTipList": []
+    },
+    "sign": "JygShQKMV2eeEfY0ON4OuY87mMpHchcPjnEtPVyn/OIXA2ErzyRSxp7z68aFBh1vZeqYBofBYMU+X8N9dv0bLk01uQAhwM5zznX8oMnIcD0AX7CgkTIkZJlJgrf9QV5WAugHNsVmJMKoXKNVYcPUeflnWPI6vfmgfVbOn9FRPaOiaQ2oDheXpGcTpDIGN6eBskhh9jaPAUgYsmTi7Q+A0ArEUqcVPmSl0BlexGvVX3erXH19/RDxr1Ms54y4KI8uKwkvUcrF2LoBepIiZ3tMFaHumcLTZWb8YU9POydHtnLE5k6/3V22ORtFCYbW+iAfwBbiuJJoJub5XEFrVpPLwA==",
+    "cache": true,
+    "offSale": false
+  }
+}

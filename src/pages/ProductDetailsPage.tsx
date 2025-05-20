@@ -35,6 +35,7 @@ import { IReview } from "../types/review.type";
 import TimeAgo from "../components/TimeAgo";
 import { MdPlaylistAdd } from "react-icons/md";
 import Swal from "sweetalert2";
+import ProductSelector from "../components/ProductSelector";
 
 export interface Sku {
   skuID: string;
@@ -48,9 +49,22 @@ export interface Sku {
   price: string;
 }
 
+interface ProductAttr {
+  attrID: string;
+  attr: string;
+  attrTrans: string;
+  values: {
+    valueID: string;
+    value: string;
+    valueTrans: string;
+    image: string;
+  }[];
+}
+
 export interface Product {
   title: string;
   propsTrans: any;
+  productAttr: ProductAttr[];
   price: string;
   imgList: string[];
   skus: Sku[];
@@ -509,7 +523,7 @@ const ProductDetailsPage = () => {
         <div className="w-96 p-3 mx-auto">
           <Magnifier
             imageUrl={
-              selectedSku
+              selectedSku && selectedSku.imgUrl !== ""
                 ? selectedSku.imgUrl
                 : (product?.imgList?.[0] as string)
             }
@@ -599,7 +613,7 @@ const ProductDetailsPage = () => {
               {/* Display Box */}
               <div
                 ref={itemsBoxRef}
-                className="min-h-[48px] rounded px-3 py-2 cursor-pointer flex flex-wrap gap-2 items-center  bg-white dark:bg-black border dark:border-shadow"
+                className="min-h-[48px] rounded px-3 py-2 cursor-pointer flex flex-wrap gap-2 items-center bg-white dark:bg-black border dark:border-shadow"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
                 {selectedOption.length === 0 ? (
@@ -769,7 +783,7 @@ const ProductDetailsPage = () => {
         <div className="p-5 flex flex-col flex-1">
           <div className="flex justify-between items-center gap-5">
             <h2 className="text-xl md:text-2xl font-semibold mb-2">
-              {singleProductData?.name}
+              {singleProductData?.name} || {product.title}
             </h2>
 
             <div>
@@ -793,7 +807,9 @@ const ProductDetailsPage = () => {
           <div className="sm:grid grid-cols-2 md:grid-cols-3 gap-5 items-center space-y-5 sm:space-y-0 a justify-between my-5">
             {/* Price */}
             <p className="w-full rounded-lg text-xl font-semibold bg-gray-100 hover:bg-gray-300 duration-200 px-4 py-2 transition text-black text-center">
-              Price: ¥ {selectedSku?.price || product?.price}
+              Price: ¥{" "}
+              {parseInt(selectedSku?.price as string).toFixed(2) ||
+                parseInt(product?.price as string).toFixed(2)}
             </p>
             {/* Stock */}
             <p
@@ -814,20 +830,6 @@ const ProductDetailsPage = () => {
             </button>
           </div>
           <div className="flex flex-col-reverse md:flex-row md:justify-between md:items-center gap-2 md:gap-5">
-            <div className="flex flex-col items-start ">
-              {selectedSku?.nameTrans ? (
-                selectedSku?.nameTrans.split(";").map((feat) => (
-                  <p className="text-center mt-2">
-                    <span className="capitalize font-semibold text-green-600">
-                      {feat.split(":")[0]}:
-                    </span>{" "}
-                    <span className="capitalize">{feat.split(":")[1]}</span>
-                  </p>
-                ))
-              ) : (
-                <h2 className="font-bold text-sm">Classification: </h2>
-              )}
-            </div>
             {!singleProductLoading && singleProductData?.dimensions && (
               <p className="font-bold">
                 Dimensions:{" "}
@@ -846,24 +848,11 @@ const ProductDetailsPage = () => {
             )}
           </div>
 
-          {/* Classification */}
-          <div className="flex flex-wrap justify-center gap-2 my-3">
-            {product?.skus
-              ?.filter((sku) => sku.imgUrl?.trim())
-              .map((sku) => (
-                <img
-                  key={sku.skuID}
-                  className={`w-10 object-cover cursor-pointer border-2 ${
-                    selectedSku?.skuID === sku.skuID
-                      ? "border-blue-500"
-                      : "border-transparent"
-                  }`}
-                  src={sku.imgUrl}
-                  alt={sku.nameTrans}
-                  onClick={() => setSelectedSku(sku)}
-                />
-              ))}
-          </div>
+          <ProductSelector
+            product={product}
+            selectedSku={selectedSku}
+            setSelectedSku={setSelectedSku}
+          />
 
           {/* Action Buttons */}
           <div className="mt-auto grid grid-cols-1 sm:grid-cols-2 gap-5">
