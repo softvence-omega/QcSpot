@@ -145,7 +145,7 @@ const ProductSelector = ({ product, selectedSku, setSelectedSku }: Props) => {
                   }
                   disabled={!isValid}
                   className={`border rounded px-3 py-1 text-sm transition
-                    ${isSelected ? "bg-[#32854e] text-white" : ""}
+                    ${isSelected ? "bg-green-700 text-white" : ""}
                     ${!isValid ? "hidden" : "bg-gray-100 text-black"}
                   `}
                 >

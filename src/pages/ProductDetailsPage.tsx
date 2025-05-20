@@ -829,7 +829,7 @@ const ProductDetailsPage = () => {
               Description
             </button>
           </div>
-          <div className="flex flex-col-reverse md:flex-row md:justify-between md:items-center gap-2 md:gap-5">
+          <div className="flex justify-between items-center gap-5 mb-3">
             {!singleProductLoading && singleProductData?.dimensions && (
               <p className="font-bold">
                 Dimensions:{" "}
