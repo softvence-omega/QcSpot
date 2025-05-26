@@ -25,6 +25,7 @@ const ManageAgent = () => {
                   <th>Image</th>
                   <th>Name</th>
                   <th>State</th>
+                  <th>Selection</th>
                   <th>Action</th>
                 </tr>
               </thead>

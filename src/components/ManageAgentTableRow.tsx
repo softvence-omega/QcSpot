@@ -16,12 +16,14 @@ interface IAgentData {
 }
 
 const ManageAgentTableRow = ({ agent, refetch, index }: IAgentData) => {
+  console.log(agent);
   const { agentData } = useAgent();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [image, setImage] = useState<string | null>(null);
   const imageRef = useRef<HTMLInputElement | null>(null);
   const [isActive, setIsActive] = useState(agent?.active);
+  const [isSelected, setIsSelected] = useState(agent?.isSelected);
   const {
     register,
     handleSubmit,
@@ -67,18 +69,42 @@ const ManageAgentTableRow = ({ agent, refetch, index }: IAgentData) => {
       )
       .then((res) => {
         if (res.status === 200) {
+          setIsActive(!isActive);
           refetch();
           toast.success(
             `${agent.name} state updated to ${
               !isActive ? "Active" : "Inactive"
             }!`
           );
-          setIsActive(!isActive);
         }
       })
       .catch((error) => {
         toast.error(
           error.response?.data?.message || "Failed to update agent state"
+        );
+      });
+  };
+
+  // Agent selection change
+  const handleAgentSelected = () => {
+    axiosSecure
+      .patch(
+        `/agent/selectAgent?agent_id=${agent._id}&isSelected=${!isSelected}`
+      )
+      .then((res) => {
+        if (res.status === 200) {
+          setIsSelected(!isSelected);
+          refetch();
+          toast.success(
+            `${agent.name} updated to ${
+              !isSelected ? "selected" : "Not selected"
+            }!`
+          );
+        }
+      })
+      .catch((error) => {
+        toast.error(
+          error.response?.data?.message || "Failed to update agent selection"
         );
       });
   };
@@ -187,6 +213,18 @@ const ManageAgentTableRow = ({ agent, refetch, index }: IAgentData) => {
         >
           <option value="active">active</option>
           <option value="inactive">inactive</option>
+        </select>
+      </td>
+      <td>
+        <select
+          value={isSelected ? "selected" : "not selected"}
+          onChange={() => handleAgentSelected()}
+          className={`text-xs text-white sm:text-sm rounded-lg px-1 max-w-20 cursor-pointer ${
+            isSelected ? "bg-green-500" : "bg-red-500"
+          }`}
+        >
+          <option value="selected">selected</option>
+          <option value="not selected">not selected</option>
         </select>
       </td>
       <td className="space-x-1 sm:space-x-2">

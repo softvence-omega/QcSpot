@@ -10,27 +10,38 @@ interface UseAgentResult {
 const PlatformSwitcher = () => {
   const { agentData } = useAgent({ active: "true" }) as UseAgentResult;
   const [selectedPlatform, setSelectedPlatform] = useState<string>(
-    () => localStorage.getItem("platform") || "CNFans"
+    () => localStorage.getItem("platform") || ""
   );
   const [selectedImage, setSelectedImage] = useState<string>(
-    () =>
-      localStorage.getItem("platform_img") ||
-      agentData.find((platform) => platform.name === selectedPlatform)?.img ||
-      ""
+    () => localStorage.getItem("platform_img") || ""
   );
+
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    const platform_img = agentData.find(
-      (agent) => agent.name === selectedPlatform
-    )?.img;
+    const storedPlatform = localStorage.getItem("platform");
 
-    localStorage.setItem("platform", selectedPlatform);
-    if (platform_img) {
-      setSelectedImage(platform_img);
-      localStorage.setItem("platform_img", platform_img);
+    if (!storedPlatform && agentData.length > 0) {
+      // Find the agent marked as selected
+      const defaultAgent = agentData.find((agent) => agent.isSelected);
+
+      if (defaultAgent) {
+        localStorage.setItem("platform", defaultAgent.name);
+        localStorage.setItem("platform_img", defaultAgent.img);
+        setSelectedPlatform(defaultAgent.name);
+        setSelectedImage(defaultAgent.img);
+      }
+    } else if (storedPlatform) {
+      // In case agentData loads after platform is already set, ensure image syncs
+      const platform_img = agentData.find(
+        (agent) => agent.name === storedPlatform
+      )?.img;
+
+      if (platform_img) {
+        setSelectedImage(platform_img);
+      }
     }
-  }, [selectedPlatform, agentData]);
+  }, [agentData]);
 
   return (
     <div className="relative">

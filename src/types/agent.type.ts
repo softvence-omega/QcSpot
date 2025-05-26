@@ -12,4 +12,5 @@ export interface IAgent {
   to: ITo;
   offer: string;
   active: boolean;
+  isSelected: boolean;
 }
