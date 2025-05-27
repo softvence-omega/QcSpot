@@ -1,4 +1,4 @@
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import useAgent from "../hooks/useAgent";
 import { IAgent } from "../types/agent.type";
 import { Loader2, X } from "lucide-react";
@@ -30,6 +30,10 @@ const ManageAgentTableRow = ({ agent, refetch, index }: IAgentData) => {
     reset,
     formState: { errors },
   } = useForm<IAgent>();
+
+  useEffect(() => {
+    setIsSelected(agent?.isSelected);
+  }, [agent?.isSelected]);
 
   const serials = Array.from(
     { length: agentData?.length || 0 },
