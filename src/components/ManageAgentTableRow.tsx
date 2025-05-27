@@ -91,6 +91,13 @@ const ManageAgentTableRow = ({ agent, refetch, index }: IAgentData) => {
 
   // Agent selection change
   const handleAgentSelected = () => {
+    if (isSelected) {
+      Swal.fire(
+        "You cannot unselect an agent!",
+        "Please select another agent instead."
+      );
+      return;
+    }
     axiosSecure
       .patch(
         `/agent/selectAgent?agent_id=${agent._id}&isSelected=${!isSelected}`
