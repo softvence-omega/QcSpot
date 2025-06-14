@@ -4,6 +4,7 @@ import Footer from "../shared/Footer";
 import { useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import insta from "../assets/instagram.svg";
+import telegram from "../assets/telegram.svg";
 
 const MainLayout = () => {
   const { setUser } = useAuth();
@@ -15,7 +16,9 @@ const MainLayout = () => {
       <Navbar />
       <Outlet />
       <Footer />
-      <div className="fixed bottom-5 right-5 w-fit">
+
+      {/* Instagram button */}
+      <div className="fixed bottom-5 right-5 w-fit hover:scale-110 transition-transform duration-200">
         <Link
           to="https://www.instagram.com/qcspot?igsh=MjNtczVlMDlsMmQ4&utm_source=qr"
           target="_blank"
@@ -23,6 +26,21 @@ const MainLayout = () => {
         >
           <img
             src={insta}
+            alt="Instagram"
+            className="w-10 h-10 cursor-pointer"
+          />
+        </Link>
+      </div>
+
+      {/* Telegram button */}
+      <div className="fixed bottom-20 right-5 w-fit hover:scale-110 transition-transform duration-200">
+        <Link
+          to="https://t.me/+I-_POEYtIXg5ODRh"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src={telegram}
             alt="Instagram"
             className="w-10 h-10 cursor-pointer"
           />
