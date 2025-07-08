@@ -3,7 +3,7 @@ import Navbar from "../shared/Navbar";
 import Footer from "../shared/Footer";
 import { useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
-import insta from "../assets/instagram.svg";
+import instagram from "../assets/instagram.svg";
 import telegram from "../assets/telegram.svg";
 import reddit from "../assets/reddit-svgrepo-com.svg";
 const MainLayout = () => {
@@ -25,7 +25,7 @@ const MainLayout = () => {
           rel="noopener noreferrer"
         >
           <img
-            src={insta}
+            src={instagram}
             alt="Instagram"
             className="w-10 h-10 cursor-pointer"
           />
