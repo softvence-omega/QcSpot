@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import insta from "../assets/instagram.svg";
 import telegram from "../assets/telegram.svg";
-
+import reddit from "../assets/reddit-svgrepo-com.svg";
 const MainLayout = () => {
   const { setUser } = useAuth();
   useEffect(() => {
@@ -33,7 +33,7 @@ const MainLayout = () => {
       </div>
 
       {/* Telegram button */}
-      <div className="fixed telegrambtn bottom-20 right-5 w-fit hover:scale-110 transition-transform duration-200">
+      <div className="fixed bottom-20 right-5 w-fit hover:scale-110 transition-transform duration-200">
         <Link
           to="https://t.me/+I-_POEYtIXg5ODRh"
           target="_blank"
@@ -41,6 +41,21 @@ const MainLayout = () => {
         >
           <img
             src={telegram}
+            alt="Instagram"
+            className="w-10 h-10 cursor-pointer"
+          />
+        </Link>
+      </div>
+
+      {/* Raddit button */}
+      <div className="fixed bottom-[8.6rem] right-5 w-fit hover:scale-110 transition-transform duration-200">
+        <Link
+          to="https://www.reddit.com/r/RepSchool/s/YjCTaCroYg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src={reddit}
             alt="Instagram"
             className="w-10 h-10 cursor-pointer"
           />
