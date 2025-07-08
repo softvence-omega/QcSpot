@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import useCountry from "../hooks/useCountry";
 import useCategory from "../hooks/useCategory";
 import { FaTimes } from "react-icons/fa";
-import { ICategory, ICategoryChild, ICountry } from "../types/estimation.type";
+import { ICategory, ICategoryChild, ICountry, IShippingData } from "../types/estimation.type";
 import { Loader2 } from "lucide-react";
 import EstimationCard from "../components/EstimationCard";
 import axiosSecure from "../hooks/useAxios";
@@ -19,7 +19,7 @@ export interface TEstimation {
 const Estimation = () => {
   const [loading, setLoading] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState("");
-  const [filteredCountries, setFilteredCountries] = useState<any[]>([]);
+  const [filteredCountries, setFilteredCountries] = useState<ICountry[]>([]);
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string[]>([]);
   const [selectedCountryCode, setSelectedCountryCode] = useState<string>("");
@@ -27,7 +27,8 @@ const Estimation = () => {
   const [selectedItemCode, setSelectedItemCode] = useState<string[]>([]);
   const [activeOption, setActiveOption] = useState<string | null>(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [estimationData, setEstimationData] = useState([]);
+  
+  const [estimationData, setEstimationData] = useState<IShippingData[]>([]);
   const [submitted, setSubmitted] = useState(false);
   const { countryData } = useCountry();
   const { categoryData } = useCategory();
@@ -53,15 +54,14 @@ const Estimation = () => {
       height: data.height,
     };
     try {
-      setLoading(true);
       const res = await axiosSecure.post("get_estimation", submittedData);
-      const result = res?.data?.data;
+      const result: IShippingData[] = res?.data?.data;
       if (res.status !== 200) toast.error("Something went wrong!");
       setEstimationData(result);
       reset();
-    } catch (error: any) {
+    } catch (error: unknown) {
       const errorMessage =
-        error.response?.data?.message || "Failed to fetch data!";
+        (error instanceof Error && error.message) || "Failed to fetch data!";
       toast.error(errorMessage);
     } finally {
       setLoading(false);
@@ -126,7 +126,7 @@ const Estimation = () => {
     if (dropdownOpen && !activeOption) {
       setActiveOption(categoryData[0].name);
     }
-  }, [dropdownOpen]);
+  }, [dropdownOpen, activeOption, categoryData]);
 
   // Handle country search
   const handleCountryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -138,7 +138,7 @@ const Estimation = () => {
       return;
     }
     const filtered = countryData.filter(
-      (c: any) =>
+      (c: ICountry) =>
         c.name.toLowerCase().includes(value.toLowerCase()) ||
         c.code.toLowerCase().includes(value.toLowerCase())
     );
@@ -163,7 +163,7 @@ const Estimation = () => {
       id: s.id,
     }));
 
-    const isFullySelected = allSubs.every((item: any) =>
+    const isFullySelected = allSubs.every((item: { label: string; id: string }) =>
       selectedOption.includes(item.label)
     );
 
@@ -179,15 +179,15 @@ const Estimation = () => {
       );
     } else {
       const newSelection = allSubs.filter(
-        (item: any) => !selectedOption.includes(item.label)
+        (item: { label: string; id: string }) => !selectedOption.includes(item.label)
       );
       setSelectedOption((prev) => [
         ...prev,
-        ...newSelection.map((item: any) => item.label),
+        ...newSelection.map((item: { label: string; id: string }) => item.label),
       ]);
       setSelectedItemCode((prev) => [
         ...prev,
-        ...newSelection.map((item: any) => item.id),
+        ...newSelection.map((item: { label: string; id: string }) => item.id),
       ]);
     }
   };
@@ -430,7 +430,7 @@ const Estimation = () => {
         {submitted &&
           (estimationData.length > 0 ? (
             <div>
-              {estimationData.map((item: any) => (
+              {estimationData.map((item: IShippingData) => (
                 <EstimationCard key={item.id} data={item} />
               ))}
             </div>

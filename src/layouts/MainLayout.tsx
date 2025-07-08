@@ -10,7 +10,7 @@ const MainLayout = () => {
   const { setUser } = useAuth();
   useEffect(() => {
     if (!localStorage.getItem("user")) setUser(null);
-  }, [localStorage]);
+  }, [setUser]);
   return (
     <div className="relative min-h-screen bg-gray-50 dark:bg-dark text-black dark:text-white transition-colors duration-200">
       <Navbar />
@@ -33,7 +33,7 @@ const MainLayout = () => {
       </div>
 
       {/* Telegram button */}
-      <div className="fixed bottom-20 right-5 w-fit hover:scale-110 transition-transform duration-200">
+      <div className="fixed telegrambtn bottom-20 right-5 w-fit hover:scale-110 transition-transform duration-200">
         <Link
           to="https://t.me/+I-_POEYtIXg5ODRh"
           target="_blank"
