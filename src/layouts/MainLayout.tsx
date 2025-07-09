@@ -16,9 +16,10 @@ const MainLayout = () => {
       <Navbar />
       <Outlet />
       <Footer />
-
-      {/* Instagram button */}
-      <div className="fixed bottom-5 right-5 w-fit hover:scale-110 transition-transform duration-200">
+{/* Social Media Buttons */}
+<div className="fixed bottom-4 right-4 flex flex-col-reverse gap-2 z-50">
+   {/* Instagram button */}
+      <div className="w-fit hover:scale-110 transition-transform duration-200">
         <Link
           to="https://www.instagram.com/qcspot?igsh=MjNtczVlMDlsMmQ4&utm_source=qr"
           target="_blank"
@@ -33,7 +34,7 @@ const MainLayout = () => {
       </div>
 
       {/* Telegram button */}
-      <div className="fixed bottom-20 right-5 w-fit hover:scale-110 transition-transform duration-200">
+      <div className=" w-fit hover:scale-110 transition-transform duration-200">
         <Link
           to="https://t.me/+I-_POEYtIXg5ODRh"
           target="_blank"
@@ -48,7 +49,7 @@ const MainLayout = () => {
       </div>
 
       {/* Raddit button */}
-      <div className="fixed bottom-[8.6rem] right-5 w-fit hover:scale-110 transition-transform duration-200">
+      <div className=" w-fit hover:scale-110 transition-transform duration-200">
         <Link
           to="https://www.reddit.com/r/RepSchool/s/YjCTaCroYg"
           target="_blank"
@@ -61,6 +62,11 @@ const MainLayout = () => {
           />
         </Link>
       </div>
+
+</div>
+     
+
+
     </div>
   );
 };
