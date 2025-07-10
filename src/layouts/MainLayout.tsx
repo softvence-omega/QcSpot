@@ -32,6 +32,7 @@ const MainLayout = () => {
           />
         </Link>
       </div>
+      
 
       {/* Telegram button */}
       <div className=" w-fit hover:scale-110 transition-transform duration-200">
