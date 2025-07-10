@@ -3,12 +3,11 @@ name: Deploy React to VPS
 on:
   push:
     branches:
-      - main  # change if your default branch differs
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -23,17 +22,17 @@ jobs:
 
       - name: Build React app
         run: npm run build
- 
-      - name: List build folder contents (for debug)
-        run: ls -la build
 
-      - name: Copy build files to VPS
+      - name: List dist folder contents
+        run: ls -la dist
+
+      - name: Copy dist files to VPS
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_SECRET }}
-          source: "build/*"
+          source: "dist/*"
           target: ${{ secrets.VPS_DEST }}
 
       - name: Reload nginx on VPS
