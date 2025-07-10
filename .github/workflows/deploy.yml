@@ -1,4 +1,4 @@
-name: Deploy React App to VPS
+name: Deploy React to VPS
 
 on:
   push:
@@ -18,10 +18,14 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies and build
-        run: |
-          npm install
-          npm run build
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build React app
+        run: npm run build
+
+      - name: List build folder contents (for debug)
+        run: ls -la build
 
       - name: Copy build files to VPS
         uses: appleboy/scp-action@v0.1.4
@@ -32,7 +36,7 @@ jobs:
           source: "build/*"
           target: ${{ secrets.VPS_DEST }}
 
-      - name: Reload Nginx
+      - name: Reload nginx on VPS
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.VPS_HOST }}
