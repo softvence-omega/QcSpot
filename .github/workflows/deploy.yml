@@ -33,7 +33,7 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_SECRET }}
           source: "dist/*"
-          target: ${{ secrets.VPS_DEST }}
+          target: /var/www/frontend
 
       - name: Reload nginx on VPS
         uses: appleboy/ssh-action@v1.0.0
