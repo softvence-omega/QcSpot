@@ -43,13 +43,13 @@ const MainLayout = () => {
         >
           <img
             src={telegram}
-            alt="Instagram"
+            alt="Telegram"
             className="w-10 h-10 cursor-pointer"
           />
         </Link>
       </div>
 
-      {/* Raddit button */}
+      {/* Reddit button */}
       <div className=" w-fit hover:scale-110 transition-transform duration-200">
         <Link
           to="https://www.reddit.com/r/RepSchool/s/YjCTaCroYg"
@@ -58,7 +58,7 @@ const MainLayout = () => {
         >
           <img
             src={reddit}
-            alt="Instagram"
+            alt="Reddit"
             className="w-10 h-10 cursor-pointer"
           />
         </Link>
