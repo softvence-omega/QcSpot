@@ -1,4 +1,4 @@
-name: Deploy Vite React to VPS
+name: Deploy React (Vite) to VPS
 
 on:
   push:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Setup Node.js
@@ -21,13 +21,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build Vite app
+      - name: Build project
         run: npm run build
 
-      - name: List dist folder contents
-        run: ls -la dist
-
-      - name: Clean remote html folder
+      - name: Clean remote folder
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.VPS_HOST }}
@@ -35,7 +32,7 @@ jobs:
           key: ${{ secrets.VPS_SSH_SECRET }}
           script: rm -rf /usr/share/nginx/html/*
 
-      - name: Copy dist files to VPS
+      - name: Upload build to VPS
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.VPS_HOST }}
@@ -44,7 +41,7 @@ jobs:
           source: "dist/*"
           target: /usr/share/nginx/html
 
-      - name: Reload nginx on VPS
+      - name: Reload Nginx
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.VPS_HOST }}
