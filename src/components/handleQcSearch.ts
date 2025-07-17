@@ -1,3 +1,5 @@
+import axios from "axios";
+import { NavigateFunction } from "react-router-dom";
 import Swal from "sweetalert2";
 
 // Extract domain from url
@@ -67,7 +69,8 @@ export function handleAcBuyUrl(source: string) {
 // Handle Qc Search
 export const handleQcSearch = async (
   input: string,
-  navigate: (path: string) => void
+  // navigate: (path: string) => void
+  navigate: NavigateFunction
 ) => {
   try {
     const url = new URL(input);
@@ -115,15 +118,57 @@ export const handleQcSearch = async (
     }
 
     if (!shopType || !id) {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Invalid URL or missing parameters!",
-        footer:
-          "The URL you provided is not supported. If you think this is a mistake, please contact us.",
-      });
-      return;
+      // ✅ NEW FALLBACK LOGIC
+      try {
+        
+        const response = await axios.post(
+          "https://api.onlyfinds.ai/partner-api/get/goods/qc/list",
+          {
+            appKey: "DlZhchwAgigDhYAl71Ba0KNqLz2ciGQS", // Hardcoded appKey
+            url: input, // Pass original URL
+            appId: "5412377", // Hardcoded appId
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (response.data && response.data.data) {
+          // ✅ If OnlyFinds returns data, navigate to QC results page
+          navigate("/qc-search", { state: { productData: response.data.data } });
+          return; // Stop here, don't show error alert
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "No products found!",
+            text: "We couldn't find this product using both search methods.",
+          });
+          return;
+        }
+      } catch (apiError) {
+        console.error("OnlyFinds API error:", apiError);
+        Swal.fire({
+          icon: "error",
+          title: "Search Failed",
+          text: "Both local and external searches failed. Please try again.",
+        });
+        return;
+      }
+      // ✅ END FALLBACK LOGIC
     }
+
+    // if (!shopType || !id) {
+    //   Swal.fire({
+    //     icon: "error",
+    //     title: "Oops...",
+    //     text: "Invalid URL or missing parameters!",
+    //     footer:
+    //       "The URL you provided is not supported. If you think this is a mistake, please contact us.",
+    //   });
+    //   return;
+    // }
     localStorage.setItem("url", input);
     if (!shopType) shopType = "taobao";
     navigate(`/product/${shopType}/${id}`);
