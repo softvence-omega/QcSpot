@@ -1,8 +1,8 @@
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { IQcProduct } from "../types";
 
 const QcProductDetails = () => {
-  const { qcTime } = useParams<{ qcTime: string }>();
+//   const { qcTime } = useParams<{ qcTime: string }>();
   const location = useLocation();
   const state = location.state as { product: IQcProduct };
 
