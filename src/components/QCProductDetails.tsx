@@ -1,14 +1,20 @@
 import { useLocation } from "react-router-dom";
+import { useState } from "react";
 import { IQcProduct } from "../types";
 
 const QcProductDetails = () => {
-//   const { qcTime } = useParams<{ qcTime: string }>();
   const location = useLocation();
-  const state = location.state as { product: IQcProduct };
-
+  const state = location.state as { product: IQcProduct } | null;
   const product = state?.product;
 
-  if (!product) return <p className="p-10">Product not found!</p>;
+  // ✅ Initialize mainImage safely (fallback if product is missing)
+  const [mainImage, setMainImage] = useState<string>(
+    product?.image[0] || "" // Empty string if no product
+  );
+
+  if (!product) {
+    return <p className="p-10 text-red-500">Product not found!</p>;
+  }
 
   return (
     <div className="p-6 mt-28">
@@ -16,24 +22,29 @@ const QcProductDetails = () => {
         <div className="bg-white dark:bg-gray-900 shadow-lg rounded-xl p-6 lg:flex lg:gap-8">
           {/* Left Section: Image Gallery */}
           <div className="lg:w-1/2 flex flex-col">
-            {/* Main Image */}
+            {/* ✅ Main Image */}
             <div className="w-full h-96 rounded-lg overflow-hidden shadow-md">
               <img
-                src={product.image[0]}
+                src={mainImage}
                 alt={product.skuInfo}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-300 ease-in-out"
               />
             </div>
 
-            {/* Thumbnail Images */}
+            {/* ✅ Thumbnail Images */}
             {product.image.length > 1 && (
-              <div className="flex gap-3 mt-4 overflow-x-auto">
+              <div className="flex gap-3 mt-4">
                 {product.image.map((img, i) => (
                   <img
                     key={i}
                     src={img}
-                    alt="QC"
-                    className="w-20 h-20 object-cover rounded-lg border hover:border-green-500 hover:scale-105 transition-transform duration-200"
+                    alt={`Thumbnail ${i}`}
+                    className={`w-20 h-20 object-cover rounded-lg border cursor-pointer transition-transform duration-200 ${
+                      img === mainImage
+                        ? "border-green-500 scale-105"
+                        : "border-gray-300 hover:border-green-400 hover:scale-105"
+                    }`}
+                    onClick={() => setMainImage(img)}
                   />
                 ))}
               </div>
