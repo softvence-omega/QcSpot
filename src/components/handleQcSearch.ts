@@ -118,7 +118,7 @@ export const handleQcSearch = async (
     }
 
     if (!shopType || !id) {
-      // ✅ NEW FALLBACK LOGIC
+      // NEW FALLBACK LOGIC for URL search
       try {
         
         const response = await axios.post(
