@@ -50,3 +50,18 @@ export interface ProductQueryParams {
   MinPrice?: number;
   MaxPrice?: number;
 }
+
+
+
+
+// types/OnlyFinds.ts
+export interface IQcProduct {
+  skuInfo: string;
+  qcTime: number;
+  weight: number;
+  image: string[];
+}
+
+export interface IQcSearchResponse {
+  list: IQcProduct[];
+}

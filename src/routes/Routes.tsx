@@ -21,6 +21,8 @@ import Estimation from "../pages/Estimation";
 import Managereview from "../pages/dashboard/ManageReview";
 import VerifyEmailPage from "../pages/VerifyEmailPage";
 import AdminPrivateRoute from "./AdminPrivateRoute";
+import QcSearchResult from "../components/QCSearchResult";
+import QcProductDetails from "../components/QCProductDetails";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,8 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { path: "/", element: <HomePage /> },
+      { path: "/qc-search", element: <QcSearchResult/> },
+      { path: "/qc-product/:qcTime", element: <QcProductDetails/> },
       { path: "/popular", element: <PopularPage /> },
       { path: "/product/:shopType/:id", element: <ProductDetailsPage /> },
       { path: "/estimation", element: <Estimation /> },
