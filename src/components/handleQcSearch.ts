@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import Swal from "sweetalert2";
 
 // Extract domain from url
