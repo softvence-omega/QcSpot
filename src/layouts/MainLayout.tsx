@@ -52,7 +52,8 @@ const MainLayout = () => {
       {/* Reddit button */}
       <div className=" w-fit hover:scale-110 transition-transform duration-200">
         <Link
-          to="https://www.reddit.com/r/RepSchool/s/YjCTaCroYg"
+          // to="https://www.reddit.com/r/RepSchool/s/YjCTaCroYg"
+          to="https://www.reddit.com/r/DistrettoReps/s/uKdR9TycXS"
           target="_blank"
           rel="noopener noreferrer"
         >
